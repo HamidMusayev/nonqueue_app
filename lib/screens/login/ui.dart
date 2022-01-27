@@ -3,6 +3,7 @@ import 'package:nonqueue_app/api/concrete/dio_service.dart';
 import 'package:nonqueue_app/api/concrete/user_service.dart';
 import 'package:nonqueue_app/api/result/result.dart';
 import 'package:nonqueue_app/models/user.dart';
+import 'package:nonqueue_app/screens/home/ui.dart';
 import 'package:nonqueue_app/screens/pswforgot/ui.dart';
 import 'package:nonqueue_app/screens/register/ui.dart';
 import 'package:nonqueue_app/utils/constants.dart';
@@ -153,8 +154,8 @@ class _LoginScreenState extends State<LoginScreen> {
       _user.sifre = 'null';
       SharedHelper.saveJson('user', _user.toJson());
 
-      // Navigator.pushReplacement(
-      //     context, SlideRightRoute(page: HomeScreen(user: _user)));
+      Navigator.pushReplacement(
+          context, SlideRightRoute(page: HomeScreen()));
     } else {
       setState(() => _loading = false);
       ScaffoldMessenger.of(context).showSnackBar(

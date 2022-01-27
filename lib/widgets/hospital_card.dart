@@ -1,23 +1,20 @@
-
 import 'package:flutter/material.dart';
-import 'package:nonqueue_app/models/user.dart';
 import 'package:nonqueue_app/utils/constants.dart';
-import 'package:nonqueue_app/utils/encription.dart';
 
-class HospitalCard extends StatelessWidget {
-  final User hospital;
-  const HospitalCard({Key? key, required this.hospital}) : super(key: key);
+class BonusCard extends StatelessWidget {
+  final String text;
+  const BonusCard({Key? key, required this.text}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: NetworkImage(
-              'http://194.135.95.23:8081/medicaldirector/api/user/getpicture?type=hospital&hashpin=${EncriptionHelper.hasPin(hospital.pinappusmast??"")}'),
-          fit: BoxFit.cover,
-        ),
-      ),
+      // decoration: const BoxDecoration(
+      //   // image: DecorationImage(
+      //   //   image: NetworkImage(
+      //   //       'http://194.135.95.23:8081/medicald'),
+      //   //   fit: BoxFit.cover,
+      //   // ),
+      // ),
       child: Stack(
         children: [
           _buildShadowGradient(),
@@ -32,16 +29,16 @@ class HospitalCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.end,
                   //mainAxisSize: MainAxisSize.min,
                   children: [
-                    SizedBox(
-                      height: 90,
-                      child: Image.network(
-                          'http://194.135.95.23:8081/medicaldirector/api/user/getpicture?type=logo&hashpin=${EncriptionHelper.hasPin(hospital.pinappusmast??"")}',
-                          fit: BoxFit.contain),
-                    ),
+                    // SizedBox(
+                    //   height: 90,
+                    //   child: Image.network(
+                    //       'http://194.135',
+                    //       fit: BoxFit.contain),
+                    // ),
                     Spaces.vertical20,
-                    Text(
-                      hospital.email,
-                      style: const TextStyle(
+                    const Text(
+                      "hospital.email",
+                      style: TextStyle(
                         fontSize: 22,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
@@ -51,8 +48,7 @@ class HospitalCard extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: const [
                         Text('Daxil ol',
-                            style:
-                                TextStyle(fontSize: 14, color: Colors.white)),
+                            style: TextStyle(fontSize: 14, color: Colors.white)),
                         Icon(Icons.navigate_next_rounded, color: Colors.white)
                       ],
                     )
