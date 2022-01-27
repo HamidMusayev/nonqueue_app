@@ -3,8 +3,8 @@ import 'package:nonqueue_app/api/concrete/dio_service.dart';
 import 'package:nonqueue_app/api/concrete/user_service.dart';
 import 'package:nonqueue_app/api/result/result.dart';
 import 'package:nonqueue_app/models/user.dart';
-import 'package:nonqueue_app/screens/home/ui.dart';
-import 'package:nonqueue_app/screens/login/forgot_password.dart';
+import 'package:nonqueue_app/screens/pswforgot/ui.dart';
+import 'package:nonqueue_app/screens/register/ui.dart';
 import 'package:nonqueue_app/utils/constants.dart';
 import 'package:nonqueue_app/utils/shared.dart';
 import 'package:nonqueue_app/utils/validators.dart';
@@ -18,7 +18,6 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  bool _saveMe = false;
   bool _isObsecure = true;
   bool _loading = false;
 
@@ -43,15 +42,12 @@ class _LoginScreenState extends State<LoginScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text(
-                    'Daxil ol',
-                    style: Theme.of(context)
-                        .textTheme
-                        .headline6
-                        ?.copyWith(fontSize: 30),
+                  const Text(
+                    'Welcome back!',
+                    style: TextStyle(fontSize: 35, fontWeight: FontWeight.w500, color: Colors.pink),
                   ),
                   const Text(
-                    'Hesabınıza daxil olmaq üçün xanaları doldurun',
+                    'Enter your email and password to login',
                     style: TextStyle(color: Colors.blueGrey),
                   ),
                   Spaces.vertical50,
@@ -62,8 +58,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     controller: _emailTxt,
                     validator: (value) => ValidatorHelper.validateEmail(value),
                     decoration: const InputDecoration(
-                      hintText: 'E-mail',
-                      prefixIcon: Icon(Icons.email_rounded),
+                      hintText: 'Email address',
+                      prefixIcon: Icon(Icons.alternate_email_rounded),
                     ),
                   ),
                   Spaces.vertical10,
@@ -75,8 +71,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     validator: (value) =>
                         ValidatorHelper.validatePassword(value),
                     decoration: InputDecoration(
-                      hintText: 'Şifrə',
-                      prefixIcon: const Icon(Icons.vpn_key_rounded),
+                      hintText: 'Password',
+                      prefixIcon: const Icon(Icons.lock_rounded),
                       suffixIcon: IconButton(
                         onPressed: () =>
                             setState(() => _isObsecure = !_isObsecure),
@@ -87,37 +83,58 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                   Spaces.vertical10,
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          Checkbox(
-                            value: _saveMe,
-                            onChanged: (value) =>
-                                setState(() => _saveMe = value ?? false),
-                          ),
-                          const Text('Yadda saxla')
-                        ],
+                  GestureDetector(
+                    onTap: ()=> Navigator.push(context, SlideRightRoute(page: const ForgotPasswordScreen())),
+                    child: const Align(
+                      alignment: Alignment.centerRight,
+                      child: Text(
+                        'Forgot Password?',
+                        style: TextStyle(
+                          color: Colors.pink,
+                          fontWeight: FontWeight.w500,
+                          decoration: TextDecoration.underline,
+                        ),
                       ),
-                      const ForgotPassword(),
-                    ],
+                    ),
                   ),
                   Spaces.vertical50,
                   Visibility(
                     visible: !_loading,
                     replacement:
                         const Center(child: CircularProgressIndicator()),
-                    child: TextButton.icon(
-                      label: const Text('Daxil ol'),
-                      icon: const Icon(Icons.navigate_next_rounded),
+                    child: TextButton(
+                      child: const Text('Login'),
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
                           login();
                         }
                       },
                     ),
-                  )
+                  ),
+                  Spaces.vertical20,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text(
+                        'Don’t have an account?  ',
+                        style: TextStyle(
+                          color: Colors.blueGrey,
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: ()=> Navigator.push(context, SlideRightRoute(page: const RegisterScreen())),
+                        child: const Text(
+                          'Sign up',
+                          style: TextStyle(
+                            color: Colors.pink,
+                            fontWeight: FontWeight.w500,
+                            decoration: TextDecoration.underline,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Spaces.vertical50,
                 ],
               ),
             ),
@@ -129,17 +146,15 @@ class _LoginScreenState extends State<LoginScreen> {
 
   void login() async {
     setState(() => _loading = true);
-    Result<User> result = await _service
-        .login(User(email: _emailTxt.text, sifre: _passTxt.text));
+    Result<User> result =
+        await _service.login(User(email: _emailTxt.text, sifre: _passTxt.text));
     if (result.success) {
       User _user = result.data!;
       _user.sifre = 'null';
-
-      SharedHelper.setBool('saveMe', _saveMe);
       SharedHelper.saveJson('user', _user.toJson());
 
-      Navigator.pushReplacement(
-          context, SlideRightRoute(page: HomeScreen(user: _user)));
+      // Navigator.pushReplacement(
+      //     context, SlideRightRoute(page: HomeScreen(user: _user)));
     } else {
       setState(() => _loading = false);
       ScaffoldMessenger.of(context).showSnackBar(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:nonqueue_app/screens/login/ui.dart';
 import 'package:nonqueue_app/screens/register/ui.dart';
 import 'package:nonqueue_app/utils/constants.dart';
 import 'package:nonqueue_app/widgets/route_transitions/slide_route.dart';
@@ -74,7 +75,9 @@ class OnBoardScreen extends StatelessWidget {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.pushReplacement(context, SlideRightRoute(page: LoginScreen()));
+                          },
                         ),
                       ],
                     )

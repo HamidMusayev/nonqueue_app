@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:local_auth/local_auth.dart';
+import 'package:nonqueue_app/screens/pswreset/ui.dart';
 import 'package:nonqueue_app/utils/constants.dart';
+import 'package:nonqueue_app/widgets/route_transitions/slide_route.dart';
 
 class OTPScreen extends StatefulWidget {
   const OTPScreen({Key? key}) : super(key: key);
@@ -36,7 +38,10 @@ class _OTPScreenState extends State<OTPScreen> {
           const Text(
             "Enter OTP",
             style: TextStyle(
-                fontSize: 35, fontWeight: FontWeight.w500, color: Colors.pink),
+              fontSize: 35,
+              fontWeight: FontWeight.w500,
+              color: Colors.pink,
+            ),
           ),
           const Text(
             "We sent it to the number +994 55  *** ** 12",
@@ -86,8 +91,9 @@ class _OTPScreenState extends State<OTPScreen> {
                   child: const Icon(Icons.fingerprint_rounded, size: 40),
                   onPressed: () async {
                     ///FINGERPRINT
-                    bool a= await authenticate();
-                    print("AUTHSTATUSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS: "+a.toString());
+                    bool a = await authenticate();
+                    print("AUTHSTATUSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS: " +
+                        a.toString());
                   },
                 ),
                 TextButton(
@@ -142,16 +148,23 @@ class _OTPScreenState extends State<OTPScreen> {
     }
 
     bool completed = true;
-    for(var cont in _controllers){
-      if(cont.text.isEmpty){
+    for (var cont in _controllers) {
+      if (cont.text.isEmpty) {
         completed = false;
         break;
       }
     }
 
-    if(completed){
+    if (completed) {
       ///VERIFY TOKEN
-      print("IAMGOING TO VERIFY TOKENNNNNNNNNN");
+      if (_controllers[0].text.isNotEmpty &&
+          _controllers[1].text.isNotEmpty &&
+          _controllers[2].text.isNotEmpty &&
+          _controllers[3].text.isNotEmpty)
+        {
+          Navigator.pushReplacement(context, SlideRightRoute(page: const ResetPasswordScreen()));
+        }
+        print("IAMGOING TO VERIFY TOKENNNNNNNNNN");
     }
   }
 
@@ -177,7 +190,6 @@ class _OTPScreenState extends State<OTPScreen> {
   }
 
   Future<bool> authenticate() async {
-
     final LocalAuthentication localAuthentication = LocalAuthentication();
 
     bool isBiometricSupported = await localAuthentication.isDeviceSupported();

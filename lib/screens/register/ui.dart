@@ -30,9 +30,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 const Text(
                   'Welcome!',
                   style: TextStyle(
-                      fontSize: 35,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.pink),
+                    fontSize: 35,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.pink,
+                  ),
                 ),
                 const Text(
                   'You are going to sign up to Non-Queue',
@@ -71,7 +72,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   textInputAction: TextInputAction.done,
                   obscureText: _isObsecure,
                   decoration: InputDecoration(
-                    hintText: 'Şifrə',
+                    hintText: 'Password',
                     suffixIcon: IconButton(
                       onPressed: () =>
                           setState(() => _isObsecure = !_isObsecure),
