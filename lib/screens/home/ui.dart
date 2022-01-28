@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 import 'package:nonqueue_app/screens/home/top.dart';
 import 'package:nonqueue_app/utils/constants.dart';
@@ -81,31 +82,102 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
       drawer: Drawer(
-        child: ListView(
-          // Important: Remove any padding from the ListView.
-          padding: EdgeInsets.zero,
-          children: [
-            const DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.blue,
-              ),
-              child: Text('Drawer Header'),
+        child: SafeArea(
+          child: Padding(
+            padding: Paddings.p8,
+            child: ListView(
+              // Important: Remove any padding from the ListView.
+              children: [
+                Align(
+                  alignment: Alignment.topRight,
+                  child: IconButton(
+                    padding: Paddings.p24.copyWith(left: 0),
+                    icon: const Icon(
+                      Icons.close_rounded,
+                      color: ColorPalette.qlessApp,
+                      size: 30,
+                    ),
+                    onPressed: () => Navigator.pop(context),
+                  ),
+                ),
+                ListTile(
+                  title: const Text('Your N-Q Balance'),
+                  onTap: () {},
+                ),
+                ListTile(
+                  title: const Text('Payment methods'),
+                  onTap: () {},
+                ),
+                ListTile(
+                  title: const Text('Order history'),
+                  onTap: () {},
+                ),
+                const Divider(
+                  color: ColorPalette.qlessApp,
+                  endIndent: 100,
+                  indent: 20,
+                  thickness: 2,
+                  height: 40,
+                ),
+                ListTile(
+                  title: const Text('Account information'),
+                  onTap: () {},
+                ),
+                ListTile(
+                  title: const Text('About'),
+                  onTap: () {},
+                ),
+                ListTile(
+                  title: const Text('Help Center'),
+                  onTap: () {},
+                ),
+                ListTile(
+                  title: const Text('FAQ'),
+                  onTap: () {},
+                ),
+                ListTile(
+                  title: const Text('Privacy Policy'),
+                  onTap: () {},
+                ),
+                DropdownButton<String>(
+                  value: 'us',
+                  icon: const Icon(Icons.arrow_drop_down_rounded),
+                  underline: Container(),
+                  borderRadius: Radiuses.r10,
+                  onChanged: (lang) {
+                    if (lang != null) {
+                      // Get.updateLocale(lang.value);
+                      // setState(() => _activeLanguage = lang);
+                    }
+                  },
+                  items: ['us', 'az', 'tr', 'ru'].map((lang) {
+                    return DropdownMenuItem<String>(
+                      value: lang,
+                      child: Image.asset('assets/flags/$lang.png', width: 22),
+                    );
+                  }).toList(),
+                ),
+                Row(
+                  children: [
+                    IconButton(
+                      onPressed: () {},
+                      icon: SvgPicture.asset(
+                        'assets/splash/instagram_black.svg',
+                        height: 50,
+                      ),
+                    ),
+                    IconButton(
+                      onPressed: () {},
+                      icon: SvgPicture.asset(
+                        'assets/splash/facebook_black.svg',
+                        height: 50,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
             ),
-            ListTile(
-              title: const Text('Item 1'),
-              onTap: () {
-                // Update the state of the app.
-                // ...
-              },
-            ),
-            ListTile(
-              title: const Text('Item 2'),
-              onTap: () {
-                // Update the state of the app.
-                // ...
-              },
-            ),
-          ],
+          ),
         ),
       ),
       body: SingleChildScrollView(
