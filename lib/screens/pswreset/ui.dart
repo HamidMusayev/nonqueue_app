@@ -23,11 +23,11 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
           mainAxisSize: MainAxisSize.min,
           children: [
             const Text(
-              'Reset Password',
+              'Change Password',
               style: TextStyle(
                 fontSize: 35,
                 fontWeight: FontWeight.w500,
-                color: Colors.pink,
+                color: ColorPalette.qlessApp,
               ),
             ),
             Spaces.vertical50,

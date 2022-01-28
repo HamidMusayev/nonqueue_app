@@ -29,13 +29,13 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                 style: TextStyle(
                   fontSize: 35,
                   fontWeight: FontWeight.w500,
-                  color: Colors.pink,
+                  color: ColorPalette.qlessApp,
                 ),
               ),
               const Text(
                 'Don’t worry! It happens.Please enter the email address/'
                 'mobile phone number associated with your account ',
-                style: TextStyle(color: Colors.blueGrey),
+                style: TextStyle(color: ColorPalette.greyInputText),
               ),
               Spaces.vertical50,
               TextFormField(

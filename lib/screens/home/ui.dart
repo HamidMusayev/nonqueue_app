@@ -59,11 +59,17 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: Row(
           children: const [
-            Icon(Icons.near_me_rounded, color: Colors.blue),
+            Icon(
+              Icons.near_me_rounded,
+              color: ColorPalette.editColor,
+            ),
             Spaces.horizontal6,
             Text(
               'Select location',
-              style: TextStyle(color: Colors.blue, fontSize: 18),
+              style: TextStyle(
+                color: ColorPalette.editColor,
+                fontSize: 18,
+              ),
             )
           ],
         ),
@@ -138,11 +144,11 @@ class _HomeScreenState extends State<HomeScreen> {
             Container(
               constraints: const BoxConstraints(maxHeight: 235),
               child: ListView(
-                primary:  false,
+                primary: false,
                 padding: EdgeInsets.only(left: 24),
                 shrinkWrap: true,
                 scrollDirection: Axis.horizontal,
-                children: [1,2,3,4,5,6].map((e)=> PartnerCard()).toList(),
+                children: [1, 2, 3, 4, 5, 6].map((e) => PartnerCard()).toList(),
               ),
             )
             // SizedBox(

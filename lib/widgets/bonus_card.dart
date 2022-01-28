@@ -47,7 +47,7 @@ class BonusCard extends StatelessWidget {
                                     .map((e) => const Icon(
                                           Icons.restaurant_rounded,
                                           size: 16,
-                                          color: Colors.black,
+                                          color: ColorPalette.lightBlack,
                                         ))
                                     .toList()),
                           ),
@@ -61,7 +61,7 @@ class BonusCard extends StatelessWidget {
                         lineLength: double.infinity,
                         lineThickness: 2,
                         dashLength: 8,
-                        dashColor: Colors.black,
+                        dashColor: ColorPalette.lightBlack,
                         dashRadius: 10,
                         dashGapLength: 6,
                         dashGapColor: Colors.transparent,
@@ -78,7 +78,7 @@ class BonusCard extends StatelessWidget {
                             softWrap: true,
                             maxLines: 2,
                             style: TextStyle(
-                              color: Colors.black,
+                              color: ColorPalette.lightBlack,
                               fontSize: 18,
                               overflow: TextOverflow.ellipsis,
                             ),
@@ -89,7 +89,7 @@ class BonusCard extends StatelessWidget {
                             softWrap: true,
                             maxLines: 2,
                             style: TextStyle(
-                              color: Colors.black,
+                              color: ColorPalette.lightBlack,
                               fontWeight: FontWeight.bold,
                               overflow: TextOverflow.ellipsis,
                             ),
@@ -100,7 +100,7 @@ class BonusCard extends StatelessWidget {
                             softWrap: true,
                             maxLines: 2,
                             style: TextStyle(
-                              color: Colors.blueGrey,
+                              color: ColorPalette.greyInputText,
                               overflow: TextOverflow.ellipsis,
                             ),
                           ),
@@ -113,10 +113,10 @@ class BonusCard extends StatelessWidget {
             ),
           )
         : Card(
-            shadowColor: Colors.pink.shade200,
+            shadowColor: ColorPalette.qlessApp,
             elevation: 5,
             margin: Paddings.p8,
-            color: Colors.pink.shade800,
+            color: ColorPalette.couponColor,
             shape: const RoundedRectangleBorder(borderRadius: Radiuses.r20),
             child: InkWell(
               borderRadius: Radiuses.r20,
@@ -129,10 +129,10 @@ class BonusCard extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        CircleAvatar(
-                            backgroundColor: Colors.pink.shade900,
+                        const CircleAvatar(
+                            backgroundColor: Colors.white60,
                             radius: 40,
-                            backgroundImage: const NetworkImage(
+                            backgroundImage: NetworkImage(
                                 "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/classic_snowball-9022de0.jpg?quality=90&resize=500,454")),
                         Spaces.vertical20,
                         Flexible(

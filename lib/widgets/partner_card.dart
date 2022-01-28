@@ -14,7 +14,7 @@ class PartnerCard extends StatelessWidget {
       clipBehavior: Clip.antiAlias,
       shape: const RoundedRectangleBorder(borderRadius: Radiuses.r10),
       child: InkWell(
-        onTap: (){},
+        onTap: () {},
         child: Container(
           constraints: const BoxConstraints(maxWidth: 160),
           child: Column(
@@ -38,14 +38,17 @@ class PartnerCard extends StatelessWidget {
                     const Text(
                       'Company name',
                       style: TextStyle(
-                        color: Colors.black,
+                        color: ColorPalette.lightBlack,
                         fontWeight: FontWeight.w500,
                       ),
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Text('5 km away', overflow: TextOverflow.fade,),
+                        const Text(
+                          '5 km away',
+                          overflow: TextOverflow.fade,
+                        ),
                         Row(
                           children: const [
                             Text("5.0"),

@@ -21,12 +21,12 @@ class TopPanel extends StatelessWidget {
             children: [
               Text(
                 title,
-                style: const TextStyle(color: Colors.pink),
+                style: const TextStyle(color: ColorPalette.qlessApp),
               ),
               Text(
                 subtitle,
                 style: const TextStyle(
-                  color: Colors.black,
+                  color: ColorPalette.lightBlack,
                   fontSize: 22,
                   fontWeight: FontWeight.w500,
                 ),
@@ -36,7 +36,7 @@ class TopPanel extends StatelessWidget {
           TextButton(
             onPressed: () {},
             style: TextButton.styleFrom(
-              primary: Colors.blue,
+              primary: ColorPalette.editColor,
               backgroundColor: Colors.transparent,
               fixedSize: const Size.fromHeight(20),
             ),

@@ -32,12 +32,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   style: TextStyle(
                     fontSize: 35,
                     fontWeight: FontWeight.w500,
-                    color: Colors.pink,
+                    color: ColorPalette.qlessApp,
                   ),
                 ),
                 const Text(
                   'You are going to sign up to Non-Queue',
-                  style: TextStyle(color: Colors.blueGrey),
+                  style: TextStyle(color: ColorPalette.greyInputText),
                 ),
                 Spaces.vertical50,
                 const TextField(

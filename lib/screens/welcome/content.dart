@@ -23,7 +23,7 @@ class SplashContent extends StatelessWidget {
           data["title"] ?? "",
           softWrap: true,
           style: const TextStyle(
-              color: Colors.black, fontWeight: FontWeight.w500, fontSize: 22),
+              color: ColorPalette.lightBlack, fontWeight: FontWeight.w500, fontSize: 22),
         ),
         Spaces.vertical10,
         Text(data["text"] ?? "", softWrap: true),

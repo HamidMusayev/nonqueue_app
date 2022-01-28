@@ -40,7 +40,7 @@ class _OTPScreenState extends State<OTPScreen> {
             style: TextStyle(
               fontSize: 35,
               fontWeight: FontWeight.w500,
-              color: Colors.pink,
+              color: ColorPalette.qlessApp,
             ),
           ),
           const Text(
@@ -74,7 +74,7 @@ class _OTPScreenState extends State<OTPScreen> {
           Spaces.vertical20,
           const Text(
             "Resend code in 00:50",
-            style: TextStyle(fontSize: 16),
+            style: TextStyle(fontSize: 16, color: ColorPalette.lightBlack),
           ),
           Expanded(
             flex: 5,
@@ -87,7 +87,8 @@ class _OTPScreenState extends State<OTPScreen> {
               children: [
                 TextButton(
                   style: TextButton.styleFrom(
-                      backgroundColor: Colors.white, primary: Colors.pink),
+                      backgroundColor: Colors.white,
+                      primary: ColorPalette.qlessApp),
                   child: const Icon(Icons.fingerprint_rounded, size: 40),
                   onPressed: () async {
                     ///FINGERPRINT
@@ -98,16 +99,19 @@ class _OTPScreenState extends State<OTPScreen> {
                 ),
                 TextButton(
                   style: TextButton.styleFrom(
-                      backgroundColor: Colors.white, primary: Colors.pink),
+                      backgroundColor: Colors.white,
+                      primary: ColorPalette.qlessApp),
                   child: const Text("0",
-                      style: TextStyle(color: Colors.black, fontSize: 28)),
+                      style: TextStyle(
+                          color: ColorPalette.lightBlack, fontSize: 28)),
                   onPressed: () {
                     addNumber("0");
                   },
                 ),
                 TextButton(
                   style: TextButton.styleFrom(
-                      backgroundColor: Colors.white, primary: Colors.pink),
+                      backgroundColor: Colors.white,
+                      primary: ColorPalette.qlessApp),
                   child: const Icon(Icons.backspace_rounded, size: 35),
                   onPressed: () {
                     removeNumber();
@@ -116,10 +120,11 @@ class _OTPScreenState extends State<OTPScreen> {
                 ..._inputs.map(
                   (i) => TextButton(
                     style: TextButton.styleFrom(
-                        backgroundColor: Colors.white, primary: Colors.pink),
+                        backgroundColor: Colors.white,
+                        primary: ColorPalette.qlessApp),
                     child: Text(i,
-                        style:
-                            const TextStyle(color: Colors.black, fontSize: 28)),
+                        style: const TextStyle(
+                            color: ColorPalette.lightBlack, fontSize: 28)),
                     onPressed: () {
                       addNumber(i);
                     },
@@ -160,11 +165,10 @@ class _OTPScreenState extends State<OTPScreen> {
       if (_controllers[0].text.isNotEmpty &&
           _controllers[1].text.isNotEmpty &&
           _controllers[2].text.isNotEmpty &&
-          _controllers[3].text.isNotEmpty)
-        {
-          Navigator.pushReplacement(context, SlideRightRoute(page: const ResetPasswordScreen()));
-        }
-        print("IAMGOING TO VERIFY TOKENNNNNNNNNN");
+          _controllers[3].text.isNotEmpty) {
+        Navigator.pushReplacement(
+            context, SlideRightRoute(page: const ResetPasswordScreen()));
+      }
     }
   }
 

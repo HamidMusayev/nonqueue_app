@@ -45,11 +45,15 @@ class _LoginScreenState extends State<LoginScreen> {
                 children: [
                   const Text(
                     'Welcome back!',
-                    style: TextStyle(fontSize: 35, fontWeight: FontWeight.w500, color: Colors.pink),
+                    style: TextStyle(
+                      fontSize: 35,
+                      fontWeight: FontWeight.w500,
+                      color: ColorPalette.qlessApp,
+                    ),
                   ),
                   const Text(
                     'Enter your email and password to login',
-                    style: TextStyle(color: Colors.blueGrey),
+                    style: TextStyle(color: ColorPalette.greyInputText),
                   ),
                   Spaces.vertical50,
                   TextFormField(
@@ -85,13 +89,14 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   Spaces.vertical10,
                   GestureDetector(
-                    onTap: ()=> Navigator.push(context, SlideRightRoute(page: const ForgotPasswordScreen())),
+                    onTap: () => Navigator.push(context,
+                        SlideRightRoute(page: const ForgotPasswordScreen())),
                     child: const Align(
                       alignment: Alignment.centerRight,
                       child: Text(
                         'Forgot Password?',
                         style: TextStyle(
-                          color: Colors.pink,
+                          color: ColorPalette.qlessApp,
                           fontWeight: FontWeight.w500,
                           decoration: TextDecoration.underline,
                         ),
@@ -123,11 +128,12 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                       GestureDetector(
-                        onTap: ()=> Navigator.push(context, SlideRightRoute(page: const RegisterScreen())),
+                        onTap: () => Navigator.push(context,
+                            SlideRightRoute(page: const RegisterScreen())),
                         child: const Text(
                           'Sign up',
                           style: TextStyle(
-                            color: Colors.pink,
+                            color: ColorPalette.qlessApp,
                             fontWeight: FontWeight.w500,
                             decoration: TextDecoration.underline,
                           ),
@@ -154,8 +160,7 @@ class _LoginScreenState extends State<LoginScreen> {
       _user.sifre = 'null';
       SharedHelper.saveJson('user', _user.toJson());
 
-      Navigator.pushReplacement(
-          context, SlideRightRoute(page: HomeScreen()));
+      Navigator.pushReplacement(context, SlideRightRoute(page: HomeScreen()));
     } else {
       setState(() => _loading = false);
       ScaffoldMessenger.of(context).showSnackBar(

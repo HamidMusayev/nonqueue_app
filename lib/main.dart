@@ -50,12 +50,12 @@ class _MyAppState extends State<MyApp> {
       localizationsDelegates: const [GlobalMaterialLocalizations.delegate],
       supportedLocales: const [Locale("az")],
       theme: ThemeData(
-        primarySwatch: Colors.pink,
+        primarySwatch: const MaterialColor(0xFFC25875, kcolor),
         scaffoldBackgroundColor: Colors.white,
         textButtonTheme: TextButtonThemeData(
           style: TextButton.styleFrom(
             fixedSize: const Size(double.maxFinite, 60),
-            backgroundColor: Colors.pink,
+            backgroundColor: ColorPalette.qlessApp,
             primary: Colors.white,
             textStyle:
                 const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
@@ -65,19 +65,19 @@ class _MyAppState extends State<MyApp> {
         appBarTheme: const AppBarTheme(
           backgroundColor: Colors.transparent,
           elevation: 0,
-          iconTheme: IconThemeData(color: Colors.pink, size: 26),
+          iconTheme: IconThemeData(color: ColorPalette.qlessApp, size: 26),
         ),
-        inputDecorationTheme: InputDecorationTheme(
+        inputDecorationTheme: const InputDecorationTheme(
           filled: false,
           enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade300),
+            borderSide: BorderSide(color: ColorPalette.stroke),
             borderRadius: Radiuses.r10,
           ),
-          errorBorder: const OutlineInputBorder(
+          errorBorder: OutlineInputBorder(
               borderSide: BorderSide(color: Colors.red),
               borderRadius: Radiuses.r10),
           border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade300),
+            borderSide: BorderSide(color: ColorPalette.stroke),
             borderRadius: Radiuses.r10,
           ),
           // focusedBorder: OutlineInputBorder(
@@ -86,7 +86,7 @@ class _MyAppState extends State<MyApp> {
           // ),
         ),
       ),
-      home: !_saveMe ? WelcomeScreen() : const WelcomeScreen(),
+      home: _saveMe ? HomeScreen() : const WelcomeScreen(),
     );
   }
 }
