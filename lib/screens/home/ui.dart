@@ -3,10 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:nonqueue_app/screens/home/top.dart';
 import 'package:nonqueue_app/utils/constants.dart';
-import 'package:nonqueue_app/widgets/hospital_card.dart';
-import 'package:nonqueue_app/widgets/log_out_button.dart';
-import 'package:nonqueue_app/widgets/payment_card.dart';
-import 'package:nonqueue_app/widgets/timerange_picker.dart';
+import 'package:nonqueue_app/widgets/bonus_card.dart';
+import 'package:nonqueue_app/widgets/partner_card.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -16,10 +14,59 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final List<List<bool>> _items = [
+    [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+    ],
+    [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+    ],
+    [
+      true,
+      true,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+    ],
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: Row(
+          children: const [
+            Icon(Icons.near_me_rounded, color: Colors.blue),
+            Spaces.horizontal6,
+            Text(
+              'Select location',
+              style: TextStyle(color: Colors.blue, fontSize: 18),
+            )
+          ],
+        ),
         actions: [
           IconButton(
             onPressed: () {},
@@ -64,9 +111,10 @@ class _HomeScreenState extends State<HomeScreen> {
               subtitle: 'Your Bonuses',
             ),
             CarouselSlider.builder(
-              itemCount: 2,
-              itemBuilder: (context, itemIndex, pageViewIndex) =>
-                  const BonusCard(text: 'Əhməd'),
+              itemCount: _items.length,
+              itemBuilder: (context, itemIndex, pageViewIndex) => BonusCard(
+                items: _items[itemIndex],
+              ),
               options: CarouselOptions(
                 //height: 400,
                 //aspectRatio: 16 / 9,
@@ -75,10 +123,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 enableInfiniteScroll: true,
                 reverse: false,
                 autoPlay: true,
+                enlargeCenterPage: true,
                 autoPlayInterval: const Duration(seconds: 4),
                 autoPlayAnimationDuration: const Duration(milliseconds: 1300),
                 autoPlayCurve: Curves.fastOutSlowIn,
-                enlargeCenterPage: true,
                 onPageChanged: (index, reason) {},
                 scrollDirection: Axis.horizontal,
               ),
@@ -87,6 +135,23 @@ class _HomeScreenState extends State<HomeScreen> {
               title: 'want to make quick order?',
               subtitle: 'All partners',
             ),
+            Container(
+              constraints: const BoxConstraints(maxHeight: 235),
+              child: ListView(
+                primary:  false,
+                padding: EdgeInsets.only(left: 24),
+                shrinkWrap: true,
+                scrollDirection: Axis.horizontal,
+                children: [1,2,3,4,5,6].map((e)=> PartnerCard()).toList(),
+              ),
+            )
+            // SizedBox(
+            //   child: ListView.builder(
+            //     shrinkWrap: true,
+            //     itemCount: 6,
+            //       scrollDirection: Axis.horizontal,
+            //       itemBuilder: (context, index) => PartnerCard()),
+            // )
           ],
         ),
       ),

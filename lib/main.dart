@@ -59,7 +59,7 @@ class _MyAppState extends State<MyApp> {
             primary: Colors.white,
             textStyle:
                 const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
-            shape: const RoundedRectangleBorder(borderRadius: Radiuses.r8),
+            shape: const RoundedRectangleBorder(borderRadius: Radiuses.r10),
           ),
         ),
         appBarTheme: const AppBarTheme(
@@ -71,14 +71,14 @@ class _MyAppState extends State<MyApp> {
           filled: false,
           enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(color: Colors.grey.shade300),
-            borderRadius: Radiuses.r8,
+            borderRadius: Radiuses.r10,
           ),
           errorBorder: const OutlineInputBorder(
               borderSide: BorderSide(color: Colors.red),
-              borderRadius: Radiuses.r8),
+              borderRadius: Radiuses.r10),
           border: OutlineInputBorder(
             borderSide: BorderSide(color: Colors.grey.shade300),
-            borderRadius: Radiuses.r8,
+            borderRadius: Radiuses.r10,
           ),
           // focusedBorder: OutlineInputBorder(
           //   borderSide: BorderSide(),
@@ -86,7 +86,7 @@ class _MyAppState extends State<MyApp> {
           // ),
         ),
       ),
-      home: _saveMe ? HomeScreen() : const WelcomeScreen(),
+      home: !_saveMe ? WelcomeScreen() : const WelcomeScreen(),
     );
   }
 }

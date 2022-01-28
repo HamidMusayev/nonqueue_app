@@ -33,6 +33,6 @@ class Paddings{
 
 class Radiuses{
   Radiuses._();
-  static const r8= BorderRadius.all(Radius.circular(10));
-  static const r20 = BorderRadius.all(Radius.circular(10));
+  static const r10= BorderRadius.all(Radius.circular(10));
+  static const r20 = BorderRadius.all(Radius.circular(20));
 }

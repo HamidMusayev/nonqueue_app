@@ -10,7 +10,7 @@ class TopPanel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: Paddings.p32,
+      padding: Paddings.p24,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.end,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -33,9 +33,17 @@ class TopPanel extends StatelessWidget {
               ),
             ],
           ),
-          const Text(
-            "View all",
-            style: TextStyle(color: Colors.blue, fontSize: 16),
+          TextButton(
+            onPressed: () {},
+            style: TextButton.styleFrom(
+              primary: Colors.blue,
+              backgroundColor: Colors.transparent,
+              fixedSize: const Size.fromHeight(20),
+            ),
+            child: const Text(
+              "View all",
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+            ),
           )
         ],
       ),

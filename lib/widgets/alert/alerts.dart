@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 import 'package:nonqueue_app/utils/constants.dart';
 
 class AnimatedAlert extends StatefulWidget {
@@ -59,11 +58,11 @@ class AnimatedAlertState extends State<AnimatedAlert>
             padding: const EdgeInsets.only(left: 24, right: 24, bottom: 18),
             decoration: ShapeDecoration(
                 color: Theme.of(context).appBarTheme.backgroundColor,
-                shape: const RoundedRectangleBorder(borderRadius: Radiuses.r8)),
+                shape: const RoundedRectangleBorder(borderRadius: Radiuses.r10)),
             child: FittedBox(
               child: Column(
                 children: <Widget>[
-                  LottieBuilder.asset('assets/lottie/${widget.type}.json', width: 100),
+                  //LottieBuilder.asset('assets/lottie/${widget.type}.json', width: 100),
                   Text(widget.title, style: const TextStyle(fontSize: 15)),
                   Padding(
                     padding: const EdgeInsets.only(bottom: 14),
