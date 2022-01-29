@@ -86,7 +86,7 @@ class _MyAppState extends State<MyApp> {
           // ),
         ),
       ),
-      home: _saveMe ? HomeScreen() : const WelcomeScreen(),
+      home: _saveMe ? const HomeScreen() : const WelcomeScreen(),
     );
   }
 }

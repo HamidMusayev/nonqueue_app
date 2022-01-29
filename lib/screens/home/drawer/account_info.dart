@@ -22,7 +22,7 @@ class AccountInfoScreen extends StatelessWidget {
           style: TextStyle(color: ColorPalette.lightBlack),
         ),
         actions: [
-          IconButton(onPressed: (){}, icon: const Icon(Icons.check_rounded))
+          IconButton(onPressed: () {}, icon: const Icon(Icons.check_rounded))
         ],
       ),
       body: SingleChildScrollView(
@@ -38,60 +38,64 @@ class AccountInfoScreen extends StatelessWidget {
                 const Text(
                   'Provide your personal information, '
                   'this won’t be part of your public profile',
-                  style: TextStyle(color: Colors.blueGrey),
+                  style: TextStyle(color: ColorPalette.greyInputText),
                 ),
                 Spaces.vertical50,
                 TextFormField(
                   keyboardType: TextInputType.emailAddress,
                   textInputAction: TextInputAction.next,
-                  autofocus: true,
+                  autofocus: false,
                   controller: _passTxt,
                   validator: (value) => ValidatorHelper.validateEmail(value),
-                  decoration:
-                      const InputDecoration(hintText: 'Email address'),
+                  decoration: const InputDecoration(hintText: 'Email address'),
                 ),
+                // Spaces.vertical10,
+                // TextFormField(
+                //   keyboardType: TextInputType.visiblePassword,
+                //   textInputAction: TextInputAction.done,
+                //   obscureText: _isObsecure,
+                //   controller: _newpassTxt,
+                //   validator: (value) =>
+                //       ValidatorHelper.validatePassword(value),
+                //   decoration: const InputDecoration(hintText: 'Password'),
+                // ),
                 Spaces.vertical10,
                 TextFormField(
                   keyboardType: TextInputType.visiblePassword,
                   textInputAction: TextInputAction.done,
-                  obscureText: _isObsecure,
                   controller: _newpassTxt,
-                  validator: (value) =>
-                      ValidatorHelper.validatePassword(value),
-                  decoration: const InputDecoration(hintText: 'Password'),
-                ),
-                Spaces.vertical10,
-                TextFormField(
-                  keyboardType: TextInputType.visiblePassword,
-                  textInputAction: TextInputAction.done,
-                  obscureText: _isObsecure,
-                  controller: _newpassTxt,
-                  validator: (value) =>
-                      ValidatorHelper.validatePassword(value),
+                  validator: (value) => ValidatorHelper.validatePassword(value),
                   decoration: const InputDecoration(hintText: 'Phone number'),
                 ),
                 Spaces.vertical10,
                 TextFormField(
-                  keyboardType: TextInputType.visiblePassword,
+                  keyboardType: TextInputType.text,
                   textInputAction: TextInputAction.done,
-                  obscureText: _isObsecure,
                   controller: _newpassTxt,
-                  validator: (value) =>
-                      ValidatorHelper.validatePassword(value),
+                  validator: (value) => ValidatorHelper.validatePassword(value),
                   decoration: const InputDecoration(hintText: 'Gender'),
                 ),
                 Spaces.vertical10,
                 TextFormField(
-                  keyboardType: TextInputType.visiblePassword,
+                  keyboardType: TextInputType.datetime,
                   textInputAction: TextInputAction.done,
-                  obscureText: _isObsecure,
                   controller: _newpassTxt,
-                  validator: (value) =>
-                      ValidatorHelper.validatePassword(value),
-                  decoration:
-                      const InputDecoration(hintText: 'Date of birth'),
+                  validator: (value) => ValidatorHelper.validatePassword(value),
+                  decoration: const InputDecoration(hintText: 'Date of birth'),
                 ),
                 Spaces.vertical50,
+                TextButton(
+                  onPressed: () {},
+                  style: TextButton.styleFrom(
+                    primary: ColorPalette.editColor,
+                    backgroundColor: Colors.transparent,
+                    fixedSize: const Size.fromHeight(20),
+                  ),
+                  child: const Text(
+                    "Change Password",
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+                  ),
+                )
               ],
             ),
           ),
