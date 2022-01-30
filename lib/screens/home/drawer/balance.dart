@@ -109,7 +109,7 @@ class BalanceScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              Spaces.vertical10,
+              Spaces.vertical20,
               RadioListTile(
                 contentPadding: EdgeInsets.zero,
                 title: const Text('Salary card'),
@@ -128,6 +128,7 @@ class BalanceScreen extends StatelessWidget {
                 },
                 groupValue: false,
               ),
+              Spaces.vertical10,
               TextButton(
                 style: TextButton.styleFrom(
                   primary: ColorPalette.editColor,
