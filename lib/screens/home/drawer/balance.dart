@@ -118,8 +118,10 @@ class BalanceScreen extends StatelessWidget {
                   children: [
                     const Text('**** **** **** 2233'),
                     const Text('Expiry date:  01/22 '),
-                    SvgPicture.asset('assets/splash/mastercard.svg',
-                        height: 15),
+                    SvgPicture.asset(
+                      'assets/splash/mastercard.svg',
+                      height: 15,
+                    ),
                   ],
                 ),
                 value: false,
