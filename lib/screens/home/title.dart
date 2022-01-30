@@ -41,7 +41,7 @@ class TopPanel extends StatelessWidget {
               fixedSize: const Size.fromHeight(20),
             ),
             child: const Text(
-              "View all",
+              'View all',
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
             ),
           )

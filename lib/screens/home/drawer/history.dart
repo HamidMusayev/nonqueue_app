@@ -32,7 +32,7 @@ class OrderHistoryScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Order History',
+          'Order history',
           style: TextStyle(color: ColorPalette.lightBlack),
         ),
       ),

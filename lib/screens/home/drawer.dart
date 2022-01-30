@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:nonqueue_app/screens/home/drawer/about.dart';
 import 'package:nonqueue_app/screens/home/drawer/account_info.dart';
+import 'package:nonqueue_app/screens/home/drawer/balance.dart';
 import 'package:nonqueue_app/screens/home/drawer/fag.dart';
 import 'package:nonqueue_app/screens/home/drawer/help.dart';
 import 'package:nonqueue_app/screens/home/drawer/history.dart';
@@ -43,7 +44,13 @@ class HomeDrawer extends StatelessWidget {
                   children: [
                     ListTile(
                       title: const Text('Your N-Q Balance'),
-                      onTap: () {},
+                      onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const BalanceScreen(),
+                          fullscreenDialog: true,
+                        ),
+                      ),
                     ),
                     ListTile(
                       title: const Text('Payment methods'),

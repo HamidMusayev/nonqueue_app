@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:nonqueue_app/screens/home/drawer/account_info_changepass.dart';
 import 'package:nonqueue_app/utils/constants.dart';
 import 'package:nonqueue_app/utils/validators.dart';
 
-class AccountInfoScreen extends StatelessWidget {
-  const AccountInfoScreen({Key? key}) : super(key: key);
+class AccountInfoChangePassScreen extends StatelessWidget {
+  const AccountInfoChangePassScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +18,7 @@ class AccountInfoScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Account information',
+          'Change password',
           style: TextStyle(color: ColorPalette.lightBlack),
         ),
         actions: [
@@ -37,8 +36,7 @@ class AccountInfoScreen extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 const Text(
-                  'Provide your personal information, '
-                  'this won’t be part of your public profile',
+                  'Your password must be more then six characters long and include a combination of nubmers, letters and special characters (!#@&%)',
                   style: TextStyle(color: ColorPalette.greyInputText),
                 ),
                 Spaces.vertical50,
@@ -46,63 +44,31 @@ class AccountInfoScreen extends StatelessWidget {
                   keyboardType: TextInputType.emailAddress,
                   textInputAction: TextInputAction.next,
                   autofocus: false,
+                  obscureText: _isObsecure,
                   controller: _passTxt,
                   validator: (value) => ValidatorHelper.validateEmail(value),
-                  decoration: const InputDecoration(hintText: 'Email address'),
+                  decoration:
+                      const InputDecoration(hintText: 'Current password'),
                 ),
-                // Spaces.vertical10,
-                // TextFormField(
-                //   keyboardType: TextInputType.visiblePassword,
-                //   textInputAction: TextInputAction.done,
-                //   obscureText: _isObsecure,
-                //   controller: _newpassTxt,
-                //   validator: (value) =>
-                //       ValidatorHelper.validatePassword(value),
-                //   decoration: const InputDecoration(hintText: 'Password'),
-                // ),
                 Spaces.vertical10,
                 TextFormField(
                   keyboardType: TextInputType.visiblePassword,
                   textInputAction: TextInputAction.done,
                   controller: _newpassTxt,
+                  obscureText: _isObsecure,
                   validator: (value) => ValidatorHelper.validatePassword(value),
-                  decoration: const InputDecoration(hintText: 'Phone number'),
+                  decoration: const InputDecoration(hintText: 'New password'),
                 ),
                 Spaces.vertical10,
                 TextFormField(
                   keyboardType: TextInputType.text,
                   textInputAction: TextInputAction.done,
                   controller: _newpassTxt,
+                  obscureText: _isObsecure,
                   validator: (value) => ValidatorHelper.validatePassword(value),
-                  decoration: const InputDecoration(hintText: 'Gender'),
+                  decoration:
+                      const InputDecoration(hintText: 'Re-enter new password'),
                 ),
-                Spaces.vertical10,
-                TextFormField(
-                  keyboardType: TextInputType.datetime,
-                  textInputAction: TextInputAction.done,
-                  controller: _newpassTxt,
-                  validator: (value) => ValidatorHelper.validatePassword(value),
-                  decoration: const InputDecoration(hintText: 'Date of birth'),
-                ),
-                Spaces.vertical50,
-                TextButton(
-                  style: TextButton.styleFrom(
-                    primary: ColorPalette.editColor,
-                    backgroundColor: Colors.transparent,
-                    fixedSize: const Size.fromHeight(20),
-                  ),
-                  child: const Text(
-                    'Change Password',
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
-                  ),
-                  onPressed: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const AccountInfoChangePassScreen(),
-                      fullscreenDialog: true,
-                    ),
-                  ),
-                )
               ],
             ),
           ),

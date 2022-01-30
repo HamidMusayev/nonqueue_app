@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nonqueue_app/utils/constants.dart';
 
 class PaymentMethodsScreen extends StatelessWidget {
@@ -11,7 +12,7 @@ class PaymentMethodsScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Payment Methods',
+          'Payment methods',
           style: TextStyle(color: ColorPalette.lightBlack),
         ),
       ),
@@ -33,14 +34,16 @@ class PaymentMethodsScreen extends StatelessWidget {
             Expanded(
               child: ListView.builder(
                 primary: false,
-                itemCount: 4,
+                itemCount: 2,
                 itemBuilder: (context, index) => RadioListTile(
+                  contentPadding: EdgeInsets.zero,
                   title: const Text('Salary card'),
                   subtitle: Row(
-                    children: const [
-                      Text('**** **** **** 2233'),
-                      Spaces.horizontal6,
-                      Text('Expiry date:  01/22 ')
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text('**** **** **** 2233'),
+                      const Text('Expiry date:  01/22 '),
+                      SvgPicture.asset('assets/splash/mastercard.svg', height: 15),
                     ],
                   ),
                   value: false,

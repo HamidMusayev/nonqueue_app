@@ -9,7 +9,7 @@ class HelpScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Help Center',
+          'Help center',
           style: TextStyle(color: ColorPalette.lightBlack),
         ),
       ),
