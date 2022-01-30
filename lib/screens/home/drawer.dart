@@ -4,6 +4,8 @@ import 'package:nonqueue_app/screens/home/drawer/about.dart';
 import 'package:nonqueue_app/screens/home/drawer/account_info.dart';
 import 'package:nonqueue_app/screens/home/drawer/fag.dart';
 import 'package:nonqueue_app/screens/home/drawer/help.dart';
+import 'package:nonqueue_app/screens/home/drawer/history.dart';
+import 'package:nonqueue_app/screens/home/drawer/payment.dart';
 import 'package:nonqueue_app/screens/home/drawer/privacy.dart';
 import 'package:nonqueue_app/utils/constants.dart';
 
@@ -45,11 +47,23 @@ class HomeDrawer extends StatelessWidget {
                     ),
                     ListTile(
                       title: const Text('Payment methods'),
-                      onTap: () {},
+                      onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const PaymentMethodsScreen(),
+                          fullscreenDialog: true,
+                        ),
+                      ),
                     ),
                     ListTile(
                       title: const Text('Order history'),
-                      onTap: () {},
+                      onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const OrderHistoryScreen(),
+                          fullscreenDialog: true,
+                        ),
+                      ),
                     ),
                     const Divider(
                       color: ColorPalette.qlessApp,
