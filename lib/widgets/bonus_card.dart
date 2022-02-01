@@ -65,7 +65,7 @@ class BonusCard extends StatelessWidget {
                         dashRadius: 10,
                         dashGapLength: 6,
                         dashGapColor: Colors.transparent,
-                        dashGapRadius: 0.0,
+                        dashGapRadius: 0,
                       ),
                     ),
                     Expanded(
@@ -162,7 +162,7 @@ class BonusCard extends StatelessWidget {
                         dashRadius: 10,
                         dashGapLength: 6,
                         dashGapColor: Colors.transparent,
-                        dashGapRadius: 0.0,
+                        dashGapRadius: 0,
                       ),
                     ),
                     Expanded(

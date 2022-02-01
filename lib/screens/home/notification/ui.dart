@@ -50,7 +50,7 @@ class NotificationScreen extends StatelessWidget {
             onTap: () => Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => const GiftScreen(),
+                builder: (context) => GiftScreen(gift: _notifications[index],),
                 fullscreenDialog: true,
               ),
             ),

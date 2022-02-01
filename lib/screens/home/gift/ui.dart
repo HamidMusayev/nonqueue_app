@@ -1,23 +1,21 @@
+import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:nonqueue_app/utils/constants.dart';
 
 class GiftScreen extends StatelessWidget {
-  const GiftScreen({Key? key}) : super(key: key);
+  final Map<String, String> gift;
+  const GiftScreen({Key? key, required this.gift}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    List<Map<String, String>> _notifications = [
+    final List<Map<String, String>> _giftdetails = [
       {
-        'image':
-            'https://i.pinimg.com/564x/a6/29/02/a62902c0458a23d705492bb701371a43.jpg',
-        'title': 'You get a gift from Hamid Musayev',
-        'subtitle': 'Coupon from Starbucks'
+        'name': 'Cofe americano',
+        'count': 'x1',
       },
       {
-        'image':
-            'https://images.pexels.com/photos/1704488/pexels-photo-1704488.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-        'title': 'You get a gift from Nihad Afandi',
-        'subtitle': 'Coupon from Starbucks'
+        'name': 'Cofe cappuchino',
+        'count': 'x1',
       },
     ];
 
@@ -28,32 +26,86 @@ class GiftScreen extends StatelessWidget {
           style: TextStyle(color: ColorPalette.lightBlack),
         ),
       ),
-      body: Container(
-        padding: Paddings.p16,
-        child: ListView.builder(
-          itemCount: _notifications.length,
-          itemBuilder: (context, index) => ListTile(
-            contentPadding: Paddings.p8,
-            leading: CircleAvatar(
-              radius: 30,
-              backgroundImage:
-                  NetworkImage(_notifications[index]['image'] ?? ''),
-            ),
-            title: Text(_notifications[index]['title'] ?? ''),
-            subtitle: Text(
-              _notifications[index]['subtitle'] ?? '',
-              style: const TextStyle(
-                color: ColorPalette.greyInputText,
+      body: SingleChildScrollView(
+        child: Container(
+          padding: Paddings.p16,
+          child: Column(
+            children: [
+              Card(
+                elevation: 4,
+                shadowColor: Colors.blueGrey.shade50,
+                child: Padding(
+                  padding: Paddings.p16,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      const CircleAvatar(
+                        radius: 60,
+                        backgroundImage: NetworkImage(
+                            'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlciUyMHByb2ZpbGV8ZW58MHx8MHx8&w=1000&q=80'),
+                      ),
+                      Spaces.vertical20,
+                      Text(
+                        gift['title'] ?? '',
+                        style: const TextStyle(
+                          color: ColorPalette.lightBlack,
+                          fontSize: 16,
+                        ),
+                      ),
+                      const Padding(
+                        padding: Paddings.p24,
+                        child: DottedLine(
+                          direction: Axis.horizontal,
+                          lineLength: double.infinity,
+                          lineThickness: 2,
+                          dashLength: 16,
+                          dashColor: ColorPalette.greyInputText,
+                          dashRadius: 10,
+                          dashGapLength: 10,
+                          dashGapColor: Colors.transparent,
+                          dashGapRadius: 0,
+                        ),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          const Icon(
+                            Icons.card_giftcard_rounded,
+                            color: ColorPalette.qlessApp,
+                            size: 35,
+                          ),
+                          Spaces.horizontal6,
+                          Text(
+                            gift['subtitle'] ?? '',
+                            style: const TextStyle(
+                              color: ColorPalette.lightBlack,
+                              fontSize: 20,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ],
+                      ),
+                      ..._giftdetails.map(
+                        (e) => ListTile(
+                          contentPadding: EdgeInsets.zero,
+                          title: Text(e['name'] ?? ''),
+                          trailing: Text(e['count'] ?? ''),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
               ),
-            ),
-            trailing: const Icon(Icons.navigate_next_rounded),
-            onTap: () => Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const GiftScreen(),
-                fullscreenDialog: true,
+              Spaces.vertical20,
+              TextButton(
+                child: const Text('Use Gift'),
+                // onPressed: () {
+                //   if (_formKey.currentState!.validate()) {
+                //     login();
+                //   }
+                onPressed: () {},
               ),
-            ),
+            ],
           ),
         ),
       ),
