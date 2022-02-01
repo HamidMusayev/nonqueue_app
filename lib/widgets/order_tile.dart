@@ -74,7 +74,6 @@ class OrderTile extends StatelessWidget {
             ],
           ),
           leading: CircleAvatar(
-            backgroundColor: ColorPalette.greyInputText,
             backgroundImage: NetworkImage(order['image'] ?? ''),
             radius: 30,
           ),
