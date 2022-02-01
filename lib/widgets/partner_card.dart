@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nonqueue_app/utils/constants.dart';
+import 'package:nonqueue_app/widgets/starmark.dart';
 
 class PartnerCard extends StatelessWidget {
   const PartnerCard({Key? key}) : super(key: key);
@@ -44,20 +45,12 @@ class PartnerCard extends StatelessWidget {
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Text(
+                      children: const [
+                        Text(
                           '5 km away',
                           overflow: TextOverflow.fade,
                         ),
-                        Row(
-                          children: const [
-                            Text("5.0"),
-                            Icon(
-                              Icons.star_rounded,
-                              color: Colors.orange,
-                            )
-                          ],
-                        )
+                        StarMark(),
                       ],
                     ),
                   ],

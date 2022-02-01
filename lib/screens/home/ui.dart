@@ -6,6 +6,8 @@ import 'package:nonqueue_app/utils/constants.dart';
 import 'package:nonqueue_app/widgets/bonus_card.dart';
 import 'package:nonqueue_app/widgets/partner_card.dart';
 
+import 'notification/ui.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -83,9 +85,15 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         actions: [
           IconButton(
-            onPressed: () {},
             icon: const Icon(Icons.notifications_none_rounded),
-          )
+            onPressed: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const NotificationScreen(),
+                fullscreenDialog: true,
+              ),
+            ),
+          ),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(

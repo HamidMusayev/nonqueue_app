@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nonqueue_app/screens/pswforgot/ui.dart';
 import 'package:nonqueue_app/utils/constants.dart';
 import 'package:nonqueue_app/utils/validators.dart';
 
@@ -69,6 +70,24 @@ class AccountInfoChangePassScreen extends StatelessWidget {
                   decoration:
                       const InputDecoration(hintText: 'Re-enter new password'),
                 ),
+                Spaces.vertical50,
+                TextButton(
+                  style: TextButton.styleFrom(
+                    primary: ColorPalette.editColor,
+                    backgroundColor: Colors.transparent,
+                    fixedSize: const Size.fromHeight(20),
+                  ),
+                  child: const Text(
+                    'Forgot Password?',
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+                  ),
+                  onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const ForgotPasswordScreen()
+                    ),
+                  ),
+                )
               ],
             ),
           ),

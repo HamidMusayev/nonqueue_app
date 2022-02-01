@@ -21,6 +21,7 @@ class PaymentMethodsScreen extends StatelessWidget {
         constraints: const BoxConstraints(maxWidth: 450),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
           children: [
             const Text(
               'Set your default payment card',
@@ -31,9 +32,10 @@ class PaymentMethodsScreen extends StatelessWidget {
               ),
             ),
             Spaces.vertical10,
-            Expanded(
+            Flexible(
               child: ListView.builder(
                 primary: false,
+                shrinkWrap: true,
                 itemCount: 2,
                 itemBuilder: (context, index) => RadioListTile(
                   contentPadding: EdgeInsets.zero,
@@ -43,13 +45,16 @@ class PaymentMethodsScreen extends StatelessWidget {
                     children: [
                       const Text('**** **** **** 2233'),
                       const Text('Expiry date:  01/22 '),
-                      SvgPicture.asset('assets/splash/mastercard.svg', height: 15),
+                      SvgPicture.asset(
+                        'assets/splash/mastercard.svg',
+                        height: 15,
+                      ),
                     ],
                   ),
-                  value: false,
                   onChanged: (value) {
                     print(value);
                   },
+                  value: false,
                   groupValue: false,
                 ),
               ),
@@ -72,35 +77,33 @@ class PaymentMethodsScreen extends StatelessWidget {
                     children: [
                       TextFormField(
                         textInputAction: TextInputAction.next,
-                        decoration: const InputDecoration(
-                          hintText: 'Card holder',
-                        ),
+                        decoration:
+                            const InputDecoration(hintText: 'Card holder'),
                       ),
                       Spaces.vertical20,
                       TextFormField(
                         textInputAction: TextInputAction.next,
                         decoration: const InputDecoration(
-                            hintText: 'Card number',
-                            prefixIcon: Icon(Icons.credit_card_rounded)),
+                          hintText: 'Card number',
+                          prefixIcon: Icon(Icons.credit_card_rounded),
+                        ),
                       ),
                       Spaces.vertical20,
                       Row(
                         children: <Widget>[
-                          Expanded(
+                          Flexible(
                             child: TextFormField(
                               textInputAction: TextInputAction.next,
                               decoration: const InputDecoration(
-                                hintText: 'Expire date',
-                              ),
+                                  hintText: 'Expire date'),
                             ),
                           ),
                           Spaces.horizontal6,
-                          Expanded(
+                          Flexible(
                             child: TextFormField(
                               textInputAction: TextInputAction.done,
-                              decoration: const InputDecoration(
-                                hintText: 'CVV',
-                              ),
+                              decoration:
+                                  const InputDecoration(hintText: 'CVV'),
                             ),
                           ),
                         ],

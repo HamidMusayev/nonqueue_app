@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nonqueue_app/screens/login/ui.dart';
 import 'package:nonqueue_app/screens/register/ui.dart';
@@ -34,8 +32,8 @@ class OnBoardScreen extends StatelessWidget {
                     TextButton(
                       child: const Text("Sign Up"),
                       onPressed: () {
-                        Navigator.push(
-                            context, SlideRightRoute(page: const RegisterScreen()));
+                        Navigator.push(context,
+                            SlideRightRoute(page: const RegisterScreen()));
                       },
                     ),
                     Spaces.vertical10,
@@ -76,7 +74,8 @@ class OnBoardScreen extends StatelessWidget {
                             ),
                           ),
                           onTap: () {
-                            Navigator.pushReplacement(context, SlideRightRoute(page: LoginScreen()));
+                            Navigator.pushReplacement(
+                                context, SlideRightRoute(page: LoginScreen()));
                           },
                         ),
                       ],

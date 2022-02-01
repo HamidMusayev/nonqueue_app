@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:nonqueue_app/utils/constants.dart';
+import 'package:nonqueue_app/widgets/starmark.dart';
 
 class OrderTile extends StatelessWidget {
   final Map<String, String> order;
-  const OrderTile({Key? key, required this.order}) : super(key: key);
+  final VoidCallback onTap;
+  const OrderTile({Key? key, required this.order, required this.onTap}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +23,9 @@ class OrderTile extends StatelessWidget {
           ),
         ),
         ListTile(
-          onTap: (){ },
+          onTap: (){
+            onTap.call();
+          },
           contentPadding: Paddings.p8,
           title: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -74,22 +78,7 @@ class OrderTile extends StatelessWidget {
             backgroundImage: NetworkImage(order['image'] ?? ''),
             radius: 30,
           ),
-          trailing: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: const [
-              Text(
-                '5.0',
-                style: TextStyle(
-                  color: ColorPalette.lightBlack,
-                  fontSize: 16,
-                ),
-              ),
-              Icon(
-                Icons.star,
-                color: Colors.orange,
-              ),
-            ],
-          ),
+          trailing: const StarMark()
         )
       ],
     );

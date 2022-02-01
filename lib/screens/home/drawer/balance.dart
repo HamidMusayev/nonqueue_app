@@ -35,7 +35,7 @@ class BalanceScreen extends StatelessWidget {
                   Spaces.horizontal6,
                   Spaces.horizontal6,
                   Text(
-                    '35:00',
+                    '35.00',
                     style: TextStyle(
                       fontSize: 16,
                       color: ColorPalette.lightBlack,

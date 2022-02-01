@@ -1,5 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:nonqueue_app/screens/home/drawer/history_detail.dart';
 import 'package:nonqueue_app/utils/constants.dart';
 import 'package:nonqueue_app/widgets/order_tile.dart';
 
@@ -40,7 +40,18 @@ class OrderHistoryScreen extends StatelessWidget {
         padding: Paddings.p16,
         child: ListView.builder(
           itemCount: 2,
-          itemBuilder: (context, index) => OrderTile(order: _orders[index]),
+          itemBuilder: (context, index) => OrderTile(
+            order: _orders[index],
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const HistoryDetailScreen(),
+                  fullscreenDialog: true,
+                ),
+              );
+            },
+          ),
         ),
       ),
     );
