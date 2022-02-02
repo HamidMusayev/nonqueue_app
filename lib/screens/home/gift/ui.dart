@@ -32,10 +32,16 @@ class GiftScreen extends StatelessWidget {
           child: Column(
             children: [
               Card(
-                elevation: 4,
+                elevation: 5,
                 shadowColor: Colors.blueGrey.shade50,
+                shape: const RoundedRectangleBorder(
+                  borderRadius: Radiuses.r10,
+                  side: BorderSide(
+                    color: ColorPalette.stroke,
+                  ),
+                ),
                 child: Padding(
-                  padding: Paddings.p16,
+                  padding: Paddings.p32,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
@@ -75,6 +81,7 @@ class GiftScreen extends StatelessWidget {
                             size: 35,
                           ),
                           Spaces.horizontal6,
+                          Spaces.horizontal6,
                           Text(
                             gift['subtitle'] ?? '',
                             style: const TextStyle(
@@ -85,12 +92,27 @@ class GiftScreen extends StatelessWidget {
                           ),
                         ],
                       ),
+                      Spaces.vertical10,
                       ..._giftdetails.map(
                         (e) => ListTile(
                           contentPadding: EdgeInsets.zero,
-                          title: Text(e['name'] ?? ''),
+                          visualDensity: VisualDensity.compact,
+                          dense: true,
+                          title: Text(
+                            e['name'] ?? '',
+                            style: const TextStyle(
+                              color: ColorPalette.lightBlack,
+                              fontSize: 16,
+                            ),
+                          ),
                           trailing: Text(e['count'] ?? ''),
                         ),
+                      ),
+                      Spaces.vertical20,
+                      const Text(
+                        'Redeemable at all Starbucks Coffee stores in Azerbaijan',
+                        style:
+                            TextStyle(color: ColorPalette.greyInputText),
                       )
                     ],
                   ),

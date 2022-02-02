@@ -4,7 +4,9 @@ import 'package:nonqueue_app/utils/constants.dart';
 
 class BonusCard extends StatelessWidget {
   final List<bool> items;
-  const BonusCard({Key? key, required this.items}) : super(key: key);
+  final VoidCallback onTap;
+  const BonusCard({Key? key, required this.items, required this.onTap})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +26,9 @@ class BonusCard extends StatelessWidget {
             shape: const RoundedRectangleBorder(borderRadius: Radiuses.r20),
             child: InkWell(
               borderRadius: Radiuses.r20,
-              onTap: () {},
+              onTap: () {
+                onTap.call();
+              },
               child: Padding(
                 padding: Paddings.p16,
                 child: Row(
@@ -120,7 +124,9 @@ class BonusCard extends StatelessWidget {
             shape: const RoundedRectangleBorder(borderRadius: Radiuses.r20),
             child: InkWell(
               borderRadius: Radiuses.r20,
-              onTap: () {},
+              onTap: () {
+                onTap.call();
+              },
               child: Padding(
                 padding: Paddings.p16,
                 child: Row(

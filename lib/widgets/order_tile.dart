@@ -23,10 +23,12 @@ class OrderTile extends StatelessWidget {
           ),
         ),
         ListTile(
+            contentPadding: EdgeInsets.zero,
+            visualDensity: VisualDensity.compact,
+            dense: true,
           onTap: (){
             onTap.call();
           },
-          contentPadding: Paddings.p8,
           title: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

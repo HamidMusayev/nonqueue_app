@@ -1,5 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:nonqueue_app/screens/home/coupon/completed_ui.dart';
+import 'package:nonqueue_app/screens/home/coupon/ui.dart';
 import 'package:nonqueue_app/screens/home/drawer.dart';
 import 'package:nonqueue_app/screens/home/title.dart';
 import 'package:nonqueue_app/utils/constants.dart';
@@ -140,6 +142,18 @@ class _HomeScreenState extends State<HomeScreen> {
                 itemCount: _items.length,
                 itemBuilder: (context, itemIndex, pageViewIndex) => BonusCard(
                   items: _items[itemIndex],
+                  onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => _items[itemIndex]
+                              .where((element) => !element)
+                              .toList()
+                              .isNotEmpty
+                          ? const CouponScreen()
+                          : const CompletedCouponScreen(),
+                      fullscreenDialog: true,
+                    ),
+                  ),
                 ),
                 options: CarouselOptions(
                   //height: 400,
