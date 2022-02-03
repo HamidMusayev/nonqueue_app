@@ -70,14 +70,19 @@ class _MyAppState extends State<MyApp> {
         inputDecorationTheme: const InputDecorationTheme(
           filled: false,
           enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: ColorPalette.stroke),
+            borderSide: BorderSide(
+              color: ColorPalette.stroke,
+            ),
             borderRadius: Radiuses.r10,
           ),
           errorBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.red),
-              borderRadius: Radiuses.r10),
+            borderSide: BorderSide(color: Colors.red),
+            borderRadius: Radiuses.r10,
+          ),
           border: OutlineInputBorder(
-            borderSide: BorderSide(color: ColorPalette.stroke),
+            borderSide: BorderSide(
+              color: ColorPalette.stroke,
+            ),
             borderRadius: Radiuses.r10,
           ),
           // focusedBorder: OutlineInputBorder(
@@ -86,7 +91,7 @@ class _MyAppState extends State<MyApp> {
           // ),
         ),
       ),
-      home: _saveMe ? const HomeScreen() : const HomeScreen(),
+      home: _saveMe ? const WelcomeScreen() : const WelcomeScreen(),
     );
   }
 }
