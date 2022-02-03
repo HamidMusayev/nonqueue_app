@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nonqueue_app/screens/home/drawer/account_info_changepass.dart';
+import 'package:nonqueue_app/screens/inapp/drawer/account_info_changepass.dart';
 import 'package:nonqueue_app/utils/constants.dart';
 import 'package:nonqueue_app/utils/validators.dart';
 

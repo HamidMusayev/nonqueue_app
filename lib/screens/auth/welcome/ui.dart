@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:nonqueue_app/screens/onboard/ui.dart';
-import 'package:nonqueue_app/screens/welcome/content.dart';
+import 'package:nonqueue_app/screens/auth/onboard/ui.dart';
 import 'package:nonqueue_app/utils/constants.dart';
 import 'package:nonqueue_app/widgets/route_transitions/slide_route.dart';
+
+import 'content.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({Key? key}) : super(key: key);

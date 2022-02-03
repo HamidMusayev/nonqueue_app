@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nonqueue_app/screens/home/drawer/history_detail.dart';
+import 'package:nonqueue_app/screens/inapp/drawer/history_detail.dart';
 import 'package:nonqueue_app/utils/constants.dart';
 import 'package:nonqueue_app/widgets/order_tile.dart';
 

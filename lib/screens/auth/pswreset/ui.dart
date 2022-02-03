@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nonqueue_app/screens/login/ui.dart';
+import 'package:nonqueue_app/screens/auth/login/ui.dart';
 import 'package:nonqueue_app/utils/constants.dart';
 import 'package:nonqueue_app/widgets/route_transitions/slide_route.dart';
 

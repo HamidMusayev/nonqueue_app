@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nonqueue_app/screens/home/gift/ui.dart';
+import 'package:nonqueue_app/screens/inapp/gift/ui.dart';
 import 'package:nonqueue_app/utils/constants.dart';
 
 class NotificationScreen extends StatelessWidget {

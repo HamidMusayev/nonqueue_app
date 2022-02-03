@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nonqueue_app/screens/otp/ui.dart';
+import 'package:nonqueue_app/screens/auth/otp/ui.dart';
 import 'package:nonqueue_app/utils/constants.dart';
 import 'package:nonqueue_app/widgets/phone_input/phone_input_field.dart';
 import 'package:nonqueue_app/widgets/route_transitions/slide_route.dart';

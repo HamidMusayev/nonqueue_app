@@ -111,8 +111,7 @@ class GiftScreen extends StatelessWidget {
                       Spaces.vertical20,
                       const Text(
                         'Redeemable at all Starbucks Coffee stores in Azerbaijan',
-                        style:
-                            TextStyle(color: ColorPalette.greyInputText),
+                        style: TextStyle(color: ColorPalette.greyInputText),
                       )
                     ],
                   ),

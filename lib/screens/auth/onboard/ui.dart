@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:nonqueue_app/screens/login/ui.dart';
-import 'package:nonqueue_app/screens/register/ui.dart';
+import 'package:nonqueue_app/screens/auth/login/ui.dart';
+import 'package:nonqueue_app/screens/auth/register/ui.dart';
 import 'package:nonqueue_app/utils/constants.dart';
 import 'package:nonqueue_app/widgets/route_transitions/slide_route.dart';
 

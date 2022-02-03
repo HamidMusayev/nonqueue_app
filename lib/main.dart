@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:nonqueue_app/screens/home/ui.dart';
-import 'package:nonqueue_app/screens/welcome/ui.dart';
+import 'package:nonqueue_app/screens/inapp/ui.dart';
 import 'package:nonqueue_app/utils/constants.dart';
 import 'package:nonqueue_app/utils/shared.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -91,7 +90,7 @@ class _MyAppState extends State<MyApp> {
           // ),
         ),
       ),
-      home: _saveMe ? const WelcomeScreen() : const WelcomeScreen(),
+      home: _saveMe ? const InAppScreen() : const InAppScreen(),
     );
   }
 }

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:nonqueue_app/screens/home/drawer/about.dart';
-import 'package:nonqueue_app/screens/home/drawer/account_info.dart';
-import 'package:nonqueue_app/screens/home/drawer/balance.dart';
-import 'package:nonqueue_app/screens/home/drawer/fag.dart';
-import 'package:nonqueue_app/screens/home/drawer/help.dart';
-import 'package:nonqueue_app/screens/home/drawer/history.dart';
-import 'package:nonqueue_app/screens/home/drawer/payment.dart';
-import 'package:nonqueue_app/screens/home/drawer/privacy.dart';
+import 'package:nonqueue_app/screens/inapp/drawer/about.dart';
+import 'package:nonqueue_app/screens/inapp/drawer/account_info.dart';
+import 'package:nonqueue_app/screens/inapp/drawer/balance.dart';
+import 'package:nonqueue_app/screens/inapp/drawer/fag.dart';
+import 'package:nonqueue_app/screens/inapp/drawer/help.dart';
+import 'package:nonqueue_app/screens/inapp/drawer/history.dart';
+import 'package:nonqueue_app/screens/inapp/drawer/payment.dart';
+import 'package:nonqueue_app/screens/inapp/drawer/privacy.dart';
 import 'package:nonqueue_app/utils/constants.dart';
 
 class HomeDrawer extends StatelessWidget {

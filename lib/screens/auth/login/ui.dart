@@ -3,9 +3,9 @@ import 'package:nonqueue_app/api/concrete/dio_service.dart';
 import 'package:nonqueue_app/api/concrete/user_service.dart';
 import 'package:nonqueue_app/api/result/result.dart';
 import 'package:nonqueue_app/models/user.dart';
-import 'package:nonqueue_app/screens/home/ui.dart';
-import 'package:nonqueue_app/screens/pswforgot/ui.dart';
-import 'package:nonqueue_app/screens/register/ui.dart';
+import 'package:nonqueue_app/screens/auth/pswforgot/ui.dart';
+import 'package:nonqueue_app/screens/auth/register/ui.dart';
+import 'package:nonqueue_app/screens/inapp/ui.dart';
 import 'package:nonqueue_app/utils/constants.dart';
 import 'package:nonqueue_app/utils/shared.dart';
 import 'package:nonqueue_app/utils/validators.dart';
@@ -160,7 +160,7 @@ class _LoginScreenState extends State<LoginScreen> {
       _user.sifre = 'null';
       SharedHelper.saveJson('user', _user.toJson());
 
-      Navigator.pushReplacement(context, SlideRightRoute(page: HomeScreen()));
+      Navigator.pushReplacement(context, SlideRightRoute(page: const InAppScreen()));
     } else {
       setState(() => _loading = false);
       ScaffoldMessenger.of(context).showSnackBar(

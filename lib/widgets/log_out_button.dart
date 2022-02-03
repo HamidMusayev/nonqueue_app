@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nonqueue_app/screens/welcome/ui.dart';
+import 'package:nonqueue_app/screens/auth/welcome/ui.dart';
 import 'package:nonqueue_app/utils/shared.dart';
 
 class LogOutButton extends StatelessWidget {
