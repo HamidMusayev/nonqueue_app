@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:nonqueue_app/screens/auth/welcome/ui.dart';
 import 'package:nonqueue_app/screens/inapp/ui.dart';
 import 'package:nonqueue_app/utils/constants.dart';
 import 'package:nonqueue_app/utils/shared.dart';

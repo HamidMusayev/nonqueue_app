@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nonqueue_app/utils/constants.dart';
+import 'package:nonqueue_app/widgets/partner_tile.dart';
 import 'package:nonqueue_app/widgets/starmark.dart';
 
 class HistoryDetailScreen extends StatefulWidget {
@@ -58,47 +59,7 @@ class _HistoryDetailScreenState extends State<HistoryDetailScreen> {
                 style: TextStyle(fontWeight: FontWeight.w500),
               ),
               Spaces.vertical20,
-              Row(
-                children: [
-                  const CircleAvatar(
-                    backgroundImage: NetworkImage(
-                        'https://cdn.mos.cms.futurecdn.net/8tEvBrHEeMTTBt26SiniHM.jpg'),
-                    radius: 50,
-                  ),
-                  Spaces.horizontal6,
-                  Spaces.horizontal6,
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
-                      Text(
-                        'Starbucks',
-                        style: TextStyle(
-                          color: ColorPalette.lightBlack,
-                          fontSize: 24,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                      StarMark(),
-                      Text(
-                        'Best coffee here!',
-                        style: TextStyle(
-                          color: ColorPalette.greyInputText,
-                          fontSize: 16,
-                        ),
-                      ),
-                      Text(
-                        'Fatali Kyoski ave. Ganjlik mall',
-                        softWrap: true,
-                        style: TextStyle(
-                          color: ColorPalette.lightBlack,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    ],
-                  )
-                ],
-              ),
+              const PartnerTile(),
               Spaces.vertical20,
               const Text(
                 'Order status',
