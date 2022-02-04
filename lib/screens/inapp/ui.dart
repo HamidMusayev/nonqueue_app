@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:nonqueue_app/screens/home/ui.dart';
 import 'package:nonqueue_app/screens/inapp/drawer.dart';
+import 'package:nonqueue_app/screens/profile/ui.dart';
 import 'package:nonqueue_app/screens/search/ui.dart';
 import 'package:nonqueue_app/utils/constants.dart';
-
 import 'notification/ui.dart';
 
 class InAppScreen extends StatefulWidget {
@@ -17,6 +17,7 @@ class _InAppScreenState extends State<InAppScreen> {
   final List<Widget> _widgets = [
     const HomeScreen(),
     const MapScreen(),
+    const ProfileScreen(),
   ];
 
   int _selectedIndex = 0;
