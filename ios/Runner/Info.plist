@@ -3,9 +3,11 @@
 <plist version="1.0">
 	<dict>
 		<key>NSFaceIDUsageDescription</key>
-		<string>Biometric authentication for trust user</string>
+		<string>Biometric authentication for simple verification</string>
 		<key>NSLocationWhenInUseUsageDescription</key>
-        <string>Location access is required for show your location in map</string>
+        <string>This app requires location access to function properly.</string>
+        <key>NSContactsUsageDescription</key>
+        <string>This app requires contacts access to function properly.</string>
 		<key>CFBundleDevelopmentRegion</key>
 		<string>$(DEVELOPMENT_LANGUAGE)</string>
 		<key>CFBundleDisplayName</key>

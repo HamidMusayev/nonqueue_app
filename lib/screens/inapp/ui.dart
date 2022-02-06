@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:nonqueue_app/screens/bonus/ui.dart';
+import 'package:nonqueue_app/screens/contacts/ui.dart';
 import 'package:nonqueue_app/screens/home/ui.dart';
 import 'package:nonqueue_app/screens/inapp/drawer.dart';
 import 'package:nonqueue_app/screens/profile/ui.dart';
@@ -17,6 +19,8 @@ class _InAppScreenState extends State<InAppScreen> {
   final List<Widget> _widgets = [
     const HomeScreen(),
     const MapScreen(),
+    const BonusScreen(),
+    const ContactsScreen(),
     const ProfileScreen(),
   ];
 

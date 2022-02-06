@@ -1,16 +1,17 @@
 import 'package:dotted_line/dotted_line.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nonqueue_app/utils/constants.dart';
 import 'package:nonqueue_app/widgets/partner_tile.dart';
 
-class FilterScreen extends StatefulWidget {
-  const FilterScreen({Key? key}) : super(key: key);
+class FilterPanel extends StatefulWidget {
+  const FilterPanel({Key? key}) : super(key: key);
 
   @override
-  _FilterScreenState createState() => _FilterScreenState();
+  _FilterPanelState createState() => _FilterPanelState();
 }
 
-class _FilterScreenState extends State<FilterScreen> {
+class _FilterPanelState extends State<FilterPanel> {
   @override
   Widget build(BuildContext context) {
     return Column(

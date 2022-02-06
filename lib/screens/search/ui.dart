@@ -2,7 +2,7 @@ import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
-import 'package:nonqueue_app/screens/search/filter_ui.dart';
+import 'package:nonqueue_app/screens/search/filter/ui.dart';
 import 'package:nonqueue_app/utils/constants.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
@@ -113,7 +113,7 @@ class _MapScreenState extends State<MapScreen> {
         ),
         panel: Padding(
           padding: Paddings.p16.copyWith(top: 12, bottom: 0),
-          child: const FilterScreen(),
+          child: const FilterPanel(),
         ),
       ),
     );

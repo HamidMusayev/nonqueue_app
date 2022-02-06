@@ -14,7 +14,6 @@ class ProfileScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Container(
           padding: Paddings.p16,
-          constraints: const BoxConstraints(maxWidth: 450),
           child: Form(
             key: _formKey,
             child: Column(
@@ -53,7 +52,6 @@ class ProfileScreen extends StatelessWidget {
                                 style: TextStyle(
                                   color: ColorPalette.greyInputText,
                                   fontSize: 18,
-                                  fontWeight: FontWeight.w500,
                                 ),
                               ),
                               Spaces.horizontal6,
@@ -82,7 +80,6 @@ class ProfileScreen extends StatelessWidget {
                             style: TextStyle(
                               color: ColorPalette.lightBlack,
                               fontSize: 18,
-                              fontWeight: FontWeight.w500,
                             ),
                           ),
                         ],

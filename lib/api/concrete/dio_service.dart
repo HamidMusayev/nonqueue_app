@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:nonqueue_app/api/abstract/api_repository.dart';
 import 'package:nonqueue_app/api/result/result.dart';
-import 'package:nonqueue_app/api/result/result_message.dart';
 
 class DIOService implements ApiRepository {
   @override
@@ -36,8 +35,7 @@ class DIOService implements ApiRepository {
     });
 
     if (token != null) {
-      options.headers
-          .addAll({HttpHeaders.authorizationHeader: 'Bearer $token'});
+      options.headers.addAll({HttpHeaders.authorizationHeader: 'Bearer $token'});
     }
     if (language != null) {
       options.headers.addAll({HttpHeaders.acceptLanguageHeader: language});
@@ -50,12 +48,12 @@ class DIOService implements ApiRepository {
       if (response.statusCode == 200) {
         return Result.succes(response.data);
       } else if (response.statusCode == 401) {
-        return Result.error(message: ResultMessage.eAuthorization);
+        return Result.error(message: 'Eauthor');
       } else {
-        return Result.error(message: ResultMessage.eConnection);
+        return Result.error(message: 'Eerror');
       }
     } catch (e) {
-      return Result.error(message: ResultMessage.eRequest);
+      return Result.error(message: 'Erequest');
     }
   }
 }
