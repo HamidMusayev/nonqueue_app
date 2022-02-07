@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:nonqueue_app/screens/inapp/drawer/payment.dart';
 import 'package:nonqueue_app/utils/constants.dart';
@@ -67,6 +68,7 @@ class BalanceScreen extends StatelessWidget {
                   SizedBox(
                     width: 120,
                     child: TextField(
+                      keyboardType: TextInputType.number,
                       decoration: InputDecoration(
                         hintText: '00.00',
                         suffixIcon: Text(
