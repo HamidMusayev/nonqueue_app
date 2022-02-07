@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nonqueue_app/screens/partnerdetail/ui.dart';
 
 import '../../../utils/constants.dart';
 import '../../../widgets/partner_card.dart';
@@ -45,8 +46,21 @@ class _PartnersScreenState extends State<PartnersScreen> {
                 padding: const EdgeInsets.only(left: 16),
                 shrinkWrap: false,
                 scrollDirection: Axis.horizontal,
-                children:
-                    [1, 2, 3, 4, 5, 6].map((e) => const PartnerCard()).toList(),
+                children: [1, 2, 3, 4, 5, 6]
+                    .map(
+                      (e) => PartnerCard(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const PartnerDetailScreen(),
+                              fullscreenDialog: true,
+                            ),
+                          );
+                        },
+                      ),
+                    )
+                    .toList(),
               ),
             ),
             const TopPanel(
@@ -60,8 +74,13 @@ class _PartnersScreenState extends State<PartnersScreen> {
                 padding: const EdgeInsets.only(left: 16),
                 shrinkWrap: false,
                 scrollDirection: Axis.horizontal,
-                children:
-                    [1, 2, 3, 4, 5, 6].map((e) => const PartnerCard()).toList(),
+                children: [1, 2, 3, 4, 5, 6]
+                    .map(
+                      (e) => PartnerCard(
+                        onTap: () {},
+                      ),
+                    )
+                    .toList(),
               ),
             )
           ],

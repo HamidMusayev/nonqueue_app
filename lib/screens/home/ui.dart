@@ -6,6 +6,8 @@ import 'package:nonqueue_app/screens/inapp/coupon/ui.dart';
 import 'package:nonqueue_app/widgets/bonus_card.dart';
 import 'package:nonqueue_app/widgets/partner_card.dart';
 
+import '../partnerdetail/ui.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -110,8 +112,21 @@ class _HomeScreenState extends State<HomeScreen> {
               padding: const EdgeInsets.only(left: 16),
               shrinkWrap: false,
               scrollDirection: Axis.horizontal,
-              children:
-                  [1, 2, 3, 4, 5, 6].map((e) => const PartnerCard()).toList(),
+              children: [1, 2, 3, 4, 5, 6]
+                  .map(
+                    (e) => PartnerCard(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const PartnerDetailScreen(),
+                            fullscreenDialog: true,
+                          ),
+                        );
+                      },
+                    ),
+                  )
+                  .toList(),
             ),
           ),
           const TopPanel(
@@ -125,8 +140,21 @@ class _HomeScreenState extends State<HomeScreen> {
               padding: const EdgeInsets.only(left: 16),
               shrinkWrap: false,
               scrollDirection: Axis.horizontal,
-              children:
-                  [1, 2, 3, 4, 5, 6].map((e) => const PartnerCard()).toList(),
+              children: [1, 2, 3, 4, 5, 6]
+                  .map(
+                    (e) => PartnerCard(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const PartnerDetailScreen(),
+                            fullscreenDialog: true,
+                          ),
+                        );
+                      },
+                    ),
+                  )
+                  .toList(),
             ),
           ),
         ],

@@ -3,7 +3,8 @@ import 'package:nonqueue_app/utils/constants.dart';
 import 'package:nonqueue_app/widgets/starmark.dart';
 
 class PartnerCard extends StatelessWidget {
-  const PartnerCard({Key? key}) : super(key: key);
+  final VoidCallback onTap;
+  const PartnerCard({Key? key, required this.onTap}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +16,7 @@ class PartnerCard extends StatelessWidget {
       clipBehavior: Clip.antiAlias,
       shape: const RoundedRectangleBorder(borderRadius: Radiuses.r10),
       child: InkWell(
-        onTap: () {},
+        onTap: () => onTap.call(),
         child: Container(
           constraints: const BoxConstraints(maxWidth: 160),
           child: Column(
