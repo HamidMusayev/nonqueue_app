@@ -17,71 +17,70 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   final _controller = PageController(initialPage: 0);
 
   List<Map<String, String>> splashData = [
+    {"title": "Order before you go!", "image": "assets/splash/first.svg"},
     {
-      "title": "Hello, Welcome to Non-Queue!",
-      "text": "Pick your order without waiting!",
-      "image": "assets/splash/first.png"
+      "title": "Make your friends happy by sending them gifts!",
+      "image": "assets/splash/first.svg"
     },
     {
-      "title": "Hello, Welcome to Non-Queue!",
-      "text": "Pick your order without waiting!",
-      "image": "assets/splash/first.png"
-    },
-    {
-      "title": "Hello, Welcome to Non-Queue!",
-      "text": "Pick your order without waiting!",
-      "image": "assets/splash/first.png"
+      "title": "Get your order without waiting!",
+      "image": "assets/splash/third.svg"
     },
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: <Widget>[
-          const Spacer(flex: 2),
-          Expanded(
-            flex: 6,
-            child: PageView.builder(
-              controller: _controller,
-              physics: const BouncingScrollPhysics(),
-              onPageChanged: (value) => setState(() => _pageIndex = value),
-              itemCount: splashData.length,
-              itemBuilder: (context, index) =>
-                  SplashContent(data: splashData[index]),
+      body: Padding(
+        padding: Paddings.p24,
+        child: Column(
+          children: <Widget>[
+            const Spacer(flex: 2),
+            Expanded(
+              flex: 6,
+              child: PageView.builder(
+                controller: _controller,
+                physics: const BouncingScrollPhysics(),
+                onPageChanged: (value) => setState(() => _pageIndex = value),
+                itemCount: splashData.length,
+                itemBuilder: (context, index) =>
+                    SplashContent(data: splashData[index]),
+              ),
             ),
-          ),
-          const Spacer(flex: 2),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: List.generate(
-              splashData.length,
-              (index) => buildDot(index: index),
+            const Spacer(flex: 2),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: List.generate(
+                splashData.length,
+                (index) => buildDot(index: index),
+              ),
             ),
-          ),
-          const Spacer(flex: 1),
-          Padding(
-            padding: Paddings.p32,
-            child: _pageIndex == 2
+            const Spacer(flex: 1),
+            _pageIndex == 2
                 ? TextButton(
                     child: const Text('Get Started'),
                     onPressed: () {
                       Navigator.pushReplacement(
-                          context, SlideRightRoute(page: OnBoardScreen()));
+                        context,
+                        SlideRightRoute(page: const OnBoardScreen()),
+                      );
                     },
                   )
                 : TextButton(
                     child: const Text('Next'),
                     onPressed: () {
-                      setState(() {
-                        _controller.nextPage(
+                      setState(
+                        () {
+                          _controller.nextPage(
                             duration: const Duration(milliseconds: 400),
-                            curve: Curves.fastOutSlowIn);
-                      });
+                            curve: Curves.fastOutSlowIn,
+                          );
+                        },
+                      );
                     },
                   ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -93,9 +92,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
       height: 8,
       width: _pageIndex == index ? 35 : 30,
       decoration: BoxDecoration(
-        color: _pageIndex == index
-            ? Theme.of(context).colorScheme.primary
-            : Theme.of(context).colorScheme.primary.withOpacity(.3),
+        color:
+            _pageIndex == index ? ColorPalette.nonQueue : ColorPalette.stroke,
         borderRadius: BorderRadius.circular(5),
       ),
     );

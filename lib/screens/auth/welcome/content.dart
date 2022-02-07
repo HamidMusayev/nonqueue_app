@@ -11,22 +11,23 @@ class SplashContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        // SvgPicture.asset(
-        //   data["image"] ?? "",
-        //   placeholderBuilder: (context) => const CircularProgressIndicator(),
-        // ),
         Flexible(
-          child: Image.asset(data["image"] ?? ""),
+          child: SvgPicture.asset(
+            data['image'] ?? '',
+            placeholderBuilder: (context) => const CircularProgressIndicator(),
+          ),
         ),
         Spaces.vertical50,
         Text(
-          data["title"] ?? "",
+          data['title'] ?? '',
           softWrap: true,
+          textAlign: TextAlign.center,
           style: const TextStyle(
-              color: ColorPalette.lightBlack, fontWeight: FontWeight.w500, fontSize: 22),
+            color: ColorPalette.greyInputText,
+            fontWeight: FontWeight.w500,
+            fontSize: 22,
+          ),
         ),
-        Spaces.vertical10,
-        Text(data["text"] ?? "", softWrap: true),
       ],
     );
   }

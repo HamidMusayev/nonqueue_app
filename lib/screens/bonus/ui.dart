@@ -35,16 +35,16 @@ class _BonusScreenState extends State<BonusScreen>
           unselectedLabelColor: ColorPalette.greyInputText,
           //isScrollable: true,
           tabs: const [
-            Tab(text: 'Offers'),
             Tab(text: 'My bonuses'),
+            Tab(text: 'Offers'),
           ],
         ),
       ),
       body: TabBarView(
         controller: _controller,
         children: const [
-          OfferPanel(),
           MyBonusPanel(),
+          OfferPanel(),
         ],
       ),
     );

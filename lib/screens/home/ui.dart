@@ -128,7 +128,7 @@ class _HomeScreenState extends State<HomeScreen> {
               children:
                   [1, 2, 3, 4, 5, 6].map((e) => const PartnerCard()).toList(),
             ),
-          )
+          ),
         ],
       ),
     );

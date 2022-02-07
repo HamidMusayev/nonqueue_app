@@ -25,7 +25,7 @@ class OnBoardScreen extends StatelessWidget {
             Align(
               alignment: Alignment.bottomCenter,
               child: Padding(
-                padding: Paddings.p32,
+                padding: Paddings.p24,
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [

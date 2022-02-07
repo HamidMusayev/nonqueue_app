@@ -48,7 +48,7 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       title: 'Non Queue',
       localizationsDelegates: const [GlobalMaterialLocalizations.delegate],
-      supportedLocales: const [Locale("az")],
+      supportedLocales: const [Locale("en")],
       theme: ThemeData(
         primarySwatch: const MaterialColor(0xFFC25875, kcolor),
         scaffoldBackgroundColor: Colors.white,
@@ -91,7 +91,7 @@ class _MyAppState extends State<MyApp> {
           // ),
         ),
       ),
-      home: _saveMe ? const InAppScreen() : const InAppScreen(),
+      home: _saveMe ? const InAppScreen() : const WelcomeScreen(),
     );
   }
 }

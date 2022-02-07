@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_contacts/flutter_contacts.dart';
+import 'package:nonqueue_app/screens/contacts/partners/ui.dart';
 import 'package:nonqueue_app/utils/constants.dart';
 
 class ContactsScreen extends StatefulWidget {
@@ -54,6 +55,13 @@ class _ContactsScreenState extends State<ContactsScreen> {
                         child: ListView.builder(
                           itemCount: _contacts.length,
                           itemBuilder: (context, index) => ListTile(
+                            onTap: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const PartnersScreen(),
+                                fullscreenDialog: true,
+                              ),
+                            ),
                             contentPadding: EdgeInsets.zero,
                             leading: const CircleAvatar(
                               backgroundImage:
