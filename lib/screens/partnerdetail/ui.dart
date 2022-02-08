@@ -15,6 +15,7 @@ class PartnerDetailScreen extends StatefulWidget {
 class _PartnerDetailScreenState extends State<PartnerDetailScreen> {
   int _activeIndex = 0;
   int _activeSubIndex = 0;
+  final TextEditingController _count = TextEditingController(text: '0');
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +33,7 @@ class _PartnerDetailScreenState extends State<PartnerDetailScreen> {
           Stack(
             children: [
               SizedBox(
-                height: 220,
+                height: 200,
                 width: double.infinity,
                 child: FittedBox(
                   fit: BoxFit.fill,
@@ -42,7 +43,7 @@ class _PartnerDetailScreenState extends State<PartnerDetailScreen> {
                 ),
               ),
               Padding(
-                padding: Paddings.p12.copyWith(top: 140),
+                padding: Paddings.p12.copyWith(top: 110),
                 child: ClipRect(
                   child: BackdropFilter(
                     filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
@@ -74,16 +75,14 @@ class _PartnerDetailScreenState extends State<PartnerDetailScreen> {
                   child: _activeIndex == index
                       ? const Chip(
                           backgroundColor: ColorPalette.qlessApp,
-                          padding:
-                              EdgeInsets.symmetric(vertical: 12, horizontal: 8),
+                          //padding: EdgeInsets.symmetric(vertical: 12, horizontal: 8),
                           labelStyle: TextStyle(color: Colors.white),
                           label: Text('Drinks'),
                         )
                       : const Chip(
                           backgroundColor: Colors.white,
                           side: BorderSide(color: ColorPalette.stroke),
-                          padding:
-                              EdgeInsets.symmetric(vertical: 12, horizontal: 8),
+                          //padding: EdgeInsets.symmetric(vertical: 12, horizontal: 8),
                           labelStyle:
                               TextStyle(color: ColorPalette.greyInputText),
                           label: Text('Foods'),
@@ -136,6 +135,7 @@ class _PartnerDetailScreenState extends State<PartnerDetailScreen> {
                     side: BorderSide(color: ColorPalette.stroke),
                   ),
                   child: ExpansionTile(
+                    childrenPadding: Paddings.p12,
                     title: ListTile(
                       contentPadding: EdgeInsets.zero,
                       title: const Text('Caffe Americano'),
@@ -172,23 +172,85 @@ class _PartnerDetailScreenState extends State<PartnerDetailScreen> {
                           fontSize: 12,
                         ),
                       ),
-                      Row(
+                      Spaces.vertical10,
+                      Column(
+                        mainAxisSize: MainAxisSize.min,
                         children: [
-                          Column(
-                            children: [
-                              Text('Size:'),
-                              Text('Drinks:'),
-                              Text('Extras:'),
+                          DropdownButtonFormField<String>(
+                            hint: const Text('Size..'),
+                            onChanged: (value) {},
+                            items: const [
+                              DropdownMenuItem<String>(
+                                child: Text('Small'),
+                                value: 'small',
+                              ),
+                              DropdownMenuItem<String>(
+                                child: Text('Big'),
+                                value: 'big',
+                              ),
                             ],
                           ),
-                          Column(
+                          Spaces.vertical10,
+                          DropdownButtonFormField<String>(
+                            hint: const Text('Drink..'),
+                            onChanged: (value) {},
+                            items: const [
+                              DropdownMenuItem<String>(
+                                child: Text('Small'),
+                                value: 'small',
+                              ),
+                              DropdownMenuItem<String>(
+                                child: Text('Big'),
+                                value: 'big',
+                              ),
+                            ],
+                          ),
+                          Spaces.vertical10,
+                          DropdownButtonFormField<String>(
+                            hint: const Text('Extras..'),
+                            onChanged: (value) {},
+                            items: const [
+                              DropdownMenuItem<String>(
+                                child: Text('Small'),
+                                value: 'small',
+                              ),
+                              DropdownMenuItem<String>(
+                                child: Text('Big'),
+                                value: 'big',
+                              ),
+                            ],
+                          ),
+                          Spaces.vertical20,
+                          Row(
                             children: [
-
+                              Flexible(
+                                flex: 2,
+                                child: TextField(
+                                  controller: _count,
+                                  keyboardType: TextInputType.number,
+                                  decoration: InputDecoration(
+                                    suffixIcon: IconButton(
+                                        onPressed: () => setState(() => _count.text = (int.parse(_count.text) + 1).toString()),
+                                        icon: const Icon(Icons.add_rounded)),
+                                    prefixIcon: IconButton(
+                                        onPressed: () => setState(() => _count.text = (int.parse(_count.text) - 1).toString()),
+                                        icon: const Icon(Icons.remove_rounded)),
+                                  ),
+                                ),
+                              ),
+                              Spaces.horizontal6,
+                              Spaces.horizontal6,
+                              Flexible(
+                                flex: 3,
+                                child: TextButton(
+                                  onPressed: () {},
+                                  child: const Text('Add to card'),
+                                ),
+                              )
                             ],
                           )
                         ],
                       ),
-                      ListTile(),
                     ],
                   ),
                 ),
