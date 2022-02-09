@@ -1,5 +1,8 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:nonqueue_app/screens/cart/ui.dart';
+import 'package:nonqueue_app/screens/inapp/drawer/account_info.dart';
+import 'package:nonqueue_app/screens/partnerdetail/top.dart';
 import 'package:nonqueue_app/widgets/partner_tile.dart';
 
 import '../../utils/constants.dart';
@@ -34,11 +37,17 @@ class _PartnerDetailScreenState extends State<PartnerDetailScreen> {
         height: 60,
         child: FloatingActionButton.extended(
           backgroundColor: ColorPalette.qlessApp,
-          onPressed: () {},
           icon: const Icon(Icons.shopping_cart_rounded),
           label: Text(
             _cartcount.toString(),
             style: const TextStyle(fontSize: 16),
+          ),
+          onPressed: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const CartScreen(),
+              fullscreenDialog: true,
+            ),
           ),
         ),
       ),
@@ -46,36 +55,7 @@ class _PartnerDetailScreenState extends State<PartnerDetailScreen> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Stack(
-              children: [
-                SizedBox(
-                  height: 200,
-                  width: double.infinity,
-                  child: FittedBox(
-                    fit: BoxFit.fill,
-                    child: Image.network(
-                      'https://www.greenqueen.com.hk/wp-content/uploads/2021/09/Shanghai-Opens-First-Starbucks-Greener-Store-Outside-North-America-1.jpg',
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: Paddings.p12.copyWith(top: 110),
-                  child: ClipRect(
-                    child: BackdropFilter(
-                      filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
-                      child: Container(
-                        padding: Paddings.p16,
-                        decoration: BoxDecoration(
-                          color: Colors.grey.shade200.withOpacity(0.5),
-                          borderRadius: Radiuses.r20,
-                        ),
-                        child: const PartnerTile(),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
+            const TopPanel(),
             Padding(
               padding: Paddings.p16.copyWith(top: 0, bottom: 0, right: 0),
               child: SizedBox(

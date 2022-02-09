@@ -24,7 +24,6 @@ class OrderTile extends StatelessWidget {
         ),
         ListTile(
             contentPadding: EdgeInsets.zero,
-            visualDensity: VisualDensity.compact,
             dense: true,
           onTap: (){
             onTap.call();

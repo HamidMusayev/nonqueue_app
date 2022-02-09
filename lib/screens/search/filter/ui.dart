@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:nonqueue_app/utils/constants.dart';
 import 'package:nonqueue_app/widgets/partner_tile.dart';
 
+import '../../partnerdetail/ui.dart';
+
 class FilterPanel extends StatefulWidget {
   const FilterPanel({Key? key}) : super(key: key);
 
@@ -99,9 +101,19 @@ class _FilterPanelState extends State<FilterPanel> {
                   physics: const NeverScrollableScrollPhysics(),
                   primary: false,
                   shrinkWrap: true,
-                  itemBuilder: (context, index) => const Padding(
-                    padding: Paddings.p8,
-                    child: PartnerTile(),
+                  padding: EdgeInsets.zero,
+                  itemBuilder: (context, index) => ListTile(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const PartnerDetailScreen(),
+                          fullscreenDialog: true,
+                        ),
+                      );
+                    },
+                    contentPadding: Paddings.p8,
+                    title: PartnerTile(),
                   ),
                 )
               ],

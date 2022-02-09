@@ -61,7 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const TopPanel(
+          const TitlePanel(
             title: 'love free stuff?',
             subtitle: 'Your bonuses',
           ),
@@ -101,7 +101,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
           ),
-          const TopPanel(
+          const TitlePanel(
             title: 'want to make quick order?',
             subtitle: 'All partners',
           ),
@@ -129,7 +129,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   .toList(),
             ),
           ),
-          const TopPanel(
+          const TitlePanel(
             title: 'what other people like?',
             subtitle: 'Most popular',
           ),

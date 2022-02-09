@@ -35,9 +35,9 @@ class _PartnersScreenState extends State<PartnersScreen> {
               ),
             ),
             Spaces.vertical10,
-            const TopPanel(
+            const TitlePanel(
               subtitle: 'All partners',
-              wiewAllButton: false,
+              viewAllButton: false,
             ),
             Container(
               constraints: const BoxConstraints(maxHeight: 235),
@@ -63,9 +63,9 @@ class _PartnersScreenState extends State<PartnersScreen> {
                     .toList(),
               ),
             ),
-            const TopPanel(
+            const TitlePanel(
               subtitle: 'Most popular',
-              wiewAllButton: false,
+              viewAllButton: false,
             ),
             Container(
               constraints: const BoxConstraints(maxHeight: 235),

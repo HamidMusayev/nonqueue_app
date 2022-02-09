@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:nonqueue_app/utils/constants.dart';
 
-class TopPanel extends StatelessWidget {
+class TitlePanel extends StatelessWidget {
   final String? title;
   final String subtitle;
-  final bool? wiewAllButton;
-  const TopPanel(
-      {Key? key, this.title, required this.subtitle, this.wiewAllButton})
+  final bool? viewAllButton;
+  const TitlePanel(
+      {Key? key, this.title, required this.subtitle, this.viewAllButton})
       : super(key: key);
 
   @override
@@ -35,7 +35,7 @@ class TopPanel extends StatelessWidget {
               ),
             ],
           ),
-          wiewAllButton == null
+          viewAllButton == null
               ? TextButton(
                   onPressed: () {},
                   style: TextButton.styleFrom(
