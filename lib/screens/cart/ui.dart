@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:nonqueue_app/screens/home/title.dart';
-import 'package:nonqueue_app/screens/partnerdetail/top.dart';
 import 'package:nonqueue_app/widgets/bonus_card.dart';
 
 import '../../utils/constants.dart';
-import '../../widgets/order_tile.dart';
-import '../inapp/drawer/history_detail.dart';
 
 class CartScreen extends StatefulWidget {
   const CartScreen({Key? key}) : super(key: key);
@@ -171,7 +167,7 @@ class _CartScreenState extends State<CartScreen> {
                               },
                             ),
                             Text(
-                              _cartitems[index]['value'] ?? 'dsds',
+                              _cartitems[index]['value'] ?? '',
                               style: const TextStyle(
                                 color: ColorPalette.lightBlack,
                                 fontSize: 16,
