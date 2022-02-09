@@ -15,6 +15,7 @@ class _PartnerDetailScreenState extends State<PartnerDetailScreen> {
   int _activeIndex = 0;
   int _activeSubIndex = 0;
   int _count = 0;
+  int _cartcount = 0;
 
   final List<String> _extras = [];
 
@@ -26,6 +27,18 @@ class _PartnerDetailScreenState extends State<PartnerDetailScreen> {
           'Starbucks',
           style: TextStyle(
             color: ColorPalette.lightBlack,
+          ),
+        ),
+      ),
+      floatingActionButton: SizedBox(
+        height: 60,
+        child: FloatingActionButton.extended(
+          backgroundColor: ColorPalette.qlessApp,
+          onPressed: () {},
+          icon: const Icon(Icons.shopping_cart_rounded),
+          label: Text(
+            _cartcount.toString(),
+            style: const TextStyle(fontSize: 16),
           ),
         ),
       ),
@@ -237,7 +250,8 @@ class _PartnerDetailScreenState extends State<PartnerDetailScreen> {
                                     .map(
                                       (e) => Chip(
                                         label: Text(e),
-                                        deleteIcon: const Icon(Icons.cancel_rounded),
+                                        deleteIcon:
+                                            const Icon(Icons.cancel_rounded),
                                         onDeleted: () =>
                                             setState(() => _extras.remove(e)),
                                       ),
@@ -288,8 +302,9 @@ class _PartnerDetailScreenState extends State<PartnerDetailScreen> {
                                 Flexible(
                                   flex: 3,
                                   child: TextButton(
-                                    onPressed: () {},
                                     child: const Text('Add to card'),
+                                    onPressed: () =>
+                                        setState(() => _cartcount++),
                                   ),
                                 )
                               ],
