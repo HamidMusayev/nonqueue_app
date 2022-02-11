@@ -12,8 +12,8 @@ dependencies:
   flutter:
     sdk: flutter
 
-  flutter_svg: ^1.0.3
   #animate_do: ^2.1.0
+  flutter_svg: ^1.0.3
   shared_preferences: ^2.0.12
   get: ^4.6.1
   json_annotation: ^4.4.0
@@ -28,10 +28,12 @@ dependencies:
   location: ^4.3.0
   sliding_up_panel: ^2.0.0+1
   flutter_contacts: ^1.1.2
+  google_sign_in: ^5.2.3
+
+
 
   flutter_localizations:
     sdk: flutter
-
 
 dev_dependencies:
   flutter_test:

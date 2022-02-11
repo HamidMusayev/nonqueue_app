@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:nonqueue_app/screens/auth/login/ui.dart';
 import 'package:nonqueue_app/screens/auth/register/ui.dart';
 import 'package:nonqueue_app/utils/constants.dart';
@@ -38,7 +39,6 @@ class OnBoardScreen extends StatelessWidget {
                     ),
                     Spaces.vertical10,
                     TextButton.icon(
-                      onPressed: () {},
                       style: TextButton.styleFrom(
                           backgroundColor: Colors.white, primary: Colors.black),
                       label: const Text("Continue With Google"),
@@ -46,17 +46,20 @@ class OnBoardScreen extends StatelessWidget {
                         "assets/splash/google.svg",
                         width: 30,
                       ),
+                      onPressed: () {
+                        signInWithGoogle();
+                      },
                     ),
-                    Spaces.vertical10,
-                    TextButton.icon(
-                      onPressed: () {},
-                      style: TextButton.styleFrom(backgroundColor: Colors.blue),
-                      label: const Text("Continue With Facebook"),
-                      icon: SvgPicture.asset(
-                        "assets/splash/facebook.svg",
-                        width: 30,
-                      ),
-                    ),
+                    // Spaces.vertical10,
+                    // TextButton.icon(
+                    //   onPressed: () {},
+                    //   style: TextButton.styleFrom(backgroundColor: Colors.blue),
+                    //   label: const Text("Continue With Facebook"),
+                    //   icon: SvgPicture.asset(
+                    //     "assets/splash/facebook.svg",
+                    //     width: 30,
+                    //   ),
+                    // ),
                     const Divider(color: Colors.white, height: 30),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -104,5 +107,12 @@ class OnBoardScreen extends StatelessWidget {
       ),
       child: SizedBox.expand(),
     );
+  }
+
+  Future<void> signInWithGoogle() async {
+    final _googleSignIn = GoogleSignIn();
+
+    GoogleSignInAccount? _signInAccount = await _googleSignIn.signIn();
+    print(_signInAccount.toString());
   }
 }
