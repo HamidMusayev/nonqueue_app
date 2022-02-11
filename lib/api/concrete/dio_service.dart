@@ -27,15 +27,15 @@ class DIOService implements ApiRepository {
   }
 
   @override
-  Future<Result<Map<String, dynamic>>> post(
-      Map<String, dynamic> body, String url,
+  Future<Result> post(Map<String, dynamic> body, String url,
       {String? token, String? language}) async {
     var options = BaseOptions(headers: <String, String>{
       HttpHeaders.contentTypeHeader: 'application/json; charset=UTF-8'
     });
 
     if (token != null) {
-      options.headers.addAll({HttpHeaders.authorizationHeader: 'Bearer $token'});
+      options.headers
+          .addAll({HttpHeaders.authorizationHeader: 'Bearer $token'});
     }
     if (language != null) {
       options.headers.addAll({HttpHeaders.acceptLanguageHeader: language});
@@ -50,10 +50,10 @@ class DIOService implements ApiRepository {
       } else if (response.statusCode == 401) {
         return Result.error(message: 'Eauthor');
       } else {
-        return Result.error(message: 'Eerror');
+        return Result.error(message: 'Erequest');
       }
     } catch (e) {
-      return Result.error(message: 'Erequest');
+      return Result.error(message: 'Econnection');
     }
   }
 }

@@ -1,8 +1,12 @@
-import 'package:flutter/foundation.dart';
 import 'package:nonqueue_app/api/abstract/api_repository.dart';
 import 'package:nonqueue_app/api/abstract/user_repository.dart';
 import 'package:nonqueue_app/api/result/result.dart';
-import 'package:nonqueue_app/models/user.dart';
+import 'package:nonqueue_app/models/user/confirm_email_request.dart';
+import 'package:nonqueue_app/models/user/sign_up_request.dart';
+import 'package:nonqueue_app/models/user/token_request.dart';
+import 'package:nonqueue_app/models/user/token_response.dart';
+
+import '../../models/user.dart';
 
 class UserService implements UserRepository {
   final ApiRepository _apiRepository;
@@ -39,9 +43,8 @@ class UserService implements UserRepository {
 
   @override
   Future<Result<User>> updateProfilePicture(User user) async {
-    var result = await _apiRepository.post(
-        user.toJson(), 'user/updateprofilepicture',
-        token: user.token?.token);
+    var result =
+        await _apiRepository.post(user.toJson(), 'user/updateprofilepicture');
     if (result.success) {
       return result.data!["success"]
           ? Result<User>.succes(User.fromJson(result.data!["data"]),
@@ -53,26 +56,34 @@ class UserService implements UserRepository {
   }
 
   @override
-  Future<Result<User>> changePassword(User user) {
-    // TODO: implement changePassword
+  Future<Result> sendOTPEmail(String email) {
+    // TODO: implement sendOTPEmail
     throw UnimplementedError();
   }
 
   @override
-  Future<Result<User>> forgetPassword(User user) {
-    // TODO: implement forgetPassword
+  Future<Result<User>> userSignUp(SignUpRequest request) {
+    // TODO: implement userSignUp
     throw UnimplementedError();
   }
 
   @override
-  Future<Result<User>> register(User user) {
-    // TODO: implement register
+  Future<Result> confirmEmail(ConfirmEmailRequest request) {
+    // TODO: implement confirmEmail
     throw UnimplementedError();
   }
 
   @override
-  Future<Result<User>> verifySms(User user) {
-    // TODO: implement verifySms
+  Future<Result<TokenResponse>> getResourceOwnerPasswordToken(
+      TokenRequest request) {
+    // TODO: implement getResourceOwnerPasswordToken
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Result<TokenResponse>> getResourceOwnerPasswordTokenByRefreshToken(
+      TokenRequest request) {
+    // TODO: implement getResourceOwnerPasswordTokenByRefreshToken
     throw UnimplementedError();
   }
 

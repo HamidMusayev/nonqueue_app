@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:nonqueue_app/api/concrete/dio_service.dart';
 import 'package:nonqueue_app/api/concrete/user_service.dart';
 import 'package:nonqueue_app/api/result/result.dart';
-import 'package:nonqueue_app/models/user.dart';
 import 'package:nonqueue_app/screens/auth/pswforgot/ui.dart';
 import 'package:nonqueue_app/screens/auth/register/ui.dart';
 import 'package:nonqueue_app/screens/inapp/ui.dart';
@@ -10,6 +9,8 @@ import 'package:nonqueue_app/utils/constants.dart';
 import 'package:nonqueue_app/utils/shared.dart';
 import 'package:nonqueue_app/utils/validators.dart';
 import 'package:nonqueue_app/widgets/route_transitions/slide_route.dart';
+
+import '../../../models/user.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);

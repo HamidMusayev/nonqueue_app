@@ -30,7 +30,6 @@ const Map<int, Color> kcolor = {
 class Spaces {
   Spaces._();
   static const horizontal6 = SizedBox(width: 6);
-
   static const vertical10 = SizedBox(height: 10);
   static const vertical20 = SizedBox(height: 20);
   static const vertical50 = SizedBox(height: 50);
