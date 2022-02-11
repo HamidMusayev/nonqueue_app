@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -38,18 +40,35 @@ class OnBoardScreen extends StatelessWidget {
                       },
                     ),
                     Spaces.vertical10,
-                    TextButton.icon(
-                      style: TextButton.styleFrom(
-                          backgroundColor: Colors.white, primary: Colors.black),
-                      label: const Text("Continue With Google"),
-                      icon: SvgPicture.asset(
-                        "assets/splash/google.svg",
-                        width: 30,
-                      ),
-                      onPressed: () {
-                        signInWithGoogle();
-                      },
-                    ),
+                    Platform.isAndroid
+                        ? TextButton.icon(
+                            style: TextButton.styleFrom(
+                                backgroundColor: Colors.white,
+                                primary: Colors.black),
+                            label: const Text("Continue with Google"),
+                            icon: SvgPicture.asset(
+                              "assets/splash/google.svg",
+                              width: 30,
+                            ),
+                            onPressed: () {
+                              signInWithGoogle();
+                            },
+                          )
+                        : Platform.isIOS
+                            ? TextButton.icon(
+                                style: TextButton.styleFrom(
+                                    backgroundColor: Colors.white,
+                                    primary: Colors.black),
+                                label: const Text("Continue with Apple"),
+                                icon: SvgPicture.asset(
+                                  "assets/splash/apple.svg",
+                                  width: 30,
+                                ),
+                                onPressed: () {
+                                  signInWithGoogle();
+                                },
+                              )
+                            : Container(),
                     // Spaces.vertical10,
                     // TextButton.icon(
                     //   onPressed: () {},
