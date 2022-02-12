@@ -1,6 +1,7 @@
 import 'dart:io';
-
+import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:nonqueue_app/api/abstract/api_repository.dart';
 import 'package:nonqueue_app/api/result/result.dart';
 
@@ -43,6 +44,14 @@ class DIOService implements ApiRepository {
 
     try {
       Dio dio = Dio(options);
+      if (kDebugMode) {
+        dio.interceptors.add(PrettyDioLogger(
+          request: true,
+          requestHeader: true,
+          requestBody: true,
+          responseBody: true,
+        ));
+      }
       Response response = await dio.post(url, data: body);
 
       if (response.statusCode == 200) {
