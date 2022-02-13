@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:get/get.dart';
 import 'package:nonqueue_app/screens/auth/welcome/ui.dart';
+import 'package:nonqueue_app/screens/home/ui.dart';
 import 'package:nonqueue_app/utils/constants.dart';
 import 'package:nonqueue_app/utils/shared.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -40,7 +42,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       showPerformanceOverlay: false,
       showSemanticsDebugger: false,
       debugShowMaterialGrid: false,
@@ -69,20 +71,20 @@ class _MyAppState extends State<MyApp> {
         inputDecorationTheme: const InputDecorationTheme(
           filled: false,
           enabledBorder: OutlineInputBorder(
+            borderRadius: Radiuses.r10,
             borderSide: BorderSide(
               color: ColorPalette.stroke,
             ),
-            borderRadius: Radiuses.r10,
           ),
           errorBorder: OutlineInputBorder(
             borderSide: BorderSide(color: Colors.red),
             borderRadius: Radiuses.r10,
           ),
           border: OutlineInputBorder(
+            borderRadius: Radiuses.r10,
             borderSide: BorderSide(
               color: ColorPalette.stroke,
             ),
-            borderRadius: Radiuses.r10,
           ),
           // focusedBorder: OutlineInputBorder(
           //   borderSide: BorderSide(),
@@ -90,7 +92,7 @@ class _MyAppState extends State<MyApp> {
           // ),
         ),
       ),
-      home: _saveMe ? const WelcomeScreen() : const WelcomeScreen(),
+      home: _saveMe ? const HomeScreen() : const WelcomeScreen(),
     );
   }
 }

@@ -1,8 +1,6 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:nonqueue_app/screens/auth/login/ui.dart';
 import 'package:nonqueue_app/screens/auth/register/ui.dart';
 import 'package:nonqueue_app/utils/constants.dart';
@@ -50,9 +48,7 @@ class OnBoardScreen extends StatelessWidget {
                               "assets/splash/google.svg",
                               width: 30,
                             ),
-                            onPressed: () {
-                              signInWithGoogle();
-                            },
+                            onPressed: () => signInWithGoogle(),
                           )
                         : Platform.isIOS
                             ? TextButton.icon(
@@ -64,9 +60,7 @@ class OnBoardScreen extends StatelessWidget {
                                   "assets/splash/apple.svg",
                                   width: 30,
                                 ),
-                                onPressed: () {
-                                  signInWithGoogle();
-                                },
+                                onPressed: () => signInWithGoogle(),
                               )
                             : Container(),
                     // Spaces.vertical10,
@@ -95,10 +89,8 @@ class OnBoardScreen extends StatelessWidget {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          onTap: () {
-                            Navigator.pushReplacement(
-                                context, SlideRightRoute(page: LoginScreen()));
-                          },
+                          onTap: () => Navigator.pushReplacement(context,
+                              SlideRightRoute(page: const LoginScreen())),
                         ),
                       ],
                     )
@@ -128,10 +120,5 @@ class OnBoardScreen extends StatelessWidget {
     );
   }
 
-  Future<void> signInWithGoogle() async {
-    final _googleSignIn = GoogleSignIn();
-
-    GoogleSignInAccount? _signInAccount = await _googleSignIn.signIn();
-    print(_signInAccount.toString());
-  }
+  Future<void> signInWithGoogle() async {}
 }

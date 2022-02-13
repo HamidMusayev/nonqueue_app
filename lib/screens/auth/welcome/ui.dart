@@ -16,7 +16,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   int _pageIndex = 0;
   final _controller = PageController(initialPage: 0);
 
-  List<Map<String, String>> splashData = [
+  final List<Map<String, String>> _splashData = [
     {"title": "Order before you go!", "image": "assets/splash/first.svg"},
     {
       "title": "Make your friends happy by sending them gifts!",
@@ -42,16 +42,16 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 controller: _controller,
                 physics: const BouncingScrollPhysics(),
                 onPageChanged: (value) => setState(() => _pageIndex = value),
-                itemCount: splashData.length,
+                itemCount: _splashData.length,
                 itemBuilder: (context, index) =>
-                    SplashContent(data: splashData[index]),
+                    SplashContent(data: _splashData[index]),
               ),
             ),
             const Spacer(flex: 2),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: List.generate(
-                splashData.length,
+                _splashData.length,
                 (index) => buildDot(index: index),
               ),
             ),

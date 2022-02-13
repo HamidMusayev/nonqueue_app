@@ -251,15 +251,13 @@ class _PartnerDetailScreenState extends State<PartnerDetailScreen> {
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
                                       IconButton(
-                                          onPressed: () {
-                                            if (_count > 0) {
-                                              setState(() {
-                                                _count--;
-                                              });
-                                            }
-                                          },
-                                          icon:
-                                              const Icon(Icons.remove_rounded)),
+                                        icon: const Icon(Icons.remove_rounded),
+                                        onPressed: () {
+                                          if (_count > 0) {
+                                            setState(() => _count--);
+                                          }
+                                        },
+                                      ),
                                       Text(
                                         _count.toString(),
                                         style: const TextStyle(
@@ -268,12 +266,11 @@ class _PartnerDetailScreenState extends State<PartnerDetailScreen> {
                                         ),
                                       ),
                                       IconButton(
-                                          onPressed: () {
-                                            setState(() {
-                                              _count++;
-                                            });
-                                          },
-                                          icon: const Icon(Icons.add_rounded)),
+                                        icon: const Icon(Icons.add_rounded),
+                                        onPressed: () {
+                                          setState(() => _count++);
+                                        },
+                                      ),
                                     ],
                                   ),
                                 ),
