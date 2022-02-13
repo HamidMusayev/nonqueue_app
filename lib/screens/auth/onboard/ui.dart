@@ -1,16 +1,20 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:nonqueue_app/screens/auth/login/ui.dart';
 import 'package:nonqueue_app/screens/auth/register/ui.dart';
 import 'package:nonqueue_app/utils/constants.dart';
 import 'package:nonqueue_app/widgets/route_transitions/slide_route.dart';
+import 'controller.dart';
 
-class OnBoardScreen extends StatelessWidget {
+class OnBoardScreen extends GetView<OnBoardController> {
   const OnBoardScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    Get.put(OnBoardController());
+
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
@@ -48,7 +52,7 @@ class OnBoardScreen extends StatelessWidget {
                               "assets/splash/google.svg",
                               width: 30,
                             ),
-                            onPressed: () => signInWithGoogle(),
+                            onPressed: controller.signInWithGoogle,
                           )
                         : Platform.isIOS
                             ? TextButton.icon(
@@ -60,7 +64,7 @@ class OnBoardScreen extends StatelessWidget {
                                   "assets/splash/apple.svg",
                                   width: 30,
                                 ),
-                                onPressed: () => signInWithGoogle(),
+                                onPressed: controller.signInWithGoogle,
                               )
                             : Container(),
                     // Spaces.vertical10,
