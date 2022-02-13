@@ -13,7 +13,7 @@ SignUpRequest _$SignUpRequestFromJson(Map<String, dynamic> json) =>
       json['password'] as String?,
       json['phoneNumber'] as String?,
       json['signUpType'] as String?,
-    );
+    )..numberPrefix = json['numberPrefix'] as String?;
 
 Map<String, dynamic> _$SignUpRequestToJson(SignUpRequest instance) =>
     <String, dynamic>{
@@ -22,4 +22,5 @@ Map<String, dynamic> _$SignUpRequestToJson(SignUpRequest instance) =>
       'password': instance.password,
       'phoneNumber': instance.phoneNumber,
       'signUpType': instance.signUpType,
+      'numberPrefix': instance.numberPrefix,
     };

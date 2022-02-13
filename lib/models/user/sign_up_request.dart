@@ -9,6 +9,7 @@ class SignUpRequest {
   String? password;
   String? phoneNumber;
   String? signUpType;
+  String? numberPrefix;
 
   SignUpRequest(this.email,this.name,this.password,this.phoneNumber,this.signUpType,);
 
