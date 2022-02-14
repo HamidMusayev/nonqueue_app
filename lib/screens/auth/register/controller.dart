@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:nonqueue_app/screens/inapp/ui.dart';
 import 'package:nonqueue_app/widgets/phone_input/phone_number.dart';
 import '../../../api/concrete/dio_service.dart';
 import '../../../api/concrete/user_service.dart';
@@ -30,29 +31,15 @@ class RegisterController extends GetxController{
 
   void register() async {
     isLoading.value = true;
-    Result<User> result =
-    await _service.login(User(email: emailTxt.text, sifre: passTxt.text));
-    if (result.success) {
-      User _user = result.data!;
-      SharedHelper.saveJson('user', _user.toJson());
+    Result<User> result = await _service.login(User(email: emailTxt.text, sifre: passTxt.text));
 
-      //Navigator.pushReplacement(context, SlideRightRoute(page: const InAppScreen()));
+    if (result.success) {
+      SharedHelper.saveJson('user', result.data!.toJson());
+
+      Get.to(const InAppScreen());
     } else {
       isLoading.value = false;
-      // ScaffoldMessenger.of(context).showSnackBar(
-      //   SnackBar(
-      //     backgroundColor: Colors.red,
-      //     content: Wrap(
-      //       direction: Axis.horizontal,
-      //       spacing: 10,
-      //       runSpacing: 10,
-      //       children: [
-      //         const Icon(Icons.cancel_rounded, color: Colors.white),
-      //         Text(result.message),
-      //       ],
-      //     ),
-      //   ),
-      // );
+      Get.rawSnackbar(title: 'error'.tr, message: result.message, backgroundColor: Colors.red);
     }
   }
 

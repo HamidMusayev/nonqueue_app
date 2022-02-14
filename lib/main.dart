@@ -5,6 +5,7 @@ import 'package:nonqueue_app/screens/auth/welcome/ui.dart';
 import 'package:nonqueue_app/screens/home/ui.dart';
 import 'package:nonqueue_app/utils/constants.dart';
 import 'package:nonqueue_app/utils/shared.dart';
+import 'package:nonqueue_app/utils/translations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'models/user.dart';
@@ -48,8 +49,11 @@ class _MyAppState extends State<MyApp> {
       debugShowMaterialGrid: false,
       debugShowCheckedModeBanner: false,
       title: 'Non Queue',
-      localizationsDelegates: const [GlobalMaterialLocalizations.delegate],
-      supportedLocales: const [Locale("en")],
+      localizationsDelegates: GlobalMaterialLocalizations.delegates,
+      supportedLocales: const [Locale('en', 'UK'), Locale('az', 'AZ')],
+      locale: const Locale('az', 'AZ'),
+      fallbackLocale: const Locale('en', 'UK'),
+      translations: Messages(),
       theme: ThemeData(
         primarySwatch: const MaterialColor(0xFFC25875, kcolor),
         scaffoldBackgroundColor: Colors.white,

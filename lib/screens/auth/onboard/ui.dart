@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import 'package:nonqueue_app/screens/auth/login/ui.dart';
 import 'package:nonqueue_app/screens/auth/register/ui.dart';
 import 'package:nonqueue_app/utils/constants.dart';
-import 'package:nonqueue_app/widgets/route_transitions/slide_route.dart';
 import 'controller.dart';
 
 class OnBoardScreen extends GetView<OnBoardController> {
@@ -36,37 +35,32 @@ class OnBoardScreen extends GetView<OnBoardController> {
                   children: [
                     TextButton(
                       child: const Text("Sign Up"),
-                      onPressed: () {
-                        Navigator.push(context,
-                            SlideRightRoute(page: const RegisterScreen()));
-                      },
+                      onPressed: () => Get.to(const RegisterScreen()),
                     ),
                     Spaces.vertical10,
-                    Platform.isAndroid
+                    TextButton.icon(
+                      style: TextButton.styleFrom(
+                          backgroundColor: Colors.white, primary: Colors.black),
+                      label: const Text("Continue with Google"),
+                      icon: SvgPicture.asset(
+                        "assets/splash/google.svg",
+                        width: 30,
+                      ),
+                      onPressed: controller.signInWithGoogle,
+                    ),
+                    Platform.isIOS
                         ? TextButton.icon(
                             style: TextButton.styleFrom(
                                 backgroundColor: Colors.white,
                                 primary: Colors.black),
-                            label: const Text("Continue with Google"),
+                            label: const Text("Continue with Apple"),
                             icon: SvgPicture.asset(
-                              "assets/splash/google.svg",
+                              "assets/splash/apple.svg",
                               width: 30,
                             ),
                             onPressed: controller.signInWithGoogle,
                           )
-                        : Platform.isIOS
-                            ? TextButton.icon(
-                                style: TextButton.styleFrom(
-                                    backgroundColor: Colors.white,
-                                    primary: Colors.black),
-                                label: const Text("Continue with Apple"),
-                                icon: SvgPicture.asset(
-                                  "assets/splash/apple.svg",
-                                  width: 30,
-                                ),
-                                onPressed: controller.signInWithGoogle,
-                              )
-                            : Container(),
+                        : Container(),
                     // Spaces.vertical10,
                     // TextButton.icon(
                     //   onPressed: () {},
@@ -93,8 +87,7 @@ class OnBoardScreen extends GetView<OnBoardController> {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          onTap: () => Navigator.pushReplacement(context,
-                              SlideRightRoute(page: const LoginScreen())),
+                          onTap: () => Get.to(const LoginScreen()),
                         ),
                       ],
                     )

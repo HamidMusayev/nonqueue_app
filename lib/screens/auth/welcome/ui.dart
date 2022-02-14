@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:nonqueue_app/screens/auth/onboard/ui.dart';
 import 'package:nonqueue_app/utils/constants.dart';
 import 'package:nonqueue_app/widgets/route_transitions/slide_route.dart';
@@ -59,13 +60,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             _pageIndex == 2
                 ? TextButton(
                     child: const Text('Get Started'),
-                    onPressed: () {
-                      Navigator.pushReplacement(
-                        context,
-                        SlideRightRoute(page: const OnBoardScreen()),
-                      );
-                    },
-                  )
+                    onPressed: () => Get.to(const OnBoardScreen()))
                 : TextButton(
                     child: const Text('Next'),
                     onPressed: () {

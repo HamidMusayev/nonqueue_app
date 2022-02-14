@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:nonqueue_app/api/concrete/dio_service.dart';
 import 'package:nonqueue_app/api/concrete/user_service.dart';
 import 'package:nonqueue_app/api/result/result.dart';
@@ -90,8 +91,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   Spaces.vertical10,
                   GestureDetector(
-                    onTap: () => Navigator.push(context,
-                        SlideRightRoute(page: const ForgotPasswordScreen())),
+                    onTap: () => Get.to(const ForgotPasswordScreen()),
                     child: const Align(
                       alignment: Alignment.centerRight,
                       child: Text(
@@ -124,13 +124,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     children: [
                       const Text(
                         'Don’t have an account?  ',
-                        style: TextStyle(
-                          color: Colors.blueGrey,
-                        ),
+                        style: TextStyle(color: Colors.blueGrey),
                       ),
                       GestureDetector(
-                        onTap: () => Navigator.push(context,
-                            SlideRightRoute(page: const RegisterScreen())),
+                        onTap: () => Get.to(const RegisterScreen()),
                         child: const Text(
                           'Sign up',
                           style: TextStyle(
@@ -161,7 +158,8 @@ class _LoginScreenState extends State<LoginScreen> {
       _user.sifre = 'null';
       SharedHelper.saveJson('user', _user.toJson());
 
-      Navigator.pushReplacement(context, SlideRightRoute(page: const InAppScreen()));
+      Navigator.pushReplacement(
+          context, SlideRightRoute(page: const InAppScreen()));
     } else {
       setState(() => _loading = false);
       ScaffoldMessenger.of(context).showSnackBar(
