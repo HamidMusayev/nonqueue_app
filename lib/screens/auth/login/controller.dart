@@ -1,26 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:nonqueue_app/screens/inapp/ui.dart';
+
 import '../../../api/concrete/dio_service.dart';
 import '../../../api/concrete/user_service.dart';
 import '../../../api/result/result.dart';
 import '../../../utils/constants.dart';
-import '../otp/ui.dart';
 
-class ForgotPasswordController extends GetxController {
+class LoginController extends GetxController {
   RxBool isLoading = false.obs;
+  RxBool isObsecure = true.obs;
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final TextEditingController emailTxt = TextEditingController();
+  final TextEditingController passTxt = TextEditingController();
+
   final UserService _service = UserService(DioService());
 
-  Future<void> sendOtp() async {
+  void changeObsecure() => isObsecure.value = !isObsecure.value;
+
+  void login() async {
     if (formKey.currentState?.validate() ?? false) {
       isLoading.value = true;
-      Result res = await _service.sendOTPEmail({'email': emailTxt.text});
+      Result res =
+          await _service.sendOTPEmail({'email': 'email', 'otp': 'otp'});
 
       if (res.success) {
+        //SharedHelper.saveJson('userId', res.data);
         isLoading.value = false;
-        Get.off(OTPScreen(emailTxt.text, 'checkOtp'));
+
+        Get.off(const InAppScreen());
       } else {
         isLoading.value = false;
         Get.showSnackbar(Snacks.error(res.message));

@@ -7,6 +7,7 @@ abstract class UserRepository {
   Future<Result<String>> userSignUp(Map<String, dynamic> request);
   Future<Result> sendOTPEmail(Map<String, dynamic> request);
   Future<Result> confirmEmail(Map<String, dynamic> request);
+  Future<Result> checkOtp(Map<String, dynamic> request);
   Future<Result<TokenResponse>> getResourceOwnerPasswordToken(
       TokenRequest request);
   Future<Result<TokenResponse>> getResourceOwnerPasswordTokenByRefreshToken(

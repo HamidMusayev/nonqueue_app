@@ -5,7 +5,8 @@ import 'package:nonqueue_app/widgets/route_transitions/slide_route.dart';
 
 class ResetPasswordScreen extends StatefulWidget {
   final String email;
-  const ResetPasswordScreen(this.email, {Key? key}) : super(key: key);
+  final int otp;
+  const ResetPasswordScreen(this.email, this.otp, {Key? key}) : super(key: key);
 
   @override
   _ResetPasswordScreenState createState() => _ResetPasswordScreenState();
@@ -32,7 +33,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
               ),
             ),
             Spaces.vertical50,
-            const TextField(
+            const TextFormField(
               keyboardType: TextInputType.emailAddress,
               textInputAction: TextInputAction.next,
               autofocus: true,
@@ -43,7 +44,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
               ),
             ),
             Spaces.vertical10,
-            const TextField(
+            const TextFormField(
               keyboardType: TextInputType.name,
               textInputAction: TextInputAction.done,
               obscureText: true,

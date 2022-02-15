@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:nonqueue_app/screens/inapp/ui.dart';
+import 'package:nonqueue_app/screens/auth/otp/ui.dart';
 import 'package:nonqueue_app/utils/constants.dart';
 import 'package:nonqueue_app/widgets/phone_input/phone_number.dart';
 import '../../../api/concrete/dio_service.dart';
@@ -21,13 +21,10 @@ class RegisterController extends GetxController {
 
   final UserService _service = UserService(DioService());
 
-  void changeObsecure() {
-    isObsecure.value = !isObsecure.value;
-  }
+  void changeObsecure() => isObsecure.value = !isObsecure.value;
 
-  void onChangedNumber(PhoneNumber number) {
-    prefixTxt.text = number.countryCode;
-  }
+  void onChangedNumber(PhoneNumber number) =>
+      prefixTxt.text = number.countryCode;
 
   void register() async {
     if (formKey.currentState?.validate() ?? false) {
@@ -43,13 +40,27 @@ class RegisterController extends GetxController {
 
       if (result.success) {
         SharedHelper.saveJson('userId', result.data);
-        isLoading.value = false;
 
-        Get.to(const InAppScreen());
+        bool resultOtp = await sendOtp();
+
+        if (resultOtp) {
+          isLoading.value = false;
+          Get.to(OTPScreen(emailTxt.text, 'confirmEmail'));
+        }
       } else {
         isLoading.value = false;
         Get.showSnackbar(Snacks.error(result.message));
       }
+    }
+  }
+
+  Future<bool> sendOtp() async {
+    Result result = await _service.sendOTPEmail({'email': emailTxt.text});
+    if (result.success) {
+      return true;
+    } else {
+      Get.showSnackbar(Snacks.error(result.message));
+      return false;
     }
   }
 }

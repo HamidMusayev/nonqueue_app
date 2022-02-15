@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:local_auth/local_auth.dart';
 import 'package:nonqueue_app/screens/auth/otp/controller.dart';
-import 'package:nonqueue_app/screens/auth/pswreset/ui.dart';
 import 'package:nonqueue_app/utils/constants.dart';
-import 'package:nonqueue_app/widgets/route_transitions/slide_route.dart';
 
 class OTPScreen extends StatefulWidget {
   final String email;
-  const OTPScreen(this.email, {Key? key}) : super(key: key);
+  final String type;
+
+  const OTPScreen(
+    this.email,
+    this.type, {
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<OTPScreen> createState() => _OTPScreenState();
@@ -94,14 +97,21 @@ class _OTPScreenState extends State<OTPScreen> {
               childAspectRatio: 1.5,
               crossAxisCount: 3,
               children: [
+                // TextButton(
+                //   style: TextButton.styleFrom(
+                //       backgroundColor: Colors.white,
+                //       primary: ColorPalette.qlessApp),
+                //   child: const Icon(Icons.fingerprint_rounded, size: 40),
+                //   onPressed: () async {
+                //     await _controller.authenticate(widget.email);
+                //   },
+                // ),
+                //Disabled Biometric Authentiction
                 TextButton(
                   style: TextButton.styleFrom(
-                      backgroundColor: Colors.white,
-                      primary: ColorPalette.qlessApp),
-                  child: const Icon(Icons.fingerprint_rounded, size: 40),
-                  onPressed: () async {
-                    await _controller.authenticate(widget.email);
-                  },
+                      backgroundColor: Colors.white, primary: Colors.white),
+                  child: Container(),
+                  onPressed: null,
                 ),
                 TextButton(
                   style: TextButton.styleFrom(
@@ -168,7 +178,8 @@ class _OTPScreenState extends State<OTPScreen> {
       _controller.confirmOtp(
           int.parse(
               '${_controllers[0].text}${_controllers[1].text}${_controllers[2].text}${_controllers[3].text}'),
-          widget.email);
+          widget.email,
+          widget.type);
     }
   }
 

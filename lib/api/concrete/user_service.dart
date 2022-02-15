@@ -59,6 +59,19 @@ class UserService implements UserRepository {
     throw UnimplementedError();
   }
 
+  @override
+  Future<Result> checkOtp(Map<String, dynamic> request) async {
+    var res = await _dio.post(request, '$_baseUrl/ConfirmOTP');
+
+    if (res.success) {
+      return res.data['success']
+          ? Result.succes(res.data['data'])
+          : Result.error(message: res.data['message']);
+    } else {
+      return Result.error(message: res.message);
+    }
+  }
+
   // @override
   // Future<Result<User>> login(User user) async {
   //   var result = await _dio.post(user.toJson(),
