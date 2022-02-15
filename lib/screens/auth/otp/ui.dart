@@ -52,9 +52,9 @@ class _OTPScreenState extends State<OTPScreen> {
               color: ColorPalette.qlessApp,
             ),
           ),
-          const Text(
-            'We sent it to the number +994 55  *** ** 12',
-            style: TextStyle(color: Colors.blueGrey),
+          Text(
+            'We sent it to ${widget.email.substring(0, 3)}*******${widget.email.substring(10)}',
+            style: const TextStyle(color: Colors.blueGrey),
           ),
           Spaces.vertical20,
           Row(
@@ -176,10 +176,11 @@ class _OTPScreenState extends State<OTPScreen> {
 
     if (completed) {
       _controller.confirmOtp(
-          int.parse(
-              '${_controllers[0].text}${_controllers[1].text}${_controllers[2].text}${_controllers[3].text}'),
-          widget.email,
-          widget.type);
+        int.parse(
+            '${_controllers[0].text}${_controllers[1].text}${_controllers[2].text}${_controllers[3].text}'),
+        widget.email,
+        widget.type,
+      );
     }
   }
 

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:nonqueue_app/screens/inapp/drawer/payment.dart';
 import 'package:nonqueue_app/utils/constants.dart';

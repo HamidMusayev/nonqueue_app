@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:nonqueue_app/models/user/token_request.dart';
 import 'package:nonqueue_app/screens/inapp/ui.dart';
 
 import '../../../api/concrete/dio_service.dart';
@@ -22,8 +23,12 @@ class LoginController extends GetxController {
   void login() async {
     if (formKey.currentState?.validate() ?? false) {
       isLoading.value = true;
-      Result res =
-          await _service.sendOTPEmail({'email': 'email', 'otp': 'otp'});
+      Result res = await _service.getResourceOwnerPasswordToken(TokenRequest(
+        clientId: 'string',
+        clientSecrets: 'string',
+        email: emailTxt.text,
+        password: passTxt.text,
+      ));
 
       if (res.success) {
         //SharedHelper.saveJson('userId', res.data);

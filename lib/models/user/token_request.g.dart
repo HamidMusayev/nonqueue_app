@@ -7,10 +7,10 @@ part of 'token_request.dart';
 // **************************************************************************
 
 TokenRequest _$TokenRequestFromJson(Map<String, dynamic> json) => TokenRequest(
-      json['clientId'] as String?,
-      json['clientSecrets'] as String?,
-      json['email'] as String?,
-      json['password'] as String?,
+      clientId: json['clientId'] as String?,
+      clientSecrets: json['clientSecrets'] as String?,
+      email: json['email'] as String?,
+      password: json['password'] as String?,
     );
 
 Map<String, dynamic> _$TokenRequestToJson(TokenRequest instance) =>

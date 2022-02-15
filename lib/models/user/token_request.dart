@@ -9,7 +9,7 @@ class TokenRequest {
   String? email;
   String? password;
 
-  TokenRequest(this.clientId, this.clientSecrets, this.email, this.password);
+  TokenRequest({this.clientId, this.clientSecrets, this.email, this.password});
 
   factory TokenRequest.fromJson(Map<String, dynamic> json) =>
       _$TokenRequestFromJson(json);

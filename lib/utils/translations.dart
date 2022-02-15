@@ -9,6 +9,7 @@ class Messages extends Translations {
           'alert': 'Alert',
           'nomessage': 'No message',
           'authfingerprint': 'Please complete the biometrics to proceed.',
+          'passwordsmustbesame': 'Passwords must be same!',
           'login': 'Login',
           'register': 'Register'
         },
@@ -18,6 +19,7 @@ class Messages extends Translations {
           'alert': 'Xəbərdarlıq',
           'nomessage': 'Mesaj yoxdur',
           'authfingerprint': 'Davam etmək üçün barmaq izindən istifadə edin.',
+          'passwordsmustbesame': 'Şifrələr eyni olmalıdır!',
           'login': 'Giriş',
           'register': 'Qeydiyyat'
         },

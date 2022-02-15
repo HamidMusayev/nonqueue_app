@@ -1,5 +1,4 @@
 import 'package:dotted_line/dotted_line.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nonqueue_app/utils/constants.dart';
 import 'package:nonqueue_app/widgets/partner_tile.dart';
@@ -113,7 +112,7 @@ class _FilterPanelState extends State<FilterPanel> {
                       );
                     },
                     contentPadding: Paddings.p8,
-                    title: PartnerTile(),
+                    title: const PartnerTile(),
                   ),
                 )
               ],

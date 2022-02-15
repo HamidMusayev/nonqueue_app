@@ -8,11 +8,11 @@ part of 'token_response.dart';
 
 TokenResponse _$TokenResponseFromJson(Map<String, dynamic> json) =>
     TokenResponse(
-      json['accessToken'] as String?,
-      json['expiration'] == null
+      accessToken: json['accessToken'] as String?,
+      expiration: json['expiration'] == null
           ? null
           : DateTime.parse(json['expiration'] as String),
-      json['refreshToken'] as String?,
+      refreshToken: json['refreshToken'] as String?,
     );
 
 Map<String, dynamic> _$TokenResponseToJson(TokenResponse instance) =>

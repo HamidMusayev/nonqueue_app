@@ -41,9 +41,16 @@ class UserService implements UserRepository {
 
   @override
   Future<Result<TokenResponse>> getResourceOwnerPasswordToken(
-      TokenRequest request) {
-    // TODO: implement getResourceOwnerPasswordToken
-    throw UnimplementedError();
+      TokenRequest request) async {
+    var res = await _dio.post(request.toJson(), '$_baseUrl/GetResourceOwnerPasswordToken');
+
+    if (res.success) {
+      return res.data['success']
+          ? Result.succes(res.data['data'])
+          : Result.error(message: res.data['message']);
+    } else {
+      return Result.error(message: res.message);
+    }
   }
 
   @override
@@ -54,14 +61,34 @@ class UserService implements UserRepository {
   }
 
   @override
-  Future<Result> confirmEmail(Map<String, dynamic> request) {
-    // TODO: implement confirmEmail
-    throw UnimplementedError();
+  Future<Result> confirmEmail(Map<String, dynamic> request) async {
+    var res = await _dio.post(request, '$_baseUrl/ConfirmEmail');
+
+    if (res.success) {
+      return res.data['success']
+          ? Result.succes(res.data['data'])
+          : Result.error(message: res.data['message']);
+    } else {
+      return Result.error(message: res.message);
+    }
   }
 
   @override
   Future<Result> checkOtp(Map<String, dynamic> request) async {
-    var res = await _dio.post(request, '$_baseUrl/ConfirmOTP');
+    var res = await _dio.post(request, '$_baseUrl/CheckOTP');
+
+    if (res.success) {
+      return res.data['success']
+          ? Result.succes(res.data['data'])
+          : Result.error(message: res.data['message']);
+    } else {
+      return Result.error(message: res.message);
+    }
+  }
+
+  @override
+  Future<Result> resetPassword(Map<String, dynamic> request) async {
+    var res = await _dio.post(request, '$_baseUrl/ResetPassword');
 
     if (res.success) {
       return res.data['success']

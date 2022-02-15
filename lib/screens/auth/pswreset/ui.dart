@@ -1,66 +1,86 @@
 import 'package:flutter/material.dart';
-import 'package:nonqueue_app/screens/auth/login/ui.dart';
+import 'package:get/get.dart';
+import 'package:nonqueue_app/screens/auth/pswreset/controller.dart';
 import 'package:nonqueue_app/utils/constants.dart';
-import 'package:nonqueue_app/widgets/route_transitions/slide_route.dart';
+import 'package:nonqueue_app/utils/validators.dart';
 
-class ResetPasswordScreen extends StatefulWidget {
+class ResetPasswordScreen extends GetView<ResetPasswordController> {
   final String email;
   final int otp;
   const ResetPasswordScreen(this.email, this.otp, {Key? key}) : super(key: key);
 
   @override
-  _ResetPasswordScreenState createState() => _ResetPasswordScreenState();
-}
-
-class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
-  @override
   Widget build(BuildContext context) {
+    Get.put(ResetPasswordController());
+
     return Scaffold(
       appBar: AppBar(),
       body: Container(
         padding: Paddings.p16,
         constraints: const BoxConstraints(maxWidth: 450),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            const Text(
-              'Change Password',
-              style: TextStyle(
-                fontSize: 35,
-                fontWeight: FontWeight.w500,
-                color: ColorPalette.qlessApp,
-              ),
+        child: SingleChildScrollView(
+          child: Form(
+            key: controller.formKey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const Text(
+                  'Change Password',
+                  style: TextStyle(
+                    fontSize: 35,
+                    fontWeight: FontWeight.w500,
+                    color: ColorPalette.qlessApp,
+                  ),
+                ),
+                Spaces.vertical50,
+                Obx(
+                  () => TextFormField(
+                    controller: controller.firstPassTxt,
+                    validator: ValidatorHelper.validatePassword,
+                    keyboardType: TextInputType.visiblePassword,
+                    textInputAction: TextInputAction.next,
+                    obscureText: controller.isObsecure.value,
+                    decoration: InputDecoration(
+                      hintText: 'New password',
+                      suffixIcon: IconButton(
+                        onPressed: controller.changeObsecure,
+                        icon: controller.isObsecure.value
+                            ? const Icon(Icons.visibility_off_rounded)
+                            : const Icon(Icons.visibility_rounded),
+                      ),
+                      prefixIcon: const Icon(Icons.vpn_key_rounded),
+                    ),
+                  ),
+                ),
+                Spaces.vertical10,
+                Obx(
+                  () => TextFormField(
+                    controller: controller.secondPassTxt,
+                    validator: ValidatorHelper.validatePassword,
+                    keyboardType: TextInputType.visiblePassword,
+                    textInputAction: TextInputAction.done,
+                    obscureText: controller.isObsecure.value,
+                    decoration: const InputDecoration(
+                      hintText: 'Confirm new password',
+                      prefixIcon: Icon(Icons.vpn_key_rounded),
+                    ),
+                  ),
+                ),
+                Spaces.vertical50,
+                Obx(
+                  () => Visibility(
+                    visible: controller.isLoading.value,
+                    replacement: TextButton(
+                      child: const Text('Submit'),
+                      onPressed: () => controller.resetPassword(email, otp),
+                    ),
+                    child: const Center(child: CircularProgressIndicator()),
+                  ),
+                ),
+              ],
             ),
-            Spaces.vertical50,
-            const TextFormField(
-              keyboardType: TextInputType.emailAddress,
-              textInputAction: TextInputAction.next,
-              autofocus: true,
-              obscureText: true,
-              decoration: InputDecoration(
-                hintText: 'New password',
-                prefixIcon: Icon(Icons.lock_rounded),
-              ),
-            ),
-            Spaces.vertical10,
-            const TextFormField(
-              keyboardType: TextInputType.name,
-              textInputAction: TextInputAction.done,
-              obscureText: true,
-              decoration: InputDecoration(
-                hintText: 'Confirm new password',
-                prefixIcon: Icon(Icons.lock_rounded),
-              ),
-            ),
-            Spaces.vertical50,
-            TextButton(
-              child: const Text('Submit'),
-              onPressed: () {
-                Navigator.pushReplacement(context, SlideRightRoute(page: LoginScreen()));
-              },
-            )
-          ],
+          ),
         ),
       ),
     );

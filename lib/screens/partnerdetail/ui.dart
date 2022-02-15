@@ -1,9 +1,6 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:nonqueue_app/screens/cart/ui.dart';
-import 'package:nonqueue_app/screens/inapp/drawer/account_info.dart';
 import 'package:nonqueue_app/screens/partnerdetail/top.dart';
-import 'package:nonqueue_app/widgets/partner_tile.dart';
 
 import '../../utils/constants.dart';
 

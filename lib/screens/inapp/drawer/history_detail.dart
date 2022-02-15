@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nonqueue_app/utils/constants.dart';
 import 'package:nonqueue_app/widgets/partner_tile.dart';
-import 'package:nonqueue_app/widgets/starmark.dart';
 
 class HistoryDetailScreen extends StatefulWidget {
   const HistoryDetailScreen({Key? key}) : super(key: key);

@@ -61,10 +61,10 @@ class Snacks {
       margin: Paddings.p12,
       duration: const Duration(milliseconds: 2500),
       snackPosition: SnackPosition.BOTTOM,
-      backgroundColor: Colors.red.shade600,
+      backgroundColor: Colors.red.shade700,
       borderRadius: 10,
       icon: const Icon(
-        Icons.cancel_rounded,
+        Icons.close_rounded,
         color: Colors.white,
         size: 30,
       ),
