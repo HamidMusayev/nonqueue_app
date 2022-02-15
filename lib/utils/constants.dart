@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class ColorPalette {
   ColorPalette._();
@@ -48,4 +49,43 @@ class Radiuses {
   Radiuses._();
   static const r10 = BorderRadius.all(Radius.circular(10));
   static const r20 = BorderRadius.all(Radius.circular(20));
+}
+
+class Snacks {
+  Snacks._();
+  static GetSnackBar error(String message) {
+    return GetSnackBar(
+      message: 'error'.tr,
+      title: message.isEmpty ? 'nomessage'.tr : message,
+      padding: Paddings.p24,
+      margin: Paddings.p12,
+      duration: const Duration(milliseconds: 2500),
+      snackPosition: SnackPosition.TOP,
+      backgroundColor: Colors.red.shade600,
+      borderRadius: 10,
+      icon: const Icon(
+        Icons.cancel_rounded,
+        color: Colors.white,
+        size: 30,
+      ),
+    );
+  }
+
+  static GetSnackBar success(String message) {
+    return GetSnackBar(
+      message: 'success'.tr,
+      title: message.isEmpty ? 'nomessage'.tr : message,
+      padding: Paddings.p24,
+      margin: Paddings.p12,
+      duration: const Duration(milliseconds: 2500),
+      snackPosition: SnackPosition.TOP,
+      backgroundColor: Colors.green.shade600,
+      borderRadius: 10,
+      icon: const Icon(
+        Icons.check_circle,
+        color: Colors.white,
+        size: 30,
+      ),
+    );
+  }
 }

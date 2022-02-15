@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:local_auth/local_auth.dart';
+import 'package:nonqueue_app/screens/auth/otp/controller.dart';
 import 'package:nonqueue_app/screens/auth/pswreset/ui.dart';
 import 'package:nonqueue_app/utils/constants.dart';
 import 'package:nonqueue_app/widgets/route_transitions/slide_route.dart';
 
 class OTPScreen extends StatefulWidget {
-  const OTPScreen({Key? key}) : super(key: key);
+  final String email;
+  const OTPScreen(this.email, {Key? key}) : super(key: key);
 
   @override
   State<OTPScreen> createState() => _OTPScreenState();
@@ -26,7 +30,9 @@ class _OTPScreenState extends State<OTPScreen> {
     TextEditingController(),
   ];
 
-  final List<String> _inputs = ["7", "8", "9", "4", "5", "6", "1", "2", "3"];
+  final List<String> _inputs = ['7', '8', '9', '4', '5', '6', '1', '2', '3'];
+
+  final _controller = Get.put(OtpController());
 
   @override
   Widget build(BuildContext context) {
@@ -36,15 +42,15 @@ class _OTPScreenState extends State<OTPScreen> {
         children: [
           const Spacer(),
           const Text(
-            "Enter OTP",
+            'Enter OTP',
             style: TextStyle(
-              fontSize: 35,
+              fontSize: 32,
               fontWeight: FontWeight.w500,
               color: ColorPalette.qlessApp,
             ),
           ),
           const Text(
-            "We sent it to the number +994 55  *** ** 12",
+            'We sent it to the number +994 55  *** ** 12',
             style: TextStyle(color: Colors.blueGrey),
           ),
           Spaces.vertical20,
@@ -59,23 +65,26 @@ class _OTPScreenState extends State<OTPScreen> {
                       child: TextField(
                         maxLength: 1,
                         maxLines: 1,
+                        inputFormatters: <TextInputFormatter>[
+                          FilteringTextInputFormatter.digitsOnly
+                        ],
                         controller: _controllers[index],
                         textInputAction: TextInputAction.next,
                         keyboardType: TextInputType.none,
                         focusNode: _nodes[index],
                         autofocus: index == 0,
-                        decoration: const InputDecoration(counterText: ""),
+                        decoration: const InputDecoration(counterText: ''),
                       ),
                     ),
                   ),
                 )
                 .toList(),
           ),
-          Spaces.vertical20,
-          const Text(
-            "Resend code in 00:50",
-            style: TextStyle(fontSize: 16, color: ColorPalette.lightBlack),
-          ),
+          //Spaces.vertical20,
+          // const Text(
+          //   'Resend code in 00:50',
+          //   style: TextStyle(fontSize: 16, color: ColorPalette.lightBlack),
+          // ),
           Expanded(
             flex: 5,
             child: GridView.count(
@@ -91,31 +100,28 @@ class _OTPScreenState extends State<OTPScreen> {
                       primary: ColorPalette.qlessApp),
                   child: const Icon(Icons.fingerprint_rounded, size: 40),
                   onPressed: () async {
-                    ///FINGERPRINT
-                    bool a = await authenticate();
-                    print("AUTHSTATUSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS: " +
-                        a.toString());
+                    await _controller.authenticate(widget.email);
                   },
                 ),
                 TextButton(
                   style: TextButton.styleFrom(
                       backgroundColor: Colors.white,
                       primary: ColorPalette.qlessApp),
-                  child: const Text("0",
-                      style: TextStyle(
-                          color: ColorPalette.lightBlack, fontSize: 28)),
-                  onPressed: () {
-                    addNumber("0");
-                  },
+                  child: const Text(
+                    "0",
+                    style: TextStyle(
+                      color: ColorPalette.lightBlack,
+                      fontSize: 28,
+                    ),
+                  ),
+                  onPressed: () => addNumber("0"),
                 ),
                 TextButton(
                   style: TextButton.styleFrom(
                       backgroundColor: Colors.white,
                       primary: ColorPalette.qlessApp),
                   child: const Icon(Icons.backspace_rounded, size: 35),
-                  onPressed: () {
-                    removeNumber();
-                  },
+                  onPressed: () => removeNumber(),
                 ),
                 ..._inputs.map(
                   (i) => TextButton(
@@ -125,9 +131,7 @@ class _OTPScreenState extends State<OTPScreen> {
                     child: Text(i,
                         style: const TextStyle(
                             color: ColorPalette.lightBlack, fontSize: 28)),
-                    onPressed: () {
-                      addNumber(i);
-                    },
+                    onPressed: () => addNumber(i),
                   ),
                 ),
               ],
@@ -161,14 +165,10 @@ class _OTPScreenState extends State<OTPScreen> {
     }
 
     if (completed) {
-      ///VERIFY TOKEN
-      if (_controllers[0].text.isNotEmpty &&
-          _controllers[1].text.isNotEmpty &&
-          _controllers[2].text.isNotEmpty &&
-          _controllers[3].text.isNotEmpty) {
-        Navigator.pushReplacement(
-            context, SlideRightRoute(page: const ResetPasswordScreen()));
-      }
+      _controller.confirmOtp(
+          int.parse(
+              '${_controllers[0].text}${_controllers[1].text}${_controllers[2].text}${_controllers[3].text}'),
+          widget.email);
     }
   }
 
@@ -191,23 +191,5 @@ class _OTPScreenState extends State<OTPScreen> {
     //   _controllers[0].clear();
     //   _nodes[0].requestFocus();
     // }
-  }
-
-  Future<bool> authenticate() async {
-    final LocalAuthentication localAuthentication = LocalAuthentication();
-
-    bool isBiometricSupported = await localAuthentication.isDeviceSupported();
-    bool canCheckBiometrics = await localAuthentication.canCheckBiometrics;
-
-    bool isAuthenticated = false;
-
-    if (isBiometricSupported && canCheckBiometrics) {
-      isAuthenticated = await localAuthentication.authenticate(
-        localizedReason: 'Please complete the biometrics to proceed.',
-        biometricOnly: true,
-      );
-    }
-
-    return isAuthenticated;
   }
 }

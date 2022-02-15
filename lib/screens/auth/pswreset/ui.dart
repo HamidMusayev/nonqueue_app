@@ -4,7 +4,8 @@ import 'package:nonqueue_app/utils/constants.dart';
 import 'package:nonqueue_app/widgets/route_transitions/slide_route.dart';
 
 class ResetPasswordScreen extends StatefulWidget {
-  const ResetPasswordScreen({Key? key}) : super(key: key);
+  final String email;
+  const ResetPasswordScreen(this.email, {Key? key}) : super(key: key);
 
   @override
   _ResetPasswordScreenState createState() => _ResetPasswordScreenState();

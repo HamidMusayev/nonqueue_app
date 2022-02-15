@@ -1,76 +1,42 @@
 import 'package:nonqueue_app/api/abstract/api_repository.dart';
 import 'package:nonqueue_app/api/abstract/user_repository.dart';
 import 'package:nonqueue_app/api/result/result.dart';
-import 'package:nonqueue_app/models/user/confirm_email_request.dart';
-import 'package:nonqueue_app/models/user/sign_up_request.dart';
 import 'package:nonqueue_app/models/user/token_request.dart';
 import 'package:nonqueue_app/models/user/token_response.dart';
 
-import '../../models/user.dart';
+//SERVICE METODLARI ALINAN OBYEKLERI JSON SERIALIZE EDIB
+// DIO METODLARINA GONDER VE GERI DONEN CAVABI
+// JSON DESERIALIZE EDIB OBYEKT QAYTARIR
 
 class UserService implements UserRepository {
-  final ApiRepository _apiRepository;
-  UserService(this._apiRepository);
+  final ApiRepository _dio;
+  final String _baseUrl = 'http://161.97.137.220:5000/Home';
+  UserService(this._dio);
 
   @override
-  Future<Result<User>> login(User user) async {
-    var result = await _apiRepository.post(user.toJson(),
-        'http://194.135.95.23:8081/medicaldirector/api/user/login',
-        language: 'az');
-    if (result.success) {
-      return result.data!["success"]
-          ? Result<User>.succes(User.fromJson(result.data!["data"]),
-              message: result.data!["message"])
-          : Result<User>.error(message: result.data!["message"]);
+  Future<Result<String>> userSignUp(Map<String, dynamic> request) async {
+    var res = await _dio.post(request, '$_baseUrl/UserSignUp');
+
+    if (res.success) {
+      return res.data['success']
+          ? Result.succes(res.data['data'])
+          : Result.error(message: res.data['message']);
     } else {
-      return Result<User>.error(message: result.message);
+      return Result.error(message: res.message);
     }
   }
 
   @override
-  Future<Result<User>> updateData(User user) async {
-    var result = await _apiRepository.post(user.toJson(),
-        'http://194.135.95.23:8081/agrodirector_merkez/api/user/updatedata');
-    if (result.success) {
-      return result.data!["success"]
-          ? Result<User>.succes(User.fromJson(result.data!["data"]),
-              message: result.data!["message"])
-          : Result<User>.error(message: result.data!["message"]);
+  Future<Result> sendOTPEmail(Map<String, dynamic> request) async {
+    var res = await _dio.post(request, '$_baseUrl/SendOTPEmail');
+
+    if (res.success) {
+      return res.data['success']
+          ? Result.succes(res.data['data'])
+          : Result.error(message: res.data['message']);
     } else {
-      return Result<User>.error(message: result.message);
+      return Result.error(message: res.message);
     }
-  }
-
-  @override
-  Future<Result<User>> updateProfilePicture(User user) async {
-    var result =
-        await _apiRepository.post(user.toJson(), 'user/updateprofilepicture');
-    if (result.success) {
-      return result.data!["success"]
-          ? Result<User>.succes(User.fromJson(result.data!["data"]),
-              message: result.data!["message"])
-          : Result<User>.error(message: result.data!["message"]);
-    } else {
-      return Result<User>.error(message: result.message);
-    }
-  }
-
-  @override
-  Future<Result> sendOTPEmail(String email) {
-    // TODO: implement sendOTPEmail
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<Result<User>> userSignUp(SignUpRequest request) {
-    // TODO: implement userSignUp
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<Result> confirmEmail(ConfirmEmailRequest request) {
-    // TODO: implement confirmEmail
-    throw UnimplementedError();
   }
 
   @override
@@ -87,7 +53,55 @@ class UserService implements UserRepository {
     throw UnimplementedError();
   }
 
-  // Future<DataResult<bool>> sendProfilePicture(XFile xFile, String userid) async {
+  @override
+  Future<Result> confirmEmail(Map<String, dynamic> request) {
+    // TODO: implement confirmEmail
+    throw UnimplementedError();
+  }
+
+  // @override
+  // Future<Result<User>> login(User user) async {
+  //   var result = await _dio.post(user.toJson(),
+  //       'http://194.135.95.23:8081/medicaldirector/api/user/login',
+  //       language: 'az');
+  //   if (result.success) {
+  //     return result.data!["success"]
+  //         ? Result<User>.succes(User.fromJson(result.data!["data"]),
+  //         message: result.data!["message"])
+  //         : Result<User>.error(message: result.data!["message"]);
+  //   } else {
+  //     return Result<User>.error(message: result.message);
+  //   }
+  // }
+  //
+  // @override
+  // Future<Result<User>> updateData(User user) async {
+  //   var result = await _dio.post(user.toJson(),
+  //       'http://194.135.95.23:8081/agrodirector_merkez/api/user/updatedata');
+  //   if (result.success) {
+  //     return result.data!["success"]
+  //         ? Result<User>.succes(User.fromJson(result.data!["data"]),
+  //         message: result.data!["message"])
+  //         : Result<User>.error(message: result.data!["message"]);
+  //   } else {
+  //     return Result<User>.error(message: result.message);
+  //   }
+  // }
+  //
+  // @override
+  // Future<Result<User>> updateProfilePicture(User user) async {
+  //   var result = await _dio.post(user.toJson(), 'user/updateprofilepicture');
+  //   if (result.success) {
+  //     return result.data!["success"]
+  //         ? Result<User>.succes(User.fromJson(result.data!["data"]),
+  //         message: result.data!["message"])
+  //         : Result<User>.error(message: result.data!["message"]);
+  //   } else {
+  //     return Result<User>.error(message: result.message);
+  //   }
+  // }
+
+// Future<DataResult<bool>> sendProfilePicture(XFile xFile, String userid) async {
   //   try {
   //     EncriptionHelper encriptionHelper = EncriptionHelper();
   //     Dio dio = Dio();

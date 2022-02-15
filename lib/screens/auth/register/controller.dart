@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nonqueue_app/screens/inapp/ui.dart';
+import 'package:nonqueue_app/utils/constants.dart';
 import 'package:nonqueue_app/widgets/phone_input/phone_number.dart';
 import '../../../api/concrete/dio_service.dart';
 import '../../../api/concrete/user_service.dart';
 import '../../../api/result/result.dart';
-import '../../../models/user.dart';
 import '../../../utils/shared.dart';
 
-class RegisterController extends GetxController{
+class RegisterController extends GetxController {
   RxBool isLoading = false.obs;
   RxBool isObsecure = true.obs;
 
@@ -19,28 +19,37 @@ class RegisterController extends GetxController{
   final TextEditingController numberTxt = TextEditingController();
   final TextEditingController passTxt = TextEditingController();
 
-  final UserService _service = UserService(DIOService());
+  final UserService _service = UserService(DioService());
 
-  void changeObsecure(){
+  void changeObsecure() {
     isObsecure.value = !isObsecure.value;
   }
 
-  void onChangedNumber(PhoneNumber number){
+  void onChangedNumber(PhoneNumber number) {
     prefixTxt.text = number.countryCode;
   }
 
   void register() async {
-    isLoading.value = true;
-    Result<User> result = await _service.login(User(email: emailTxt.text, sifre: passTxt.text));
+    if (formKey.currentState?.validate() ?? false) {
+      isLoading.value = true;
+      Result<String> result = await _service.userSignUp({
+        'email': emailTxt.text,
+        'name': usernameTxt.text,
+        'password': passTxt.text,
+        'phoneNumber': numberTxt.text,
+        'signUpType': 'user',
+        'numberPrefix': prefixTxt.text,
+      });
 
-    if (result.success) {
-      SharedHelper.saveJson('user', result.data!.toJson());
+      if (result.success) {
+        SharedHelper.saveJson('userId', result.data);
+        isLoading.value = false;
 
-      Get.to(const InAppScreen());
-    } else {
-      isLoading.value = false;
-      Get.rawSnackbar(title: 'error'.tr, message: result.message, backgroundColor: Colors.red);
+        Get.to(const InAppScreen());
+      } else {
+        isLoading.value = false;
+        Get.showSnackbar(Snacks.error(result.message));
+      }
     }
   }
-
 }

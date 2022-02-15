@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nonqueue_app/utils/constants.dart';
+import 'package:nonqueue_app/utils/validators.dart';
 import 'package:nonqueue_app/widgets/phone_input/phone_input_field.dart';
 
 import 'controller.dart';
@@ -42,9 +43,10 @@ class RegisterScreen extends GetView<RegisterController> {
                     controller: controller.emailTxt,
                     keyboardType: TextInputType.emailAddress,
                     textInputAction: TextInputAction.next,
+                    validator: ValidatorHelper.validateEmail,
                     autofocus: true,
                     decoration: const InputDecoration(
-                      hintText: 'E-mail',
+                      hintText: 'Email address',
                       prefixIcon: Icon(Icons.alternate_email_rounded),
                     ),
                   ),
@@ -52,6 +54,7 @@ class RegisterScreen extends GetView<RegisterController> {
                   TextFormField(
                     controller: controller.usernameTxt,
                     keyboardType: TextInputType.name,
+                    validator: ValidatorHelper.validateUsername,
                     textInputAction: TextInputAction.next,
                     decoration: const InputDecoration(
                       hintText: 'Username',
@@ -70,7 +73,9 @@ class RegisterScreen extends GetView<RegisterController> {
                   ),
                   Spaces.vertical10,
                   Obx(
-                    () => TextField(
+                    () => TextFormField(
+                      controller: controller.passTxt,
+                      validator: ValidatorHelper.validatePassword,
                       keyboardType: TextInputType.visiblePassword,
                       textInputAction: TextInputAction.done,
                       obscureText: controller.isObsecure.value,

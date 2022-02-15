@@ -51,7 +51,7 @@ class _MyAppState extends State<MyApp> {
       title: 'Non Queue',
       localizationsDelegates: GlobalMaterialLocalizations.delegates,
       supportedLocales: const [Locale('en', 'UK'), Locale('az', 'AZ')],
-      locale: const Locale('az', 'AZ'),
+      locale: Get.deviceLocale,
       fallbackLocale: const Locale('en', 'UK'),
       translations: Messages(),
       theme: ThemeData(

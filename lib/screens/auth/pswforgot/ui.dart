@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:nonqueue_app/screens/auth/otp/ui.dart';
+import 'package:get/get.dart';
+import 'package:nonqueue_app/screens/auth/pswforgot/controller.dart';
 import 'package:nonqueue_app/utils/constants.dart';
-import 'package:nonqueue_app/widgets/route_transitions/slide_route.dart';
+import 'package:nonqueue_app/utils/validators.dart';
 
-class ForgotPasswordScreen extends StatefulWidget {
+class ForgotPasswordScreen extends GetView<ForgotPasswordController> {
   const ForgotPasswordScreen({Key? key}) : super(key: key);
 
   @override
-  _ForgotPasswordScreenState createState() => _ForgotPasswordScreenState();
-}
-
-class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
-  @override
   Widget build(BuildContext context) {
+    Get.put(ForgotPasswordController());
+
     return Scaffold(
       appBar: AppBar(),
       body: SingleChildScrollView(
@@ -37,23 +35,28 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                 style: TextStyle(color: ColorPalette.greyInputText),
               ),
               Spaces.vertical50,
-              TextFormField(
-                keyboardType: TextInputType.emailAddress,
-                textInputAction: TextInputAction.done,
-                autofocus: true,
-                decoration: const InputDecoration(
-                  hintText: 'Email address/Phone number',
+              Form(
+                key: controller.formKey,
+                child: TextFormField(
+                  controller: controller.emailTxt,
+                  keyboardType: TextInputType.emailAddress,
+                  textInputAction: TextInputAction.done,
+                  autofocus: true,
+                  validator: ValidatorHelper.validateEmail,
+                  decoration: const InputDecoration(
+                    hintText: 'Email address',
+                  ),
                 ),
               ),
               Spaces.vertical50,
-              Visibility(
-                replacement: const Center(child: CircularProgressIndicator()),
-                child: TextButton(
-                  child: const Text('Submit'),
-                  onPressed: () {
-                    Navigator.pushReplacement(context,
-                        SlideRightRoute(page: const OTPScreen()));
-                  },
+              Obx(
+                () => Visibility(
+                  visible: controller.isLoading.value,
+                  child: const Center(child: CircularProgressIndicator()),
+                  replacement: TextButton(
+                    child: const Text('Submit'),
+                    onPressed: controller.sendOtp,
+                  ),
                 ),
               ),
             ],

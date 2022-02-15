@@ -5,28 +5,10 @@ import 'package:flutter/foundation.dart';
 import 'package:nonqueue_app/api/abstract/api_repository.dart';
 import 'package:nonqueue_app/api/result/result.dart';
 
-class DIOService implements ApiRepository {
-  @override
-  Future<Result<Map<String, dynamic>>> delete(
-      Map<String, dynamic> body, String url) {
-    // TODO: implement delete
-    throw UnimplementedError();
-  }
+//DIO METODLARI JSON FORMATINDA DATA ALIB SERVERE SORGULARI GONDERIR
+//VE RESPONSE CODU YOXLAYIB GERIYE JSON QAYTARIR
 
-  @override
-  Future<Result<Map<String, dynamic>>> get(
-      Map<String, dynamic> body, String url) {
-    // TODO: implement get
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<Result<Map<String, dynamic>>> put(
-      Map<String, dynamic> body, String url) {
-    // TODO: implement put
-    throw UnimplementedError();
-  }
-
+class DioService implements ApiRepository {
   @override
   Future<Result> post(Map<String, dynamic> body, String url,
       {String? token, String? language}) async {
@@ -52,6 +34,7 @@ class DIOService implements ApiRepository {
           responseBody: true,
         ));
       }
+
       Response response = await dio.post(url, data: body);
 
       if (response.statusCode == 200) {

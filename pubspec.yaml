@@ -12,6 +12,9 @@ dependencies:
   flutter:
     sdk: flutter
 
+  flutter_localizations:
+    sdk: flutter
+
   #animate_do: ^2.1.0
   flutter_svg: ^1.0.3
   shared_preferences: ^2.0.12
@@ -32,8 +35,7 @@ dependencies:
   pretty_dio_logger: ^1.1.1
   google_sign_in: ^5.2.3
 
-  flutter_localizations:
-    sdk: flutter
+
 
 
 dev_dependencies:

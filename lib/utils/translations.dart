@@ -4,22 +4,22 @@ class Messages extends Translations {
   @override
   Map<String, Map<String, String>> get keys => {
         'en_UK': {
-          'error': 'Error',
+          'error': 'Wrong',
+          'success': 'Successful',
+          'alert': 'Alert',
+          'nomessage': 'No message',
+          'authfingerprint': 'Please complete the biometrics to proceed.',
           'login': 'Login',
           'register': 'Register'
         },
         'az_AZ': {
-          'xəta': 'Xəta',
+          'error': 'Uğursuz',
+          'success': 'Hazırdır',
+          'alert': 'Xəbərdarlıq',
+          'nomessage': 'Mesaj yoxdur',
+          'authfingerprint': 'Davam etmək üçün barmaq izindən istifadə edin.',
           'login': 'Giriş',
           'register': 'Qeydiyyat'
         },
-        'tr_TR': {
-          'login': 'Oturum aç',
-          'register': 'Kayıt'
-        },
-        'ru_RU': {
-          'login': 'Войти',
-          'register': 'Pегистр'
-        }
       };
 }

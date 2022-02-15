@@ -28,7 +28,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   final TextEditingController _emailTxt = TextEditingController();
   final TextEditingController _passTxt = TextEditingController();
-  final UserService _service = UserService(DIOService());
+  final UserService _service = UserService(DioService());
 
   @override
   Widget build(BuildContext context) {
@@ -127,7 +127,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         style: TextStyle(color: Colors.blueGrey),
                       ),
                       GestureDetector(
-                        onTap: () => Get.to(const RegisterScreen()),
+                        onTap: () => Get.off(const RegisterScreen()),
                         child: const Text(
                           'Sign up',
                           style: TextStyle(
@@ -150,32 +150,32 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   void login() async {
-    setState(() => _loading = true);
-    Result<User> result =
-        await _service.login(User(email: _emailTxt.text, sifre: _passTxt.text));
-    if (result.success) {
-      User _user = result.data!;
-      _user.sifre = 'null';
-      SharedHelper.saveJson('user', _user.toJson());
-
-      Navigator.pushReplacement(
-          context, SlideRightRoute(page: const InAppScreen()));
-    } else {
-      setState(() => _loading = false);
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          backgroundColor: Colors.red,
-          content: Wrap(
-            direction: Axis.horizontal,
-            spacing: 10,
-            runSpacing: 10,
-            children: [
-              const Icon(Icons.cancel_rounded, color: Colors.white),
-              Text(result.message),
-            ],
-          ),
-        ),
-      );
-    }
+    // setState(() => _loading = true);
+    // Result<User> result =
+    //     await _service.login(User(email: _emailTxt.text, sifre: _passTxt.text));
+    // if (result.success) {
+    //   User _user = result.data!;
+    //   _user.sifre = 'null';
+    //   SharedHelper.saveJson('user', _user.toJson());
+    //
+    //   Navigator.pushReplacement(
+    //       context, SlideRightRoute(page: const InAppScreen()));
+    // } else {
+    //   setState(() => _loading = false);
+    //   ScaffoldMessenger.of(context).showSnackBar(
+    //     SnackBar(
+    //       backgroundColor: Colors.red,
+    //       content: Wrap(
+    //         direction: Axis.horizontal,
+    //         spacing: 10,
+    //         runSpacing: 10,
+    //         children: [
+    //           const Icon(Icons.cancel_rounded, color: Colors.white),
+    //           Text(result.message),
+    //         ],
+    //       ),
+    //     ),
+    //   );
+    //}
   }
 }
