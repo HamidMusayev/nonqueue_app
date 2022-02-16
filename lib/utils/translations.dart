@@ -8,20 +8,22 @@ class Messages extends Translations {
           'success': 'Successful',
           'alert': 'Alert',
           'nomessage': 'No message',
-          'authfingerprint': 'Please complete the biometrics to proceed.',
+          // 'authfingerprint': 'Please complete the biometrics to proceed.',
           'passwordsmustbesame': 'Passwords must be same!',
-          'login': 'Login',
-          'register': 'Register'
+          'changedpassword': 'Password changed',
+          'sendedotp': 'Verificcation code sent to your E-mail',
+          'optverified': 'Code verified'
         },
         'az_AZ': {
           'error': 'Uğursuz',
           'success': 'Hazırdır',
           'alert': 'Xəbərdarlıq',
           'nomessage': 'Mesaj yoxdur',
-          'authfingerprint': 'Davam etmək üçün barmaq izindən istifadə edin.',
+          // 'authfingerprint': 'Davam etmək üçün barmaq izindən istifadə edin.',
           'passwordsmustbesame': 'Şifrələr eyni olmalıdır!',
-          'login': 'Giriş',
-          'register': 'Qeydiyyat'
+          'changedpassword': 'Şifrəniz yeniləndi',
+          'sendedotp': 'Təsdiqləmə kodu elektron poçtunuza göndərildi',
+          'optverified': 'Kodunuz təsdiqləndi'
         },
       };
 }

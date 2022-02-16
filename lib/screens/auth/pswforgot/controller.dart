@@ -20,6 +20,8 @@ class ForgotPasswordController extends GetxController {
 
       if (res.success) {
         isLoading.value = false;
+        Get.showSnackbar(Snacks.success('sendedotp'.tr));
+
         Get.off(OTPScreen(emailTxt.text, 'checkOtp'));
       } else {
         isLoading.value = false;

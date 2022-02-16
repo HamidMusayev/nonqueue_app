@@ -27,8 +27,9 @@ class ResetPasswordController extends GetxController {
 
         if (res.success) {
           isLoading.value = false;
+          Get.showSnackbar(Snacks.success('changedpassword'.tr));
 
-          Get.off(const LoginScreen());
+          Get.offAll(const LoginScreen());
         } else {
           isLoading.value = false;
           Get.showSnackbar(Snacks.error(res.message));

@@ -60,7 +60,7 @@ class Snacks {
       padding: Paddings.p24,
       margin: Paddings.p12,
       duration: const Duration(milliseconds: 2500),
-      snackPosition: SnackPosition.BOTTOM,
+      snackPosition: SnackPosition.TOP,
       backgroundColor: Colors.red.shade700,
       borderRadius: 10,
       icon: const Icon(
@@ -78,7 +78,7 @@ class Snacks {
       padding: Paddings.p24,
       margin: Paddings.p12,
       duration: const Duration(milliseconds: 2500),
-      snackPosition: SnackPosition.BOTTOM,
+      snackPosition: SnackPosition.TOP,
       backgroundColor: Colors.green.shade600,
       borderRadius: 10,
       icon: const Icon(

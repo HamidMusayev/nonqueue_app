@@ -19,6 +19,7 @@ class OtpController extends GetxController {
 
     if (res.success) {
       isLoading.value = false;
+      Get.showSnackbar(Snacks.success('otpverified'.tr));
 
       type == 'confirmEmail'
           ? Get.off(const LoginScreen())

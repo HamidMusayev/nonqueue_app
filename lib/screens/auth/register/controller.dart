@@ -45,6 +45,8 @@ class RegisterController extends GetxController {
 
         if (resultOtp) {
           isLoading.value = false;
+          Get.showSnackbar(Snacks.success('sendedotp'.tr));
+
           Get.to(OTPScreen(emailTxt.text, 'confirmEmail'));
         }
       } else {
