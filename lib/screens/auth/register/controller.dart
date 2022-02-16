@@ -39,7 +39,7 @@ class RegisterController extends GetxController {
       });
 
       if (result.success) {
-        SharedHelper.saveJson('userId', result.data);
+        SharedHelper.setString('userId', result.data!);
 
         bool resultOtp = await sendOtp();
 

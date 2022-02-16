@@ -12,7 +12,8 @@ class Messages extends Translations {
           'passwordsmustbesame': 'Passwords must be same!',
           'changedpassword': 'Password changed',
           'sendedotp': 'Verificcation code sent to your E-mail',
-          'optverified': 'Code verified'
+          'optverified': 'Code verified',
+          'errorgooglesignin': 'Can not sign in with Google'
         },
         'az_AZ': {
           'error': 'Uğursuz',
@@ -23,7 +24,8 @@ class Messages extends Translations {
           'passwordsmustbesame': 'Şifrələr eyni olmalıdır!',
           'changedpassword': 'Şifrəniz yeniləndi',
           'sendedotp': 'Təsdiqləmə kodu elektron poçtunuza göndərildi',
-          'optverified': 'Kodunuz təsdiqləndi'
+          'optverified': 'Kodunuz təsdiqləndi',
+          'errorgooglesignin': 'Google ilə daxil olmaq alınmadı'
         },
       };
 }

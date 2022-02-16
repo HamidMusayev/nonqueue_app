@@ -58,7 +58,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             _pageIndex == 2
                 ? TextButton(
                     child: const Text('Get Started'),
-                    onPressed: () => Get.to(const OnBoardScreen()))
+                    onPressed: () => Get.off(const OnBoardScreen()))
                 : TextButton(
                     child: const Text('Next'),
                     onPressed: () {

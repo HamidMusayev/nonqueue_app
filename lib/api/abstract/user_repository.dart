@@ -9,6 +9,7 @@ abstract class UserRepository {
   Future<Result> confirmEmail(Map<String, dynamic> request);
   Future<Result> checkOtp(Map<String, dynamic> request);
   Future<Result> resetPassword(Map<String, dynamic> request);
+  Future<Result<TokenResponse>> googleLogin(Map<String, dynamic> request);
   Future<Result<TokenResponse>> getResourceOwnerPasswordToken(
       TokenRequest request);
   Future<Result<TokenResponse>> getResourceOwnerPasswordTokenByRefreshToken(

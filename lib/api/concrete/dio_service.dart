@@ -28,8 +28,6 @@ class DioService implements ApiRepository {
       Dio dio = Dio(options);
       if (kDebugMode) {
         dio.interceptors.add(PrettyDioLogger(
-          request: true,
-          requestHeader: true,
           requestBody: true,
           responseBody: true,
         ));

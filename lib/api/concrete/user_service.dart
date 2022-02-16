@@ -19,7 +19,7 @@ class UserService implements UserRepository {
 
     if (res.success) {
       return res.data['success']
-          ? Result.succes(res.data['data'])
+          ? Result.succes(res.data['value'].toString())
           : Result.error(message: res.data['message']);
     } else {
       return Result.error(message: res.message);
@@ -32,7 +32,7 @@ class UserService implements UserRepository {
 
     if (res.success) {
       return res.data['success']
-          ? Result.succes(res.data['data'])
+          ? Result.succes(res.data['value'])
           : Result.error(message: res.data['message']);
     } else {
       return Result.error(message: res.message);
@@ -42,11 +42,12 @@ class UserService implements UserRepository {
   @override
   Future<Result<TokenResponse>> getResourceOwnerPasswordToken(
       TokenRequest request) async {
-    var res = await _dio.post(request.toJson(), '$_baseUrl/GetResourceOwnerPasswordToken');
+    var res = await _dio.post(
+        request.toJson(), '$_baseUrl/GetResourceOwnerPasswordToken');
 
     if (res.success) {
       return res.data['success']
-          ? Result.succes(res.data['data'])
+          ? Result.succes(TokenResponse.fromJson(res.data['value']))
           : Result.error(message: res.data['message']);
     } else {
       return Result.error(message: res.message);
@@ -66,7 +67,7 @@ class UserService implements UserRepository {
 
     if (res.success) {
       return res.data['success']
-          ? Result.succes(res.data['data'])
+          ? Result.succes(res.data['value'])
           : Result.error(message: res.data['message']);
     } else {
       return Result.error(message: res.message);
@@ -79,7 +80,7 @@ class UserService implements UserRepository {
 
     if (res.success) {
       return res.data['success']
-          ? Result.succes(res.data['data'])
+          ? Result.succes(res.data['value'])
           : Result.error(message: res.data['message']);
     } else {
       return Result.error(message: res.message);
@@ -92,7 +93,20 @@ class UserService implements UserRepository {
 
     if (res.success) {
       return res.data['success']
-          ? Result.succes(res.data['data'])
+          ? Result.succes(res.data['value'])
+          : Result.error(message: res.data['message']);
+    } else {
+      return Result.error(message: res.message);
+    }
+  }
+
+  @override
+  Future<Result<TokenResponse>> googleLogin(Map<String, dynamic> request) async {
+    var res = await _dio.post(request, '$_baseUrl/GoogleLogin');
+
+    if (res.success) {
+      return res.data['success']
+          ? Result.succes(TokenResponse.fromJson(res.data['value']))
           : Result.error(message: res.data['message']);
     } else {
       return Result.error(message: res.message);

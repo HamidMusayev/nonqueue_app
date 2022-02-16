@@ -1,18 +1,58 @@
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:nonqueue_app/models/user/token_response.dart';
 
-class OnBoardController extends GetxController{
-  final _googleSignIn = GoogleSignIn();
-  GoogleSignInAccount? _googleAccount;
+import '../../../api/concrete/dio_service.dart';
+import '../../../api/concrete/user_service.dart';
+import '../../../api/result/result.dart';
+import '../../../utils/constants.dart';
+import '../../../utils/shared.dart';
+import '../../inapp/ui.dart';
+
+class OnBoardController extends GetxController {
+  RxBool isLoading = false.obs;
+
+  final _googleService = GoogleSignIn();
+  final UserService _service = UserService(DioService());
+
+  Future<void> googleLogin(GoogleSignInAccount googleAccount) async {
+    isLoading.value = true;
+    Result<TokenResponse> res = await _service.googleLogin({
+      'displayName': googleAccount.displayName,
+      'email': googleAccount.email,
+      'photoUrl': googleAccount.photoUrl,
+      'googleId': googleAccount.id,
+      'serverAuthCode': googleAccount.serverAuthCode,
+      'clientId': 'string',
+      'clientSecrets': 'string'
+    });
+
+    if (res.success) {
+      SharedHelper.saveJson('token', res.data);
+      isLoading.value = false;
+
+      Get.offAll(const InAppScreen());
+    } else {
+      isLoading.value = false;
+      Get.showSnackbar(Snacks.error(res.message));
+    }
+  }
 
   Future<void> signInWithGoogle() async {
-    try{
-      _googleAccount = await _googleSignIn.signIn();
-      print(_googleAccount);
-      update();
-    }catch(error){
-      print("Platform Exception");
-    }
+    // try {
+    //   GoogleSignInAccount? _googleAccount = await _googleService.signIn();
+    //   if (_googleAccount != null && _googleAccount.serverAuthCode != null) {
+    //     await googleLogin(_googleAccount);
+    //   }
+    //   //update();
+    // } catch (error) {
+    //   isLoading.value = false;
+    //   Get.showSnackbar(Snacks.error('errorgooglesignin'.tr));
+    // }
 
+    GoogleSignInAccount? _googleAccount = await _googleService.signIn();
+      if (_googleAccount != null && _googleAccount.serverAuthCode != null) {
+        await googleLogin(_googleAccount);
+      }
   }
 }

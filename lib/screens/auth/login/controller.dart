@@ -6,7 +6,9 @@ import 'package:nonqueue_app/screens/inapp/ui.dart';
 import '../../../api/concrete/dio_service.dart';
 import '../../../api/concrete/user_service.dart';
 import '../../../api/result/result.dart';
+import '../../../models/user/token_response.dart';
 import '../../../utils/constants.dart';
+import '../../../utils/shared.dart';
 
 class LoginController extends GetxController {
   RxBool isLoading = false.obs;
@@ -23,7 +25,7 @@ class LoginController extends GetxController {
   void login() async {
     if (formKey.currentState?.validate() ?? false) {
       isLoading.value = true;
-      Result res = await _service.getResourceOwnerPasswordToken(TokenRequest(
+      Result<TokenResponse> res = await _service.getResourceOwnerPasswordToken(TokenRequest(
         clientId: 'string',
         clientSecrets: 'string',
         email: emailTxt.text,
@@ -31,7 +33,7 @@ class LoginController extends GetxController {
       ));
 
       if (res.success) {
-        //SharedHelper.saveJson('userId', res.data);
+        SharedHelper.saveJson('token', res.data?.toJson());
         isLoading.value = false;
 
         Get.off(const InAppScreen());
