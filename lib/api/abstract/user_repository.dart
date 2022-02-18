@@ -1,4 +1,5 @@
 import 'package:nonqueue_app/api/result/result.dart';
+import 'package:nonqueue_app/models/user/phone_number.dart';
 import 'package:nonqueue_app/models/user/token_response.dart';
 
 import '../../models/user/token_request.dart';
@@ -14,4 +15,7 @@ abstract class UserRepository {
       TokenRequest request);
   Future<Result<TokenResponse>> getResourceOwnerPasswordTokenByRefreshToken(
       TokenRequest request);
+
+  Future<Result<List<PhoneNumber>>> checkContacts(
+      List<String> numbers);
 }

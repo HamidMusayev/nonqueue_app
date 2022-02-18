@@ -1,8 +1,11 @@
+import 'dart:convert';
 import 'package:nonqueue_app/api/abstract/api_repository.dart';
 import 'package:nonqueue_app/api/abstract/user_repository.dart';
 import 'package:nonqueue_app/api/result/result.dart';
+import 'package:nonqueue_app/models/user/phone_number.dart';
 import 'package:nonqueue_app/models/user/token_request.dart';
 import 'package:nonqueue_app/models/user/token_response.dart';
+import 'package:nonqueue_app/utils/shared.dart';
 
 //SERVICE METODLARI ALINAN OBYEKLERI JSON SERIALIZE EDIB
 // DIO METODLARINA GONDER VE GERI DONEN CAVABI
@@ -11,6 +14,7 @@ import 'package:nonqueue_app/models/user/token_response.dart';
 class UserService implements UserRepository {
   final ApiRepository _dio;
   final String _baseUrl = 'http://161.97.137.220:5000/Home';
+  final String _baseUrl2 = 'http://161.97.137.220:5002/Product/Profil';
   UserService(this._dio);
 
   @override
@@ -101,13 +105,37 @@ class UserService implements UserRepository {
   }
 
   @override
-  Future<Result<TokenResponse>> googleLogin(Map<String, dynamic> request) async {
+  Future<Result<TokenResponse>> googleLogin(
+      Map<String, dynamic> request) async {
     var res = await _dio.post(request, '$_baseUrl/GoogleLogin');
 
     if (res.success) {
       return res.data['success']
           ? Result.succes(TokenResponse.fromJson(res.data['value']))
           : Result.error(message: res.data['message']);
+    } else {
+      return Result.error(message: res.message);
+    }
+  }
+
+  @override
+  Future<Result<List<PhoneNumber>>> checkContacts(List<String> numbers) async {
+    var res = await _dio.post(
+      jsonEncode(numbers),
+      '$_baseUrl2/CheckContacts',
+      token: TokenResponse.fromJson(await SharedHelper.readJson('token'))
+          .accessToken,
+    );
+
+    if (res.success) {
+      if (res.data['success']) {
+        List<dynamic> parsed =
+            res.data['value'].map((e) => PhoneNumber.fromJson(e)).toList();
+        List<PhoneNumber> list = List<PhoneNumber>.from(parsed);
+        return Result.succes(list);
+      } else {
+        return Result.error(message: res.data['message']);
+      }
     } else {
       return Result.error(message: res.message);
     }

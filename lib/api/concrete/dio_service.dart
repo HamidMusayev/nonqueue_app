@@ -10,7 +10,7 @@ import 'package:nonqueue_app/api/result/result.dart';
 
 class DioService implements ApiRepository {
   @override
-  Future<Result> post(Map<String, dynamic> body, String url,
+  Future<Result> post(dynamic body, String url,
       {String? token, String? language}) async {
     var options = BaseOptions(headers: <String, String>{
       HttpHeaders.contentTypeHeader: 'application/json; charset=UTF-8'
@@ -30,6 +30,7 @@ class DioService implements ApiRepository {
         dio.interceptors.add(PrettyDioLogger(
           requestBody: true,
           responseBody: true,
+          requestHeader: true,
         ));
       }
 

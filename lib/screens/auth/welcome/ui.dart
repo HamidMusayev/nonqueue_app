@@ -19,7 +19,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     {"title": "Order before you go!", "image": "assets/splash/first.svg"},
     {
       "title": "Make your friends happy by sending them gifts!",
-      "image": "assets/splash/first.svg"
+      "image": "assets/splash/second.svg"
     },
     {
       "title": "Get your order without waiting!",
