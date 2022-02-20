@@ -30,32 +30,29 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: Paddings.p24,
-        child: Column(
-          children: <Widget>[
-            const Spacer(flex: 2),
-            Expanded(
-              flex: 6,
-              child: PageView.builder(
-                controller: _controller,
-                physics: const BouncingScrollPhysics(),
-                onPageChanged: (value) => setState(() => _pageIndex = value),
-                itemCount: _splashData.length,
-                itemBuilder: (context, index) =>
-                    SplashContent(data: _splashData[index]),
-              ),
+      body: Column(
+        children: <Widget>[
+          Expanded(
+            child: PageView.builder(
+              controller: _controller,
+              physics: const BouncingScrollPhysics(),
+              onPageChanged: (value) => setState(() => _pageIndex = value),
+              itemCount: _splashData.length,
+              itemBuilder: (context, index) =>
+                  SplashContent(data: _splashData[index]),
             ),
-            const Spacer(flex: 2),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: List.generate(
-                _splashData.length,
-                (index) => buildDot(index: index),
-              ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: List.generate(
+              _splashData.length,
+              (index) => buildDot(index: index),
             ),
-            const Spacer(flex: 1),
-            _pageIndex == 2
+          ),
+          Spaces.vertical20,
+          Padding(
+            padding: Paddings.p24,
+            child: _pageIndex == 2
                 ? TextButton(
                     child: const Text('Get Started'),
                     onPressed: () => Get.off(const OnBoardScreen()))
@@ -72,8 +69,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       );
                     },
                   ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
@@ -83,7 +80,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
       duration: const Duration(milliseconds: 400),
       margin: const EdgeInsets.only(right: 8),
       height: 8,
-      width: _pageIndex == index ? 35 : 30,
+      width: _pageIndex == index ? 36 : 32,
       decoration: BoxDecoration(
         color:
             _pageIndex == index ? ColorPalette.nonQueue : ColorPalette.stroke,

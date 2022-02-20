@@ -9,6 +9,8 @@ class SplashContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisSize: MainAxisSize.max,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         Flexible(
           child: SvgPicture.asset(
@@ -16,15 +18,18 @@ class SplashContent extends StatelessWidget {
             placeholderBuilder: (context) => const CircularProgressIndicator(),
           ),
         ),
-        Spaces.vertical50,
-        Text(
-          data['title'] ?? '',
-          softWrap: true,
-          textAlign: TextAlign.center,
-          style: const TextStyle(
-            color: ColorPalette.greyInputText,
-            fontWeight: FontWeight.w500,
-            fontSize: 22,
+        Spaces.vertical20,
+        Padding(
+          padding: Paddings.p24,
+          child: Text(
+            data['title'] ?? '',
+            softWrap: true,
+            textAlign: TextAlign.center,
+            style: const TextStyle(
+              color: ColorPalette.greyInputText,
+              fontWeight: FontWeight.w500,
+              fontSize: 22,
+            ),
           ),
         ),
       ],
