@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nonqueue_app/screens/checkout/ui.dart';
 import 'package:nonqueue_app/widgets/bonus_card.dart';
 
 import '../../utils/constants.dart';
@@ -228,7 +229,16 @@ class _CartScreenState extends State<CartScreen> {
                 ],
               ),
               Spaces.vertical50,
-              TextButton(onPressed: () {}, child: const Text('Next'))
+              TextButton(
+                child: const Text('Next'),
+                onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const CheckoutScreen(),
+                    fullscreenDialog: true,
+                  ),
+                ),
+              )
             ],
           ),
         ),

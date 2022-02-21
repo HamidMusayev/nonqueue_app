@@ -19,7 +19,7 @@ class OnBoardScreen extends GetView<OnBoardController> {
         decoration: const BoxDecoration(
           image: DecorationImage(
             image: NetworkImage(
-                "https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs/130592059/original/3ea72cb2f595b9068597d282e9a5c92755a2cf94/a-hand-holding-iphone-samsung-with-your-app.jpg"),
+                'https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs/130592059/original/3ea72cb2f595b9068597d282e9a5c92755a2cf94/a-hand-holding-iphone-samsung-with-your-app.jpg'),
             fit: BoxFit.cover,
           ),
         ),
@@ -34,16 +34,16 @@ class OnBoardScreen extends GetView<OnBoardController> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     TextButton(
-                      child: const Text("Sign Up"),
+                      child: const Text('Sign Up'),
                       onPressed: () => Get.to(const RegisterScreen()),
                     ),
                     Spaces.vertical10,
                     TextButton.icon(
                       style: TextButton.styleFrom(
                           backgroundColor: Colors.white, primary: Colors.black),
-                      label: const Text("Continue with Google"),
+                      label: const Text('Continue with Google'),
                       icon: SvgPicture.asset(
-                        "assets/splash/google.svg",
+                        'assets/splash/google.svg',
                         width: 30,
                       ),
                       onPressed: controller.signInWithGoogle,
@@ -53,9 +53,9 @@ class OnBoardScreen extends GetView<OnBoardController> {
                             style: TextButton.styleFrom(
                                 backgroundColor: Colors.white,
                                 primary: Colors.black),
-                            label: const Text("Continue with Apple"),
+                            label: const Text('Continue with Apple'),
                             icon: SvgPicture.asset(
-                              "assets/splash/apple.svg",
+                              'assets/splash/apple.svg',
                               width: 30,
                             ),
                             onPressed: controller.signInWithGoogle,
@@ -76,12 +76,12 @@ class OnBoardScreen extends GetView<OnBoardController> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         const Text(
-                          "Already have an account?",
+                          'Already have an account?',
                           style: TextStyle(color: Colors.white),
                         ),
                         GestureDetector(
                           child: const Text(
-                            "LOG IN",
+                            'LOG IN',
                             style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,

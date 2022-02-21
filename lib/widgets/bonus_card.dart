@@ -19,8 +19,8 @@ class BonusCard extends StatelessWidget {
     }
     return completed
         ? Card(
-            shadowColor: Colors.blueGrey.shade50,
-            elevation: 5,
+            shadowColor: ColorPalette.stroke,
+            elevation: 4,
             margin: Paddings.p8,
             color: Colors.white,
             shape: const RoundedRectangleBorder(borderRadius: Radiuses.r20),
@@ -41,7 +41,7 @@ class BonusCard extends StatelessWidget {
                             backgroundColor: Colors.grey.shade100,
                             radius: 40,
                             backgroundImage: const NetworkImage(
-                                "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/classic_snowball-9022de0.jpg?quality=90&resize=500,454")),
+                                'https://images.immediate.co.uk/production/volatile/sites/30/2020/08/classic_snowball-9022de0.jpg?quality=90&resize=500,454')),
                         Spaces.vertical20,
                         Flexible(
                           child: ConstrainedBox(
@@ -117,8 +117,8 @@ class BonusCard extends StatelessWidget {
             ),
           )
         : Card(
-            shadowColor: ColorPalette.qlessApp,
-            elevation: 5,
+            shadowColor: ColorPalette.couponColor,
+            elevation: 4,
             margin: Paddings.p8,
             color: ColorPalette.couponColor,
             shape: const RoundedRectangleBorder(borderRadius: Radiuses.r20),
@@ -139,7 +139,7 @@ class BonusCard extends StatelessWidget {
                             backgroundColor: Colors.white60,
                             radius: 40,
                             backgroundImage: NetworkImage(
-                                "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/classic_snowball-9022de0.jpg?quality=90&resize=500,454")),
+                                'https://images.immediate.co.uk/production/volatile/sites/30/2020/08/classic_snowball-9022de0.jpg?quality=90&resize=500,454')),
                         Spaces.vertical20,
                         Flexible(
                           child: ConstrainedBox(

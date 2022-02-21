@@ -3,6 +3,8 @@ import 'package:nonqueue_app/screens/auth/welcome/ui.dart';
 import 'package:nonqueue_app/screens/inapp/drawer/account_info.dart';
 import 'package:nonqueue_app/utils/constants.dart';
 
+import '../../utils/shared.dart';
+
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({Key? key}) : super(key: key);
 
@@ -148,16 +150,15 @@ class ProfileScreen extends StatelessWidget {
                         title: const Text('Log out'),
                         content: const Text('Are you sure?'),
                         actions: [
-                          TextButton(
+                          OutlinedButton(
                             child: const Text('Yes'),
                             style: TextButton.styleFrom(
-                              fixedSize: const Size.fromHeight(40),
-                              backgroundColor: ColorPalette.glassEffect,
-                              primary: ColorPalette.qlessApp,
+                              fixedSize: const Size.fromHeight(45),
+                              shape: const RoundedRectangleBorder(
+                                  borderRadius: Radiuses.r10),
                             ),
                             onPressed: () {
-                              // SharedHelper.removeJson("user");
-                              // SharedHelper.setBool("saveMe", false);
+                              SharedHelper.removeJson('token');
                               Navigator.pushAndRemoveUntil<dynamic>(
                                   context,
                                   MaterialPageRoute<dynamic>(
@@ -169,7 +170,8 @@ class ProfileScreen extends StatelessWidget {
                           TextButton(
                             child: const Text('No'),
                             style: TextButton.styleFrom(
-                                fixedSize: const Size.fromHeight(40)),
+                              fixedSize: const Size.fromHeight(45),
+                            ),
                             onPressed: () => Navigator.pop(context),
                           ),
                         ],

@@ -118,13 +118,13 @@ class _OTPScreenState extends State<OTPScreen> {
                       backgroundColor: Colors.white,
                       primary: ColorPalette.qlessApp),
                   child: const Text(
-                    "0",
+                    '0',
                     style: TextStyle(
                       color: ColorPalette.lightBlack,
                       fontSize: 28,
                     ),
                   ),
-                  onPressed: () => addNumber("0"),
+                  onPressed: () => addNumber('0'),
                 ),
                 TextButton(
                   style: TextButton.styleFrom(

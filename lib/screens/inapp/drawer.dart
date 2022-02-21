@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:nonqueue_app/screens/inapp/drawer/about.dart';
 import 'package:nonqueue_app/screens/inapp/drawer/account_info.dart';
 import 'package:nonqueue_app/screens/inapp/drawer/balance.dart';
@@ -16,9 +17,24 @@ class HomeDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<Map<String, String>> _languages = [
-      {'name': 'Azerbaijani', 'icon': 'az.png'},
-      {'name': 'Russian', 'icon': 'ru.png'},
-      {'name': 'English', 'icon': 'us.png'},
+      {
+        'name': 'Azerbaijani',
+        'icon': 'az.png',
+        'locale': 'az',
+        'locale2': 'AZ',
+      },
+      {
+        'name': 'English',
+        'icon': 'us.png',
+        'locale': 'en',
+        'locale2': 'GB',
+      },
+      {
+        'name': 'Russian',
+        'icon': 'ru.png',
+        'locale': 'ru',
+        'locale2': 'RU',
+      },
     ];
 
     Map<String, String> _activeLang = _languages[0];
@@ -143,7 +159,8 @@ class HomeDrawer extends StatelessWidget {
                     borderRadius: Radiuses.r10,
                     onChanged: (lang) {
                       if (lang != null) {
-                        // Get.updateLocale(lang.value);
+                        Get.updateLocale(
+                            Locale(lang['locale']!, lang['locale2']));
                         state(() => _activeLang = lang);
                       }
                     },

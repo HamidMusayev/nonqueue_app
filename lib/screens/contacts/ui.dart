@@ -62,6 +62,7 @@ class ContactsScreen extends GetView<ContactsController> {
                 replacement: Expanded(
                   child: ListView.builder(
                     itemCount: controller.nonQueueContacts.length,
+                    physics: const BouncingScrollPhysics(),
                     itemBuilder: (context, index) => ListTile(
                       onTap: () => Navigator.push(
                         context,

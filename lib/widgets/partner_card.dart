@@ -9,8 +9,8 @@ class PartnerCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      shadowColor: Colors.blueGrey.shade50,
-      elevation: 5,
+      shadowColor: ColorPalette.stroke,
+      elevation: 4,
       margin: Paddings.p8,
       color: Colors.white,
       clipBehavior: Clip.antiAlias,

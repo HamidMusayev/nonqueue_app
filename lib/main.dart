@@ -33,7 +33,7 @@ class _MyAppState extends State<MyApp> {
 
   void getSavedData() async {
     SharedPreferences _prefs = await SharedPreferences.getInstance();
-    if (_prefs.getBool("saveMe") ?? false) {
+    if (_prefs.getBool('saveMe') ?? false) {
       _user = User.fromJson(await SharedHelper.readJson('user'));
       if (_user != null && _user?.pinappusmast != null) {
         setState(() => _saveMe = true);
@@ -50,7 +50,7 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       title: 'Non Queue',
       localizationsDelegates: GlobalMaterialLocalizations.delegates,
-      supportedLocales: const [Locale('en', 'UK'), Locale('az', 'AZ')],
+      supportedLocales: const [Locale('en', 'UK'), Locale('az', 'AZ'), Locale('ru', 'RU')],
       locale: Get.deviceLocale,
       fallbackLocale: const Locale('en', 'UK'),
       translations: Messages(),

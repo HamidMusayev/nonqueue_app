@@ -16,14 +16,14 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   final _controller = PageController(initialPage: 0);
 
   final List<Map<String, String>> _splashData = [
-    {"title": "Order before you go!", "image": "assets/splash/first.svg"},
+    {'title': 'Order before you go!', 'image': 'assets/splash/first.svg'},
     {
-      "title": "Make your friends happy by sending them gifts!",
-      "image": "assets/splash/second.svg"
+      'title': 'Make your friends happy by sending them gifts!',
+      'image': 'assets/splash/second.svg'
     },
     {
-      "title": "Get your order without waiting!",
-      "image": "assets/splash/third.svg"
+      'title': 'Get your order without waiting!',
+      'image': 'assets/splash/third.svg'
     },
   ];
 

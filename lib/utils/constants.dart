@@ -10,7 +10,7 @@ class ColorPalette {
   static const editColor = Color(0xFF40B9FF);
   static const greyInputText = Color(0xFF999CAD);
   static const stroke = Color(0xFFE2E8F0);
-  static const glassEffect = Color(0xFFFAFAFA);
+  static const glassEffect = Color(0xFFF6F5FA);
 }
 
 MaterialColor colorCustom = const MaterialColor(0xFFC25875, kcolor);

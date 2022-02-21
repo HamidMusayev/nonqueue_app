@@ -93,7 +93,7 @@ class RegisterScreen extends GetView<RegisterController> {
                   ),
                   Spaces.vertical20,
                   const Text(
-                      "By signing up, you’re agree to our Terms & Conditions and Private Policy"),
+                      'By signing up, you’re agree to our Terms & Conditions and Private Policy'),
                   Spaces.vertical50,
                   Obx(
                     () => Visibility(

@@ -50,7 +50,7 @@ class MyBonusPanel extends StatelessWidget {
     ];
 
     return Container(
-      padding: Paddings.p16,
+      padding: Paddings.p16.copyWith(bottom: 0),
       child: Column(
         children: [
           const TextField(

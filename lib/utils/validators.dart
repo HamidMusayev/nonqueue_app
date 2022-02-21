@@ -2,7 +2,7 @@ class ValidatorHelper {
   static String? validateEmail(String? text) {
     return text == null || text == ''
         ? 'E-mail boşdur!'
-        : RegExp(r"^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(text)
+        : RegExp(r'^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+').hasMatch(text)
             ? null
             : 'Düzgün E-mail yazın!';
   }
