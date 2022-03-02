@@ -31,7 +31,7 @@ class OnBoardController extends GetxController {
       SharedHelper.saveJson('token', res.data);
       isLoading.value = false;
 
-      Get.offAll(const InAppScreen());
+      Get.offAll(()=>const InAppScreen());
     } else {
       isLoading.value = false;
       Get.showSnackbar(Snacks.error(res.message));

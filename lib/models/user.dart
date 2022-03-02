@@ -1,30 +1,26 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:nonqueue_app/models/claim.dart';
 
 part 'user.g.dart';
 
 @JsonSerializable()
 class User {
-  @JsonKey(name: 'piN_APPUSMAST')
-  final String? pinappusmast;
-  final String? pinusmastgrup;
-  final String? tcident;
-  final String? username;
-  final String email;
-  String? sifre;
-  final String? telkod;
-  final String? telno;
-  final String? birtdate;
+  final String? id;
+  final String? name;
+  final String? email;
+  final String? userName;
+  final String? isActive;
+  final String? phoneNumber;
+  final List<Claim>? userClaims;
 
   User(
-      {this.pinappusmast,
-      this.pinusmastgrup,
-      this.tcident,
-      this.username,
-      required this.email,
-      required this.sifre,
-      this.telkod,
-      this.telno,
-      this.birtdate});
+      {this.id,
+      this.name,
+      this.email,
+      this.userName,
+      this.isActive,
+      this.phoneNumber,
+      this.userClaims});
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
 

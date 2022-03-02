@@ -14,7 +14,7 @@ class RegisterController extends GetxController {
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final TextEditingController emailTxt = TextEditingController();
-  final TextEditingController usernameTxt = TextEditingController();
+  final TextEditingController fullnameTxt = TextEditingController();
   final TextEditingController prefixTxt = TextEditingController();
   final TextEditingController numberTxt = TextEditingController();
   final TextEditingController passTxt = TextEditingController();
@@ -31,7 +31,7 @@ class RegisterController extends GetxController {
       isLoading.value = true;
       Result<String> result = await _service.userSignUp({
         'email': emailTxt.text,
-        'name': usernameTxt.text,
+        'name': fullnameTxt.text,
         'password': passTxt.text,
         'phoneNumber': numberTxt.text,
         'signUpType': 'user',

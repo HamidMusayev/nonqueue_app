@@ -7,25 +7,23 @@ part of 'user.dart';
 // **************************************************************************
 
 User _$UserFromJson(Map<String, dynamic> json) => User(
-      pinappusmast: json['piN_APPUSMAST'] as String?,
-      pinusmastgrup: json['pinusmastgrup'] as String?,
-      tcident: json['tcident'] as String?,
-      username: json['username'] as String?,
-      email: json['email'] as String,
-      sifre: json['sifre'] as String?,
-      telkod: json['telkod'] as String?,
-      telno: json['telno'] as String?,
-      birtdate: json['birtdate'] as String?,
+      id: json['id'] as String?,
+      name: json['name'] as String?,
+      email: json['email'] as String?,
+      userName: json['userName'] as String?,
+      isActive: json['isActive'] as String?,
+      phoneNumber: json['phoneNumber'] as String?,
+      userClaims: (json['userClaims'] as List<dynamic>?)
+          ?.map((e) => Claim.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
-      'piN_APPUSMAST': instance.pinappusmast,
-      'pinusmastgrup': instance.pinusmastgrup,
-      'tcident': instance.tcident,
-      'username': instance.username,
+      'id': instance.id,
+      'name': instance.name,
       'email': instance.email,
-      'sifre': instance.sifre,
-      'telkod': instance.telkod,
-      'telno': instance.telno,
-      'birtdate': instance.birtdate,
+      'userName': instance.userName,
+      'isActive': instance.isActive,
+      'phoneNumber': instance.phoneNumber,
+      'userClaims': instance.userClaims,
     };

@@ -6,6 +6,7 @@ import 'package:nonqueue_app/screens/inapp/ui.dart';
 import '../../../api/concrete/dio_service.dart';
 import '../../../api/concrete/user_service.dart';
 import '../../../api/result/result.dart';
+import '../../../models/user.dart';
 import '../../../models/user/token_response.dart';
 import '../../../utils/constants.dart';
 import '../../../utils/shared.dart';
@@ -25,7 +26,8 @@ class LoginController extends GetxController {
   void login() async {
     if (formKey.currentState?.validate() ?? false) {
       isLoading.value = true;
-      Result<TokenResponse> res = await _service.getResourceOwnerPasswordToken(TokenRequest(
+      Result<TokenResponse> res =
+          await _service.getResourceOwnerPasswordToken(TokenRequest(
         clientId: 'string',
         clientSecrets: 'string',
         email: emailTxt.text,
@@ -34,9 +36,17 @@ class LoginController extends GetxController {
 
       if (res.success) {
         SharedHelper.saveJson('token', res.data?.toJson());
-        isLoading.value = false;
 
-        Get.off(const InAppScreen());
+        Result<User> res2 = await _service.getById('id=');
+        if (res2.success) {
+          SharedHelper.saveJson('user', res2.data?.toJson());
+
+          isLoading.value = false;
+          Get.off(const InAppScreen());
+        } else {
+          isLoading.value = false;
+          Get.showSnackbar(Snacks.error(res.message));
+        }
       } else {
         isLoading.value = false;
         Get.showSnackbar(Snacks.error(res.message));

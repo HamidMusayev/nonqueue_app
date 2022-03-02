@@ -50,16 +50,6 @@ class AccountInfoScreen extends StatelessWidget {
                   validator: (value) => ValidatorHelper.validateEmail(value),
                   decoration: const InputDecoration(hintText: 'Email address'),
                 ),
-                // Spaces.vertical10,
-                // TextFormField(
-                //   keyboardType: TextInputType.visiblePassword,
-                //   textInputAction: TextInputAction.done,
-                //   obscureText: _isObsecure,
-                //   controller: _newpassTxt,
-                //   validator: (value) =>
-                //       ValidatorHelper.validatePassword(value),
-                //   decoration: const InputDecoration(hintText: 'Password'),
-                // ),
                 Spaces.vertical10,
                 TextFormField(
                   keyboardType: TextInputType.visiblePassword,

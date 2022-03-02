@@ -7,19 +7,21 @@ import 'package:nonqueue_app/models/user/token_request.dart';
 import 'package:nonqueue_app/models/user/token_response.dart';
 import 'package:nonqueue_app/utils/shared.dart';
 
+import '../../models/user.dart';
+
 //SERVICE METODLARI ALINAN OBYEKLERI JSON SERIALIZE EDIB
 // DIO METODLARINA GONDER VE GERI DONEN CAVABI
 // JSON DESERIALIZE EDIB OBYEKT QAYTARIR
 
 class UserService implements UserRepository {
   final ApiRepository _dio;
-  final String _baseUrl = 'http://161.97.137.220:5000/Home';
+  final String _baseUrl = 'http://161.97.137.220:5000';
   final String _baseUrl2 = 'http://161.97.137.220:5002/Product/Profil';
   UserService(this._dio);
 
   @override
   Future<Result<String>> userSignUp(Map<String, dynamic> request) async {
-    var res = await _dio.post(request, '$_baseUrl/UserSignUp');
+    var res = await _dio.post(request, '$_baseUrl/Home/UserSignUp');
 
     if (res.success) {
       return res.data['success']
@@ -32,7 +34,7 @@ class UserService implements UserRepository {
 
   @override
   Future<Result> sendOTPEmail(Map<String, dynamic> request) async {
-    var res = await _dio.post(request, '$_baseUrl/SendOTPEmail');
+    var res = await _dio.post(request, '$_baseUrl/Home/SendOTPEmail');
 
     if (res.success) {
       return res.data['success']
@@ -47,7 +49,7 @@ class UserService implements UserRepository {
   Future<Result<TokenResponse>> getResourceOwnerPasswordToken(
       TokenRequest request) async {
     var res = await _dio.post(
-        request.toJson(), '$_baseUrl/GetResourceOwnerPasswordToken');
+        request.toJson(), '$_baseUrl/Home/GetResourceOwnerPasswordToken');
 
     if (res.success) {
       return res.data['success']
@@ -67,7 +69,7 @@ class UserService implements UserRepository {
 
   @override
   Future<Result> confirmEmail(Map<String, dynamic> request) async {
-    var res = await _dio.post(request, '$_baseUrl/ConfirmEmail');
+    var res = await _dio.post(request, '$_baseUrl/Home/ConfirmEmail');
 
     if (res.success) {
       return res.data['success']
@@ -80,7 +82,7 @@ class UserService implements UserRepository {
 
   @override
   Future<Result> checkOtp(Map<String, dynamic> request) async {
-    var res = await _dio.post(request, '$_baseUrl/CheckOTP');
+    var res = await _dio.post(request, '$_baseUrl/Home/CheckOTP');
 
     if (res.success) {
       return res.data['success']
@@ -93,7 +95,7 @@ class UserService implements UserRepository {
 
   @override
   Future<Result> resetPassword(Map<String, dynamic> request) async {
-    var res = await _dio.post(request, '$_baseUrl/ResetPassword');
+    var res = await _dio.post(request, '$_baseUrl/Home/ResetPassword');
 
     if (res.success) {
       return res.data['success']
@@ -107,7 +109,7 @@ class UserService implements UserRepository {
   @override
   Future<Result<TokenResponse>> googleLogin(
       Map<String, dynamic> request) async {
-    var res = await _dio.post(request, '$_baseUrl/GoogleLogin');
+    var res = await _dio.post(request, '$_baseUrl/Home/GoogleLogin');
 
     if (res.success) {
       return res.data['success']
@@ -136,6 +138,32 @@ class UserService implements UserRepository {
       } else {
         return Result.error(message: res.data['message']);
       }
+    } else {
+      return Result.error(message: res.message);
+    }
+  }
+
+  @override
+  Future<Result> userEdit(Map<String, dynamic> request) async {
+    var res = await _dio.put(request, '$_baseUrl/User/Edit');
+
+    if (res.success) {
+      return res.data['success']
+          ? Result.succes(res.data['message'])
+          : Result.error(message: res.data['message']);
+    } else {
+      return Result.error(message: res.message);
+    }
+  }
+
+  @override
+  Future<Result<User>> getById(String querystring) async {
+    var res = await _dio.get('$_baseUrl/User/GetById?$querystring');
+
+    if (res.success) {
+      return res.data['success']
+          ? Result<User>.succes(User.fromJson(res.data['value']))
+          : Result.error(message: res.data['message']);
     } else {
       return Result.error(message: res.message);
     }

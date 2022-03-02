@@ -52,12 +52,13 @@ class RegisterScreen extends GetView<RegisterController> {
                   ),
                   Spaces.vertical10,
                   TextFormField(
-                    controller: controller.usernameTxt,
+                    controller: controller.fullnameTxt,
                     keyboardType: TextInputType.name,
                     validator: ValidatorHelper.validateUsername,
                     textInputAction: TextInputAction.next,
                     decoration: const InputDecoration(
-                      hintText: 'Username',
+                      hintText: 'Full name',
+                      helperText: 'Ex: Hamid Musayev',
                       prefixIcon: Icon(Icons.person_rounded),
                     ),
                   ),
