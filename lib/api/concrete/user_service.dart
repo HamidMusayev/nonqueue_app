@@ -16,7 +16,7 @@ import '../../models/user.dart';
 class UserService implements UserRepository {
   final ApiRepository _dio;
   final String _baseUrl = 'http://161.97.137.220:5000';
-  final String _baseUrl2 = 'http://161.97.137.220:5002/Product/Profil';
+  //final String _baseUrl2 = 'http://161.97.137.220:5002/Product/Profil';
   UserService(this._dio);
 
   @override
@@ -124,7 +124,7 @@ class UserService implements UserRepository {
   Future<Result<List<PhoneNumber>>> checkContacts(List<String> numbers) async {
     var res = await _dio.post(
       jsonEncode(numbers),
-      '$_baseUrl2/CheckContacts',
+      '$_baseUrl/User/CheckContacts',
       token: TokenResponse.fromJson(await SharedHelper.readJson('token'))
           .accessToken,
     );
@@ -145,7 +145,9 @@ class UserService implements UserRepository {
 
   @override
   Future<Result> userEdit(Map<String, dynamic> request) async {
-    var res = await _dio.put(request, '$_baseUrl/User/Edit');
+    var res = await _dio.put(request, '$_baseUrl/User/Edit',
+        token: TokenResponse.fromJson(await SharedHelper.readJson('token'))
+            .accessToken);
 
     if (res.success) {
       return res.data['success']
@@ -158,7 +160,9 @@ class UserService implements UserRepository {
 
   @override
   Future<Result<User>> getById(String querystring) async {
-    var res = await _dio.get('$_baseUrl/User/GetById?$querystring');
+    var res = await _dio.get('$_baseUrl/User/GetById?$querystring',
+        token: TokenResponse.fromJson(await SharedHelper.readJson('token'))
+            .accessToken);
 
     if (res.success) {
       return res.data['success']

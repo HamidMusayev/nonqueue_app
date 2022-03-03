@@ -4,8 +4,8 @@ part 'claim.g.dart';
 
 @JsonSerializable()
 class Claim {
-  final String? id;
-  final String? userId;
+  final int? id;
+  final int? userId;
   final String? type;
   final String? value;
 

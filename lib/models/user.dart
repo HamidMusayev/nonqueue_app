@@ -5,11 +5,10 @@ part 'user.g.dart';
 
 @JsonSerializable()
 class User {
-  final String? id;
+  final int? id;
   final String? name;
   final String? email;
   final String? userName;
-  final String? isActive;
   final String? phoneNumber;
   final List<Claim>? userClaims;
 
@@ -18,7 +17,6 @@ class User {
       this.name,
       this.email,
       this.userName,
-      this.isActive,
       this.phoneNumber,
       this.userClaims});
 

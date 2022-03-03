@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:get/get_utils/get_utils.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
@@ -39,12 +40,12 @@ class DioService implements ApiRepository {
       if (response.statusCode == 200) {
         return Result.succes(response.data);
       } else if (response.statusCode == 401) {
-        return Result.error(message: 'Eauthor');
+        return Result.error(message: 'eauthor'.tr);
       } else {
-        return Result.error(message: 'Erequest');
+        return Result.error(message: 'erequest'.tr);
       }
     } catch (e) {
-      return Result.error(message: 'Econnection');
+      return Result.error(message: 'econnection'.tr);
     }
   }
 
@@ -78,12 +79,12 @@ class DioService implements ApiRepository {
       if (response.statusCode == 200) {
         return Result.succes(response.data);
       } else if (response.statusCode == 401) {
-        return Result.error(message: 'Eauthor');
+        return Result.error(message: 'eauthor'.tr);
       } else {
-        return Result.error(message: 'Erequest');
+        return Result.error(message: 'erequest'.tr);
       }
     } catch (e) {
-      return Result.error(message: 'Econnection');
+      return Result.error(message: 'econnection'.tr);
     }
   }
 
@@ -116,12 +117,12 @@ class DioService implements ApiRepository {
       if (response.statusCode == 200) {
         return Result.succes(response.data);
       } else if (response.statusCode == 401) {
-        return Result.error(message: 'Eauthor');
+        return Result.error(message: 'eauthor'.tr);
       } else {
-        return Result.error(message: 'Erequest');
+        return Result.error(message: 'erequest'.tr);
       }
     } catch (e) {
-      return Result.error(message: 'Econnection');
+      return Result.error(message: 'econnection'.tr);
     }
   }
 }

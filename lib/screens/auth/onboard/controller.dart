@@ -5,6 +5,7 @@ import 'package:nonqueue_app/models/user/token_response.dart';
 import '../../../api/concrete/dio_service.dart';
 import '../../../api/concrete/user_service.dart';
 import '../../../api/result/result.dart';
+import '../../../models/user.dart';
 import '../../../utils/constants.dart';
 import '../../../utils/shared.dart';
 import '../../inapp/ui.dart';
@@ -29,9 +30,17 @@ class OnBoardController extends GetxController {
 
     if (res.success) {
       SharedHelper.saveJson('token', res.data);
-      isLoading.value = false;
 
-      Get.offAll(()=>const InAppScreen());
+      Result<User> res2 = await _service.getById('id=${res.data?.userId}');
+      if (res2.success) {
+        SharedHelper.saveJson('user', res2.data?.toJson());
+
+        isLoading.value = false;
+        Get.offAll(() => const InAppScreen());
+      } else {
+        isLoading.value = false;
+        Get.showSnackbar(Snacks.error(res2.message));
+      }
     } else {
       isLoading.value = false;
       Get.showSnackbar(Snacks.error(res.message));
@@ -50,9 +59,11 @@ class OnBoardController extends GetxController {
     //   Get.showSnackbar(Snacks.error('errorgooglesignin'.tr));
     // }
 
+    isLoading.value = true;
+
     GoogleSignInAccount? _googleAccount = await _googleService.signIn();
-      if (_googleAccount != null && _googleAccount.serverAuthCode != null) {
-        await googleLogin(_googleAccount);
-      }
+    if (_googleAccount != null && _googleAccount.serverAuthCode != null) {
+      await googleLogin(_googleAccount);
+    }
   }
 }

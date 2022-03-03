@@ -7,11 +7,10 @@ part of 'user.dart';
 // **************************************************************************
 
 User _$UserFromJson(Map<String, dynamic> json) => User(
-      id: json['id'] as String?,
+      id: json['id'] as int?,
       name: json['name'] as String?,
       email: json['email'] as String?,
       userName: json['userName'] as String?,
-      isActive: json['isActive'] as String?,
       phoneNumber: json['phoneNumber'] as String?,
       userClaims: (json['userClaims'] as List<dynamic>?)
           ?.map((e) => Claim.fromJson(e as Map<String, dynamic>))
@@ -23,7 +22,6 @@ Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
       'name': instance.name,
       'email': instance.email,
       'userName': instance.userName,
-      'isActive': instance.isActive,
       'phoneNumber': instance.phoneNumber,
       'userClaims': instance.userClaims,
     };

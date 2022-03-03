@@ -23,23 +23,23 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   bool _saveMe = false;
-  User? _user;
+  //User? _user;
 
-  @override
-  void initState() {
-    getSavedData();
-    super.initState();
-  }
+  // @override
+  // void initState() {
+  //   //getSavedData();
+  //   super.initState();
+  // }
 
-  void getSavedData() async {
-    SharedPreferences _prefs = await SharedPreferences.getInstance();
-    if (_prefs.getBool('saveMe') ?? false) {
-      _user = User.fromJson(await SharedHelper.readJson('user'));
-      if (_user != null && _user?.pinappusmast != null) {
-        setState(() => _saveMe = true);
-      }
-    }
-  }
+  // void getSavedData() async {
+  //   SharedPreferences _prefs = await SharedPreferences.getInstance();
+  //   if (_prefs.getBool('saveMe') ?? false) {
+  //     _user = User.fromJson(await SharedHelper.readJson('user'));
+  //     if (_user != null && _user?.pinappusmast != null) {
+  //       setState(() => _saveMe = true);
+  //     }
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {

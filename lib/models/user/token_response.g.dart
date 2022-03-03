@@ -13,6 +13,7 @@ TokenResponse _$TokenResponseFromJson(Map<String, dynamic> json) =>
           ? null
           : DateTime.parse(json['expiration'] as String),
       refreshToken: json['refreshToken'] as String?,
+      userId: json['userId'] as int?,
     );
 
 Map<String, dynamic> _$TokenResponseToJson(TokenResponse instance) =>
@@ -20,4 +21,5 @@ Map<String, dynamic> _$TokenResponseToJson(TokenResponse instance) =>
       'accessToken': instance.accessToken,
       'expiration': instance.expiration?.toIso8601String(),
       'refreshToken': instance.refreshToken,
+      'userId': instance.userId,
     };

@@ -16,6 +16,7 @@ class ProfileScreen extends GetView<ProfileController> {
 
     return Scaffold(
       body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
         child: Container(
           padding: Paddings.p16,
           child: Column(
@@ -92,6 +93,7 @@ class ProfileScreen extends GetView<ProfileController> {
               Spaces.vertical20,
               Spaces.vertical20,
               TextFormField(
+                controller: controller.fullnameTxt,
                 onChanged: controller.checkFullName,
                 decoration: const InputDecoration(
                   hintText: 'Full name',
@@ -99,6 +101,7 @@ class ProfileScreen extends GetView<ProfileController> {
               ),
               Spaces.vertical20,
               TextFormField(
+                controller: controller.usernameTxt,
                 onChanged: controller.checkUsername,
                 decoration: const InputDecoration(
                   hintText: 'Username',
@@ -106,6 +109,7 @@ class ProfileScreen extends GetView<ProfileController> {
               ),
               Spaces.vertical20,
               TextFormField(
+                controller: controller.bioTxt,
                 onChanged: controller.checkBio,
                 decoration: const InputDecoration(
                   hintText: 'Bio',
@@ -115,15 +119,16 @@ class ProfileScreen extends GetView<ProfileController> {
               Obx(
                 () => AnimatedSwitcher(
                   duration: const Duration(milliseconds: 400),
-                  child: controller.isChanged.value
-                      ? TextButton(
-                          child: const Text('Save Changes'),
-                          onPressed: () => Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const AccountInfoScreen(),
-                              fullscreenDialog: true,
-                            ),
+                  child: controller.isUsernameChanged.value ||
+                          controller.isFullnameChanged.value ||
+                          controller.isBioChanged.value
+                      ? Visibility(
+                          visible: !controller.isLoading.value,
+                          replacement:
+                              const Center(child: CircularProgressIndicator()),
+                          child: TextButton(
+                            child: const Text('Save Changes'),
+                            onPressed: controller.saveUserData,
                           ),
                         )
                       : const SizedBox(),
@@ -181,12 +186,7 @@ class ProfileScreen extends GetView<ProfileController> {
                           ),
                           onPressed: () {
                             SharedHelper.removeJson('token');
-                            Navigator.pushAndRemoveUntil<dynamic>(
-                                context,
-                                MaterialPageRoute<dynamic>(
-                                    builder: (BuildContext context) =>
-                                        const WelcomeScreen()),
-                                (route) => false);
+                            Get.offAll(() => const WelcomeScreen());
                           },
                         ),
                         TextButton(

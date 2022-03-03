@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:nonqueue_app/screens/auth/login/ui.dart';
 import 'package:nonqueue_app/screens/auth/register/ui.dart';
 import 'package:nonqueue_app/utils/constants.dart';
+import 'package:nonqueue_app/widgets/shadow.dart';
 import 'controller.dart';
 
 class OnBoardScreen extends GetView<OnBoardController> {
@@ -18,14 +19,23 @@ class OnBoardScreen extends GetView<OnBoardController> {
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: NetworkImage(
-                'https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs/130592059/original/3ea72cb2f595b9068597d282e9a5c92755a2cf94/a-hand-holding-iphone-samsung-with-your-app.jpg'),
+            image: AssetImage('assets/splash/onboard.jpeg'),
             fit: BoxFit.cover,
           ),
         ),
         child: Stack(
           children: [
-            _buildShadowGradient(),
+            Obx(
+              () => Visibility(
+                visible: controller.isLoading.value,
+                child: const Center(
+                  child: CircularProgressIndicator(
+                    color: ColorPalette.glassEffect,
+                  ),
+                ),
+              ),
+            ),
+            const ShadowGradient(),
             Align(
               alignment: Alignment.bottomCenter,
               child: Padding(
@@ -100,22 +110,4 @@ class OnBoardScreen extends GetView<OnBoardController> {
       ),
     );
   }
-
-  Widget _buildShadowGradient() {
-    return const DecoratedBox(
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          colors: [
-            Colors.transparent,
-            Colors.black87,
-          ],
-        ),
-      ),
-      child: SizedBox.expand(),
-    );
-  }
-
-  Future<void> signInWithGoogle() async {}
 }

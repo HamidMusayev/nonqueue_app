@@ -7,8 +7,8 @@ part of 'claim.dart';
 // **************************************************************************
 
 Claim _$ClaimFromJson(Map<String, dynamic> json) => Claim(
-      id: json['id'] as String?,
-      userId: json['userId'] as String?,
+      id: json['id'] as int?,
+      userId: json['userId'] as int?,
       type: json['type'] as String?,
       value: json['value'] as String?,
     );

@@ -7,8 +7,9 @@ class TokenResponse {
   String? accessToken;
   DateTime? expiration;
   String? refreshToken;
+  int? userId;
 
-  TokenResponse({this.accessToken, this.expiration, this.refreshToken});
+  TokenResponse({this.accessToken, this.expiration, this.refreshToken, this.userId});
 
   factory TokenResponse.fromJson(Map<String, dynamic> json) =>
       _$TokenResponseFromJson(json);

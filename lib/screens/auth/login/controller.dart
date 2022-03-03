@@ -37,15 +37,15 @@ class LoginController extends GetxController {
       if (res.success) {
         SharedHelper.saveJson('token', res.data?.toJson());
 
-        Result<User> res2 = await _service.getById('id=');
+        Result<User> res2 = await _service.getById('id=${res.data?.userId}');
         if (res2.success) {
           SharedHelper.saveJson('user', res2.data?.toJson());
 
           isLoading.value = false;
-          Get.off(const InAppScreen());
+          Get.offAll(() => const InAppScreen());
         } else {
           isLoading.value = false;
-          Get.showSnackbar(Snacks.error(res.message));
+          Get.showSnackbar(Snacks.error(res2.message));
         }
       } else {
         isLoading.value = false;
