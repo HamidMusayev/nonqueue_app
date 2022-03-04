@@ -18,6 +18,7 @@ class ProfileController extends GetxController {
   late User _user;
   final UserService _service = UserService(DioService());
 
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final TextEditingController fullnameTxt = TextEditingController();
   final TextEditingController usernameTxt = TextEditingController();
   final TextEditingController bioTxt = TextEditingController();
@@ -29,23 +30,15 @@ class ProfileController extends GetxController {
   }
 
   void checkFullName(String input) {
-    if (!(input == _user.name)) isFullnameChanged.value = true;
+    if (isFullnameChanged.isFalse) isFullnameChanged.value = true;
   }
 
   void checkUsername(String input) {
-    if (!(input == _user.userName)) isUsernameChanged.value = true;
+    if (isUsernameChanged.isFalse) isUsernameChanged.value = true;
   }
 
   void checkBio(String input) {
-    if (_user.userClaims?.where((e) => e.type == 'Bio').toList().isNotEmpty ??
-        false) {
-      if (!(input ==
-          _user.userClaims?.firstWhere((e) => e.type == 'Bio').value)) {
-        isBioChanged.value = true;
-      }
-    } else {
-      isBioChanged.value = true;
-    }
+    if (isBioChanged.isFalse) isBioChanged.value = true;
   }
 
   void getUserData() async {
@@ -60,15 +53,21 @@ class ProfileController extends GetxController {
   }
 
   Future<void> saveUserData() async {
-    isLoading.value = true;
-    if (isFullnameChanged.value) {
-      await editUser('FullName', fullnameTxt.text);
-    }
-    if (isUsernameChanged.value) {
-      await editUser('UserName', usernameTxt.text);
-    }
-    if (isBioChanged.value) {
-      await editUser('Bio', bioTxt.text);
+    if (formKey.currentState?.validate() ?? false) {
+      isLoading.value = true;
+      if (isFullnameChanged.value) {
+        await editUser('FullName', fullnameTxt.text);
+      }
+      if (isUsernameChanged.value) {
+        await editUser('UserName', usernameTxt.text);
+      }
+      if (isBioChanged.value) {
+        await editUser('Bio', bioTxt.text);
+      }
+      isBioChanged.value = false;
+      isUsernameChanged.value = false;
+      isFullnameChanged.value = false;
+      isLoading.value = false;
     }
   }
 
@@ -85,14 +84,11 @@ class ProfileController extends GetxController {
       if (res2.success) {
         SharedHelper.saveJson('user', res2.data?.toJson());
 
-        isLoading.value = false;
         Get.showSnackbar(Snacks.success(res.message));
       } else {
-        isLoading.value = false;
         Get.showSnackbar(Snacks.error(res2.message));
       }
     } else {
-      isLoading.value = false;
       Get.showSnackbar(Snacks.error(res.message));
     }
   }

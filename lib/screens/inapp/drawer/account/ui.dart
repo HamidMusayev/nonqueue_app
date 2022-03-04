@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:nonqueue_app/screens/inapp/drawer/account/contoller.dart';
 import 'package:nonqueue_app/screens/inapp/drawer/account_info_changepass.dart';
 import 'package:nonqueue_app/utils/constants.dart';
 import 'package:nonqueue_app/utils/validators.dart';
 
-class AccountInfoScreen extends StatelessWidget {
+import '../../../../widgets/phone_input/phone_input_field.dart';
+
+class AccountInfoScreen extends GetView<AccountController> {
   const AccountInfoScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    bool _isObsecure = true;
-
-    final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-
-    final TextEditingController _passTxt = TextEditingController();
-    final TextEditingController _newpassTxt = TextEditingController();
-    //final UserService _service = UserService(DIOService());
+    Get.put(AccountController());
 
     return Scaffold(
       appBar: AppBar(
@@ -31,7 +29,7 @@ class AccountInfoScreen extends StatelessWidget {
           padding: Paddings.p16,
           constraints: const BoxConstraints(maxWidth: 450),
           child: Form(
-            key: _formKey,
+            key: controller.formKey,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
@@ -46,31 +44,59 @@ class AccountInfoScreen extends StatelessWidget {
                   keyboardType: TextInputType.emailAddress,
                   textInputAction: TextInputAction.next,
                   autofocus: false,
-                  controller: _passTxt,
+                  controller: controller.emailTxt,
                   validator: (value) => ValidatorHelper.validateEmail(value),
                   decoration: const InputDecoration(hintText: 'Email address'),
                 ),
                 Spaces.vertical10,
-                TextFormField(
-                  keyboardType: TextInputType.visiblePassword,
-                  textInputAction: TextInputAction.done,
-                  controller: _newpassTxt,
-                  validator: (value) => ValidatorHelper.validatePassword(value),
-                  decoration: const InputDecoration(hintText: 'Phone number'),
+                IntlPhoneField(
+                  onChanged: controller.onChangedNumber,
+                  controller: controller.numberTxt,
+                  keyboardType: TextInputType.number,
+                  searchText: 'search'.tr,
+                  invalidNumberMessage: 'wrongnumber'.tr,
+                  initialCountryCode: 'AZ',
+                  textInputAction: TextInputAction.next,
+                  dropDownIcon: const Icon(Icons.arrow_drop_down_rounded),
                 ),
                 Spaces.vertical10,
-                TextFormField(
-                  keyboardType: TextInputType.text,
-                  textInputAction: TextInputAction.done,
-                  controller: _newpassTxt,
-                  validator: (value) => ValidatorHelper.validatePassword(value),
-                  decoration: const InputDecoration(hintText: 'Gender'),
+                DropdownButtonFormField<String>(
+                  hint: const Text('Gender'),
+                  onChanged: (value) {},
+                  items: [
+                    DropdownMenuItem<String>(
+                      value: 'male',
+                      child: Row(
+                        children: [
+                          const Icon(
+                            Icons.male_rounded,
+                            color: ColorPalette.editColor,
+                          ),
+                          Spaces.horizontal6,
+                          Text('male'.tr),
+                        ],
+                      ),
+                    ),
+                    DropdownMenuItem<String>(
+                      value: 'female',
+                      child: Row(
+                        children: [
+                          const Icon(
+                            Icons.female_rounded,
+                            color: ColorPalette.qlessApp,
+                          ),
+                          Spaces.horizontal6,
+                          Text('female'.tr),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
                 Spaces.vertical10,
                 TextFormField(
                   keyboardType: TextInputType.datetime,
                   textInputAction: TextInputAction.done,
-                  controller: _newpassTxt,
+                  //controller: _newpassTxt,
                   validator: (value) => ValidatorHelper.validatePassword(value),
                   decoration: const InputDecoration(hintText: 'Date of birth'),
                 ),

@@ -15,11 +15,21 @@ class ValidatorHelper {
             : null;
   }
 
-  static String? validateUsername(String? text) {
+  static String? validateFullname(String? text) {
     return text == null || text == ''
         ? 'Adınız boşdur!'
-        : text.length < 4
+        : text.length < 6
             ? 'Adınız çox qısadır!'
+            : !text.contains(' ')
+                ? 'Ad və soyadınız arasında boşluq olmalıdır!'
+                : null;
+  }
+
+  static String? validateUsername(String? text) {
+    return text == null || text == ''
+        ? 'İstifadəçi adınız boşdur!'
+        : text.length < 4
+            ? 'İstifadəçi adınız çox qısadır!'
             : null;
   }
 }

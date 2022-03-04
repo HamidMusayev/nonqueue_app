@@ -151,7 +151,7 @@ class UserService implements UserRepository {
 
     if (res.success) {
       return res.data['success']
-          ? Result.succes(res.data['message'])
+          ? Result.withoutData(true, res.data['message'])
           : Result.error(message: res.data['message']);
     } else {
       return Result.error(message: res.message);

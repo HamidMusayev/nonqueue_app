@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_utils/get_utils.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:dio/dio.dart';
@@ -11,24 +12,22 @@ import 'package:nonqueue_app/api/result/result.dart';
 
 class DioService implements ApiRepository {
   @override
-  Future<Result> post(dynamic body, String url,
-      {String? token, String? language}) async {
+  Future<Result> post(dynamic body, String url, {String? token}) async {
     var options = BaseOptions(headers: <String, String>{
-      HttpHeaders.contentTypeHeader: 'application/json; charset=UTF-8'
+      HttpHeaders.contentTypeHeader: 'application/json; charset=UTF-8',
+      HttpHeaders.acceptLanguageHeader: Get.locale?.languageCode ?? 'en'
     });
 
     if (token != null) {
       options.headers
           .addAll({HttpHeaders.authorizationHeader: 'Bearer $token'});
     }
-    if (language != null) {
-      options.headers.addAll({HttpHeaders.acceptLanguageHeader: language});
-    }
 
     try {
       Dio dio = Dio(options);
       if (kDebugMode) {
         dio.interceptors.add(PrettyDioLogger(
+          request: false,
           requestBody: true,
           responseBody: true,
           requestHeader: true,
@@ -50,24 +49,23 @@ class DioService implements ApiRepository {
   }
 
   @override
-  Future<Result> put(dynamic body, String url,
-      {String? token, String? language}) async {
+  Future<Result> put(dynamic body, String url, {String? token}) async {
     var options = BaseOptions(headers: <String, String>{
-      HttpHeaders.contentTypeHeader: 'application/json; charset=UTF-8'
+      HttpHeaders.contentTypeHeader: 'application/json; charset=UTF-8',
+      HttpHeaders.acceptLanguageHeader: Get.locale?.languageCode ?? 'en'
     });
 
     if (token != null) {
       options.headers
           .addAll({HttpHeaders.authorizationHeader: 'Bearer $token'});
     }
-    if (language != null) {
-      options.headers.addAll({HttpHeaders.acceptLanguageHeader: language});
-    }
+    options.headers.addAll({});
 
     try {
       Dio dio = Dio(options);
       if (kDebugMode) {
         dio.interceptors.add(PrettyDioLogger(
+          request: false,
           requestBody: true,
           responseBody: true,
           requestHeader: true,
@@ -89,23 +87,22 @@ class DioService implements ApiRepository {
   }
 
   @override
-  Future<Result> get(String url, {String? token, String? language}) async {
+  Future<Result> get(String url, {String? token}) async {
     var options = BaseOptions(headers: <String, String>{
-      HttpHeaders.contentTypeHeader: 'application/json; charset=UTF-8'
+      HttpHeaders.contentTypeHeader: 'application/json; charset=UTF-8',
+      HttpHeaders.acceptLanguageHeader: Get.locale?.languageCode ?? 'en'
     });
 
     if (token != null) {
       options.headers
           .addAll({HttpHeaders.authorizationHeader: 'Bearer $token'});
     }
-    if (language != null) {
-      options.headers.addAll({HttpHeaders.acceptLanguageHeader: language});
-    }
 
     try {
       Dio dio = Dio(options);
       if (kDebugMode) {
         dio.interceptors.add(PrettyDioLogger(
+          request: false,
           requestBody: true,
           responseBody: true,
           requestHeader: true,

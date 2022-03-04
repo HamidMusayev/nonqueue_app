@@ -54,7 +54,7 @@ class RegisterScreen extends GetView<RegisterController> {
                   TextFormField(
                     controller: controller.fullnameTxt,
                     keyboardType: TextInputType.name,
-                    validator: ValidatorHelper.validateUsername,
+                    validator: ValidatorHelper.validateFullname,
                     textInputAction: TextInputAction.next,
                     decoration: const InputDecoration(
                       hintText: 'Full name',
@@ -66,8 +66,9 @@ class RegisterScreen extends GetView<RegisterController> {
                   IntlPhoneField(
                     onChanged: controller.onChangedNumber,
                     controller: controller.numberTxt,
-                    searchText: 'Search..',
-                    invalidNumberMessage: 'Wrong number!',
+                    keyboardType: TextInputType.number,
+                    searchText: 'search'.tr,
+                    invalidNumberMessage: 'wrongnumber'.tr,
                     initialCountryCode: 'AZ',
                     textInputAction: TextInputAction.next,
                     dropDownIcon: const Icon(Icons.arrow_drop_down_rounded),

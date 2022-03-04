@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nonqueue_app/screens/auth/welcome/ui.dart';
-import 'package:nonqueue_app/screens/inapp/drawer/account_info.dart';
+import 'package:nonqueue_app/screens/inapp/drawer/account/ui.dart';
 import 'package:nonqueue_app/screens/profile/contoller.dart';
 import 'package:nonqueue_app/utils/constants.dart';
+import 'package:nonqueue_app/utils/validators.dart';
 
 import '../../utils/shared.dart';
 
@@ -94,6 +95,7 @@ class ProfileScreen extends GetView<ProfileController> {
               Spaces.vertical20,
               TextFormField(
                 controller: controller.fullnameTxt,
+                validator: ValidatorHelper.validateFullname,
                 onChanged: controller.checkFullName,
                 decoration: const InputDecoration(
                   hintText: 'Full name',
@@ -102,6 +104,7 @@ class ProfileScreen extends GetView<ProfileController> {
               Spaces.vertical20,
               TextFormField(
                 controller: controller.usernameTxt,
+                validator: ValidatorHelper.validateUsername,
                 onChanged: controller.checkUsername,
                 decoration: const InputDecoration(
                   hintText: 'Username',

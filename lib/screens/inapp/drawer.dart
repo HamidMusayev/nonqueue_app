@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:nonqueue_app/screens/inapp/drawer/about.dart';
-import 'package:nonqueue_app/screens/inapp/drawer/account_info.dart';
+import 'package:nonqueue_app/screens/inapp/drawer/account/ui.dart';
 import 'package:nonqueue_app/screens/inapp/drawer/balance.dart';
 import 'package:nonqueue_app/screens/inapp/drawer/fag.dart';
 import 'package:nonqueue_app/screens/inapp/drawer/help.dart';
