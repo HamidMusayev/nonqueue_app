@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:nonqueue_app/utils/shared.dart';
 
 import '../../../../api/concrete/dio_service.dart';
@@ -19,6 +20,8 @@ class AccountController extends GetxController {
   final TextEditingController emailTxt = TextEditingController();
   final TextEditingController prefixTxt = TextEditingController();
   final TextEditingController numberTxt = TextEditingController();
+  final TextEditingController birthdayTxt = TextEditingController();
+  final TextEditingController genderTxt = TextEditingController();
 
   @override
   void onInit() {
@@ -32,7 +35,13 @@ class AccountController extends GetxController {
   void getUserData() async {
     _user = User.fromJson(await SharedHelper.readJson('user'));
     emailTxt.text = _user.email!;
-    numberTxt.text = _user.phoneNumber ?? '';
+    //numberTxt.text = _user.phoneNumber ?? '';
+  }
+
+  void datePicked(DateTime? value) {
+    if (value != null) {
+      birthdayTxt.text = DateFormat('yyyy-MM-dd').format(value);
+    }
   }
 
   Future<void> saveUserData() async {

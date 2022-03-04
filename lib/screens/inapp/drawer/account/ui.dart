@@ -93,12 +93,26 @@ class AccountInfoScreen extends GetView<AccountController> {
                   ],
                 ),
                 Spaces.vertical10,
-                TextFormField(
-                  keyboardType: TextInputType.datetime,
-                  textInputAction: TextInputAction.done,
-                  //controller: _newpassTxt,
-                  validator: (value) => ValidatorHelper.validatePassword(value),
-                  decoration: const InputDecoration(hintText: 'Date of birth'),
+                GestureDetector(
+                  onTap: () {
+                    showDatePicker(
+                            context: context,
+                            initialDate: DateTime.now(),
+                            firstDate: DateTime(1960),
+                            lastDate: DateTime.now())
+                        .then(controller.datePicked);
+                  },
+                  child: TextField(
+                    controller: controller.birthdayTxt,
+                    keyboardType: TextInputType.datetime,
+                    textInputAction: TextInputAction.next,
+                    readOnly: true,
+                    enabled: false,
+                    decoration: const InputDecoration(
+                      hintText: 'Pick date of birth',
+                      prefixIcon: Icon(Icons.date_range_rounded),
+                    ),
+                  ),
                 ),
                 Spaces.vertical50,
                 TextButton(

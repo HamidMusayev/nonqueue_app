@@ -93,29 +93,36 @@ class ProfileScreen extends GetView<ProfileController> {
               ),
               Spaces.vertical20,
               Spaces.vertical20,
-              TextFormField(
-                controller: controller.fullnameTxt,
-                validator: ValidatorHelper.validateFullname,
-                onChanged: controller.checkFullName,
-                decoration: const InputDecoration(
-                  hintText: 'Full name',
-                ),
-              ),
-              Spaces.vertical20,
-              TextFormField(
-                controller: controller.usernameTxt,
-                validator: ValidatorHelper.validateUsername,
-                onChanged: controller.checkUsername,
-                decoration: const InputDecoration(
-                  hintText: 'Username',
-                ),
-              ),
-              Spaces.vertical20,
-              TextFormField(
-                controller: controller.bioTxt,
-                onChanged: controller.checkBio,
-                decoration: const InputDecoration(
-                  hintText: 'Bio',
+              Form(
+                key: controller.formKey,
+                child: Column(
+                  children: [
+                    TextFormField(
+                      controller: controller.fullnameTxt,
+                      validator: ValidatorHelper.validateFullname,
+                      onChanged: controller.checkFullName,
+                      decoration: const InputDecoration(
+                        hintText: 'Full name',
+                      ),
+                    ),
+                    Spaces.vertical20,
+                    TextFormField(
+                      controller: controller.usernameTxt,
+                      validator: ValidatorHelper.validateUsername,
+                      onChanged: controller.checkUsername,
+                      decoration: const InputDecoration(
+                        hintText: 'Username',
+                      ),
+                    ),
+                    Spaces.vertical20,
+                    TextFormField(
+                      controller: controller.bioTxt,
+                      onChanged: controller.checkBio,
+                      decoration: const InputDecoration(
+                        hintText: 'Bio',
+                      ),
+                    ),
+                  ],
                 ),
               ),
               Spaces.vertical20,
