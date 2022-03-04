@@ -61,7 +61,7 @@ class AccountInfoScreen extends GetView<AccountController> {
                 ),
                 Spaces.vertical10,
                 DropdownButtonFormField<String>(
-                  hint: const Text('Gender'),
+                  hint: Text('gender'.tr),
                   onChanged: (value) {},
                   items: [
                     DropdownMenuItem<String>(
@@ -111,14 +111,11 @@ class AccountInfoScreen extends GetView<AccountController> {
                     'Change Password',
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
                   ),
-                  onPressed: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const AccountInfoChangePassScreen(),
-                      fullscreenDialog: true,
-                    ),
+                  onPressed: () => Get.to(
+                    () => const AccountInfoChangePassScreen(),
+                    fullscreenDialog: true,
                   ),
-                )
+                ),
               ],
             ),
           ),

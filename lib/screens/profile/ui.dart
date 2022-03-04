@@ -151,12 +151,9 @@ class ProfileScreen extends GetView<ProfileController> {
                     fontWeight: FontWeight.w400,
                   ),
                 ),
-                onPressed: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const AccountInfoScreen(),
-                    fullscreenDialog: true,
-                  ),
+                onPressed: () => Get.to(
+                  () => const AccountInfoScreen(),
+                  fullscreenDialog: true,
                 ),
               ),
               Spaces.vertical10,
@@ -185,7 +182,8 @@ class ProfileScreen extends GetView<ProfileController> {
                           style: TextButton.styleFrom(
                             fixedSize: const Size.fromHeight(45),
                             shape: const RoundedRectangleBorder(
-                                borderRadius: Radiuses.r10),
+                              borderRadius: Radiuses.r10,
+                            ),
                           ),
                           onPressed: () {
                             SharedHelper.removeJson('token');
