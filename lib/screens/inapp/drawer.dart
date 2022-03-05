@@ -100,7 +100,7 @@ class HomeDrawer extends StatelessWidget {
                       onTap: () => Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const AccountInfoScreen(),
+                          builder: (context) => const AccountScreen(),
                           fullscreenDialog: true,
                         ),
                       ),

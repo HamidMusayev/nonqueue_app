@@ -32,4 +32,16 @@ class ValidatorHelper {
             ? 'İstifadəçi adınız çox qısadır!'
             : null;
   }
+
+  static String? validateGender(String? text) {
+    return text == null || text == ''
+        ? 'Cinsinizi seçin!'
+        :  null;
+  }
+
+  static String? validateBirthday(String? text) {
+    return text == null || text == ''
+        ? 'Doğum tarixinizi seçin!'
+        :  null;
+  }
 }

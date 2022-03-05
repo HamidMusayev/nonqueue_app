@@ -38,7 +38,7 @@ class DioService implements ApiRepository {
 
       if (response.statusCode == 200) {
         return Result.succes(response.data);
-      } else if (response.statusCode == 401) {
+      } else if (response.statusCode == 401 || response.statusCode == 403) {
         return Result.error(message: 'eauthor'.tr);
       } else {
         return Result.error(message: 'erequest'.tr);
@@ -76,7 +76,7 @@ class DioService implements ApiRepository {
 
       if (response.statusCode == 200) {
         return Result.succes(response.data);
-      } else if (response.statusCode == 401) {
+      } else if (response.statusCode == 401 || response.statusCode == 403) {
         return Result.error(message: 'eauthor'.tr);
       } else {
         return Result.error(message: 'erequest'.tr);
@@ -113,7 +113,7 @@ class DioService implements ApiRepository {
 
       if (response.statusCode == 200) {
         return Result.succes(response.data);
-      } else if (response.statusCode == 401) {
+      } else if (response.statusCode == 401 || response.statusCode == 403) {
         return Result.error(message: 'eauthor'.tr);
       } else {
         return Result.error(message: 'erequest'.tr);

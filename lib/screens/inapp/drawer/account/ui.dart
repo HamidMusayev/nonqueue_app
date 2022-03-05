@@ -7,8 +7,8 @@ import 'package:nonqueue_app/utils/validators.dart';
 
 import '../../../../widgets/phone_input/phone_input_field.dart';
 
-class AccountInfoScreen extends GetView<AccountController> {
-  const AccountInfoScreen({Key? key}) : super(key: key);
+class AccountScreen extends GetView<AccountController> {
+  const AccountScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,10 +21,21 @@ class AccountInfoScreen extends GetView<AccountController> {
           style: TextStyle(color: ColorPalette.lightBlack),
         ),
         actions: [
-          IconButton(onPressed: () {}, icon: const Icon(Icons.check_rounded))
+          Obx(
+            () => controller.isLoading.value
+                ? const IconButton(
+                    onPressed: null,
+                    icon: CircularProgressIndicator(),
+                  )
+                : IconButton(
+                    onPressed: () async => controller.saveUserData(),
+                    icon: const Icon(Icons.check_rounded),
+                  ),
+          )
         ],
       ),
       body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
         child: Container(
           padding: Paddings.p16,
           constraints: const BoxConstraints(maxWidth: 450),
@@ -45,10 +56,11 @@ class AccountInfoScreen extends GetView<AccountController> {
                   textInputAction: TextInputAction.next,
                   autofocus: false,
                   controller: controller.emailTxt,
-                  validator: (value) => ValidatorHelper.validateEmail(value),
-                  decoration: const InputDecoration(hintText: 'Email address'),
+                  onChanged: controller.checkEmail,
+                  validator: ValidatorHelper.validateEmail,
+                  decoration: InputDecoration(hintText: 'emailadress'.tr),
                 ),
-                Spaces.vertical10,
+                Spaces.vertical20,
                 IntlPhoneField(
                   onChanged: controller.onChangedNumber,
                   controller: controller.numberTxt,
@@ -59,10 +71,12 @@ class AccountInfoScreen extends GetView<AccountController> {
                   textInputAction: TextInputAction.next,
                   dropDownIcon: const Icon(Icons.arrow_drop_down_rounded),
                 ),
-                Spaces.vertical10,
+                Spaces.vertical20,
                 DropdownButtonFormField<String>(
                   hint: Text('gender'.tr),
-                  onChanged: (value) {},
+                  validator: ValidatorHelper.validateGender,
+                  onChanged: controller.checkGender,
+                  value: controller.genderTxt.text,
                   items: [
                     DropdownMenuItem<String>(
                       value: 'male',
@@ -92,25 +106,38 @@ class AccountInfoScreen extends GetView<AccountController> {
                     ),
                   ],
                 ),
-                Spaces.vertical10,
+                Spaces.vertical20,
                 GestureDetector(
                   onTap: () {
+                    controller.isBirthdayChanged.value = true;
                     showDatePicker(
-                            context: context,
-                            initialDate: DateTime.now(),
-                            firstDate: DateTime(1960),
-                            lastDate: DateTime.now())
-                        .then(controller.datePicked);
+                      context: context,
+                      initialDate: DateTime.now(),
+                      firstDate: DateTime(1960),
+                      lastDate: DateTime.now(),
+                      builder: (context, child) => Theme(
+                        data: Theme.of(context).copyWith(
+                          textButtonTheme: TextButtonThemeData(
+                            style: TextButton.styleFrom(
+                              fixedSize: const Size.fromHeight(45),
+                            ),
+                          ),
+                        ),
+                        child: child!,
+                      ),
+                    ).then(controller.datePicked);
                   },
-                  child: TextField(
+                  child: TextFormField(
                     controller: controller.birthdayTxt,
                     keyboardType: TextInputType.datetime,
                     textInputAction: TextInputAction.next,
+                    validator: ValidatorHelper.validateBirthday,
+                    onChanged: controller.checkBirthday,
                     readOnly: true,
                     enabled: false,
-                    decoration: const InputDecoration(
-                      hintText: 'Pick date of birth',
-                      prefixIcon: Icon(Icons.date_range_rounded),
+                    decoration: InputDecoration(
+                      hintText: 'dateofbirth'.tr,
+                      prefixIcon: const Icon(Icons.date_range_rounded),
                     ),
                   ),
                 ),
@@ -121,13 +148,19 @@ class AccountInfoScreen extends GetView<AccountController> {
                     backgroundColor: Colors.transparent,
                     fixedSize: const Size.fromHeight(20),
                   ),
-                  child: const Text(
-                    'Change Password',
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+                  child: Text(
+                    'changepass'.tr,
+                    style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w400,
+                    ),
                   ),
-                  onPressed: () => Get.to(
-                    () => const AccountInfoChangePassScreen(),
-                    fullscreenDialog: true,
+                  onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const AccountInfoChangePassScreen(),
+                      fullscreenDialog: true,
+                    ),
                   ),
                 ),
               ],

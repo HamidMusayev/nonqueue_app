@@ -67,6 +67,14 @@ class ProfileController extends GetxController {
       isBioChanged.value = false;
       isUsernameChanged.value = false;
       isFullnameChanged.value = false;
+
+      Result<User> res2 = await _service.getById('id=${_user.id}');
+      if (res2.success) {
+        SharedHelper.saveJson('user', res2.data?.toJson());
+      } else {
+        Get.showSnackbar(Snacks.error(res2.message));
+      }
+
       isLoading.value = false;
     }
   }
@@ -80,14 +88,7 @@ class ProfileController extends GetxController {
     });
 
     if (res.success) {
-      Result<User> res2 = await _service.getById('id=${_user.id}');
-      if (res2.success) {
-        SharedHelper.saveJson('user', res2.data?.toJson());
-
-        Get.showSnackbar(Snacks.success(res.message));
-      } else {
-        Get.showSnackbar(Snacks.error(res2.message));
-      }
+      Get.showSnackbar(Snacks.success(res.message));
     } else {
       Get.showSnackbar(Snacks.error(res.message));
     }

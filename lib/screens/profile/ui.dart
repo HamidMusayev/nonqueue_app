@@ -138,7 +138,7 @@ class ProfileScreen extends GetView<ProfileController> {
                               const Center(child: CircularProgressIndicator()),
                           child: TextButton(
                             child: const Text('Save Changes'),
-                            onPressed: controller.saveUserData,
+                            onPressed: () async => controller.saveUserData(),
                           ),
                         )
                       : const SizedBox(),
@@ -158,9 +158,12 @@ class ProfileScreen extends GetView<ProfileController> {
                     fontWeight: FontWeight.w400,
                   ),
                 ),
-                onPressed: () => Get.to(
-                  () => const AccountInfoScreen(),
-                  fullscreenDialog: true,
+                onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const AccountScreen(),
+                    fullscreenDialog: true,
+                  ),
                 ),
               ),
               Spaces.vertical10,

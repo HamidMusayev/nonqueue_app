@@ -11,6 +11,11 @@ import '../../../../utils/constants.dart';
 import '../../../../widgets/phone_input/phone_number.dart';
 
 class AccountController extends GetxController {
+  RxBool isEmailChanged = false.obs;
+  RxBool isNumberChanged = false.obs;
+  RxBool isGenderChanged = false.obs;
+  RxBool isBirthdayChanged = false.obs;
+
   RxBool isLoading = false.obs;
 
   late User _user;
@@ -29,13 +34,47 @@ class AccountController extends GetxController {
     super.onInit();
   }
 
+  void checkEmail(String input) {
+    if (isEmailChanged.isFalse) isEmailChanged.value = true;
+  }
+
+  void checkNumber(String input) {
+    if (isNumberChanged.isFalse) isNumberChanged.value = true;
+  }
+
+  void checkGender(String? input) {
+    genderTxt.text = input ?? '';
+    if (isGenderChanged.isFalse) isGenderChanged.value = true;
+  }
+
+  void checkBirthday(String input) {
+    if (isBirthdayChanged.isFalse) isBirthdayChanged.value = true;
+  }
+
   void onChangedNumber(PhoneNumber number) =>
       prefixTxt.text = number.countryCode;
 
   void getUserData() async {
     _user = User.fromJson(await SharedHelper.readJson('user'));
     emailTxt.text = _user.email!;
-    //numberTxt.text = _user.phoneNumber ?? '';
+    numberTxt.text = _user.phoneNumber ?? '';
+    if (_user.userClaims
+            ?.where((e) => e.type == 'Gender')
+            .toList()
+            .isNotEmpty ??
+        false) {
+      genderTxt.text =
+          _user.userClaims?.firstWhere((e) => e.type == 'Gender').value ?? '';
+    }
+    if (_user.userClaims
+            ?.where((e) => e.type == 'DateOfBirth')
+            .toList()
+            .isNotEmpty ??
+        false) {
+      birthdayTxt.text =
+          _user.userClaims?.firstWhere((e) => e.type == 'DateOfBirth').value ??
+              '';
+    }
   }
 
   void datePicked(DateTime? value) {
@@ -47,8 +86,37 @@ class AccountController extends GetxController {
   Future<void> saveUserData() async {
     if (formKey.currentState?.validate() ?? false) {
       isLoading.value = true;
-      await editUser('Email', emailTxt.text);
+
+      if (isNumberChanged.value) {
+        await editUser('PhoneNumber', prefixTxt.text + numberTxt.text);
+      }
+      if (isBirthdayChanged.value) {
+        await editUser('DateOfBirth', birthdayTxt.text);
+      }
+      if (isGenderChanged.value) {
+        await editUser('Gender', genderTxt.text);
+      }
+
+      if (isEmailChanged.value && !(emailTxt.text == _user.email)) {
+        ///sendotpforchanceemeail
+        //await editUser('Email', emailTxt.text);
+      }
+
+
+      isBirthdayChanged.value = false;
+      isGenderChanged.value = false;
+      isNumberChanged.value = false;
+      isEmailChanged.value = false;
+
+      Result<User> res2 = await _service.getById('id=${_user.id}');
+      if (res2.success) {
+        SharedHelper.saveJson('user', res2.data?.toJson());
+      } else {
+        Get.showSnackbar(Snacks.error(res2.message));
+      }
+
       isLoading.value = false;
+      Get.back(closeOverlays: true);
     }
   }
 
@@ -61,14 +129,7 @@ class AccountController extends GetxController {
     });
 
     if (res.success) {
-      Result<User> res2 = await _service.getById('id=${_user.id}');
-      if (res2.success) {
-        SharedHelper.saveJson('user', res2.data?.toJson());
-
-        Get.showSnackbar(Snacks.success(res.message));
-      } else {
-        Get.showSnackbar(Snacks.error(res2.message));
-      }
+      Get.showSnackbar(Snacks.success(res.message));
     } else {
       Get.showSnackbar(Snacks.error(res.message));
     }

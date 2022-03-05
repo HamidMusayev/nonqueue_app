@@ -35,14 +35,11 @@ class OnBoardController extends GetxController {
       if (res2.success) {
         SharedHelper.saveJson('user', res2.data?.toJson());
 
-        isLoading.value = false;
         Get.offAll(() => const InAppScreen());
       } else {
-        isLoading.value = false;
         Get.showSnackbar(Snacks.error(res2.message));
       }
     } else {
-      isLoading.value = false;
       Get.showSnackbar(Snacks.error(res.message));
     }
   }
@@ -61,9 +58,15 @@ class OnBoardController extends GetxController {
 
     isLoading.value = true;
 
-    GoogleSignInAccount? _googleAccount = await _googleService.signIn();
-    if (_googleAccount != null && _googleAccount.serverAuthCode != null) {
-      await googleLogin(_googleAccount);
+    try {
+      GoogleSignInAccount? _googleAccount = await _googleService.signIn();
+      if (_googleAccount != null && _googleAccount.serverAuthCode != null) {
+        await googleLogin(_googleAccount);
+      }
+    } catch (e) {
+      Get.showSnackbar(Snacks.error('errorgooglesignin'.tr));
     }
+
+    isLoading.value = false;
   }
 }
