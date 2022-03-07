@@ -76,7 +76,7 @@ class AccountScreen extends GetView<AccountController> {
                   hint: Text('gender'.tr),
                   validator: ValidatorHelper.validateGender,
                   onChanged: controller.checkGender,
-                  value: controller.genderTxt.text,
+                  value: controller.genderTxt.text.isNotEmpty ? controller.genderTxt.text : null,
                   items: [
                     DropdownMenuItem<String>(
                       value: 'male',
@@ -141,28 +141,28 @@ class AccountScreen extends GetView<AccountController> {
                     ),
                   ),
                 ),
-                Spaces.vertical50,
-                TextButton(
-                  style: TextButton.styleFrom(
-                    primary: ColorPalette.editColor,
-                    backgroundColor: Colors.transparent,
-                    fixedSize: const Size.fromHeight(20),
-                  ),
-                  child: Text(
-                    'changepass'.tr,
-                    style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
-                  onPressed: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const AccountInfoChangePassScreen(),
-                      fullscreenDialog: true,
-                    ),
-                  ),
-                ),
+                // Spaces.vertical50,
+                // TextButton(
+                //   style: TextButton.styleFrom(
+                //     primary: ColorPalette.editColor,
+                //     backgroundColor: Colors.transparent,
+                //     fixedSize: const Size.fromHeight(20),
+                //   ),
+                //   child: Text(
+                //     'changepass'.tr,
+                //     style: const TextStyle(
+                //       fontSize: 16,
+                //       fontWeight: FontWeight.w400,
+                //     ),
+                //   ),
+                //   onPressed: () => Navigator.push(
+                //     context,
+                //     MaterialPageRoute(
+                //       builder: (context) => const AccountInfoChangePassScreen(),
+                //       fullscreenDialog: true,
+                //     ),
+                //   ),
+                // ),
               ],
             ),
           ),

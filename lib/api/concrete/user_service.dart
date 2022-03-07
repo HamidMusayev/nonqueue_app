@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:get/get_utils/get_utils.dart';
 import 'package:nonqueue_app/api/abstract/api_repository.dart';
 import 'package:nonqueue_app/api/abstract/user_repository.dart';
 import 'package:nonqueue_app/api/result/result.dart';
@@ -38,7 +39,7 @@ class UserService implements UserRepository {
 
     if (res.success) {
       return res.data['success']
-          ? Result.succes(res.data['value'])
+          ? Result.withoutData(true, 'sendedotp'.tr)
           : Result.error(message: res.data['message']);
     } else {
       return Result.error(message: res.message);
@@ -167,6 +168,19 @@ class UserService implements UserRepository {
     if (res.success) {
       return res.data['success']
           ? Result<User>.succes(User.fromJson(res.data['value']))
+          : Result.error(message: res.data['message']);
+    } else {
+      return Result.error(message: res.message);
+    }
+  }
+
+  @override
+  Future<Result> sendOtpForChangeEmail(Map<String, dynamic> request) async {
+    var res = await _dio.post(request, '$_baseUrl/Home/SendOTPForChangeEmail');
+
+    if (res.success) {
+      return res.data['success']
+          ? Result.withoutData(true, 'sendedotp'.tr)
           : Result.error(message: res.data['message']);
     } else {
       return Result.error(message: res.message);

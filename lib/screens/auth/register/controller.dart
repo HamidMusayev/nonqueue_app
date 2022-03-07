@@ -41,28 +41,19 @@ class RegisterController extends GetxController {
       if (result.success) {
         SharedHelper.setString('userId', result.data!);
 
-        bool resultOtp = await sendOtp();
+        Result result2 = await _service.sendOTPEmail({'email': emailTxt.text});
 
-        if (resultOtp) {
-          isLoading.value = false;
-          Get.showSnackbar(Snacks.success('sendedotp'.tr));
+        if (result2.success) {
+          Get.showSnackbar(Snacks.success(result2.message));
 
           Get.to(OTPScreen(emailTxt.text, 'confirmEmail'));
+        } else {
+          Get.showSnackbar(Snacks.error(result2.message));
         }
       } else {
-        isLoading.value = false;
         Get.showSnackbar(Snacks.error(result.message));
       }
-    }
-  }
-
-  Future<bool> sendOtp() async {
-    Result result = await _service.sendOTPEmail({'email': emailTxt.text});
-    if (result.success) {
-      return true;
-    } else {
-      Get.showSnackbar(Snacks.error(result.message));
-      return false;
+      isLoading.value = false;
     }
   }
 }

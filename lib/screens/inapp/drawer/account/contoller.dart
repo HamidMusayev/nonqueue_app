@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:nonqueue_app/screens/inapp/drawer/account/otp.dart';
 import 'package:nonqueue_app/utils/shared.dart';
 
 import '../../../../api/concrete/dio_service.dart';
@@ -51,8 +52,10 @@ class AccountController extends GetxController {
     if (isBirthdayChanged.isFalse) isBirthdayChanged.value = true;
   }
 
-  void onChangedNumber(PhoneNumber number) =>
-      prefixTxt.text = number.countryCode;
+  void onChangedNumber(PhoneNumber number) {
+    prefixTxt.text = number.countryCode;
+    isNumberChanged.value = true;
+  }
 
   void getUserData() async {
     _user = User.fromJson(await SharedHelper.readJson('user'));
@@ -98,10 +101,9 @@ class AccountController extends GetxController {
       }
 
       if (isEmailChanged.value && !(emailTxt.text == _user.email)) {
-        ///sendotpforchanceemeail
-        //await editUser('Email', emailTxt.text);
+        await sendOtpForChangeEmail();
+        await Get.to(() => EmailChangeScreen(emailTxt.text));
       }
-
 
       isBirthdayChanged.value = false;
       isGenderChanged.value = false;
@@ -120,12 +122,27 @@ class AccountController extends GetxController {
     }
   }
 
-  Future<void> editUser(String propName, String value) async {
+  Future<bool> editUser(String propName, String value, {int? otp}) async {
     Result res = await _service.userEdit({
       'propName': propName,
       'value': value,
       'appUserId': _user.id.toString(),
-      'otp': 0000
+      'otp': otp ?? 0000
+    });
+
+    if (res.success) {
+      Get.showSnackbar(Snacks.success(res.message));
+      return true;
+    } else {
+      Get.showSnackbar(Snacks.error(res.message));
+      return false;
+    }
+  }
+
+  Future<void> sendOtpForChangeEmail() async {
+    Result res = await _service.sendOtpForChangeEmail({
+      'email': emailTxt.text,
+      'id': _user.id.toString(),
     });
 
     if (res.success) {

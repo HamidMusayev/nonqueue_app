@@ -21,4 +21,5 @@ abstract class UserRepository {
   Future<Result<User>> getById(String querystring);
 
   Future<Result<List<PhoneNumber>>> checkContacts(List<String> numbers);
+  Future<Result> sendOtpForChangeEmail(Map<String, dynamic> request);
 }
