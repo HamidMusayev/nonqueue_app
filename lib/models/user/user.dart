@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:nonqueue_app/models/claim.dart';
+import 'package:nonqueue_app/models/user/claim.dart';
 
 part 'user.g.dart';
 

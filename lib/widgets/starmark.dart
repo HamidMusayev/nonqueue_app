@@ -2,23 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:nonqueue_app/utils/constants.dart';
 
 class StarMark extends StatelessWidget {
-  const StarMark({Key? key}) : super(key: key);
+  final double stars;
+  const StarMark({Key? key, required this.stars}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisSize: MainAxisSize.min,
-      children: const [
+      children: [
         Text(
-          '5.0',
-          style: TextStyle(
+          stars.toStringAsFixed(1),
+          style: const TextStyle(
             color: ColorPalette.lightBlack,
-            fontSize: 16,
+            fontSize: 14,
           ),
         ),
-        Icon(
+        const Icon(
           Icons.star,
-          color: Colors.orange,
+          color: Colors.amber, size: 20,
         ),
       ],
     );

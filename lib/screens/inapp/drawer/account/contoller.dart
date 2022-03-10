@@ -7,7 +7,7 @@ import 'package:nonqueue_app/utils/shared.dart';
 import '../../../../api/concrete/dio_service.dart';
 import '../../../../api/concrete/user_service.dart';
 import '../../../../api/result/result.dart';
-import '../../../../models/user.dart';
+import '../../../../models/user/user.dart';
 import '../../../../utils/constants.dart';
 import '../../../../widgets/phone_input/phone_number.dart';
 

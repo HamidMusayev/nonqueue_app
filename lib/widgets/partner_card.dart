@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:nonqueue_app/models/company/company_branch.dart';
 import 'package:nonqueue_app/utils/constants.dart';
 import 'package:nonqueue_app/widgets/starmark.dart';
 
 class PartnerCard extends StatelessWidget {
   final VoidCallback onTap;
-  const PartnerCard({Key? key, required this.onTap}) : super(key: key);
+  final CompanyBranch branch;
+  const PartnerCard({Key? key, required this.onTap, required this.branch})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +26,7 @@ class PartnerCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(
-                height: 160,
+                height: 130,
                 width: 160,
                 child: FittedBox(
                   fit: BoxFit.fill,
@@ -37,21 +40,24 @@ class PartnerCard extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
-                      'Company name',
-                      style: TextStyle(
+                    Text(
+                      branch.name,
+                      style: const TextStyle(
                         color: ColorPalette.lightBlack,
                         fontWeight: FontWeight.w500,
                       ),
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: const [
+                      children: [
                         Text(
-                          '5 km away',
+                          branch.adress,
                           overflow: TextOverflow.fade,
+                          style: const TextStyle(
+                            color: ColorPalette.greyInputText,
+                          ),
                         ),
-                        StarMark(),
+                        StarMark(stars: branch.stars),
                       ],
                     ),
                   ],

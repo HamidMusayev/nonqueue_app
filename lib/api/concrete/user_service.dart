@@ -8,7 +8,7 @@ import 'package:nonqueue_app/models/user/token_request.dart';
 import 'package:nonqueue_app/models/user/token_response.dart';
 import 'package:nonqueue_app/utils/shared.dart';
 
-import '../../models/user.dart';
+import '../../models/user/user.dart';
 
 //SERVICE METODLARI ALINAN OBYEKLERI JSON SERIALIZE EDIB
 // DIO METODLARINA GONDER VE GERI DONEN CAVABI
@@ -17,7 +17,6 @@ import '../../models/user.dart';
 class UserService implements UserRepository {
   final ApiRepository _dio;
   final String _baseUrl = 'http://161.97.137.220:5000';
-  //final String _baseUrl2 = 'http://161.97.137.220:5002/Product/Profil';
   UserService(this._dio);
 
   @override

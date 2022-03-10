@@ -4,11 +4,7 @@ import 'package:get/get.dart';
 import 'package:nonqueue_app/screens/auth/welcome/ui.dart';
 import 'package:nonqueue_app/screens/home/ui.dart';
 import 'package:nonqueue_app/utils/constants.dart';
-import 'package:nonqueue_app/utils/shared.dart';
 import 'package:nonqueue_app/utils/translations.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
-import 'models/user.dart';
 
 void main() {
   runApp(const MyApp());
@@ -96,7 +92,7 @@ class _MyAppState extends State<MyApp> {
           // ),
         ),
       ),
-      home: _saveMe ? const HomeScreen() : const WelcomeScreen(),
+      home: _saveMe ? HomeScreen() : const WelcomeScreen(),
     );
   }
 }

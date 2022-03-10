@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nonqueue_app/models/company/company_branch.dart';
 import 'package:nonqueue_app/screens/partnerdetail/ui.dart';
 
 import '../../../utils/constants.dart';
@@ -58,6 +59,13 @@ class _PartnersScreenState extends State<PartnersScreen> {
                             ),
                           );
                         },
+                        branch: CompanyBranch(
+                            id: 12,
+                            name: "sdsad",
+                            companyId: 1,
+                            stars: 21,
+                            status: '',
+                            adress: 'asd'),
                       ),
                     )
                     .toList(),
@@ -78,6 +86,13 @@ class _PartnersScreenState extends State<PartnersScreen> {
                     .map(
                       (e) => PartnerCard(
                         onTap: () {},
+                        branch: CompanyBranch(
+                            id: 12,
+                            name: "sdsad",
+                            companyId: 1,
+                            stars: 21,
+                            status: '',
+                            adress: 'asd'),
                       ),
                     )
                     .toList(),

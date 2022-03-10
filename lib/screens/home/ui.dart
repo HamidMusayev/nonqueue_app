@@ -1,62 +1,23 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:nonqueue_app/screens/home/controller.dart';
 import 'package:nonqueue_app/screens/home/title.dart';
 import 'package:nonqueue_app/screens/inapp/coupon/completed_ui.dart';
 import 'package:nonqueue_app/screens/inapp/coupon/ui.dart';
 import 'package:nonqueue_app/widgets/bonus_card.dart';
 import 'package:nonqueue_app/widgets/partner_card.dart';
 
+import '../../models/company/company_branch.dart';
 import '../partnerdetail/ui.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends GetView<HomeController> {
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
-  _HomeScreenState createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
-  final List<List<bool>> _items = [
-    [
-      true,
-      true,
-      true,
-      true,
-      true,
-      true,
-      true,
-      true,
-      true,
-      true,
-    ],
-    [
-      true,
-      true,
-      true,
-      true,
-      true,
-      true,
-      true,
-      true,
-      true,
-      true,
-    ],
-    [
-      true,
-      true,
-      false,
-      false,
-      false,
-      false,
-      false,
-      false,
-      false,
-      false,
-    ],
-  ];
-
-  @override
   Widget build(BuildContext context) {
+    Get.put(HomeController());
+
     return SingleChildScrollView(
       physics: const BouncingScrollPhysics(),
       child: Column(
@@ -66,40 +27,37 @@ class _HomeScreenState extends State<HomeScreen> {
             title: 'love free stuff?',
             subtitle: 'Your bonuses',
           ),
-          ConstrainedBox(
-            constraints: const BoxConstraints(maxHeight: 250),
-            child: CarouselSlider.builder(
-              itemCount: _items.length,
-              itemBuilder: (context, itemIndex, pageViewIndex) => BonusCard(
-                items: _items[itemIndex],
-                onTap: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => _items[itemIndex]
-                            .where((element) => !element)
-                            .toList()
-                            .isNotEmpty
-                        ? const CouponScreen()
-                        : const CompletedCouponScreen(),
-                    fullscreenDialog: true,
-                  ),
+          CarouselSlider.builder(
+            itemCount: controller.items.length,
+            itemBuilder: (context, itemIndex, pageViewIndex) => BonusCard(
+              items: controller.items[itemIndex],
+              onTap: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => controller.items[itemIndex]
+                          .where((element) => !element)
+                          .toList()
+                          .isNotEmpty
+                      ? const CouponScreen()
+                      : const CompletedCouponScreen(),
+                  fullscreenDialog: true,
                 ),
               ),
-              options: CarouselOptions(
-                //height: 400,
-                //aspectRatio: 16 / 9,
-                //viewportFraction: 0.8,
-                initialPage: 0,
-                enableInfiniteScroll: true,
-                reverse: false,
-                autoPlay: true,
-                enlargeCenterPage: true,
-                autoPlayInterval: const Duration(seconds: 4),
-                autoPlayAnimationDuration: const Duration(milliseconds: 1300),
-                autoPlayCurve: Curves.fastOutSlowIn,
-                onPageChanged: (index, reason) {},
-                scrollDirection: Axis.horizontal,
-              ),
+            ),
+            options: CarouselOptions(
+              height: 200,
+              //aspectRatio: 15 / 8,
+              //viewportFraction: 0.8,
+              initialPage: 0,
+              enableInfiniteScroll: true,
+              reverse: false,
+              autoPlay: true,
+              enlargeCenterPage: true,
+              autoPlayInterval: const Duration(seconds: 5),
+              autoPlayAnimationDuration: const Duration(milliseconds: 1500),
+              autoPlayCurve: Curves.fastOutSlowIn,
+              onPageChanged: (index, reason) {},
+              scrollDirection: Axis.horizontal,
             ),
           ),
           const TitlePanel(
@@ -107,27 +65,29 @@ class _HomeScreenState extends State<HomeScreen> {
             subtitle: 'All partners',
           ),
           Container(
-            constraints: const BoxConstraints(maxHeight: 235),
-            child: ListView(
-              primary: false,
-              padding: const EdgeInsets.only(left: 16),
-              shrinkWrap: false,
-              scrollDirection: Axis.horizontal,
-              children: [1, 2, 3, 4, 5, 6]
-                  .map(
-                    (e) => PartnerCard(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const PartnerDetailScreen(),
-                            fullscreenDialog: true,
-                          ),
-                        );
-                      },
+            constraints: const BoxConstraints(maxHeight: 205),
+            child: Obx(
+              () => Visibility(
+                visible: controller.isLoading.value,
+                child: const Center(child: CircularProgressIndicator()),
+                replacement: ListView.builder(
+                  primary: false,
+                  padding: const EdgeInsets.only(left: 16),
+                  shrinkWrap: false,
+                  scrollDirection: Axis.horizontal,
+                  itemCount: controller.branches.length,
+                  itemBuilder: (context, index) => PartnerCard(
+                    branch: controller.branches[index],
+                    onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const PartnerDetailScreen(),
+                        fullscreenDialog: true,
+                      ),
                     ),
-                  )
-                  .toList(),
+                  ),
+                ),
+              ),
             ),
           ),
           const TitlePanel(
@@ -135,27 +95,29 @@ class _HomeScreenState extends State<HomeScreen> {
             subtitle: 'Most popular',
           ),
           Container(
-            constraints: const BoxConstraints(maxHeight: 235),
-            child: ListView(
-              primary: false,
-              padding: const EdgeInsets.only(left: 16),
-              shrinkWrap: false,
-              scrollDirection: Axis.horizontal,
-              children: [1, 2, 3, 4, 5, 6]
-                  .map(
-                    (e) => PartnerCard(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const PartnerDetailScreen(),
-                            fullscreenDialog: true,
-                          ),
-                        );
-                      },
+            constraints: const BoxConstraints(maxHeight: 205),
+            child: Obx(
+              () => Visibility(
+                visible: controller.isLoading.value,
+                child: const Center(child: CircularProgressIndicator()),
+                replacement: ListView.builder(
+                  primary: false,
+                  padding: const EdgeInsets.only(left: 16),
+                  shrinkWrap: false,
+                  scrollDirection: Axis.horizontal,
+                  itemCount: controller.branches.length,
+                  itemBuilder: (context, index) => PartnerCard(
+                    branch: controller.branches[index],
+                    onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const PartnerDetailScreen(),
+                        fullscreenDialog: true,
+                      ),
                     ),
-                  )
-                  .toList(),
+                  ),
+                ),
+              ),
             ),
           ),
         ],

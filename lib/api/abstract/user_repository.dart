@@ -1,9 +1,8 @@
 import 'package:nonqueue_app/api/result/result.dart';
 import 'package:nonqueue_app/models/user/phone_number.dart';
 import 'package:nonqueue_app/models/user/token_response.dart';
-
-import '../../models/user.dart';
 import '../../models/user/token_request.dart';
+import '../../models/user/user.dart';
 
 abstract class UserRepository {
   Future<Result<String>> userSignUp(Map<String, dynamic> request);

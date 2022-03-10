@@ -26,9 +26,7 @@ class BonusCard extends StatelessWidget {
             shape: const RoundedRectangleBorder(borderRadius: Radiuses.r20),
             child: InkWell(
               borderRadius: Radiuses.r20,
-              onTap: () {
-                onTap.call();
-              },
+              onTap: () => onTap.call(),
               child: Padding(
                 padding: Paddings.p16,
                 child: Row(
@@ -37,23 +35,25 @@ class BonusCard extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        CircleAvatar(
-                            backgroundColor: Colors.grey.shade100,
-                            radius: 40,
-                            backgroundImage: const NetworkImage(
+                        const CircleAvatar(
+                            radius: 35,
+                            backgroundImage: NetworkImage(
                                 'https://images.immediate.co.uk/production/volatile/sites/30/2020/08/classic_snowball-9022de0.jpg?quality=90&resize=500,454')),
                         Spaces.vertical20,
                         Flexible(
                           child: ConstrainedBox(
-                            constraints: const BoxConstraints(maxWidth: 80),
+                            constraints: const BoxConstraints(maxWidth: 70),
                             child: Wrap(
-                                children: items
-                                    .map((e) => const Icon(
-                                          Icons.restaurant_rounded,
-                                          size: 16,
-                                          color: ColorPalette.lightBlack,
-                                        ))
-                                    .toList()),
+                              children: items
+                                  .map(
+                                    (e) => const Icon(
+                                      Icons.restaurant_rounded,
+                                      size: 14,
+                                      color: ColorPalette.lightBlack,
+                                    ),
+                                  )
+                                  .toList(),
+                            ),
                           ),
                         ),
                       ],
@@ -63,11 +63,11 @@ class BonusCard extends StatelessWidget {
                       child: DottedLine(
                         direction: Axis.vertical,
                         lineLength: double.infinity,
-                        lineThickness: 2,
-                        dashLength: 8,
+                        lineThickness: 1,
+                        dashLength: 10,
                         dashColor: ColorPalette.lightBlack,
                         dashRadius: 10,
-                        dashGapLength: 6,
+                        dashGapLength: 8,
                         dashGapColor: Colors.transparent,
                         dashGapRadius: 0,
                       ),
@@ -83,7 +83,7 @@ class BonusCard extends StatelessWidget {
                             maxLines: 2,
                             style: TextStyle(
                               color: ColorPalette.lightBlack,
-                              fontSize: 18,
+                              fontSize: 14,
                               overflow: TextOverflow.ellipsis,
                             ),
                           ),
@@ -93,8 +93,9 @@ class BonusCard extends StatelessWidget {
                             softWrap: true,
                             maxLines: 2,
                             style: TextStyle(
+                              fontSize: 12,
                               color: ColorPalette.lightBlack,
-                              fontWeight: FontWeight.bold,
+                              fontWeight: FontWeight.w500,
                               overflow: TextOverflow.ellipsis,
                             ),
                           ),
@@ -104,6 +105,7 @@ class BonusCard extends StatelessWidget {
                             softWrap: true,
                             maxLines: 2,
                             style: TextStyle(
+                              fontSize: 10,
                               color: ColorPalette.greyInputText,
                               overflow: TextOverflow.ellipsis,
                             ),
@@ -124,9 +126,7 @@ class BonusCard extends StatelessWidget {
             shape: const RoundedRectangleBorder(borderRadius: Radiuses.r20),
             child: InkWell(
               borderRadius: Radiuses.r20,
-              onTap: () {
-                onTap.call();
-              },
+              onTap: () => onTap.call(),
               child: Padding(
                 padding: Paddings.p16,
                 child: Row(
@@ -136,23 +136,24 @@ class BonusCard extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         const CircleAvatar(
-                            backgroundColor: Colors.white60,
-                            radius: 40,
+                            radius: 35,
                             backgroundImage: NetworkImage(
                                 'https://images.immediate.co.uk/production/volatile/sites/30/2020/08/classic_snowball-9022de0.jpg?quality=90&resize=500,454')),
                         Spaces.vertical20,
                         Flexible(
                           child: ConstrainedBox(
-                            constraints: const BoxConstraints(maxWidth: 80),
+                            constraints: const BoxConstraints(maxWidth: 70),
                             child: Wrap(
-                                children: items
-                                    .map((e) => Icon(
-                                          Icons.restaurant_rounded,
-                                          size: 16,
-                                          color:
-                                              e ? Colors.white : Colors.white70,
-                                        ))
-                                    .toList()),
+                              children: items
+                                  .map(
+                                    (e) => Icon(
+                                      Icons.restaurant_rounded,
+                                      size: 14,
+                                      color: e ? Colors.white : Colors.white70,
+                                    ),
+                                  )
+                                  .toList(),
+                            ),
                           ),
                         ),
                       ],
@@ -162,11 +163,11 @@ class BonusCard extends StatelessWidget {
                       child: DottedLine(
                         direction: Axis.vertical,
                         lineLength: double.infinity,
-                        lineThickness: 2,
-                        dashLength: 8,
+                        lineThickness: 1,
+                        dashLength: 10,
                         dashColor: Colors.white,
                         dashRadius: 10,
-                        dashGapLength: 6,
+                        dashGapLength: 8,
                         dashGapColor: Colors.transparent,
                         dashGapRadius: 0,
                       ),
@@ -182,7 +183,7 @@ class BonusCard extends StatelessWidget {
                             maxLines: 2,
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 18,
+                              fontSize: 14,
                               overflow: TextOverflow.ellipsis,
                             ),
                           ),
@@ -192,8 +193,9 @@ class BonusCard extends StatelessWidget {
                             softWrap: true,
                             maxLines: 2,
                             style: TextStyle(
+                              fontSize: 12,
                               color: Colors.white,
-                              fontWeight: FontWeight.bold,
+                              fontWeight: FontWeight.w500,
                               overflow: TextOverflow.ellipsis,
                             ),
                           ),
@@ -203,6 +205,7 @@ class BonusCard extends StatelessWidget {
                             softWrap: true,
                             maxLines: 2,
                             style: TextStyle(
+                              fontSize: 10,
                               color: Colors.white70,
                               overflow: TextOverflow.ellipsis,
                             ),

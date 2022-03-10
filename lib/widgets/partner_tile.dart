@@ -27,7 +27,7 @@ class PartnerTile extends StatelessWidget {
                 fontWeight: FontWeight.w500,
               ),
             ),
-            StarMark(),
+            StarMark(stars: 1.251),
             Text(
               'Best coffee here!',
               style: TextStyle(

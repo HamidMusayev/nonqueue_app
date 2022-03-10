@@ -5,7 +5,7 @@ import 'package:nonqueue_app/models/user/token_response.dart';
 import '../../../api/concrete/dio_service.dart';
 import '../../../api/concrete/user_service.dart';
 import '../../../api/result/result.dart';
-import '../../../models/user.dart';
+import '../../../models/user/user.dart';
 import '../../../utils/constants.dart';
 import '../../../utils/shared.dart';
 import '../../inapp/ui.dart';
