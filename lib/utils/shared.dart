@@ -39,7 +39,7 @@ class SharedHelper {
 
   static Future<dynamic> readJson(String key) async {
     final prefs = await SharedPreferences.getInstance();
-    return json.decode(prefs.getString(key)??'');
+    return json.decode(prefs.getString(key)!);
   }
 
   static Future<dynamic> removeJson(String key) async {

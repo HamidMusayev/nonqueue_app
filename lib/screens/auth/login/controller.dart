@@ -26,8 +26,7 @@ class LoginController extends GetxController {
   void login() async {
     if (formKey.currentState?.validate() ?? false) {
       isLoading.value = true;
-      Result<TokenResponse> res =
-          await _service.getResourceOwnerPasswordToken(TokenRequest(
+      Result<TokenResponse> res = await _service.getResourceOwnerPasswordToken(TokenRequest(
         clientId: 'string',
         clientSecrets: 'string',
         email: emailTxt.text,
@@ -35,11 +34,11 @@ class LoginController extends GetxController {
       ));
 
       if (res.success) {
-        SharedHelper.saveJson('token', res.data?.toJson());
+        await SharedHelper.saveJson('token', res.data?.toJson());
 
         Result<User> res2 = await _service.getById('id=${res.data?.userId}');
         if (res2.success) {
-          SharedHelper.saveJson('user', res2.data?.toJson());
+          await SharedHelper.saveJson('user', res2.data?.toJson());
 
           isLoading.value = false;
           Get.offAll(() => const InAppScreen());
