@@ -26,17 +26,17 @@ class RegisterScreen extends GetView<RegisterController> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  const Text(
-                    'Welcome!',
-                    style: TextStyle(
+                  Text(
+                    'welcome'.tr,
+                    style: const TextStyle(
                       fontSize: 35,
                       fontWeight: FontWeight.w500,
                       color: ColorPalette.qlessApp,
                     ),
                   ),
-                  const Text(
-                    'You are going to sign up to Non-Queue',
-                    style: TextStyle(color: ColorPalette.greyInputText),
+                  Text(
+                    'youaregoingtosignupnonqueue'.tr,
+                    style: const TextStyle(color: ColorPalette.greyInputText),
                   ),
                   Spaces.vertical50,
                   TextFormField(
@@ -45,9 +45,9 @@ class RegisterScreen extends GetView<RegisterController> {
                     textInputAction: TextInputAction.next,
                     validator: ValidatorHelper.validateEmail,
                     autofocus: true,
-                    decoration: const InputDecoration(
-                      hintText: 'Email address',
-                      prefixIcon: Icon(Icons.alternate_email_rounded),
+                    decoration: InputDecoration(
+                      hintText: 'emailadress'.tr,
+                      prefixIcon: const Icon(Icons.alternate_email_rounded),
                     ),
                   ),
                   Spaces.vertical10,
@@ -56,10 +56,10 @@ class RegisterScreen extends GetView<RegisterController> {
                     keyboardType: TextInputType.name,
                     validator: ValidatorHelper.validateFullname,
                     textInputAction: TextInputAction.next,
-                    decoration: const InputDecoration(
-                      hintText: 'Full name',
-                      helperText: 'Ex: Hamid Musayev',
-                      prefixIcon: Icon(Icons.person_rounded),
+                    decoration: InputDecoration(
+                      hintText: 'fullname'.tr,
+                      helperText: 'exfullname'.tr,
+                      prefixIcon: const Icon(Icons.person_rounded),
                     ),
                   ),
                   Spaces.vertical10,
@@ -82,7 +82,7 @@ class RegisterScreen extends GetView<RegisterController> {
                       textInputAction: TextInputAction.done,
                       obscureText: controller.isObsecure.value,
                       decoration: InputDecoration(
-                        hintText: 'Password',
+                        hintText: 'password'.tr,
                         suffixIcon: IconButton(
                           onPressed: controller.changeObsecure,
                           icon: controller.isObsecure.value
@@ -94,14 +94,13 @@ class RegisterScreen extends GetView<RegisterController> {
                     ),
                   ),
                   Spaces.vertical20,
-                  const Text(
-                      'By signing up, you’re agree to our Terms & Conditions and Private Policy'),
+                  Text('bysigningupagreepolicy'.tr),
                   Spaces.vertical50,
                   Obx(
                     () => Visibility(
                       visible: controller.isLoading.value,
                       replacement: TextButton(
-                        child: const Text('Sign Up'),
+                        child: Text('signup'.tr),
                         onPressed: controller.register,
                       ),
                       child: const Center(child: CircularProgressIndicator()),

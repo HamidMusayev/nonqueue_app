@@ -26,17 +26,17 @@ class LoginScreen extends GetView<LoginController> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  const Text(
-                    'Welcome back!',
-                    style: TextStyle(
+                  Text(
+                    'welcomeback'.tr,
+                    style: const TextStyle(
                       fontSize: 35,
                       fontWeight: FontWeight.w500,
                       color: ColorPalette.qlessApp,
                     ),
                   ),
-                  const Text(
-                    'Enter your email and password to login',
-                    style: TextStyle(color: ColorPalette.greyInputText),
+                  Text(
+                    'enteremailpasswordlogin'.tr,
+                    style: const TextStyle(color: ColorPalette.greyInputText),
                   ),
                   Spaces.vertical50,
                   TextFormField(
@@ -45,9 +45,9 @@ class LoginScreen extends GetView<LoginController> {
                     autofocus: true,
                     controller: controller.emailTxt,
                     validator: ValidatorHelper.validateEmail,
-                    decoration: const InputDecoration(
-                      hintText: 'Email address',
-                      prefixIcon: Icon(Icons.alternate_email_rounded),
+                    decoration: InputDecoration(
+                      hintText: 'emailadress'.tr,
+                      prefixIcon: const Icon(Icons.alternate_email_rounded),
                     ),
                   ),
                   Spaces.vertical10,
@@ -59,7 +59,7 @@ class LoginScreen extends GetView<LoginController> {
                       controller: controller.passTxt,
                       validator: ValidatorHelper.validatePassword,
                       decoration: InputDecoration(
-                        hintText: 'Password',
+                        hintText: 'password'.tr,
                         prefixIcon: const Icon(Icons.lock_rounded),
                         suffixIcon: IconButton(
                           onPressed: controller.changeObsecure,
@@ -73,11 +73,11 @@ class LoginScreen extends GetView<LoginController> {
                   Spaces.vertical10,
                   GestureDetector(
                     onTap: () => Get.to(const ForgotPasswordScreen()),
-                    child: const Align(
+                    child: Align(
                       alignment: Alignment.centerRight,
                       child: Text(
-                        'Forgot Password?',
-                        style: TextStyle(
+                        'forgotpassword'.tr,
+                        style: const TextStyle(
                           color: ColorPalette.qlessApp,
                           fontWeight: FontWeight.w500,
                           decoration: TextDecoration.underline,
@@ -91,7 +91,7 @@ class LoginScreen extends GetView<LoginController> {
                       visible: controller.isLoading.value,
                       child: const Center(child: CircularProgressIndicator()),
                       replacement: TextButton(
-                        child: const Text('Login'),
+                        child: Text('login'.tr),
                         onPressed: controller.login,
                       ),
                     ),
@@ -100,15 +100,15 @@ class LoginScreen extends GetView<LoginController> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text(
-                        'Don’t have an account?  ',
-                        style: TextStyle(color: Colors.blueGrey),
+                      Text(
+                        'donothaveaccount'.tr,
+                        style: const TextStyle(color: Colors.blueGrey),
                       ),
                       GestureDetector(
                         onTap: () => Get.off(const RegisterScreen()),
-                        child: const Text(
-                          'Sign up',
-                          style: TextStyle(
+                        child: Text(
+                          'signup'.tr,
+                          style: const TextStyle(
                             color: ColorPalette.qlessApp,
                             fontWeight: FontWeight.w500,
                             decoration: TextDecoration.underline,

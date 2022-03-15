@@ -44,14 +44,14 @@ class OnBoardScreen extends GetView<OnBoardController> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     TextButton(
-                      child: const Text('Sign Up'),
+                      child: Text('signup'.tr),
                       onPressed: () => Get.to(const RegisterScreen()),
                     ),
                     Spaces.vertical10,
                     TextButton.icon(
                       style: TextButton.styleFrom(
                           backgroundColor: Colors.white, primary: Colors.black),
-                      label: const Text('Continue with Google'),
+                      label: Text('continuegoogle'.tr),
                       icon: SvgPicture.asset(
                         'assets/splash/google.svg',
                         width: 30,
@@ -63,7 +63,7 @@ class OnBoardScreen extends GetView<OnBoardController> {
                             style: TextButton.styleFrom(
                                 backgroundColor: Colors.white,
                                 primary: Colors.black),
-                            label: const Text('Continue with Apple'),
+                            label: Text('continueapple'.tr),
                             icon: SvgPicture.asset(
                               'assets/splash/apple.svg',
                               width: 30,
@@ -85,14 +85,14 @@ class OnBoardScreen extends GetView<OnBoardController> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Text(
-                          'Already have an account?',
-                          style: TextStyle(color: Colors.white),
+                        Text(
+                          'alreadyhaveaccount'.tr,
+                          style: const TextStyle(color: Colors.white),
                         ),
                         GestureDetector(
-                          child: const Text(
-                            'LOG IN',
-                            style: TextStyle(
+                          child: Text(
+                            'loginupper'.tr,
+                            style: const TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
                             ),

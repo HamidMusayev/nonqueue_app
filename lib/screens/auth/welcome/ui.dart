@@ -16,15 +16,12 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   final _controller = PageController(initialPage: 0);
 
   final List<Map<String, String>> _splashData = [
-    {'title': 'Order before you go!', 'image': 'assets/splash/first.svg'},
+    {'title': 'orderbeforego'.tr, 'image': 'assets/splash/first.svg'},
     {
-      'title': 'Make your friends happy by sending them gifts!',
+      'title': 'makefriendshappysendgifts'.tr,
       'image': 'assets/splash/second.svg'
     },
-    {
-      'title': 'Get your order without waiting!',
-      'image': 'assets/splash/third.svg'
-    },
+    {'title': 'getorderwithoutwaiting'.tr, 'image': 'assets/splash/third.svg'},
   ];
 
   @override
@@ -54,10 +51,10 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             padding: Paddings.p24,
             child: _pageIndex == 2
                 ? TextButton(
-                    child: const Text('Get Started'),
+                    child: Text('getstarted'.tr),
                     onPressed: () => Get.off(const OnBoardScreen()))
                 : TextButton(
-                    child: const Text('Next'),
+                    child: Text('next'.tr),
                     onPressed: () {
                       setState(
                         () {

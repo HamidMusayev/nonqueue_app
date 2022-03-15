@@ -44,16 +44,17 @@ class _OTPScreenState extends State<OTPScreen> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           const Spacer(),
-          const Text(
-            'Enter OTP',
-            style: TextStyle(
+          Text(
+            'enterotp'.tr,
+            style: const TextStyle(
               fontSize: 32,
               fontWeight: FontWeight.w500,
               color: ColorPalette.qlessApp,
             ),
           ),
           Text(
-            'We sent it to ${widget.email.substring(0, 3)}*******${widget.email.substring(10)}',
+            'wesentitto'.tr +
+                ' ${widget.email.substring(0, 3)}*******${widget.email.substring(10)}',
             style: const TextStyle(color: Colors.blueGrey),
           ),
           Spaces.vertical20,

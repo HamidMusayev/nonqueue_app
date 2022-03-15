@@ -17,7 +17,7 @@ class InAppScreen extends StatefulWidget {
 
 class _InAppScreenState extends State<InAppScreen> {
   final List<Widget> _widgets = [
-    HomeScreen(),
+    const HomeScreen(),
     const MapScreen(),
     const BonusScreen(),
     const ContactsScreen(),

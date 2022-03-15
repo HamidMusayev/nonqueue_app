@@ -61,7 +61,7 @@ class _PartnersScreenState extends State<PartnersScreen> {
                         },
                         branch: CompanyBranch(
                             id: 12,
-                            name: "sdsad",
+                            name: 'sdsad',
                             companyId: 1,
                             stars: 21,
                             status: '',
@@ -88,7 +88,7 @@ class _PartnersScreenState extends State<PartnersScreen> {
                         onTap: () {},
                         branch: CompanyBranch(
                             id: 12,
-                            name: "sdsad",
+                            name: 'sdsad',
                             companyId: 1,
                             stars: 21,
                             status: '',

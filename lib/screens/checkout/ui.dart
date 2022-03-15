@@ -243,7 +243,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                             shape: const RoundedRectangleBorder(
                                 borderRadius: Radiuses.r10),
                             primary: ColorPalette.lightBlack,
-                            side: BorderSide(color: ColorPalette.greyInputText),
+                            side: const BorderSide(color: ColorPalette.greyInputText),
                             fixedSize: const Size.fromHeight(45)),
                         child: Padding(
                           padding: Paddings.p24.copyWith(top: 0, bottom: 0),

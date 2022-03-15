@@ -25,9 +25,9 @@ class ResetPasswordScreen extends GetView<ResetPasswordController> {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
-                const Text(
-                  'Change Password',
-                  style: TextStyle(
+                Text(
+                  'changepassword'.tr,
+                  style: const TextStyle(
                     fontSize: 35,
                     fontWeight: FontWeight.w500,
                     color: ColorPalette.qlessApp,
@@ -42,7 +42,7 @@ class ResetPasswordScreen extends GetView<ResetPasswordController> {
                     textInputAction: TextInputAction.next,
                     obscureText: controller.isObsecure.value,
                     decoration: InputDecoration(
-                      hintText: 'New password',
+                      hintText: 'newpassword'.tr,
                       suffixIcon: IconButton(
                         onPressed: controller.changeObsecure,
                         icon: controller.isObsecure.value
@@ -61,9 +61,9 @@ class ResetPasswordScreen extends GetView<ResetPasswordController> {
                     keyboardType: TextInputType.visiblePassword,
                     textInputAction: TextInputAction.done,
                     obscureText: controller.isObsecure.value,
-                    decoration: const InputDecoration(
-                      hintText: 'Confirm new password',
-                      prefixIcon: Icon(Icons.vpn_key_rounded),
+                    decoration: InputDecoration(
+                      hintText: 'confirmnewpassword'.tr,
+                      prefixIcon: const Icon(Icons.vpn_key_rounded),
                     ),
                   ),
                 ),
@@ -72,7 +72,7 @@ class ResetPasswordScreen extends GetView<ResetPasswordController> {
                   () => Visibility(
                     visible: controller.isLoading.value,
                     replacement: TextButton(
-                      child: const Text('Submit'),
+                      child: Text('submit'.tr),
                       onPressed: () => controller.resetPassword(email, otp),
                     ),
                     child: const Center(child: CircularProgressIndicator()),

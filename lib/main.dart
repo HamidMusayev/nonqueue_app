@@ -18,7 +18,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  bool _saveMe = false;
+  final bool _saveMe = false;
   //User? _user;
 
   // @override
@@ -92,7 +92,7 @@ class _MyAppState extends State<MyApp> {
           // ),
         ),
       ),
-      home: _saveMe ? HomeScreen() : const WelcomeScreen(),
+      home: _saveMe ? const HomeScreen() : const WelcomeScreen(),
     );
   }
 }

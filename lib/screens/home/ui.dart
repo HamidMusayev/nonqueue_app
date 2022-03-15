@@ -8,7 +8,6 @@ import 'package:nonqueue_app/screens/inapp/coupon/ui.dart';
 import 'package:nonqueue_app/widgets/bonus_card.dart';
 import 'package:nonqueue_app/widgets/partner_card.dart';
 
-import '../../models/company/company_branch.dart';
 import '../partnerdetail/ui.dart';
 
 class HomeScreen extends GetView<HomeController> {

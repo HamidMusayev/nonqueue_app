@@ -21,18 +21,17 @@ class ForgotPasswordScreen extends GetView<ForgotPasswordController> {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
-              const Text(
-                'Forgot Password?',
-                style: TextStyle(
+              Text(
+                'forgotpassword'.tr,
+                style: const TextStyle(
                   fontSize: 35,
                   fontWeight: FontWeight.w500,
                   color: ColorPalette.qlessApp,
                 ),
               ),
-              const Text(
-                'Don’t worry! It happens.Please enter the email address/'
-                'mobile phone number associated with your account ',
-                style: TextStyle(color: ColorPalette.greyInputText),
+              Text(
+                'donotworryithappens'.tr,
+                style: const TextStyle(color: ColorPalette.greyInputText),
               ),
               Spaces.vertical50,
               Form(
@@ -43,8 +42,8 @@ class ForgotPasswordScreen extends GetView<ForgotPasswordController> {
                   textInputAction: TextInputAction.done,
                   autofocus: true,
                   validator: ValidatorHelper.validateEmail,
-                  decoration: const InputDecoration(
-                    hintText: 'Email address',
+                  decoration: InputDecoration(
+                    hintText: 'emailadress'.tr,
                   ),
                 ),
               ),
@@ -54,7 +53,7 @@ class ForgotPasswordScreen extends GetView<ForgotPasswordController> {
                   visible: controller.isLoading.value,
                   child: const Center(child: CircularProgressIndicator()),
                   replacement: TextButton(
-                    child: const Text('Submit'),
+                    child: Text('submit'.tr),
                     onPressed: controller.sendOtp,
                   ),
                 ),
