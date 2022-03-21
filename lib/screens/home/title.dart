@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:nonqueue_app/utils/constants.dart';
 
 class TitlePanel extends StatelessWidget {
@@ -23,13 +24,13 @@ class TitlePanel extends StatelessWidget {
             children: [
               title != null
                   ? Text(title!,
-                      style: const TextStyle(color: ColorPalette.qlessApp))
+                      style: const TextStyle(color: ColorPalette.qlessApp, fontSize: 12))
                   : Container(),
               Text(
                 subtitle,
                 style: const TextStyle(
                   color: ColorPalette.lightBlack,
-                  fontSize: 22,
+                  fontSize: 18,
                   fontWeight: FontWeight.w500,
                 ),
               ),
@@ -43,10 +44,10 @@ class TitlePanel extends StatelessWidget {
                     backgroundColor: Colors.transparent,
                     fixedSize: const Size.fromHeight(20),
                   ),
-                  child: const Text(
-                    'View all',
-                    style: TextStyle(
-                      fontSize: 16,
+                  child: Text(
+                    'viewall'.tr,
+                    style: const TextStyle(
+                      fontSize: 14,
                       fontWeight: FontWeight.w400,
                     ),
                   ),

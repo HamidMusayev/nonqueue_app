@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:nonqueue_app/screens/inapp/drawer/about.dart';
 import 'package:nonqueue_app/screens/inapp/drawer/account/ui.dart';
 import 'package:nonqueue_app/screens/inapp/drawer/balance.dart';
+import 'package:nonqueue_app/screens/inapp/drawer/controller.dart';
 import 'package:nonqueue_app/screens/inapp/drawer/fag.dart';
 import 'package:nonqueue_app/screens/inapp/drawer/help.dart';
 import 'package:nonqueue_app/screens/inapp/drawer/history.dart';
@@ -11,33 +12,12 @@ import 'package:nonqueue_app/screens/inapp/drawer/payment.dart';
 import 'package:nonqueue_app/screens/inapp/drawer/privacy.dart';
 import 'package:nonqueue_app/utils/constants.dart';
 
-class HomeDrawer extends StatelessWidget {
-  const HomeDrawer({Key? key}) : super(key: key);
+class CustomDrawer extends GetView<CustomDrawerController> {
+  const CustomDrawer({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    List<Map<String, String>> _languages = [
-      {
-        'name': 'Azerbaijani',
-        'icon': 'az.png',
-        'locale': 'az',
-        'locale2': 'AZ',
-      },
-      {
-        'name': 'English',
-        'icon': 'us.png',
-        'locale': 'en',
-        'locale2': 'GB',
-      },
-      {
-        'name': 'Russian',
-        'icon': 'ru.png',
-        'locale': 'ru',
-        'locale2': 'RU',
-      },
-    ];
-
-    Map<String, String> _activeLang = _languages[0];
+    Get.put(CustomDrawerController());
     return Drawer(
       child: SafeArea(
         child: Padding(
@@ -148,23 +128,18 @@ class HomeDrawer extends StatelessWidget {
                   ],
                 ),
               ),
-              StatefulBuilder(
-                builder: (context, state) => ButtonTheme(
+              GetBuilder<CustomDrawerController>(
+                init: CustomDrawerController(),
+                builder: (_) => ButtonTheme(
                   alignedDropdown: true,
                   child: DropdownButton<Map<String, String>>(
-                    value: _activeLang,
+                    value: controller.activeLang,
                     isExpanded: false,
                     icon: const Icon(Icons.arrow_drop_down_rounded),
                     underline: Container(),
                     borderRadius: Radiuses.r10,
-                    onChanged: (lang) {
-                      if (lang != null) {
-                        Get.updateLocale(
-                            Locale(lang['locale']!, lang['locale2']));
-                        state(() => _activeLang = lang);
-                      }
-                    },
-                    items: _languages.map((lang) {
+                    onChanged: controller.updateLanguage,
+                    items: controller.languages.map((lang) {
                       return DropdownMenuItem<Map<String, String>>(
                         value: lang,
                         child: Row(

@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:nonqueue_app/screens/bonus/ui.dart';
 import 'package:nonqueue_app/screens/contacts/ui.dart';
 import 'package:nonqueue_app/screens/home/ui.dart';
-import 'package:nonqueue_app/screens/inapp/drawer.dart';
 import 'package:nonqueue_app/screens/profile/ui.dart';
 import 'package:nonqueue_app/screens/search/ui.dart';
 import 'package:nonqueue_app/utils/constants.dart';
+import 'drawer/ui.dart';
 import 'notification/ui.dart';
 
 class InAppScreen extends StatefulWidget {
@@ -99,7 +99,7 @@ class _InAppScreenState extends State<InAppScreen> {
         elevation: 10,
         onTap: _onItemTapped,
       ),
-      drawer: const HomeDrawer(),
+      drawer: const CustomDrawer(),
       body: _widgets.elementAt(_selectedIndex),
     );
   }

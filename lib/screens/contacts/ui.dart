@@ -17,9 +17,9 @@ class ContactsScreen extends GetView<ContactsController> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const ListTile(
-              leading: Icon(Icons.person_add_rounded),
-              title: Text('Send a gift & invite your friend'),
+            ListTile(
+              leading: const Icon(Icons.person_add_rounded),
+              title: Text('giftinviteyourfriend'.tr),
               horizontalTitleGap: 0,
             ),
             const Divider(
@@ -27,9 +27,9 @@ class ContactsScreen extends GetView<ContactsController> {
               height: 40,
               thickness: 1,
             ),
-            const Text(
-              'NQP Contacts',
-              style: TextStyle(
+            Text(
+              'nqpcontacts'.tr,
+              style: const TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.w500,
                 color: ColorPalette.lightBlack,
@@ -40,16 +40,16 @@ class ContactsScreen extends GetView<ContactsController> {
               () => Visibility(
                 replacement: Column(
                   children: [
-                    const Text(
-                      'You must allow the application to access your contacts to see who is using this application from your contacts',
-                      style: TextStyle(
+                    Text(
+                      'allowapplicationaccessyourcontacts'.tr,
+                      style: const TextStyle(
                         color: ColorPalette.greyInputText,
                       ),
                     ),
                     Spaces.vertical20,
                     TextButton(
-                      onPressed: ()=> controller.initContacts(),
-                      child: const Text('Allow access'),
+                      onPressed: () => controller.initContacts(),
+                      child: Text('allowaccess'.tr),
                     )
                   ],
                 ),
@@ -78,7 +78,8 @@ class ContactsScreen extends GetView<ContactsController> {
                         radius: 24,
                         backgroundColor: Colors.transparent,
                       ),
-                      title: Text(controller.nonQueueContacts[index].displayName),
+                      title:
+                          Text(controller.nonQueueContacts[index].displayName),
                       trailing: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: const [

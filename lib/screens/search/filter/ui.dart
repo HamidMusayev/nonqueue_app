@@ -1,5 +1,6 @@
 import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:nonqueue_app/utils/constants.dart';
 import 'package:nonqueue_app/widgets/partner_tile.dart';
 
@@ -29,10 +30,10 @@ class _FilterPanelState extends State<FilterPanel> {
           ),
         ),
         Spaces.vertical10,
-        const TextField(
+        TextField(
           decoration: InputDecoration(
-            hintText: 'Search...',
-            prefixIcon: Icon(Icons.search_rounded),
+            hintText: 'search'.tr,
+            prefixIcon: const Icon(Icons.search_rounded),
           ),
         ),
         Expanded(
@@ -43,9 +44,9 @@ class _FilterPanelState extends State<FilterPanel> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Spaces.vertical20,
-                const Text(
-                  'Nearby your current location',
-                  style: TextStyle(
+                Text(
+                  'nearbycurrentlocation'.tr,
+                  style: const TextStyle(
                     color: ColorPalette.lightBlack,
                     fontWeight: FontWeight.w500,
                     fontSize: 14,
@@ -61,9 +62,9 @@ class _FilterPanelState extends State<FilterPanel> {
                       .toList(),
                 ),
                 Spaces.vertical20,
-                const Text(
-                  'Food type',
-                  style: TextStyle(
+                Text(
+                  'foodtype'.tr,
+                  style: const TextStyle(
                     color: ColorPalette.lightBlack,
                     fontWeight: FontWeight.w500,
                     fontSize: 14,
@@ -73,13 +74,13 @@ class _FilterPanelState extends State<FilterPanel> {
                 Wrap(
                   spacing: 8,
                   children: [
-                    'Coffee',
-                    'Fast food',
-                    'Smoothies',
-                    'Vegan',
-                    'Seafood',
-                    'Cocktails',
-                    'Deserts'
+                    'coffee'.tr,
+                    'fastfood'.tr,
+                    'smoothies'.tr,
+                    'vegan'.tr,
+                    'seafood'.tr,
+                    'cocktails'.tr,
+                    'deserts'.tr
                   ]
                       .map((e) => Chip(
                             label: Text(e),
@@ -87,9 +88,9 @@ class _FilterPanelState extends State<FilterPanel> {
                       .toList(),
                 ),
                 Spaces.vertical20,
-                const Text(
-                  'Order again',
-                  style: TextStyle(
+                Text(
+                  'orderagain'.tr,
+                  style: const TextStyle(
                     color: ColorPalette.lightBlack,
                     fontWeight: FontWeight.w500,
                     fontSize: 14,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:nonqueue_app/models/company/company_branch.dart';
 import 'package:nonqueue_app/screens/partnerdetail/ui.dart';
 
@@ -18,9 +19,9 @@ class _PartnersScreenState extends State<PartnersScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Hey, Where would you like to buy a gift?',
-          style: TextStyle(color: ColorPalette.lightBlack, fontSize: 14),
+        title: Text(
+          'wherewouldyoulikebuygift'.tr,
+          style: const TextStyle(color: ColorPalette.lightBlack, fontSize: 14),
         ),
       ),
       body: SingleChildScrollView(
@@ -28,16 +29,16 @@ class _PartnersScreenState extends State<PartnersScreen> {
           children: [
             Padding(
               padding: Paddings.p16.copyWith(bottom: 0),
-              child: const TextField(
+              child: TextField(
                 decoration: InputDecoration(
-                  hintText: 'Search restaraunts & location...',
-                  prefixIcon: Icon(Icons.search_rounded),
+                  hintText: 'searchrestarauntslocation'.tr,
+                  prefixIcon: const Icon(Icons.search_rounded),
                 ),
               ),
             ),
             Spaces.vertical10,
-            const TitlePanel(
-              subtitle: 'All partners',
+            TitlePanel(
+              subtitle: 'allpartners'.tr,
               viewAllButton: false,
             ),
             Container(
@@ -71,8 +72,8 @@ class _PartnersScreenState extends State<PartnersScreen> {
                     .toList(),
               ),
             ),
-            const TitlePanel(
-              subtitle: 'Most popular',
+            TitlePanel(
+              subtitle: 'mostpopular'.tr,
               viewAllButton: false,
             ),
             Container(

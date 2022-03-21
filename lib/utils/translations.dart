@@ -45,7 +45,8 @@ class Messages extends Translations {
           'wesentitto': 'We sent it to',
           //pswforgot
           'forgotpassword': 'Forgot Password?',
-          'donotworryithappens': 'Don’t worry! Please enter the E-mail address ',
+          'donotworryithappens':
+              'Don’t worry! Please enter the E-mail address ',
           'emailaddressphonenumber': 'E-mail address/phone number',
           'submit': 'Submit',
           //pswreset
@@ -66,7 +67,80 @@ class Messages extends Translations {
               'Make your friends happy by sending them gifts!',
           'getorderwithoutwaiting': 'Get your order without waiting!',
           'getstarted': 'Get Started',
-          'next': 'Next'
+          'next': 'Next',
+          //offerdetail
+          'offerdetail': 'Offer Detail',
+          'gotobuy': 'Go to Buy',
+          //bonus
+          'mybonuses': 'My bonuses',
+          'offers': 'Offers',
+          //cart
+          'shoppingbag': 'Shopping bag',
+          'orderitems': 'Order items',
+          'name': 'name',
+          'size': 'size',
+          'count': 'count',
+          'value': 'value',
+          'total': 'Total',
+          'priceinmanatinctaxes': 'Price in manat, inc taxes',
+          'heyitemchosedcouponhere':
+              'Hey, the item you chosed has a coupon! Tap here!',
+          //checkout
+          'number': 'number',
+          'checkout': 'Checkout',
+          'details': 'Details',
+          'pickup': 'Pickup',
+          'takefoodwithmyself': 'I’ll take the food with myself.',
+          'onsite': 'On site',
+          'itatrestaraunt': 'I’ll it at restaraunt.',
+          'yourarrivaltime': 'Your arrival time',
+          'payment': 'Payment',
+          'nqbalance': 'N-Q balance: ',
+          'confirmation': 'Confirmation',
+          'congratulations': 'Congratulations!',
+          'yourorderdone': 'Your order has successfully done!',
+          'yourordernumber': 'Your order number is',
+          'track order': 'Track order',
+          'back': 'Back',
+          //contacts_partners
+          'wherewouldyoulikebuygift':
+              'Hey, Where would you like to buy a gift?',
+          'searchrestarauntslocation': 'Search restaraunts & location...',
+          'allpartners': 'All partners',
+          'mostpopular': 'Most popular',
+          'giftinviteyourfriend': 'Send a gift & invite your friend',
+          'nqpcontacts': 'NQP Contacts',
+          'allowapplicationaccessyourcontacts':
+              'You must allow the application to access your contacts '
+                  'to see who is using this application from your contacts',
+          'allowaccess': 'Allow access',
+          //home
+          'viewall': 'View all',
+          'lovefree': 'love free stuff?',
+          'yourbonuses': 'Your bonuses',
+          'quickorder': 'want to make quick order?',
+          'peoplelike': 'what other people like?',
+
+
+          //profile
+          'nqpoints': 'N-Q points :',
+          'logout': 'Log out',
+          'savechanges': 'Save Changes',
+          'editaccount': 'Edit account',
+          'yousure': 'Are you sure?',
+          'yes': 'Yes',
+          'no': 'No',
+          //filter
+          'nearbycurrentlocation': 'Nearby your current location',
+          'foodtype': 'Food type',
+          'coffee': 'Coffee',
+          'fastfood': 'Fast food',
+          'smoothies': 'Smoothies',
+          'vegan': 'Vegan',
+          'seafood': 'Seafood',
+          'cocktails': 'Cocktails',
+          'deserts': 'Deserts',
+          'orderagain': 'Order again'
         },
         'az_AZ': {
           //General
@@ -134,7 +208,80 @@ class Messages extends Translations {
               'Dostlarınızı onlara hədiyyələr göndərməklə sevindirin!',
           'getorderwithoutwaiting': 'Sifarişinizi gözləmədən əldə edin!',
           'getstarted': 'Başla',
-          'next': 'Növbəti'
+          'next': 'Növbəti',
+          //offerdetail
+          'offerdetail': 'Təklif təfərrüatı ',
+          'gotobuy': 'Alış-a keçin',
+          //bonus
+          'mybonuses': 'Bonuslarım',
+          'offers': 'Təkliflər',
+          //cart
+          'shoppingbag': 'Alış-veriş çantası',
+          'orderitems': 'Əşyaları sifariş edin',
+          'name': 'ad',
+          'size': 'ölçü',
+          'count': 'say',
+          'value': 'dəyər',
+          'total': 'Toplam',
+          'priceinmanatinctaxes': 'Vergilər daxil olmaqla manatla qiymət',
+          'heyitemchosedcouponhere':
+              'Hey, seçdiyiniz elementin kuponu var! Bura toxunun!',
+          //checkout
+          'number': 'nömrə',
+          'checkout': 'Yoxla',
+          'details': 'Detallar',
+          'pickup': 'Toplamaq',
+          'takefoodwithmyself': 'Yeməyi özümlə aparacam.',
+          'onsite': 'Saytda',
+          'itatrestaraunt': 'Restoranda oturacam.',
+          'yourarrivaltime': 'Sizin gəliş vaxtınız',
+          'payment': 'Ödəniş',
+          'nqbalance': 'N-Q balans: 35.00 AZN',
+          'confirmation': 'Təsdiq',
+          'congratulations': 'Təbrik edirik!',
+          'yourorderdone': 'Sifarişiniz uğurla yerinə yetirildi!',
+          'yourordernumber': 'Sizin sifariş nömrəniz',
+          'track order': 'Sifarişi izləyin',
+          'back': 'Geri',
+          //contacts_partners
+          'wherewouldyoulikebuygift':
+              'Salam, haradan hədiyyə almaq istərdiniz?',
+          'searchrestarauntslocation': 'Restoranlar və məkan axtarın...',
+          'allpartners': 'Bütün tərəfdaşlar',
+          'mostpopular': 'Ən məşhur',
+          'giftinviteyourfriend': 'Hədiyyə göndərin və dostunuzu dəvət edin',
+          'nqpcontacts': 'NQP Əlaqələr',
+          'allowapplicationaccessyourcontacts':
+              'Siz tətbiqin kontaktlarınıza daxil olmasına icazə verməlisiniz '
+                  'Bu proqramı kontaktlarınızdan kimin istifadə etdiyini görmək',
+          'allowaccess': 'Girişə imkan vermək',
+          //home
+          'viewall': 'Daha çox',
+          'lovefree': 'pulsuz almaq?',
+          'yourbonuses': 'Bonusların',
+          'quickorder': 'cəld sifariş istəyirsiniz?',
+          'peoplelike': 'digərləri nəyi bəyənir?',
+
+
+          //profile
+          'nqpoints': 'N-Q xalları:',
+          'logout': 'Çıxış',
+          'yousure': 'Siz əminsinizmi?',
+          'yes': 'Bəli',
+          'no': 'Xeyr',
+          'savechanges': 'Dəyişikləri saxla',
+          'editaccount': 'Edit account',
+          //filter
+          'nearbycurrentlocation': 'Cari yerinizin yaxınlığında',
+          'foodtype': 'Qida növü',
+          'coffee': 'Kofe',
+          'fastfood': 'Fast food',
+          'smoothies': 'Smoothies',
+          'vegan': 'Vegan',
+          'seafood': 'Dəniz məhsulları',
+          'cocktails': 'Kokteyllər',
+          'deserts': 'Desertlər',
+          'orderagain': 'Yenidən sifariş edin'
         },
       };
 }

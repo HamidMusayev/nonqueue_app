@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:nonqueue_app/widgets/discount_tile.dart';
 
 import '../../utils/constants.dart';
@@ -10,9 +11,9 @@ class OfferDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Offer Detail',
-          style: TextStyle(color: ColorPalette.lightBlack),
+        title: Text(
+          'offerdetail'.tr,
+          style: const TextStyle(color: ColorPalette.lightBlack),
         ),
       ),
       body: Container(
@@ -24,7 +25,10 @@ class OfferDetailScreen extends StatelessWidget {
             const Text(
                 'Come before 12:00 oclock get 30% discount \n* Drinks included in the promotion: Coca-Cola, Coca-Cola Zero, Fanta, Sprite \n* Papadias included in the promotion: Italian, Chicken BBQ and Spicy Chicken Ranch \n* Calzone included in the promotion: Meat and Chicken \n* The order is valid for restaurants at 28 Mall, Park Bulvar, Genclik Mall, Deniz Mall and Shuvalan Park TM.'),
             const Spacer(),
-            TextButton(onPressed: () {}, child: const Text('Go to Buy'))
+            TextButton(
+              onPressed: () {},
+              child: Text('gotobuy'.tr),
+            )
           ],
         ),
       ),

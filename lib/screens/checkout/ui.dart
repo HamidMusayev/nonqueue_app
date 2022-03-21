@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import '../../utils/constants.dart';
 
 class CheckoutScreen extends StatefulWidget {
@@ -43,20 +44,20 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
       backgroundColor: ColorPalette.glassEffect,
       appBar: AppBar(
         backgroundColor: Colors.white,
-        title: const Text(
-          'Checkout',
-          style: TextStyle(color: ColorPalette.lightBlack),
+        title: Text(
+          'checkout'.tr,
+          style: const TextStyle(color: ColorPalette.lightBlack),
         ),
       ),
       body: Column(
         children: [
-          const ListTile(
-            title: Text('Total'),
-            trailing: Text(
+          ListTile(
+            title: Text('total'.tr),
+            trailing: const Text(
               '16.00 AZN',
               style: TextStyle(fontWeight: FontWeight.w500),
             ),
-            subtitle: Text('Price in manat, inc taxes'),
+            subtitle: Text('priceinmanatinctaxes'.tr),
           ),
           Container(
             decoration: const BoxDecoration(
@@ -71,8 +72,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
               borderRadius: Radiuses.r20,
             ),
             child: Theme(
-              data: Theme.of(context).copyWith(
-              ),
+              data: Theme.of(context).copyWith(),
               child: Stepper(
                 onStepContinue: () => setState(() => _activeStep++),
                 onStepCancel: () => setState(() => _activeStep--),
@@ -83,22 +83,21 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                     isActive: _activeStep == 0,
                     state:
                         _activeStep > 0 ? StepState.indexed : StepState.indexed,
-                    title: const Text('Details'),
+                    title: Text('details'.tr),
                     content: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         RadioListTile(
-                          title: const Text('Pickup'),
-                          subtitle:
-                              const Text('I’ll take the food with myself.'),
+                          title: Text('pickup'.tr),
+                          subtitle: Text('takefoodwithmyself'.tr),
                           value: 1,
                           groupValue: _pickedType,
                           onChanged: (int? value) =>
                               setState(() => _pickedType = value),
                         ),
                         RadioListTile(
-                          title: const Text('On site'),
-                          subtitle: const Text('I’ll it at restaraunt.'),
+                          title: Text('onsite'.tr),
+                          subtitle: Text('itatrestaraunt'.tr),
                           value: 2,
                           groupValue: _pickedType,
                           onChanged: (int? value) =>
@@ -106,7 +105,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                         ),
                         Spaces.vertical10,
                         ListTile(
-                          title: const Text('Your arrival time'),
+                          title: Text('yourarrivaltime'.tr),
                           subtitle: Text(
                             _pickedTime.format(context),
                             style: const TextStyle(
@@ -136,11 +135,11 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                     state: _activeStep > 1
                         ? StepState.complete
                         : StepState.indexed,
-                    title: const Text('Payment'),
+                    title: Text('payment'.tr),
                     content: Column(
                       children: [
                         RadioListTile(
-                          title: const Text('N-Q balance: 35.00 AZN'),
+                          title: Text('nqbalance'.tr + '35.00 AZN'),
                           value: 0,
                           groupValue: _pickedPayment,
                           onChanged: (int? value) =>
@@ -172,7 +171,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                     state: _activeStep > 2
                         ? StepState.complete
                         : StepState.indexed,
-                    title: const Text('Confirmation'),
+                    title: Text('confirmation'.tr),
                     content: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -183,15 +182,16 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                         Spaces.horizontal6,
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          children: const [
-                            Text('Congratulations!'),
-                            Text('Your order has successfully done!'),
+                          children: [
+                            Text('congratulations'.tr),
+                            Text('yourorderdone'.tr),
                             Spaces.vertical10,
                             Text(
-                              'Your order number is',
-                              style: TextStyle(fontWeight: FontWeight.w500),
+                              'yourordernumber'.tr,
+                              style:
+                                  const TextStyle(fontWeight: FontWeight.w500),
                             ),
-                            Text(
+                            const Text(
                               '#241218',
                               style: TextStyle(
                                 color: ColorPalette.greyInputText,
@@ -217,7 +217,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                             fixedSize: const Size.fromHeight(45)),
                         child: Padding(
                           padding: Paddings.p24.copyWith(top: 0, bottom: 0),
-                          child: const Text('Next'),
+                          child: Text('next'.tr),
                         ),
                       ),
                     ),
@@ -229,7 +229,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                             fixedSize: const Size.fromHeight(45)),
                         child: Padding(
                           padding: Paddings.p24.copyWith(top: 0, bottom: 0),
-                          child: const Text('Track order'),
+                          child: Text('track order'.tr),
                         ),
                       ),
                     ),
@@ -240,14 +240,16 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                       child: OutlinedButton(
                         onPressed: controlDetails.onStepCancel,
                         style: OutlinedButton.styleFrom(
-                            shape: const RoundedRectangleBorder(
-                                borderRadius: Radiuses.r10),
-                            primary: ColorPalette.lightBlack,
-                            side: const BorderSide(color: ColorPalette.greyInputText),
-                            fixedSize: const Size.fromHeight(45)),
+                          shape: const RoundedRectangleBorder(
+                              borderRadius: Radiuses.r10),
+                          primary: ColorPalette.lightBlack,
+                          side: const BorderSide(
+                              color: ColorPalette.greyInputText),
+                          fixedSize: const Size.fromHeight(45),
+                        ),
                         child: Padding(
                           padding: Paddings.p24.copyWith(top: 0, bottom: 0),
-                          child: const Text('Back'),
+                          child: Text('back'.tr),
                         ),
                       ),
                     ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:nonqueue_app/screens/checkout/ui.dart';
 import 'package:nonqueue_app/widgets/bonus_card.dart';
 
@@ -43,9 +44,9 @@ class _CartScreenState extends State<CartScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Shopping bag',
-          style: TextStyle(color: ColorPalette.lightBlack),
+        title: Text(
+          'shoppingbag'.tr,
+          style: const TextStyle(color: ColorPalette.lightBlack),
         ),
       ),
       body: SingleChildScrollView(
@@ -55,9 +56,9 @@ class _CartScreenState extends State<CartScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
-              const Text(
-                'Order items',
-                style: TextStyle(
+              Text(
+                'orderitems'.tr,
+                style: const TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w500,
                 ),
@@ -185,9 +186,9 @@ class _CartScreenState extends State<CartScreen> {
                 color: ColorPalette.lightBlack,
                 height: 40,
               ),
-              const Text(
-                'Total',
-                style: TextStyle(
+              Text(
+                'total'.tr,
+                style: const TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w500,
                 ),
@@ -195,12 +196,12 @@ class _CartScreenState extends State<CartScreen> {
               Spaces.vertical10,
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [
+                children: [
                   Text(
-                    'Price in manat, inc taxes',
-                    style: TextStyle(fontSize: 16),
+                    'priceinmanatinctaxes'.tr,
+                    style: const TextStyle(fontSize: 16),
                   ),
-                  Text(
+                  const Text(
                     '16.00 AZN',
                     style: TextStyle(
                       fontSize: 16,
@@ -215,9 +216,9 @@ class _CartScreenState extends State<CartScreen> {
                   Icons.card_giftcard_rounded,
                   color: ColorPalette.qlessApp,
                 ),
-                title: const Text(
-                  'Hey, the item you chosed has a coupon! Tap here!',
-                  style: TextStyle(fontWeight: FontWeight.w500),
+                title: Text(
+                  'heyitemchosedcouponhere'.tr,
+                  style: const TextStyle(fontWeight: FontWeight.w500),
                 ),
                 children: <Widget>[
                   SizedBox(
@@ -230,7 +231,7 @@ class _CartScreenState extends State<CartScreen> {
               ),
               Spaces.vertical50,
               TextButton(
-                child: const Text('Next'),
+                child: Text('next'.tr),
                 onPressed: () => Navigator.push(
                   context,
                   MaterialPageRoute(

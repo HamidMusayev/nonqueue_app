@@ -41,9 +41,9 @@ class ProfileScreen extends GetView<ProfileController> {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
-                        const Text(
-                          'N-Q points :',
-                          style: TextStyle(
+                        Text(
+                          'nqpoints'.tr,
+                          style: const TextStyle(
                             color: ColorPalette.greyInputText,
                             fontSize: 18,
                             fontWeight: FontWeight.w500,
@@ -70,16 +70,16 @@ class ProfileScreen extends GetView<ProfileController> {
                     Column(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       mainAxisSize: MainAxisSize.min,
-                      children: const <Widget>[
+                      children: <Widget>[
                         Text(
-                          'N-Q balance :',
-                          style: TextStyle(
+                          'nqbalance'.tr,
+                          style: const TextStyle(
                             color: ColorPalette.lightBlack,
                             fontSize: 18,
                             fontWeight: FontWeight.w500,
                           ),
                         ),
-                        Text(
+                        const Text(
                           '35 ₼',
                           style: TextStyle(
                             color: ColorPalette.lightBlack,
@@ -101,8 +101,8 @@ class ProfileScreen extends GetView<ProfileController> {
                       controller: controller.fullnameTxt,
                       validator: ValidatorHelper.validateFullname,
                       onChanged: controller.checkFullName,
-                      decoration: const InputDecoration(
-                        hintText: 'Full name',
+                      decoration: InputDecoration(
+                        hintText: 'fullname'.tr,
                       ),
                     ),
                     Spaces.vertical20,
@@ -110,8 +110,8 @@ class ProfileScreen extends GetView<ProfileController> {
                       controller: controller.usernameTxt,
                       validator: ValidatorHelper.validateUsername,
                       onChanged: controller.checkUsername,
-                      decoration: const InputDecoration(
-                        hintText: 'Username',
+                      decoration: InputDecoration(
+                        hintText: 'username'.tr,
                       ),
                     ),
                     Spaces.vertical20,
@@ -137,7 +137,7 @@ class ProfileScreen extends GetView<ProfileController> {
                           replacement:
                               const Center(child: CircularProgressIndicator()),
                           child: TextButton(
-                            child: const Text('Save Changes'),
+                            child: Text('savechanges'.tr),
                             onPressed: () async => controller.saveUserData(),
                           ),
                         )
@@ -151,9 +151,9 @@ class ProfileScreen extends GetView<ProfileController> {
                   backgroundColor: Colors.transparent,
                   fixedSize: const Size.fromHeight(20),
                 ),
-                child: const Text(
-                  'Edit account',
-                  style: TextStyle(
+                child: Text(
+                  'editaccount'.tr,
+                  style: const TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w400,
                   ),
@@ -173,9 +173,9 @@ class ProfileScreen extends GetView<ProfileController> {
                   backgroundColor: Colors.transparent,
                   fixedSize: const Size.fromHeight(20),
                 ),
-                child: const Text(
-                  'Log out',
-                  style: TextStyle(
+                child: Text(
+                  'logout'.tr,
+                  style: const TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w400,
                   ),
@@ -184,11 +184,11 @@ class ProfileScreen extends GetView<ProfileController> {
                   showDialog(
                     context: context,
                     builder: (_) => AlertDialog(
-                      title: const Text('Log out'),
-                      content: const Text('Are you sure?'),
+                      title: Text('logout'.tr),
+                      content: Text('yousure'.tr),
                       actions: [
                         OutlinedButton(
-                          child: const Text('Yes'),
+                          child: Text('yes'.tr),
                           style: TextButton.styleFrom(
                             fixedSize: const Size.fromHeight(45),
                             shape: const RoundedRectangleBorder(
@@ -201,7 +201,7 @@ class ProfileScreen extends GetView<ProfileController> {
                           },
                         ),
                         TextButton(
-                          child: const Text('No'),
+                          child: Text('no'.tr),
                           style: TextButton.styleFrom(
                             fixedSize: const Size.fromHeight(45),
                           ),

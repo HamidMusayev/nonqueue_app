@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:nonqueue_app/screens/bonus/mybonus.dart';
 import 'package:nonqueue_app/screens/bonus/offeer.dart';
 import 'package:nonqueue_app/utils/constants.dart';
@@ -34,9 +35,9 @@ class _BonusScreenState extends State<BonusScreen>
           labelColor: ColorPalette.qlessApp,
           unselectedLabelColor: ColorPalette.greyInputText,
           //isScrollable: true,
-          tabs: const [
-            Tab(text: 'My bonuses'),
-            Tab(text: 'Offers'),
+          tabs: [
+            Tab(text: 'mybonuses'.tr),
+            Tab(text: 'offers'.tr),
           ],
         ),
       ),

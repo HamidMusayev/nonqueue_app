@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:nonqueue_app/screens/bonus/offerdetail.dart';
 import 'package:nonqueue_app/utils/constants.dart';
 import 'package:nonqueue_app/widgets/discount_tile.dart';
@@ -12,10 +13,10 @@ class OfferPanel extends StatelessWidget {
       padding: Paddings.p16.copyWith(bottom: 0),
       child: Column(
         children: [
-          const TextField(
+          TextField(
             decoration: InputDecoration(
-              hintText: 'Search...',
-              prefixIcon: Icon(Icons.search_rounded),
+              hintText: 'search'.tr,
+              prefixIcon: const Icon(Icons.search_rounded),
             ),
           ),
           Spaces.vertical10,

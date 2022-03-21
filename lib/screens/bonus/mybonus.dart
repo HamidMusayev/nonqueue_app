@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:nonqueue_app/utils/constants.dart';
 import 'package:nonqueue_app/widgets/bonus_card.dart';
 
@@ -53,10 +54,10 @@ class MyBonusPanel extends StatelessWidget {
       padding: Paddings.p16.copyWith(bottom: 0),
       child: Column(
         children: [
-          const TextField(
+          TextField(
             decoration: InputDecoration(
-              hintText: 'Search...',
-              prefixIcon: Icon(Icons.search_rounded),
+              hintText: 'search'.tr,
+              prefixIcon: const Icon(Icons.search_rounded),
             ),
           ),
           Spaces.vertical10,
@@ -72,9 +73,9 @@ class MyBonusPanel extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                       builder: (context) => _items[index]
-                          .where((element) => !element)
-                          .toList()
-                          .isNotEmpty
+                              .where((element) => !element)
+                              .toList()
+                              .isNotEmpty
                           ? const CouponScreen()
                           : const CompletedCouponScreen(),
                       fullscreenDialog: true,

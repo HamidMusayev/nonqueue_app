@@ -22,9 +22,9 @@ class HomeScreen extends GetView<HomeController> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const TitlePanel(
-            title: 'love free stuff?',
-            subtitle: 'Your bonuses',
+          TitlePanel(
+            title: 'lovefree'.tr,
+            subtitle: 'yourbonuses'.tr,
           ),
           CarouselSlider.builder(
             itemCount: controller.items.length,
@@ -59,9 +59,9 @@ class HomeScreen extends GetView<HomeController> {
               scrollDirection: Axis.horizontal,
             ),
           ),
-          const TitlePanel(
-            title: 'want to make quick order?',
-            subtitle: 'All partners',
+          TitlePanel(
+            title: 'quickorder'.tr,
+            subtitle: 'allpartners'.tr,
           ),
           Container(
             constraints: const BoxConstraints(maxHeight: 205),
@@ -89,9 +89,9 @@ class HomeScreen extends GetView<HomeController> {
               ),
             ),
           ),
-          const TitlePanel(
-            title: 'what other people like?',
-            subtitle: 'Most popular',
+          TitlePanel(
+            title: 'peoplelike'.tr,
+            subtitle: 'mostpopular'.tr,
           ),
           Container(
             constraints: const BoxConstraints(maxHeight: 205),
