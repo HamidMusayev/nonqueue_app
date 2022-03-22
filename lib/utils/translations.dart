@@ -156,7 +156,7 @@ class Messages extends Translations {
           'cocktails': 'Cocktails',
           'deserts': 'Deserts',
           //about
-          'about': 'Haqqında',
+          'about': 'About',
           //account
           'providepersonalinfo': 'Provide your personal information, '
               'this won’t be part of your public profile',
