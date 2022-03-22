@@ -53,9 +53,9 @@ class HelpScreen extends GetView<HelpController> {
                     suffixIcon: Obx(
                       () => Visibility(
                         visible: controller.isLoading.value,
-                        child: SizedBox(
+                        child: const SizedBox(
                             height: 5,
-                            child: const CircularProgressIndicator(),),
+                            child: CircularProgressIndicator(),),
                         replacement: IconButton(
                           onPressed: () async => controller.sendForHelp(),
                           icon: const Icon(Icons.send_rounded),

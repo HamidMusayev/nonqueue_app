@@ -19,18 +19,18 @@ class FagScreen extends GetView<FaqController> {
       body: Obx(
         ()=> Visibility(
           visible: controller.isLoading.value,
-          child: Center(child: CircularProgressIndicator()),
+          child: const Center(child: CircularProgressIndicator()),
           replacement: ListView.builder(
-            physics: BouncingScrollPhysics(),
+            physics: const BouncingScrollPhysics(),
             itemCount: controller.faqs.length,
             itemBuilder: (context, index) => ExpansionTile(
-              leading: Icon(
+              leading: const Icon(
                 Icons.question_answer_rounded,
                 color: ColorPalette.qlessApp,
               ),
               title: Text(
                 controller.faqs[index].question,
-                style: TextStyle(fontWeight: FontWeight.w500),
+                style: const TextStyle(fontWeight: FontWeight.w500),
               ),
               children: <Widget>[
                 ListTile(

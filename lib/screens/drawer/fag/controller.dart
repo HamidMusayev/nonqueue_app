@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:nonqueue_app/api/concrete/company_service.dart';
 import 'package:nonqueue_app/models/company/faq.dart';
