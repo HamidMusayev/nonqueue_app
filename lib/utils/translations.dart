@@ -124,7 +124,7 @@ class Messages extends Translations {
           'gift': 'Gift',
           //notification
           'notifications': 'Notifications',
-          'yournqbalance': 'Your N-Q Balance',
+          'yournqbalance': 'Your N-Q balance',
           'helpcenter': 'Help Center',
           //inapp
           'home': 'Home',
@@ -357,13 +357,13 @@ class Messages extends Translations {
           'expirydate': 'Bitmə tarixi:',
           'changepaymentcard': 'Standart ödəniş kartını dəyişdirin',
           //payment
-          'paymentmethods': 'Ödəmə metodları',
+          'paymentmethods': 'Ödəmə üsulları',
           'setdefaultcard': 'Standart ödəniş kartınızı təyin edin',
           'addnewcard': 'Yeni kart əlavə edin',
           'cardholder': 'Kart sahibi',
           'cardnumber': 'Kart nömrəsi',
           'expiredate': 'Bitmə tarixi: ',
-          'privacypolicy': 'Gizlilik Siyasəti',
+          'privacypolicy': 'Gizlilik siyasəti',
           //help
           'wehelpyou': 'Sizə necə kömək edə bilərik?',
           'sendusmessage': 'Bizə mesaj göndərin',
