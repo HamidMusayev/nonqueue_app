@@ -25,6 +25,7 @@ class Messages extends Translations {
           //Additional-api
           'passwordsmustbesame': 'Passwords must be same!',
           'changedpassword': 'Password changed',
+          'sendedquestion': 'Question sent successfully',
           'sendedotp': 'Verification code sent to your E-mail',
           'optverified': 'Code verified',
           'errorgooglesignin': 'Can not sign in with Google',
@@ -210,6 +211,7 @@ class Messages extends Translations {
           //Additional-api
           'passwordsmustbesame': 'Şifrələr eyni olmalıdır!',
           'changedpassword': 'Şifrəniz yeniləndi',
+          'sendedquestion': 'Sualınız göndərildi',
           'sendedotp': 'Təsdiqləmə kodu elektron poçtunuza göndərildi',
           'optverified': 'Kodunuz təsdiqləndi',
           'errorgooglesignin': 'Google ilə daxil olmaq alınmadı',
@@ -299,7 +301,7 @@ class Messages extends Translations {
           'allowapplicationaccessyourcontacts':
               'Siz tətbiqin kontaktlarınıza daxil olmasına icazə verməlisiniz '
                   'Bu proqramı kontaktlarınızdan kimin istifadə etdiyini görmək',
-          'allowaccess': 'Girişə imkan vermək',
+          'allowaccess': 'Əlaqələrə girişə icazə ver',
           //coupon
           'coupon': 'Kupon',
           'ohsmthwentwrong': 'Uh oh! Nə isə xəta baş verdi...',

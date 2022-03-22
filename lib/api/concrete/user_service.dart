@@ -133,8 +133,7 @@ class UserService implements UserRepository {
       if (res.data['success']) {
         List<dynamic> parsed =
             res.data['value'].map((e) => PhoneNumber.fromJson(e)).toList();
-        List<PhoneNumber> list = List<PhoneNumber>.from(parsed);
-        return Result.succes(list);
+        return Result.succes(List<PhoneNumber>.from(parsed));
       } else {
         return Result.error(message: res.data['message']);
       }

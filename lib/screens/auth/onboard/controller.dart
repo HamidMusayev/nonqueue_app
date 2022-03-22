@@ -29,7 +29,7 @@ class OnBoardController extends GetxController {
     });
 
     if (res.success) {
-      SharedHelper.saveJson('token', res.data);
+      await SharedHelper.saveJson('token', res.data);
 
       Result<User> res2 = await _service.getById('id=${res.data?.userId}');
       if (res2.success) {

@@ -1,5 +1,6 @@
 import 'package:nonqueue_app/api/abstract/api_repository.dart';
 import 'package:nonqueue_app/api/result/result.dart';
+import 'package:nonqueue_app/models/company/faq.dart';
 import 'package:nonqueue_app/models/user/token_response.dart';
 import 'package:nonqueue_app/utils/shared.dart';
 
@@ -26,9 +27,44 @@ class CompanyService implements CompanyRepository {
     if (res.success) {
       if (res.data['success']) {
         List<dynamic> parsed =
-        res.data['value'].map((e) => CompanyBranch.fromJson(e)).toList();
-        List<CompanyBranch> list = List<CompanyBranch>.from(parsed);
-        return Result.succes(list);
+            res.data['value'].map((e) => CompanyBranch.fromJson(e)).toList();
+        return Result.succes(List<CompanyBranch>.from(parsed));
+      } else {
+        return Result.error(message: res.data['message']);
+      }
+    } else {
+      return Result.error(message: res.message);
+    }
+  }
+
+  @override
+  Future<Result<int>> addQuestion(Map<String, dynamic> request) async {
+    var res = await _dio.post(request, '$_baseUrl/product/Questions/Add',
+        token: TokenResponse.fromJson(await SharedHelper.readJson('token'))
+            .accessToken);
+
+    if (res.success) {
+      return res.data['success']
+          ? Result<int>.succes(res.data['value'])
+          : Result.error(message: res.data['message']);
+    } else {
+      return Result.error(message: res.message);
+    }
+  }
+
+  @override
+  Future<Result<List<Faq>>> getAllFaqs() async {
+    var res = await _dio.get(
+      '$_baseUrl/product/faq/getall',
+      token: TokenResponse.fromJson(await SharedHelper.readJson('token'))
+          .accessToken,
+    );
+
+    if (res.success) {
+      if (res.data['success']) {
+        List<dynamic> parsed =
+            res.data['value'].map((e) => Faq.fromJson(e)).toList();
+        return Result.succes(List<Faq>.from(parsed));
       } else {
         return Result.error(message: res.data['message']);
       }

@@ -44,4 +44,10 @@ class ValidatorHelper {
         ? 'Doğum tarixinizi seçin!'
         :  null;
   }
+
+  static String? validateMsg(String? text) {
+    return text == null || text == '' || text.trim().length < 14
+        ? 'Sualınızı yazın! Minimum 15 simvol'
+        :  null;
+  }
 }

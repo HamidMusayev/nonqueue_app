@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:nonqueue_app/screens/drawer/help/controller.dart';
 import 'package:nonqueue_app/utils/constants.dart';
+import 'package:nonqueue_app/utils/validators.dart';
 
-class HelpScreen extends StatelessWidget {
+class HelpScreen extends GetView<HelpController> {
   const HelpScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    Get.put(HelpController());
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -40,15 +43,27 @@ class HelpScreen extends StatelessWidget {
               ),
               Spaces.vertical20,
               Spaces.vertical10,
-              TextFormField(
-                keyboardType: TextInputType.emailAddress,
-                decoration: InputDecoration(
-                  hintText: 'sendusmessage'.tr,
-                  suffixIcon: IconButton(
-                    onPressed: () {},
-                    icon: const Icon(Icons.send_rounded),
+              Form(
+                key: controller.formKey,
+                child: TextFormField(
+                  validator: ValidatorHelper.validateMsg,
+                  keyboardType: TextInputType.emailAddress,
+                  decoration: InputDecoration(
+                    hintText: 'sendusmessage'.tr,
+                    suffixIcon: Obx(
+                      () => Visibility(
+                        visible: controller.isLoading.value,
+                        child: SizedBox(
+                            height: 5,
+                            child: const CircularProgressIndicator(),),
+                        replacement: IconButton(
+                          onPressed: () async => controller.sendForHelp(),
+                          icon: const Icon(Icons.send_rounded),
+                        ),
+                      ),
+                    ),
+                    helperText: 'willgetansweryouremail'.tr,
                   ),
-                  helperText: 'willgetansweryouremail'.tr,
                 ),
               ),
             ],
