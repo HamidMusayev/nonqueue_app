@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:nonqueue_app/screens/bonus/ui.dart';
 import 'package:nonqueue_app/screens/contacts/ui.dart';
 import 'package:nonqueue_app/screens/home/ui.dart';
 import 'package:nonqueue_app/screens/profile/ui.dart';
 import 'package:nonqueue_app/screens/search/ui.dart';
 import 'package:nonqueue_app/utils/constants.dart';
-import 'drawer/ui.dart';
+import '../drawer/ui.dart';
 import 'notification/ui.dart';
 
 class InAppScreen extends StatefulWidget {
@@ -71,26 +72,26 @@ class _InAppScreenState extends State<InAppScreen> {
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
+        items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home_rounded),
-            label: 'Home',
+            icon: const Icon(Icons.home_rounded),
+            label: 'home'.tr,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.search_rounded),
-            label: 'Search',
+            icon: const Icon(Icons.search_rounded),
+            label: 'search1'.tr,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.card_giftcard_rounded),
-            label: 'Bonuses',
+            icon: const Icon(Icons.card_giftcard_rounded),
+            label: 'bonuses'.tr,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.supervisor_account_rounded),
-            label: 'Contacts',
+            icon: const Icon(Icons.supervisor_account_rounded),
+            label: 'contacts'.tr,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person_rounded),
-            label: 'Profile',
+            icon: const Icon(Icons.person_rounded),
+            label: 'profile'.tr,
           ),
         ],
         currentIndex: _selectedIndex,

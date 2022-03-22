@@ -27,8 +27,8 @@ class LoginController extends GetxController {
     if (formKey.currentState?.validate() ?? false) {
       isLoading.value = true;
       Result<TokenResponse> res = await _service.getResourceOwnerPasswordToken(TokenRequest(
-        clientId: 'string',
-        clientSecrets: 'string',
+        clientId: 'App',
+        clientSecrets: 'App',
         email: emailTxt.text,
         password: passTxt.text,
       ));

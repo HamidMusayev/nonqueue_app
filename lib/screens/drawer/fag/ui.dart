@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:nonqueue_app/utils/constants.dart';
 
 class FagScreen extends StatelessWidget {
@@ -15,23 +16,24 @@ class FagScreen extends StatelessWidget {
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: const <Widget>[
+        children: <Widget>[
           ExpansionTile(
-            leading: Icon(
+            leading: const Icon(
               Icons.question_answer_rounded,
               color: ColorPalette.qlessApp,
             ),
             title: Text(
-              'How can we help you?',
-              style: TextStyle(fontWeight: FontWeight.w500),
+              'How to change my account info?'.tr,
+              style: const TextStyle(fontWeight: FontWeight.w500),
             ),
-            children: <Widget>[
+            children: const <Widget>[
               ListTile(
-                  title: Text('Lorem ipsum dolor sit amet, consectetur '
-                      'adipiscing elit.')),
+                title: Text('Lorem ipsum dolor sit amet, consectetur '
+                    'adipiscing elit.'),
+              ),
             ],
           ),
-          ExpansionTile(
+          const ExpansionTile(
             leading: Icon(
               Icons.question_answer_rounded,
               color: ColorPalette.qlessApp,
@@ -44,7 +46,7 @@ class FagScreen extends StatelessWidget {
               ListTile(title: Text('This is tile number 2')),
             ],
           ),
-          ExpansionTile(
+          const ExpansionTile(
             leading: Icon(
               Icons.question_answer_rounded,
               color: ColorPalette.qlessApp,

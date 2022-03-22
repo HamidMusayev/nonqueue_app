@@ -1,5 +1,6 @@
 import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:nonqueue_app/utils/constants.dart';
 
 class GiftScreen extends StatelessWidget {
@@ -21,9 +22,9 @@ class GiftScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Gift',
-          style: TextStyle(color: ColorPalette.lightBlack),
+        title: Text(
+          'gift'.tr,
+          style: const TextStyle(color: ColorPalette.lightBlack),
         ),
       ),
       body: SingleChildScrollView(
@@ -119,7 +120,7 @@ class GiftScreen extends StatelessWidget {
               ),
               Spaces.vertical20,
               TextButton(
-                child: const Text('Use Gift'),
+                child:  Text('usegift'.tr),
                 // onPressed: () {
                 //   if (_formKey.currentState!.validate()) {
                 //     login();

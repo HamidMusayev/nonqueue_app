@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:nonqueue_app/screens/inapp/drawer/account/contoller.dart';
+import 'package:nonqueue_app/screens/drawer/account/contoller.dart';
 import 'package:nonqueue_app/utils/constants.dart';
 
 class EmailChangeScreen extends StatefulWidget {

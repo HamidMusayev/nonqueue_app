@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:nonqueue_app/utils/constants.dart';
 
 class HelpScreen extends StatelessWidget {
@@ -8,9 +9,9 @@ class HelpScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Help center',
-          style: TextStyle(color: ColorPalette.lightBlack),
+        title: Text(
+          'helpcenter'.tr,
+          style: const TextStyle(color: ColorPalette.lightBlack),
         ),
       ),
       body: Container(
@@ -24,16 +25,16 @@ class HelpScreen extends StatelessWidget {
               Spaces.vertical20,
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
-                children: const [
-                  Icon(
+                children: [
+                  const Icon(
                     Icons.chat_bubble_outline_rounded,
                     color: ColorPalette.qlessApp,
                     size: 30,
                   ),
                   Spaces.horizontal6,
                   Text(
-                    'How can we help you?',
-                    style: TextStyle(fontWeight: FontWeight.w500),
+                    'wehelpyou'.tr,
+                    style: const TextStyle(fontWeight: FontWeight.w500),
                   ),
                 ],
               ),
@@ -42,13 +43,13 @@ class HelpScreen extends StatelessWidget {
               TextFormField(
                 keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(
-                    hintText: 'Send us a message',
-                    suffixIcon: IconButton(
-                      onPressed: () {},
-                      icon: const Icon(Icons.send_rounded),
-                    ),
-                    helperText: 'You will get answer to your email'
-                        'as soon as possible'),
+                  hintText: 'sendusmessage'.tr,
+                  suffixIcon: IconButton(
+                    onPressed: () {},
+                    icon: const Icon(Icons.send_rounded),
+                  ),
+                  helperText: 'willgetansweryouremail'.tr,
+                ),
               ),
             ],
           ),

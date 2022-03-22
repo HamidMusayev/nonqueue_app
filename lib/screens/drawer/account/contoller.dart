@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:nonqueue_app/screens/inapp/drawer/account/otp.dart';
+import 'package:nonqueue_app/screens/drawer/account/otp.dart';
 import 'package:nonqueue_app/utils/shared.dart';
 
 import '../../../../api/concrete/dio_service.dart';
@@ -91,7 +91,7 @@ class AccountController extends GetxController {
       isLoading.value = true;
 
       if (isNumberChanged.value) {
-        await editUser('PhoneNumber', prefixTxt.text + numberTxt.text);
+        await editUser('PhoneNumber', '${prefixTxt.text}/${numberTxt.text}');
       }
       if (isBirthdayChanged.value) {
         await editUser('DateOfBirth', birthdayTxt.text);

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:nonqueue_app/utils/constants.dart';
 import 'package:nonqueue_app/widgets/partner_tile.dart';
 
@@ -41,9 +42,9 @@ class _HistoryDetailScreenState extends State<HistoryDetailScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Order History',
-          style: TextStyle(color: ColorPalette.lightBlack),
+        title:  Text(
+          'orderhistory'.tr,
+          style: const TextStyle(color: ColorPalette.lightBlack),
         ),
       ),
       body: SingleChildScrollView(
@@ -60,9 +61,9 @@ class _HistoryDetailScreenState extends State<HistoryDetailScreen> {
               Spaces.vertical20,
               const PartnerTile(),
               Spaces.vertical20,
-              const Text(
-                'Order status',
-                style: TextStyle(
+              Text(
+                'orderstatus'.tr,
+                style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w500,
                 ),
@@ -72,9 +73,9 @@ class _HistoryDetailScreenState extends State<HistoryDetailScreen> {
                 style: TextStyle(fontSize: 18),
               ),
               Spaces.vertical20,
-              const Text(
-                'Total',
-                style: TextStyle(
+               Text(
+                'total'.tr,
+                style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w500,
                 ),
@@ -85,7 +86,7 @@ class _HistoryDetailScreenState extends State<HistoryDetailScreen> {
               ),
               Spaces.vertical20,
               TextButton(
-                child: const Text('Order Again'),
+                child:  Text('orderagain'.tr),
                 // onPressed: () {
                 //   if (_formKey.currentState!.validate()) {
                 //     login();
@@ -93,17 +94,17 @@ class _HistoryDetailScreenState extends State<HistoryDetailScreen> {
                 onPressed: () {},
               ),
               Spaces.vertical20,
-              const Text(
-                'Your order',
-                style: TextStyle(
+              Text(
+                'yourorder'.tr,
+                style: const TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.w500,
                 ),
               ),
               Spaces.vertical20,
-              const Text(
-                'Ordered items',
-                style: TextStyle(
+              Text(
+                'orderitems'.tr,
+                style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w500,
                 ),
@@ -137,16 +138,16 @@ class _HistoryDetailScreenState extends State<HistoryDetailScreen> {
               Spaces.vertical10,
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const <Widget>[
+                children: <Widget>[
                   Text(
-                    'Total in manat(incl. taxes)',
-                    style: TextStyle(
+                    'priceinmanatinctaxes'.tr,
+                    style: const TextStyle(
                       color: ColorPalette.lightBlack,
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
-                  Text(
+                  const Text(
                     '17.50 AZN',
                     style: TextStyle(
                       color: ColorPalette.lightBlack,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:nonqueue_app/screens/inapp/drawer/account/contoller.dart';
+import 'package:nonqueue_app/screens/drawer/account/contoller.dart';
 import 'package:nonqueue_app/utils/constants.dart';
 import 'package:nonqueue_app/utils/validators.dart';
 
@@ -15,9 +15,9 @@ class AccountScreen extends GetView<AccountController> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Account information',
-          style: TextStyle(color: ColorPalette.lightBlack),
+        title: Text(
+          'accountinfo'.tr,
+          style: const TextStyle(color: ColorPalette.lightBlack),
         ),
         actions: [
           Obx(
@@ -44,10 +44,9 @@ class AccountScreen extends GetView<AccountController> {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
-                const Text(
-                  'Provide your personal information, '
-                  'this won’t be part of your public profile',
-                  style: TextStyle(color: ColorPalette.greyInputText),
+                Text(
+                  'providepersonalinfo'.tr,
+                  style: const TextStyle(color: ColorPalette.greyInputText),
                 ),
                 Spaces.vertical50,
                 TextFormField(
@@ -73,7 +72,7 @@ class AccountScreen extends GetView<AccountController> {
                 Spaces.vertical20,
                 DropdownButtonFormField<String>(
                   hint: Text('gender'.tr),
-                  validator: ValidatorHelper.validateGender,
+                  //validator: ValidatorHelper.validateGender,
                   onChanged: controller.checkGender,
                   value: controller.genderTxt.text.isNotEmpty ? controller.genderTxt.text : null,
                   items: [

@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:nonqueue_app/screens/inapp/drawer/about.dart';
-import 'package:nonqueue_app/screens/inapp/drawer/account/ui.dart';
-import 'package:nonqueue_app/screens/inapp/drawer/balance.dart';
-import 'package:nonqueue_app/screens/inapp/drawer/controller.dart';
-import 'package:nonqueue_app/screens/inapp/drawer/fag.dart';
-import 'package:nonqueue_app/screens/inapp/drawer/help.dart';
-import 'package:nonqueue_app/screens/inapp/drawer/history.dart';
-import 'package:nonqueue_app/screens/inapp/drawer/payment.dart';
-import 'package:nonqueue_app/screens/inapp/drawer/privacy.dart';
 import 'package:nonqueue_app/utils/constants.dart';
+import '../drawer/about/ui.dart';
+import '../drawer/controller.dart';
+import '../drawer/fag/ui.dart';
+import '../drawer/help/ui.dart';
+import '../drawer/payment/ui.dart';
+import '../drawer//privacy/ui.dart';
+import 'account/ui.dart';
+import 'balance/ui.dart';
+import 'history/ui.dart';
 
 class CustomDrawer extends GetView<CustomDrawerController> {
   const CustomDrawer({Key? key}) : super(key: key);
@@ -39,7 +39,7 @@ class CustomDrawer extends GetView<CustomDrawerController> {
                   physics: const BouncingScrollPhysics(),
                   children: [
                     ListTile(
-                      title: const Text('Your N-Q Balance'),
+                      title: Text('yournqbalance'.tr),
                       onTap: () => Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -49,7 +49,7 @@ class CustomDrawer extends GetView<CustomDrawerController> {
                       ),
                     ),
                     ListTile(
-                      title: const Text('Payment methods'),
+                      title: Text('paymentmethods'.tr),
                       onTap: () => Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -59,7 +59,7 @@ class CustomDrawer extends GetView<CustomDrawerController> {
                       ),
                     ),
                     ListTile(
-                      title: const Text('Order history'),
+                      title: Text('orderhistory'.tr),
                       onTap: () => Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -76,7 +76,7 @@ class CustomDrawer extends GetView<CustomDrawerController> {
                       height: 30,
                     ),
                     ListTile(
-                      title: const Text('Account information'),
+                      title: Text('accountinfo'.tr),
                       onTap: () => Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -86,7 +86,7 @@ class CustomDrawer extends GetView<CustomDrawerController> {
                       ),
                     ),
                     ListTile(
-                      title: const Text('About'),
+                      title: Text('about'.tr),
                       onTap: () => Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -96,7 +96,7 @@ class CustomDrawer extends GetView<CustomDrawerController> {
                       ),
                     ),
                     ListTile(
-                      title: const Text('Help Center'),
+                      title: Text('helpcenter'.tr),
                       onTap: () => Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -116,7 +116,7 @@ class CustomDrawer extends GetView<CustomDrawerController> {
                       ),
                     ),
                     ListTile(
-                      title: const Text('Privacy Policy'),
+                      title: Text('privacypolicy'.tr),
                       onTap: () => Navigator.push(
                         context,
                         MaterialPageRoute(

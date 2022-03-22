@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:nonqueue_app/utils/constants.dart';
 
 class PrivacyScreen extends StatelessWidget {
@@ -8,9 +9,9 @@ class PrivacyScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Privacy policy',
-          style: TextStyle(color: ColorPalette.lightBlack),
+        title: Text(
+          'privacypolicy'.tr,
+          style: const TextStyle(color: ColorPalette.lightBlack),
         ),
       ),
       body: Container(

@@ -14,7 +14,7 @@ class PartnerDetailScreen extends StatefulWidget {
 class _PartnerDetailScreenState extends State<PartnerDetailScreen> {
   int _activeIndex = 0;
   int _activeSubIndex = 0;
-  int _count = 0;
+  int _count = 1;
   int _cartcount = 0;
 
   final List<String> _extras = [];

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:nonqueue_app/screens/inapp/drawer/history_detail.dart';
+import 'package:get/get.dart';
+import 'package:nonqueue_app/screens/drawer/history/detail.dart';
 import 'package:nonqueue_app/utils/constants.dart';
 import 'package:nonqueue_app/widgets/order_tile.dart';
 
@@ -31,9 +32,9 @@ class OrderHistoryScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Order history',
-          style: TextStyle(color: ColorPalette.lightBlack),
+        title:  Text(
+          'orderhistory'.tr,
+          style: const TextStyle(color: ColorPalette.lightBlack),
         ),
       ),
       body: Container(

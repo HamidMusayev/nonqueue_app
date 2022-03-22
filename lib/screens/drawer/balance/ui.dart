@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:nonqueue_app/screens/inapp/drawer/payment.dart';
+import 'package:get/get.dart';
+import 'package:nonqueue_app/screens/drawer/payment/ui.dart';
 import 'package:nonqueue_app/utils/constants.dart';
 
 class BalanceScreen extends StatelessWidget {
@@ -10,9 +11,9 @@ class BalanceScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Non-Queue balance',
-          style: TextStyle(color: ColorPalette.lightBlack),
+        title: Text(
+          'nqbalance'.tr,
+          style: const TextStyle(color: ColorPalette.lightBlack),
         ),
       ),
       body: SingleChildScrollView(
@@ -24,17 +25,17 @@ class BalanceScreen extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               Row(
-                children: const [
+                children: [
                   Text(
-                    'Current balance:',
-                    style: TextStyle(
+                    'currentbalance'.tr,
+                    style: const TextStyle(
                       fontSize: 16,
                       color: ColorPalette.lightBlack,
                     ),
                   ),
                   Spaces.horizontal6,
                   Spaces.horizontal6,
-                  Text(
+                  const Text(
                     '35.00',
                     style: TextStyle(
                       fontSize: 16,
@@ -43,7 +44,7 @@ class BalanceScreen extends StatelessWidget {
                     ),
                   ),
                   Spaces.horizontal6,
-                  Text(
+                  const Text(
                     '₼',
                     style: TextStyle(
                       fontSize: 18,
@@ -54,17 +55,17 @@ class BalanceScreen extends StatelessWidget {
               ),
               Spaces.vertical20,
               Row(
-                children: const [
+                children: [
                   Text(
-                    'Enter amount:',
-                    style: TextStyle(
+                    'enteramount'.tr,
+                    style: const TextStyle(
                       fontSize: 16,
                       color: ColorPalette.lightBlack,
                     ),
                   ),
                   Spaces.horizontal6,
                   Spaces.horizontal6,
-                  SizedBox(
+                  const SizedBox(
                     width: 120,
                     child: TextField(
                       keyboardType: TextInputType.number,
@@ -84,7 +85,7 @@ class BalanceScreen extends StatelessWidget {
               ),
               Spaces.vertical50,
               TextButton(
-                child: const Text('Add Money'),
+                child: Text('addmoney'.tr),
                 onPressed: () {},
               ),
               const Divider(
@@ -95,15 +96,15 @@ class BalanceScreen extends StatelessWidget {
                 endIndent: 80,
               ),
               Row(
-                children: const [
-                  Icon(
+                children: [
+                  const Icon(
                     Icons.credit_card_rounded,
                     color: ColorPalette.qlessApp,
                   ),
                   Spaces.horizontal6,
                   Text(
-                    'Your default payment card',
-                    style: TextStyle(
+                    'defaultpaymentcard'.tr,
+                    style: const TextStyle(
                       color: ColorPalette.lightBlack,
                       fontSize: 16,
                     ),
@@ -113,12 +114,12 @@ class BalanceScreen extends StatelessWidget {
               Spaces.vertical20,
               RadioListTile(
                 contentPadding: EdgeInsets.zero,
-                title: const Text('Salary card'),
+                title: Text('salarycard'.tr),
                 subtitle: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     const Text('**** **** **** 2233'),
-                    const Text('Expiry date:  01/22 '),
+                    Text('expirydate'.tr + '21/12'),
                     SvgPicture.asset(
                       'assets/splash/mastercard.svg',
                       height: 15,
@@ -138,9 +139,9 @@ class BalanceScreen extends StatelessWidget {
                   backgroundColor: Colors.transparent,
                   fixedSize: const Size.fromHeight(20),
                 ),
-                child: const Text(
-                  'Change default payment card',
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+                child: Text(
+                  'changepaymentcard'.tr,
+                  style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
                 ),
                 onPressed: () => Navigator.push(
                   context,

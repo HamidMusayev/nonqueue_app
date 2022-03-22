@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nonqueue_app/screens/auth/welcome/ui.dart';
-import 'package:nonqueue_app/screens/inapp/drawer/account/ui.dart';
 import 'package:nonqueue_app/screens/profile/contoller.dart';
 import 'package:nonqueue_app/utils/constants.dart';
 import 'package:nonqueue_app/utils/validators.dart';
 
 import '../../utils/shared.dart';
+import '../drawer/account/ui.dart';
 
 class ProfileScreen extends GetView<ProfileController> {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -45,7 +45,7 @@ class ProfileScreen extends GetView<ProfileController> {
                           'nqpoints'.tr,
                           style: const TextStyle(
                             color: ColorPalette.greyInputText,
-                            fontSize: 18,
+                            fontSize: 16,
                             fontWeight: FontWeight.w500,
                           ),
                         ),
@@ -55,7 +55,7 @@ class ProfileScreen extends GetView<ProfileController> {
                               '10',
                               style: TextStyle(
                                 color: ColorPalette.greyInputText,
-                                fontSize: 18,
+                                fontSize: 16,
                               ),
                             ),
                             Spaces.horizontal6,
@@ -75,7 +75,7 @@ class ProfileScreen extends GetView<ProfileController> {
                           'nqbalance'.tr,
                           style: const TextStyle(
                             color: ColorPalette.lightBlack,
-                            fontSize: 18,
+                            fontSize: 16,
                             fontWeight: FontWeight.w500,
                           ),
                         ),
@@ -83,7 +83,7 @@ class ProfileScreen extends GetView<ProfileController> {
                           '35 ₼',
                           style: TextStyle(
                             color: ColorPalette.lightBlack,
-                            fontSize: 18,
+                            fontSize: 16,
                           ),
                         ),
                       ],

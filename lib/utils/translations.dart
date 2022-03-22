@@ -28,7 +28,7 @@ class Messages extends Translations {
           'sendedotp': 'Verification code sent to your E-mail',
           'optverified': 'Code verified',
           'errorgooglesignin': 'Can not sign in with Google',
-          //login_uidart
+          //login
           'welcomeback': 'Welcome back',
           'enteremailpasswordlogin': 'Enter your E-mail and password to login',
           'password': 'Password',
@@ -114,14 +114,28 @@ class Messages extends Translations {
               'You must allow the application to access your contacts '
                   'to see who is using this application from your contacts',
           'allowaccess': 'Allow access',
-          //home
+          //coupon
+          'coupon': 'Coupon',
+          'ohsmthwentwrong': 'Uh oh! Something went wrong...',
+          'validtill': 'Valid till: ',
+          //gift
+          'usegift': 'Use Gift',
+          'gift': 'Gift',
+          //notification
+          'notifications': 'Notifications',
+          'yournqbalance': 'Your N-Q Balance',
+          'helpcenter': 'Help Center',
+          //inapp
+          'home': 'Home',
+          'search1': 'Search',
+          'bonuses': 'Bonuses',
+          'contacts': 'Contacts',
+          'profile': 'Account',
           'viewall': 'View all',
           'lovefree': 'love free stuff?',
           'yourbonuses': 'Your bonuses',
           'quickorder': 'want to make quick order?',
           'peoplelike': 'what other people like?',
-
-
           //profile
           'nqpoints': 'N-Q points :',
           'logout': 'Log out',
@@ -140,7 +154,38 @@ class Messages extends Translations {
           'seafood': 'Seafood',
           'cocktails': 'Cocktails',
           'deserts': 'Deserts',
-          'orderagain': 'Order again'
+          //about
+          'about': 'Haqqında',
+          //account
+          'providepersonalinfo': 'Provide your personal information, '
+              'this won’t be part of your public profile',
+          'accountinfo': 'Account information',
+          //payment
+          'paymentmethods': 'Payment methods',
+          'setdefaultcard': 'Set your default payment card',
+          'addnewcard': 'Add new card',
+          'cardholder': 'Card holder',
+          'cardnumber': 'Card number',
+          'expiredate': 'Expire date: ',
+          'privacypolicy': 'Privacy policy',
+          //help
+          'wehelpyou': 'How can we help you?',
+          'sendusmessage': 'Send us a message',
+          'willgetansweryouremail':
+              'You will get answer to your email as soon as possible',
+          //history
+          'orderhistory': 'Order history',
+          'orderstatus': 'Order status',
+          'orderagain': 'Order Again',
+          'yourorder': 'Your order',
+          //balance
+          'currentbalance': 'Current balance:',
+          'enteramount': 'Enter amount:',
+          'addmoney': 'Add Money',
+          'defaultpaymentcard': 'Your default payment card',
+          'salarycard': 'Salary card',
+          'expirydate': 'Expiry date:',
+          'changepaymentcard': 'Change default payment card',
         },
         'az_AZ': {
           //General
@@ -168,7 +213,7 @@ class Messages extends Translations {
           'sendedotp': 'Təsdiqləmə kodu elektron poçtunuza göndərildi',
           'optverified': 'Kodunuz təsdiqləndi',
           'errorgooglesignin': 'Google ilə daxil olmaq alınmadı',
-          //login_uidart
+          //login
           'welcomeback': 'Yenidən xoş gəldiniz',
           'enteremailpasswordlogin':
               'Daxil olmaq üçün E-mail və şifrənizi yazın',
@@ -236,7 +281,7 @@ class Messages extends Translations {
           'itatrestaraunt': 'Restoranda oturacam.',
           'yourarrivaltime': 'Sizin gəliş vaxtınız',
           'payment': 'Ödəniş',
-          'nqbalance': 'N-Q balans: 35.00 AZN',
+          'nqbalance': 'N-Q balansı:',
           'confirmation': 'Təsdiq',
           'congratulations': 'Təbrik edirik!',
           'yourorderdone': 'Sifarişiniz uğurla yerinə yetirildi!',
@@ -255,22 +300,36 @@ class Messages extends Translations {
               'Siz tətbiqin kontaktlarınıza daxil olmasına icazə verməlisiniz '
                   'Bu proqramı kontaktlarınızdan kimin istifadə etdiyini görmək',
           'allowaccess': 'Girişə imkan vermək',
-          //home
+          //coupon
+          'coupon': 'Kupon',
+          'ohsmthwentwrong': 'Uh oh! Nə isə xəta baş verdi...',
+          'validtill': 'Son istifadə tarixi: ',
+          //gift
+          'usegift': 'İstifadə Et',
+          'gift': 'Hədiyyə',
+          //notification
+          'notifications': 'Bildirişlər',
+          'yournqbalance': 'N-Q balansınız',
+          'helpcenter': 'Yardım mərkəzi',
+          //inapp
+          'home': 'Ev',
+          'search1': 'Axtar',
+          'bonuses': 'Bonuslar',
+          'contacts': 'Kontaktlar',
+          'profile': 'Hesabım',
           'viewall': 'Daha çox',
           'lovefree': 'pulsuz almaq?',
           'yourbonuses': 'Bonusların',
           'quickorder': 'cəld sifariş istəyirsiniz?',
           'peoplelike': 'digərləri nəyi bəyənir?',
-
-
           //profile
-          'nqpoints': 'N-Q xalları:',
+          'nqpoints': 'N-Q tokeni:',
           'logout': 'Çıxış',
           'yousure': 'Siz əminsinizmi?',
           'yes': 'Bəli',
           'no': 'Xeyr',
           'savechanges': 'Dəyişikləri saxla',
-          'editaccount': 'Edit account',
+          'editaccount': 'Hesab məlumatları',
           //filter
           'nearbycurrentlocation': 'Cari yerinizin yaxınlığında',
           'foodtype': 'Qida növü',
@@ -281,7 +340,38 @@ class Messages extends Translations {
           'seafood': 'Dəniz məhsulları',
           'cocktails': 'Kokteyllər',
           'deserts': 'Desertlər',
-          'orderagain': 'Yenidən sifariş edin'
+          //about
+          'about': 'Haqqında',
+          //account
+          'providepersonalinfo': 'Şəxsi hesab məlumatlarınızı daxil edin, '
+              'bunları digər istifadəçilər göməyəcək',
+          'accountinfo': 'Hesab məlumatları',
+          //balance
+          'currentbalance': 'Cari balans:',
+          'enteramount': 'Məbləği daxil edin:',
+          'addmoney': 'Məbləği artır',
+          'defaultpaymentcard': 'Standart ödəniş kartınız',
+          'salarycard': 'Əmək haqqı kartı',
+          'expirydate': 'Bitmə tarixi:',
+          'changepaymentcard': 'Standart ödəniş kartını dəyişdirin',
+          //payment
+          'paymentmethods': 'Ödəmə metodları',
+          'setdefaultcard': 'Standart ödəniş kartınızı təyin edin',
+          'addnewcard': 'Yeni kart əlavə edin',
+          'cardholder': 'Kart sahibi',
+          'cardnumber': 'Kart nömrəsi',
+          'expiredate': 'Bitmə tarixi: ',
+          'privacypolicy': 'Gizlilik Siyasəti',
+          //help
+          'wehelpyou': 'Sizə necə kömək edə bilərik?',
+          'sendusmessage': 'Bizə mesaj göndərin',
+          'willgetansweryouremail':
+              'Biz sizin E-poçtunuza ən qısa zamanda cavab göndərəcəyik',
+          //history
+          'orderhistory': 'Sifariş tarixçəsi',
+          'orderstatus': 'Sifariş statusu',
+          'orderagain': 'Yenidən sifariş',
+          'yourorder': 'Sizin sifarişiniz',
         },
       };
 }

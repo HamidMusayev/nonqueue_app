@@ -1,5 +1,6 @@
 import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:nonqueue_app/utils/constants.dart';
 
 class CompletedCouponScreen extends StatelessWidget {
@@ -22,9 +23,9 @@ class CompletedCouponScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Coupon',
-          style: TextStyle(color: ColorPalette.lightBlack),
+        title: Text(
+          'coupon'.tr,
+          style: const TextStyle(color: ColorPalette.lightBlack),
         ),
       ),
       body: SingleChildScrollView(
@@ -116,9 +117,9 @@ class CompletedCouponScreen extends StatelessWidget {
                         style: TextStyle(color: ColorPalette.greyInputText),
                       ),
                       Spaces.vertical20,
-                      const Text(
-                        'Valid till: 01/05/22',
-                        style: TextStyle(
+                      Text(
+                        'validtill'.tr+ '01/05/22',
+                        style: const TextStyle(
                           fontSize: 16,
                           color: ColorPalette.lightBlack,
                           fontWeight: FontWeight.w500,
@@ -130,7 +131,7 @@ class CompletedCouponScreen extends StatelessWidget {
               ),
               Spaces.vertical20,
               TextButton(
-                child: const Text('Use Gift'),
+                child: Text('usegift'.tr),
                 // onPressed: () {
                 //   if (_formKey.currentState!.validate()) {
                 //     login();

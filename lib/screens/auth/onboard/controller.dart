@@ -24,8 +24,8 @@ class OnBoardController extends GetxController {
       'photoUrl': googleAccount.photoUrl,
       'googleId': googleAccount.id,
       'serverAuthCode': googleAccount.serverAuthCode,
-      'clientId': 'string',
-      'clientSecrets': 'string'
+      'clientId': 'App',
+      'clientSecrets': 'App'
     });
 
     if (res.success) {

@@ -1,5 +1,6 @@
 import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:nonqueue_app/utils/constants.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
@@ -23,9 +24,9 @@ class CouponScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Coupon',
-          style: TextStyle(color: ColorPalette.lightBlack),
+        title: Text(
+          'coupon'.tr,
+          style: const TextStyle(color: ColorPalette.lightBlack),
         ),
       ),
       body: SingleChildScrollView(
@@ -48,14 +49,14 @@ class CouponScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       QrImage(
-                        data: 'This QR code will show the error state instead',
+                        data: 'QRDATA',
                         version: QrVersions.auto,
                         size: 200,
                         gapless: false,
                         errorStateBuilder: (cxt, err) {
-                          return const Center(
+                          return Center(
                             child: Text(
-                              'Uh oh! Something went wrong...',
+                              'ohsmthwentwrong'.tr,
                               textAlign: TextAlign.center,
                             ),
                           );
@@ -126,9 +127,9 @@ class CouponScreen extends StatelessWidget {
                         style: TextStyle(color: ColorPalette.greyInputText),
                       ),
                       Spaces.vertical20,
-                      const Text(
-                        'Valid till: 01/05/22',
-                        style: TextStyle(
+                       Text(
+                        'validtill'.tr+' 01/05/22',
+                        style: const TextStyle(
                           fontSize: 16,
                           color: ColorPalette.lightBlack,
                           fontWeight: FontWeight.w500,
@@ -140,7 +141,7 @@ class CouponScreen extends StatelessWidget {
               ),
               Spaces.vertical20,
               TextButton(
-                child: const Text('Use Gift'),
+                child: Text('usegift'.tr),
                 // onPressed: () {
                 //   if (_formKey.currentState!.validate()) {
                 //     login();

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:nonqueue_app/utils/constants.dart';
 
 class PaymentMethodsScreen extends StatelessWidget {
@@ -11,9 +12,9 @@ class PaymentMethodsScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Payment methods',
-          style: TextStyle(color: ColorPalette.lightBlack),
+        title: Text(
+          'paymentmethods'.tr,
+          style: const TextStyle(color: ColorPalette.lightBlack),
         ),
       ),
       body: Container(
@@ -23,11 +24,11 @@ class PaymentMethodsScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Text(
-              'Set your default payment card',
-              style: TextStyle(
+            Text(
+              'setdefaultcard'.tr,
+              style: const TextStyle(
                 color: ColorPalette.lightBlack,
-                fontSize: 18,
+                fontSize: 16,
                 fontWeight: FontWeight.w500,
               ),
             ),
@@ -39,12 +40,12 @@ class PaymentMethodsScreen extends StatelessWidget {
                 itemCount: 2,
                 itemBuilder: (context, index) => RadioListTile(
                   contentPadding: EdgeInsets.zero,
-                  title: const Text('Salary card'),
+                  title: Text('salarycard'.tr),
                   subtitle: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const Text('**** **** **** 2233'),
-                      const Text('Expiry date:  01/22 '),
+                      Text('expirydate'.tr + ' 01/22'),
                       SvgPicture.asset(
                         'assets/splash/mastercard.svg',
                         height: 15,
@@ -61,11 +62,11 @@ class PaymentMethodsScreen extends StatelessWidget {
             ),
             Spaces.vertical10,
             ExpansionTile(
-              title: const Text(
-                'Add new card',
-                style: TextStyle(
+              title: Text(
+                'addnewcard'.tr,
+                style: const TextStyle(
                   color: ColorPalette.lightBlack,
-                  fontSize: 18,
+                  fontSize: 16,
                   fontWeight: FontWeight.w500,
                 ),
               ),
@@ -77,15 +78,14 @@ class PaymentMethodsScreen extends StatelessWidget {
                     children: [
                       TextFormField(
                         textInputAction: TextInputAction.next,
-                        decoration:
-                            const InputDecoration(hintText: 'Card holder'),
+                        decoration: InputDecoration(hintText: 'cardholder'.tr),
                       ),
                       Spaces.vertical20,
                       TextFormField(
                         textInputAction: TextInputAction.next,
-                        decoration: const InputDecoration(
-                          hintText: 'Card number',
-                          prefixIcon: Icon(Icons.credit_card_rounded),
+                        decoration: InputDecoration(
+                          hintText: 'cardnumber'.tr,
+                          prefixIcon: const Icon(Icons.credit_card_rounded),
                         ),
                       ),
                       Spaces.vertical20,
@@ -94,8 +94,8 @@ class PaymentMethodsScreen extends StatelessWidget {
                           Flexible(
                             child: TextFormField(
                               textInputAction: TextInputAction.next,
-                              decoration: const InputDecoration(
-                                  hintText: 'Expire date'),
+                              decoration:
+                                  InputDecoration(hintText: 'expiredate'.tr),
                             ),
                           ),
                           Spaces.horizontal6,
@@ -110,7 +110,7 @@ class PaymentMethodsScreen extends StatelessWidget {
                       ),
                       Spaces.vertical50,
                       TextButton(
-                        child: const Text('Add new Card'),
+                        child: Text('addnewcard'.tr),
                         // onPressed: () {
                         //   if (_formKey.currentState!.validate()) {
                         //     login();

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:nonqueue_app/screens/inapp/gift/ui.dart';
 import 'package:nonqueue_app/utils/constants.dart';
 
@@ -24,9 +25,9 @@ class NotificationScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Notifications',
-          style: TextStyle(color: ColorPalette.lightBlack),
+        title: Text(
+          'notifications'.tr,
+          style: const TextStyle(color: ColorPalette.lightBlack),
         ),
       ),
       body: Container(
