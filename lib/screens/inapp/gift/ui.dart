@@ -9,7 +9,7 @@ class GiftScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<Map<String, String>> _giftdetails = [
+    final List<Map<String, String>> giftdetails = [
       {
         'name': 'Cofe americano',
         'count': 'x1',
@@ -94,7 +94,7 @@ class GiftScreen extends StatelessWidget {
                         ],
                       ),
                       Spaces.vertical10,
-                      ..._giftdetails.map(
+                      ...giftdetails.map(
                         (e) => ListTile(
                           contentPadding: EdgeInsets.zero,
                           visualDensity: VisualDensity.compact,

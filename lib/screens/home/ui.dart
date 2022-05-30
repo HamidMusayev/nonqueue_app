@@ -68,7 +68,6 @@ class HomeScreen extends GetView<HomeController> {
             child: Obx(
               () => Visibility(
                 visible: controller.isLoading.value,
-                child: const Center(child: CircularProgressIndicator()),
                 replacement: ListView.builder(
                   primary: false,
                   padding: const EdgeInsets.only(left: 16),
@@ -86,6 +85,7 @@ class HomeScreen extends GetView<HomeController> {
                     ),
                   ),
                 ),
+                child: const Center(child: CircularProgressIndicator()),
               ),
             ),
           ),
@@ -98,7 +98,6 @@ class HomeScreen extends GetView<HomeController> {
             child: Obx(
               () => Visibility(
                 visible: controller.isLoading.value,
-                child: const Center(child: CircularProgressIndicator()),
                 replacement: ListView.builder(
                   primary: false,
                   padding: const EdgeInsets.only(left: 16),
@@ -116,6 +115,7 @@ class HomeScreen extends GetView<HomeController> {
                     ),
                   ),
                 ),
+                child: const Center(child: CircularProgressIndicator()),
               ),
             ),
           ),

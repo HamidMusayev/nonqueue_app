@@ -89,11 +89,11 @@ class LoginScreen extends GetView<LoginController> {
                   Obx(
                     () => Visibility(
                       visible: controller.isLoading.value,
-                      child: const Center(child: CircularProgressIndicator()),
                       replacement: TextButton(
-                        child: Text('login'.tr),
                         onPressed: controller.login,
+                        child: Text('login'.tr),
                       ),
+                      child: const Center(child: CircularProgressIndicator()),
                     ),
                   ),
                   Spaces.vertical20,

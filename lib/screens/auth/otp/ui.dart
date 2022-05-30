@@ -53,8 +53,7 @@ class _OTPScreenState extends State<OTPScreen> {
             ),
           ),
           Text(
-            'wesentitto'.tr +
-                ' ${widget.email.substring(0, 3)}*******${widget.email.substring(10)}',
+            '${'wesentitto'.tr} ${widget.email.substring(0, 3)}*******${widget.email.substring(10)}',
             style: const TextStyle(color: Colors.blueGrey),
           ),
           Spaces.vertical20,
@@ -111,8 +110,8 @@ class _OTPScreenState extends State<OTPScreen> {
                 TextButton(
                   style: TextButton.styleFrom(
                       backgroundColor: Colors.white, primary: Colors.white),
-                  child: Container(),
                   onPressed: null,
+                  child: Container(),
                 ),
                 TextButton(
                   style: TextButton.styleFrom(

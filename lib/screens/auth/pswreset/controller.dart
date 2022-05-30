@@ -22,8 +22,13 @@ class ResetPasswordController extends GetxController {
     if (formKey.currentState?.validate() ?? false) {
       if (firstPassTxt.text == secondPassTxt.text) {
         isLoading.value = true;
-        Result res = await _service.resetPassword(
-            {'email': email, 'otp': otp, 'password': firstPassTxt.text});
+        Result res = await _service.resetPassword({
+          'email': email,
+          'otp': otp,
+          'password': firstPassTxt.text,
+          'clientId': kClientId,
+          'clientSecrets': kClientSecrets,
+        });
 
         if (res.success) {
           isLoading.value = false;

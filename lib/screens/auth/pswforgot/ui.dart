@@ -51,11 +51,11 @@ class ForgotPasswordScreen extends GetView<ForgotPasswordController> {
               Obx(
                 () => Visibility(
                   visible: controller.isLoading.value,
-                  child: const Center(child: CircularProgressIndicator()),
                   replacement: TextButton(
-                    child: Text('submit'.tr),
                     onPressed: controller.sendOtp,
+                    child: Text('submit'.tr),
                   ),
+                  child: const Center(child: CircularProgressIndicator()),
                 ),
               ),
             ],

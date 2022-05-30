@@ -143,6 +143,8 @@ class AccountController extends GetxController {
     Result res = await _service.sendOtpForChangeEmail({
       'email': emailTxt.text,
       'id': _user.id.toString(),
+      'clientId': kClientId,
+      'clientSecrets': kClientSecrets,
     });
 
     if (res.success) {

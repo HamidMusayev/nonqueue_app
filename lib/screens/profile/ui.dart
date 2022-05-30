@@ -188,7 +188,6 @@ class ProfileScreen extends GetView<ProfileController> {
                       content: Text('yousure'.tr),
                       actions: [
                         OutlinedButton(
-                          child: Text('yes'.tr),
                           style: TextButton.styleFrom(
                             fixedSize: const Size.fromHeight(45),
                             shape: const RoundedRectangleBorder(
@@ -199,13 +198,14 @@ class ProfileScreen extends GetView<ProfileController> {
                             SharedHelper.removeJson('token');
                             Get.offAll(() => const WelcomeScreen());
                           },
+                          child: Text('yes'.tr),
                         ),
                         TextButton(
-                          child: Text('no'.tr),
                           style: TextButton.styleFrom(
                             fixedSize: const Size.fromHeight(45),
                           ),
                           onPressed: () => Navigator.pop(context),
+                          child: Text('no'.tr),
                         ),
                       ],
                     ),

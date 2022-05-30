@@ -8,7 +8,7 @@ class CompletedCouponScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<bool> _items = [
+    List<bool> items = [
       true,
       true,
       true,
@@ -70,7 +70,7 @@ class CompletedCouponScreen extends StatelessWidget {
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
                           mainAxisAlignment: MainAxisAlignment.center,
-                          children: _items
+                          children: items
                               .map((e) => const Icon(
                                     Icons.coffee_rounded,
                                     color: ColorPalette.lightBlack,
@@ -80,7 +80,7 @@ class CompletedCouponScreen extends StatelessWidget {
                       ),
                       Spaces.vertical10,
                       Text(
-                        '${_items.where((element) => element).toList().length} / ${_items.length}',
+                        '${items.where((element) => element).toList().length} / ${items.length}',
                         style: const TextStyle(
                           color: ColorPalette.greyInputText,
                           fontSize: 16
@@ -118,7 +118,7 @@ class CompletedCouponScreen extends StatelessWidget {
                       ),
                       Spaces.vertical20,
                       Text(
-                        'validtill'.tr+ '01/05/22',
+                        '${'validtill'.tr}01/05/22',
                         style: const TextStyle(
                           fontSize: 16,
                           color: ColorPalette.lightBlack,

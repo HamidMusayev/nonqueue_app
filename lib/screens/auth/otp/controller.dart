@@ -14,8 +14,18 @@ class OtpController extends GetxController {
   void confirmOtp(int otp, String email, String type) async {
     isLoading.value = true;
     Result res = type == 'confirmEmail'
-        ? await _service.confirmEmail({'email': email, 'otp': otp})
-        : await _service.checkOtp({'email': email, 'otp': otp});
+        ? await _service.confirmEmail({
+            'email': email,
+            'otp': otp,
+            'clientId': kClientId,
+            'clientSecrets': kClientSecrets,
+          })
+        : await _service.checkOtp({
+            'email': email,
+            'otp': otp,
+            'clientId': kClientId,
+            'clientSecrets': kClientSecrets,
+          });
 
     if (res.success) {
       isLoading.value = false;

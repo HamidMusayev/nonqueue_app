@@ -41,7 +41,11 @@ class RegisterController extends GetxController {
       if (result.success) {
         SharedHelper.setString('userId', result.data!);
 
-        Result result2 = await _service.sendOTPEmail({'email': emailTxt.text});
+        Result result2 = await _service.sendOTPEmail({
+          'email': emailTxt.text,
+          'clientId': kClientId,
+          'clientSecrets': kClientSecrets,
+        });
 
         if (result2.success) {
           Get.showSnackbar(Snacks.success(result2.message));

@@ -24,8 +24,8 @@ class OnBoardController extends GetxController {
       'photoUrl': googleAccount.photoUrl,
       'googleId': googleAccount.id,
       'serverAuthCode': googleAccount.serverAuthCode,
-      'clientId': 'App',
-      'clientSecrets': 'App'
+      'clientId': kClientId,
+      'clientSecrets': kClientSecrets,
     });
 
     if (res.success) {
@@ -59,9 +59,9 @@ class OnBoardController extends GetxController {
     isLoading.value = true;
 
     try {
-      GoogleSignInAccount? _googleAccount = await _googleService.signIn();
-      if (_googleAccount != null && _googleAccount.serverAuthCode != null) {
-        await googleLogin(_googleAccount);
+      GoogleSignInAccount? googleAccount = await _googleService.signIn();
+      if (googleAccount != null && googleAccount.serverAuthCode != null) {
+        await googleLogin(googleAccount);
       }
     } catch (e) {
       Get.showSnackbar(Snacks.error('errorgooglesignin'.tr));

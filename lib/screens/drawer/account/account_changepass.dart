@@ -8,12 +8,12 @@ class AccountInfoChangePassScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool _isObsecure = true;
+    bool isObsecure = true;
 
-    final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+    final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
-    final TextEditingController _passTxt = TextEditingController();
-    final TextEditingController _newpassTxt = TextEditingController();
+    final TextEditingController passTxt = TextEditingController();
+    final TextEditingController newpassTxt = TextEditingController();
     //final UserService _service = UserService(DIOService());
 
     return Scaffold(
@@ -31,7 +31,7 @@ class AccountInfoChangePassScreen extends StatelessWidget {
           padding: Paddings.p16,
           constraints: const BoxConstraints(maxWidth: 450),
           child: Form(
-            key: _formKey,
+            key: formKey,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
@@ -45,8 +45,8 @@ class AccountInfoChangePassScreen extends StatelessWidget {
                   keyboardType: TextInputType.emailAddress,
                   textInputAction: TextInputAction.next,
                   autofocus: false,
-                  obscureText: _isObsecure,
-                  controller: _passTxt,
+                  obscureText: isObsecure,
+                  controller: passTxt,
                   validator: (value) => ValidatorHelper.validateEmail(value),
                   decoration:
                       const InputDecoration(hintText: 'Current password'),
@@ -55,8 +55,8 @@ class AccountInfoChangePassScreen extends StatelessWidget {
                 TextFormField(
                   keyboardType: TextInputType.visiblePassword,
                   textInputAction: TextInputAction.done,
-                  controller: _newpassTxt,
-                  obscureText: _isObsecure,
+                  controller: newpassTxt,
+                  obscureText: isObsecure,
                   validator: (value) => ValidatorHelper.validatePassword(value),
                   decoration: const InputDecoration(hintText: 'New password'),
                 ),
@@ -64,8 +64,8 @@ class AccountInfoChangePassScreen extends StatelessWidget {
                 TextFormField(
                   keyboardType: TextInputType.text,
                   textInputAction: TextInputAction.done,
-                  controller: _newpassTxt,
-                  obscureText: _isObsecure,
+                  controller: newpassTxt,
+                  obscureText: isObsecure,
                   validator: (value) => ValidatorHelper.validatePassword(value),
                   decoration:
                       const InputDecoration(hintText: 'Re-enter new password'),

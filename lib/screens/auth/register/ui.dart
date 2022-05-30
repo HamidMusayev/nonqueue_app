@@ -100,8 +100,8 @@ class RegisterScreen extends GetView<RegisterController> {
                     () => Visibility(
                       visible: controller.isLoading.value,
                       replacement: TextButton(
-                        child: Text('signup'.tr),
                         onPressed: controller.register,
+                        child: Text('signup'.tr),
                       ),
                       child: const Center(child: CircularProgressIndicator()),
                     ),

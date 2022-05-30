@@ -53,8 +53,8 @@ class ContactsScreen extends GetView<ContactsController> {
                     )
                   ],
                 ),
-                child: Container(),
                 visible: controller.isGranted.value,
+                child: Container(),
               ),
             ),
             Obx(
@@ -98,8 +98,8 @@ class ContactsScreen extends GetView<ContactsController> {
                     ),
                   ),
                 ),
-                child: const LinearProgressIndicator(),
                 visible: controller.isLoading.value,
+                child: const LinearProgressIndicator(),
               ),
             )
           ],

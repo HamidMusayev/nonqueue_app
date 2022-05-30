@@ -9,7 +9,7 @@ class OrderHistoryScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<Map<String, String>> _orders = [
+    List<Map<String, String>> orders = [
       {
         'date': 'Thu 11/11',
         'name': 'Starbuckffffffffffffffffffffffffffffffffffffs',
@@ -42,7 +42,7 @@ class OrderHistoryScreen extends StatelessWidget {
         child: ListView.builder(
           itemCount: 2,
           itemBuilder: (context, index) => OrderTile(
-            order: _orders[index],
+            order: orders[index],
             onTap: () {
               Navigator.push(
                 context,

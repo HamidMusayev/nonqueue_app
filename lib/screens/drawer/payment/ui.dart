@@ -8,7 +8,7 @@ class PaymentMethodsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+    final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
     return Scaffold(
       appBar: AppBar(
@@ -45,7 +45,7 @@ class PaymentMethodsScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const Text('**** **** **** 2233'),
-                      Text('expirydate'.tr + ' 01/22'),
+                      Text('${'expirydate'.tr} 01/22'),
                       SvgPicture.asset(
                         'assets/splash/mastercard.svg',
                         height: 15,
@@ -73,7 +73,7 @@ class PaymentMethodsScreen extends StatelessWidget {
               children: [
                 Spaces.vertical20,
                 Form(
-                  key: _formKey,
+                  key: formKey,
                   child: Column(
                     children: [
                       TextFormField(

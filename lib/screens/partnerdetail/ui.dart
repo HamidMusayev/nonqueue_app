@@ -177,12 +177,12 @@ class _PartnerDetailScreenState extends State<PartnerDetailScreen> {
                               onChanged: (value) {},
                               items: const [
                                 DropdownMenuItem<String>(
-                                  child: Text('Small'),
                                   value: 'small',
+                                  child: Text('Small'),
                                 ),
                                 DropdownMenuItem<String>(
-                                  child: Text('Big'),
                                   value: 'big',
+                                  child: Text('Big'),
                                 ),
                               ],
                             ),
@@ -192,12 +192,12 @@ class _PartnerDetailScreenState extends State<PartnerDetailScreen> {
                               onChanged: (value) {},
                               items: const [
                                 DropdownMenuItem<String>(
-                                  child: Text('Fanta'),
                                   value: 'fanta',
+                                  child: Text('Fanta'),
                                 ),
                                 DropdownMenuItem<String>(
-                                  child: Text('Cola'),
                                   value: 'cola',
+                                  child: Text('Cola'),
                                 ),
                               ],
                             ),
@@ -207,16 +207,16 @@ class _PartnerDetailScreenState extends State<PartnerDetailScreen> {
                               onChanged: (value) {},
                               items: [
                                 DropdownMenuItem<String>(
-                                  child: const Text('Onion'),
                                   value: 'Onion',
                                   onTap: () =>
                                       setState(() => _extras.add('Onion')),
+                                  child: const Text('Onion'),
                                 ),
                                 DropdownMenuItem<String>(
-                                  child: const Text('Ketchup'),
                                   value: 'Ketchup',
                                   onTap: () =>
                                       setState(() => _extras.add('Ketchup')),
+                                  child: const Text('Ketchup'),
                                 ),
                               ],
                             ),

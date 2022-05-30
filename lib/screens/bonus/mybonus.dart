@@ -11,7 +11,7 @@ class MyBonusPanel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<List<bool>> _items = [
+    final List<List<bool>> items = [
       [
         true,
         true,
@@ -64,15 +64,15 @@ class MyBonusPanel extends StatelessWidget {
           Expanded(
             child: ListView.builder(
               physics: const BouncingScrollPhysics(),
-              itemCount: _items.length,
+              itemCount: items.length,
               itemBuilder: (context, index) => SizedBox(
                 height: 200,
                 child: BonusCard(
-                  items: _items[index],
+                  items: items[index],
                   onTap: () => Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => _items[index]
+                      builder: (context) => items[index]
                               .where((element) => !element)
                               .toList()
                               .isNotEmpty

@@ -53,13 +53,13 @@ class HelpScreen extends GetView<HelpController> {
                     suffixIcon: Obx(
                       () => Visibility(
                         visible: controller.isLoading.value,
-                        child: const SizedBox(
-                            height: 5,
-                            child: CircularProgressIndicator(),),
                         replacement: IconButton(
                           onPressed: () async => controller.sendForHelp(),
                           icon: const Icon(Icons.send_rounded),
                         ),
+                        child: const SizedBox(
+                            height: 5,
+                            child: CircularProgressIndicator(),),
                       ),
                     ),
                     helperText: 'willgetansweryouremail'.tr,

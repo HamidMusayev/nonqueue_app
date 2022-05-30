@@ -108,8 +108,8 @@ class _EmailChangeScreenState extends State<EmailChangeScreen> {
                 TextButton(
                   style: TextButton.styleFrom(
                       backgroundColor: Colors.white, primary: Colors.white),
-                  child: Container(),
                   onPressed: null,
+                  child: Container(),
                 ),
                 TextButton(
                   style: TextButton.styleFrom(

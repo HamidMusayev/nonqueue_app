@@ -8,7 +8,7 @@ class NotificationScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<Map<String, String>> _notifications = [
+    List<Map<String, String>> notifications = [
       {
         'image':
             'https://i.pinimg.com/564x/a6/29/02/a62902c0458a23d705492bb701371a43.jpg',
@@ -33,25 +33,25 @@ class NotificationScreen extends StatelessWidget {
       body: Container(
         padding: Paddings.p16,
         child: ListView.builder(
-          itemCount: _notifications.length,
+          itemCount: notifications.length,
           itemBuilder: (context, index) => ListTile(
             contentPadding: Paddings.p8,
             leading: CircleAvatar(
               backgroundColor: ColorPalette.greyInputText,
               radius: 30,
               backgroundImage:
-                  NetworkImage(_notifications[index]['image'] ?? ''),
+                  NetworkImage(notifications[index]['image'] ?? ''),
             ),
-            title: Text(_notifications[index]['title'] ?? ''),
+            title: Text(notifications[index]['title'] ?? ''),
             subtitle: Text(
-              _notifications[index]['subtitle'] ?? '',
+              notifications[index]['subtitle'] ?? '',
               style: const TextStyle(color: ColorPalette.greyInputText),
             ),
             trailing: const Icon(Icons.navigate_next_rounded),
             onTap: () => Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => GiftScreen(gift: _notifications[index],),
+                builder: (context) => GiftScreen(gift: notifications[index],),
                 fullscreenDialog: true,
               ),
             ),

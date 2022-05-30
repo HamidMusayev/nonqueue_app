@@ -16,7 +16,11 @@ class ForgotPasswordController extends GetxController {
   Future<void> sendOtp() async {
     if (formKey.currentState?.validate() ?? false) {
       isLoading.value = true;
-      Result res = await _service.sendOTPEmail({'email': emailTxt.text});
+      Result res = await _service.sendOTPEmail({
+        'email': emailTxt.text,
+        'clientId': kClientId,
+        'clientSecrets': kClientSecrets,
+      });
 
       if (res.success) {
         isLoading.value = false;

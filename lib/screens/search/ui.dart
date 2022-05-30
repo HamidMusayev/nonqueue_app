@@ -21,8 +21,8 @@ class _MapScreenState extends State<MapScreen> {
 
   final Set<Marker> _markers = {};
 
-  Future<void> _onMapCreated(GoogleMapController _cntlr) async {
-    _controller = _cntlr;
+  Future<void> _onMapCreated(GoogleMapController cntlr) async {
+    _controller = cntlr;
     LocationData loc = await _location.getLocation();
     if (loc.latitude != null && loc.longitude != null) {
       _controller.animateCamera(

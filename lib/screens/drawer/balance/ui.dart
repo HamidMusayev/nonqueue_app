@@ -119,7 +119,7 @@ class BalanceScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     const Text('**** **** **** 2233'),
-                    Text('expirydate'.tr + '21/12'),
+                    Text('${'expirydate'.tr}21/12'),
                     SvgPicture.asset(
                       'assets/splash/mastercard.svg',
                       height: 15,

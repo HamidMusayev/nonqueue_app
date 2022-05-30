@@ -15,6 +15,9 @@ class ColorPalette {
 
 MaterialColor colorCustom = const MaterialColor(0xFFC25875, kcolor);
 
+const String kClientId = 'App';
+const String kClientSecrets = 'App';
+
 const Map<int, Color> kcolor = {
   50: Color.fromRGBO(194, 88, 117, .1),
   100: Color.fromRGBO(194, 88, 117, .2),

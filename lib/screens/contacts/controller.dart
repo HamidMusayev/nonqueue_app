@@ -39,16 +39,16 @@ class ContactsController extends GetxController {
 
   Future<void> checkContacts() async {
     isLoading.value = true;
-    List<String> _contactstosend = [];
+    List<String> contactstosend = [];
 
     for (Contact cont in contacts) {
       for (Phone phon in cont.phones) {
-        _contactstosend.add(phon.normalizedNumber);
+        contactstosend.add(phon.normalizedNumber);
       }
     }
 
     Result<List<PhoneNumber>> res =
-        await _service.checkContacts(_contactstosend);
+        await _service.checkContacts(contactstosend);
 
     if (res.success) {
       for (Contact cont in contacts) {

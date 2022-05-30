@@ -19,7 +19,6 @@ class FagScreen extends GetView<FaqController> {
       body: Obx(
         ()=> Visibility(
           visible: controller.isLoading.value,
-          child: const Center(child: CircularProgressIndicator()),
           replacement: ListView.builder(
             physics: const BouncingScrollPhysics(),
             itemCount: controller.faqs.length,
@@ -39,6 +38,7 @@ class FagScreen extends GetView<FaqController> {
               ],
             ),
           ),
+          child: const Center(child: CircularProgressIndicator()),
         ),
       ),
     );

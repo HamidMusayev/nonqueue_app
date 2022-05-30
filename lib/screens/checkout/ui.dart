@@ -139,7 +139,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                     content: Column(
                       children: [
                         RadioListTile(
-                          title: Text('nqbalance'.tr + '35.00 AZN'),
+                          title: Text('${'nqbalance'.tr}35.00 AZN'),
                           value: 0,
                           groupValue: _pickedPayment,
                           onChanged: (int? value) =>
@@ -210,7 +210,6 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                   children: [
                     Visibility(
                       visible: _activeStep == 2,
-                      child: Container(),
                       replacement: TextButton(
                         onPressed: controlDetails.onStepContinue,
                         style: TextButton.styleFrom(
@@ -220,6 +219,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                           child: Text('next'.tr),
                         ),
                       ),
+                      child: Container(),
                     ),
                     Visibility(
                       visible: _activeStep == 2,
