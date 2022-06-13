@@ -10,7 +10,7 @@ class CompanyBranch {
   final String? description;
   final double? locationX;
   final double? locationY;
-  final String adress;
+  final String? adress;
   final double stars;
   final String status;
 

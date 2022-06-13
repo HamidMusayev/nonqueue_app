@@ -14,12 +14,12 @@ class StarMark extends StatelessWidget {
           stars.toStringAsFixed(1),
           style: const TextStyle(
             color: ColorPalette.lightBlack,
-            fontSize: 14,
+            fontSize: 12,
           ),
         ),
         const Icon(
           Icons.star,
-          color: Colors.amber, size: 20,
+          color: Colors.amber, size: 17,
         ),
       ],
     );

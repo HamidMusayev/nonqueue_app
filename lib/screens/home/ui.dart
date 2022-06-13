@@ -70,6 +70,7 @@ class HomeScreen extends GetView<HomeController> {
                 visible: controller.isLoading.value,
                 replacement: ListView.builder(
                   primary: false,
+                  physics: const BouncingScrollPhysics(),
                   padding: const EdgeInsets.only(left: 16),
                   shrinkWrap: false,
                   scrollDirection: Axis.horizontal,
@@ -100,6 +101,7 @@ class HomeScreen extends GetView<HomeController> {
                 visible: controller.isLoading.value,
                 replacement: ListView.builder(
                   primary: false,
+                  physics: const BouncingScrollPhysics(),
                   padding: const EdgeInsets.only(left: 16),
                   shrinkWrap: false,
                   scrollDirection: Axis.horizontal,

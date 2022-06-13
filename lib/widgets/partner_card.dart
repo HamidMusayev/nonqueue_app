@@ -13,26 +13,23 @@ class PartnerCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       shadowColor: ColorPalette.stroke,
-      elevation: 4,
+      elevation: 2,
       margin: Paddings.p8,
       color: Colors.white,
-      clipBehavior: Clip.antiAlias,
+      clipBehavior: Clip.hardEdge,
       shape: const RoundedRectangleBorder(borderRadius: Radiuses.r10),
-      child: InkWell(
+      child: GestureDetector(
         onTap: () => onTap.call(),
         child: Container(
-          constraints: const BoxConstraints(maxWidth: 160),
+          constraints: const BoxConstraints(maxWidth: 170),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(
-                height: 130,
-                width: 160,
-                child: FittedBox(
+                height: 135,
+                width: 170,
+                child: Image.network(
+                  'https://image.freepik.com/free-photo/cheesecake-topped-with-cofee-cup-coffee_140725-3361.jpg',
                   fit: BoxFit.fill,
-                  child: Image.network(
-                    'https://image.freepik.com/free-photo/cheesecake-topped-with-cofee-cup-coffee_140725-3361.jpg',
-                  ),
                 ),
               ),
               Padding(
@@ -42,19 +39,25 @@ class PartnerCard extends StatelessWidget {
                   children: [
                     Text(
                       branch.name,
+                      maxLines: 1,
                       style: const TextStyle(
                         color: ColorPalette.lightBlack,
+                        overflow: TextOverflow.ellipsis,
                         fontWeight: FontWeight.w500,
                       ),
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
-                          branch.adress,
-                          overflow: TextOverflow.fade,
-                          style: const TextStyle(
-                            color: ColorPalette.greyInputText,
+                        Flexible(
+                          child: Text(
+                            branch.adress ?? '',
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 1,
+                            style: const TextStyle(
+                              color: ColorPalette.greyInputText,
+                              fontSize: 12,
+                            ),
                           ),
                         ),
                         StarMark(stars: branch.stars),

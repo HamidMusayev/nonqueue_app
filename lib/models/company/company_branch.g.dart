@@ -14,7 +14,7 @@ CompanyBranch _$CompanyBranchFromJson(Map<String, dynamic> json) =>
       description: json['description'] as String?,
       locationX: (json['locationX'] as num?)?.toDouble(),
       locationY: (json['locationY'] as num?)?.toDouble(),
-      adress: json['adress'] as String,
+      adress: json['adress'] as String?,
       stars: (json['stars'] as num).toDouble(),
       status: json['status'] as String,
     );
