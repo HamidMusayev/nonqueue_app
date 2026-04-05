@@ -1,54 +1,46 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:nonqueue_app/screens/home/ui.dart';
-import 'package:nonqueue_app/screens/welcome/ui.dart';
+import 'package:get/get.dart';
+import 'package:nonqueue_app/bindings/initial_binding.dart';
+import 'package:nonqueue_app/routes/app_pages.dart';
+import 'package:nonqueue_app/routes/app_routes.dart';
 import 'package:nonqueue_app/utils/constants.dart';
-import 'package:nonqueue_app/utils/shared.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
-import 'models/user.dart';
+import 'package:nonqueue_app/utils/translations.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
 class MyApp extends StatefulWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   State<MyApp> createState() => _MyAppState();
 }
 
 class _MyAppState extends State<MyApp> {
-  bool _saveMe = false;
-  User? _user;
-
-  @override
-  void initState() {
-    getSavedData();
-    super.initState();
-  }
-
-  void getSavedData() async {
-    SharedPreferences _prefs = await SharedPreferences.getInstance();
-    if (_prefs.getBool("saveMe") ?? false) {
-      _user = User.fromJson(await SharedHelper.readJson('user'));
-      if (_user != null && _user?.pinappusmast != null) {
-        setState(() => _saveMe = true);
-      }
-    }
-  }
+  final bool _saveMe = false;
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
+      initialBinding: InitialBinding(),
+      getPages: AppPages.pages,
+      initialRoute: _saveMe ? AppRoutes.inApp : AppRoutes.welcome,
       showPerformanceOverlay: false,
       showSemanticsDebugger: false,
       debugShowMaterialGrid: false,
       debugShowCheckedModeBanner: false,
       title: 'Non Queue',
-      localizationsDelegates: const [GlobalMaterialLocalizations.delegate],
-      supportedLocales: const [Locale("az")],
+      localizationsDelegates: GlobalMaterialLocalizations.delegates,
+      supportedLocales: const [
+        Locale('en', 'UK'),
+        Locale('az', 'AZ'),
+        Locale('ru', 'RU'),
+      ],
+      locale: Get.deviceLocale,
+      fallbackLocale: const Locale('en', 'UK'),
+      translations: Messages(),
       theme: ThemeData(
         primarySwatch: const MaterialColor(0xFFC25875, kcolor),
         scaffoldBackgroundColor: Colors.white,
@@ -56,9 +48,11 @@ class _MyAppState extends State<MyApp> {
           style: TextButton.styleFrom(
             fixedSize: const Size(double.maxFinite, 60),
             backgroundColor: ColorPalette.qlessApp,
-            primary: Colors.white,
-            textStyle:
-                const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+            foregroundColor: Colors.white,
+            textStyle: const TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.w600,
+            ),
             shape: const RoundedRectangleBorder(borderRadius: Radiuses.r10),
           ),
         ),
@@ -70,28 +64,23 @@ class _MyAppState extends State<MyApp> {
         inputDecorationTheme: const InputDecorationTheme(
           filled: false,
           enabledBorder: OutlineInputBorder(
+            borderRadius: Radiuses.r10,
             borderSide: BorderSide(
               color: ColorPalette.stroke,
             ),
-            borderRadius: Radiuses.r10,
           ),
           errorBorder: OutlineInputBorder(
             borderSide: BorderSide(color: Colors.red),
             borderRadius: Radiuses.r10,
           ),
           border: OutlineInputBorder(
+            borderRadius: Radiuses.r10,
             borderSide: BorderSide(
               color: ColorPalette.stroke,
             ),
-            borderRadius: Radiuses.r10,
           ),
-          // focusedBorder: OutlineInputBorder(
-          //   borderSide: BorderSide(),
-          //   borderRadius: Radiuses.r8,
-          // ),
         ),
       ),
-      home: _saveMe ? const WelcomeScreen() : const WelcomeScreen(),
     );
   }
 }

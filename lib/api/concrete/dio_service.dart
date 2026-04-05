@@ -1,61 +1,113 @@
 import 'dart:io';
 
-import 'package:dio/dio.dart';
+import 'package:dio/dio.dart' as dio;
+import 'package:flutter/foundation.dart';
+import 'package:get/get.dart';
 import 'package:nonqueue_app/api/abstract/api_repository.dart';
 import 'package:nonqueue_app/api/result/result.dart';
-import 'package:nonqueue_app/api/result/result_message.dart';
+import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
-class DIOService implements ApiRepository {
-  @override
-  Future<Result<Map<String, dynamic>>> delete(
-      Map<String, dynamic> body, String url) {
-    // TODO: implement delete
-    throw UnimplementedError();
+class DioService implements ApiRepository {
+  DioService(this._dio);
+
+  final dio.Dio _dio;
+
+  static DioService create() {
+    final client = dio.Dio(
+      dio.BaseOptions(
+        connectTimeout: const Duration(seconds: 30),
+        receiveTimeout: const Duration(seconds: 30),
+        headers: <String, dynamic>{
+          HttpHeaders.contentTypeHeader: 'application/json; charset=UTF-8',
+        },
+      ),
+    );
+
+    client.interceptors.add(
+      dio.InterceptorsWrapper(
+        onRequest: (options, handler) {
+          options.headers[HttpHeaders.acceptLanguageHeader] =
+              Get.locale?.languageCode ?? 'en';
+          handler.next(options);
+        },
+      ),
+    );
+
+    if (kDebugMode) {
+      client.interceptors.add(
+        PrettyDioLogger(
+          requestBody: true,
+          responseBody: true,
+          requestHeader: true,
+        ),
+      );
+    }
+
+    return DioService(client);
   }
 
-  @override
-  Future<Result<Map<String, dynamic>>> get(
-      Map<String, dynamic> body, String url) {
-    // TODO: implement get
-    throw UnimplementedError();
+  dio.Options _authOptions(String? token) {
+    if (token == null) return dio.Options();
+    return dio.Options(
+      headers: {HttpHeaders.authorizationHeader: 'Bearer $token'},
+    );
   }
 
-  @override
-  Future<Result<Map<String, dynamic>>> put(
-      Map<String, dynamic> body, String url) {
-    // TODO: implement put
-    throw UnimplementedError();
+  Future<Result<Map<String, dynamic>>> _handle(
+    Future<dio.Response<dynamic>> call,
+  ) async {
+    try {
+      final response = await call;
+      final code = response.statusCode ?? 0;
+      if (code >= 200 && code < 300) {
+        final raw = response.data;
+        if (raw is Map<String, dynamic>) {
+          return Success<Map<String, dynamic>>(raw);
+        }
+        if (raw is Map) {
+          return Success<Map<String, dynamic>>(
+            Map<String, dynamic>.from(raw),
+          );
+        }
+        return Failure<Map<String, dynamic>>('erequest'.tr);
+      }
+      if (code == 401 || code == 403) {
+        return Failure<Map<String, dynamic>>('eauthor'.tr);
+      }
+      return Failure<Map<String, dynamic>>('erequest'.tr);
+    } on dio.DioException catch (e) {
+      final sc = e.response?.statusCode;
+      if (sc == 401 || sc == 403) {
+        return Failure<Map<String, dynamic>>('eauthor'.tr);
+      }
+      return Failure<Map<String, dynamic>>('econnection'.tr);
+    }
   }
 
   @override
   Future<Result<Map<String, dynamic>>> post(
-      Map<String, dynamic> body, String url,
-      {String? token, String? language}) async {
-    var options = BaseOptions(headers: <String, String>{
-      HttpHeaders.contentTypeHeader: 'application/json; charset=UTF-8'
-    });
+    dynamic body,
+    String url, {
+    String? token,
+  }) {
+    return _handle(
+      _dio.post<dynamic>(url, data: body, options: _authOptions(token)),
+    );
+  }
 
-    if (token != null) {
-      options.headers
-          .addAll({HttpHeaders.authorizationHeader: 'Bearer $token'});
-    }
-    if (language != null) {
-      options.headers.addAll({HttpHeaders.acceptLanguageHeader: language});
-    }
+  @override
+  Future<Result<Map<String, dynamic>>> put(
+    dynamic body,
+    String url, {
+    String? token,
+  }) {
+    return _handle(
+      _dio.put<dynamic>(url, data: body, options: _authOptions(token)),
+    );
+  }
 
-    try {
-      Dio dio = Dio(options);
-      Response response = await dio.post(url, data: body);
-
-      if (response.statusCode == 200) {
-        return Result.succes(response.data);
-      } else if (response.statusCode == 401) {
-        return Result.error(message: ResultMessage.eAuthorization);
-      } else {
-        return Result.error(message: ResultMessage.eConnection);
-      }
-    } catch (e) {
-      return Result.error(message: ResultMessage.eRequest);
-    }
+  @override
+  Future<Result<Map<String, dynamic>>> get(String url, {String? token}) {
+    return _handle(_dio.get<dynamic>(url, options: _authOptions(token)));
   }
 }

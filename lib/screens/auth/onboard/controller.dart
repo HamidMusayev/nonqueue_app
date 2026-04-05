@@ -1,0 +1,78 @@
+import 'package:get/get.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:nonqueue_app/models/user/token_response.dart';
+
+import 'package:nonqueue_app/api/abstract/user_repository.dart';
+import 'package:nonqueue_app/routes/app_routes.dart';
+
+import '../../../api/result/result.dart';
+import '../../../models/user/user.dart';
+import '../../../utils/constants.dart';
+import '../../../utils/shared.dart';
+
+class OnBoardController extends GetxController {
+  RxBool isLoading = false.obs;
+
+  final _googleService = GoogleSignIn();
+  final UserRepository _service = Get.find<UserRepository>();
+
+  Future<void> googleLogin(GoogleSignInAccount googleAccount) async {
+    isLoading.value = true;
+    Result<TokenResponse> res = await _service.googleLogin({
+      'displayName': googleAccount.displayName,
+      'email': googleAccount.email,
+      'photoUrl': googleAccount.photoUrl,
+      'googleId': googleAccount.id,
+      'serverAuthCode': googleAccount.serverAuthCode,
+      'clientId': kClientId,
+      'clientSecrets': kClientSecrets,
+    });
+
+    if (res.success) {
+      final token = res.data;
+      if (token != null) {
+        await SharedHelper.saveJson('token', token.toJson());
+      }
+
+      Result<User> res2 = await _service.getById('id=${res.data?.userId}');
+      if (res2.success) {
+        final user = res2.data;
+        if (user != null) {
+          await SharedHelper.saveJson('user', user.toJson());
+        }
+
+        Get.offAllNamed(AppRoutes.inApp);
+      } else {
+        Get.showSnackbar(Snacks.error(res2.message));
+      }
+    } else {
+      Get.showSnackbar(Snacks.error(res.message));
+    }
+  }
+
+  Future<void> signInWithGoogle() async {
+    // try {
+    //   GoogleSignInAccount? _googleAccount = await _googleService.signIn();
+    //   if (_googleAccount != null && _googleAccount.serverAuthCode != null) {
+    //     await googleLogin(_googleAccount);
+    //   }
+    //   //update();
+    // } catch (error) {
+    //   isLoading.value = false;
+    //   Get.showSnackbar(Snacks.error('errorgooglesignin'.tr));
+    // }
+
+    isLoading.value = true;
+
+    try {
+      GoogleSignInAccount? googleAccount = await _googleService.signIn();
+      if (googleAccount != null && googleAccount.serverAuthCode != null) {
+        await googleLogin(googleAccount);
+      }
+    } catch (e) {
+      Get.showSnackbar(Snacks.error('errorgooglesignin'.tr));
+    }
+
+    isLoading.value = false;
+  }
+}

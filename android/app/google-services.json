@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "454028530457",
+    "project_id": "nonqueue-cdb56",
+    "storage_bucket": "nonqueue-cdb56.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:454028530457:android:8f38a41462bf8de43b2b88",
+        "android_client_info": {
+          "package_name": "com.nonmqueue.queapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "454028530457-t2n4p32h3f1cegctr5t0l09ufu7l4i1r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nonmqueue.queapp",
+            "certificate_hash": "de479200fb9d8b4097561af52966d721e719dc1f"
+          }
+        },
+        {
+          "client_id": "454028530457-vlf853j41r6ppa67j0jght2nqg5ol3s9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBRONzGthlgrq__FmOc0r6WkdLZi-rckFc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "454028530457-vlf853j41r6ppa67j0jght2nqg5ol3s9.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "454028530457-435ae6kdtincmk73imic5col1vqg66o9.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.nonmqueue.queapp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

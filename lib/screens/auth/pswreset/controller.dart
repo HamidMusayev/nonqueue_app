@@ -1,0 +1,46 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:nonqueue_app/api/abstract/user_repository.dart';
+import 'package:nonqueue_app/routes/app_routes.dart';
+import '../../../api/result/result.dart';
+import '../../../utils/constants.dart';
+
+class ResetPasswordController extends GetxController {
+  RxBool isLoading = false.obs;
+  RxBool isObsecure = true.obs;
+
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  final TextEditingController firstPassTxt = TextEditingController();
+  final TextEditingController secondPassTxt = TextEditingController();
+
+  final UserRepository _service = Get.find<UserRepository>();
+
+  void changeObsecure() => isObsecure.value = !isObsecure.value;
+
+  void resetPassword(String email, int otp) async {
+    if (formKey.currentState?.validate() ?? false) {
+      if (firstPassTxt.text == secondPassTxt.text) {
+        isLoading.value = true;
+        final Result<void> res = await _service.resetPassword({
+          'email': email,
+          'otp': otp,
+          'password': firstPassTxt.text,
+          'clientId': kClientId,
+          'clientSecrets': kClientSecrets,
+        });
+
+        if (res.success) {
+          isLoading.value = false;
+          Get.showSnackbar(Snacks.success('changedpassword'.tr));
+
+          Get.offAllNamed(AppRoutes.login);
+        } else {
+          isLoading.value = false;
+          Get.showSnackbar(Snacks.error(res.message));
+        }
+      } else {
+        Get.showSnackbar(Snacks.error('passwordsmustbesame'.tr));
+      }
+    }
+  }
+}

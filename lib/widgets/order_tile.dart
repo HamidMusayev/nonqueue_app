@@ -5,7 +5,8 @@ import 'package:nonqueue_app/widgets/starmark.dart';
 class OrderTile extends StatelessWidget {
   final Map<String, String> order;
   final VoidCallback onTap;
-  const OrderTile({Key? key, required this.order, required this.onTap}) : super(key: key);
+  const OrderTile({Key? key, required this.order, required this.onTap})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,63 +25,61 @@ class OrderTile extends StatelessWidget {
         ),
         ListTile(
             contentPadding: EdgeInsets.zero,
-            visualDensity: VisualDensity.compact,
             dense: true,
-          onTap: (){
-            onTap.call();
-          },
-          title: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                order['name'] ?? '',
-                softWrap: true,
-                style: const TextStyle(
-                  color: ColorPalette.lightBlack,
-                  fontWeight: FontWeight.w500,
-                  overflow: TextOverflow.ellipsis,
-                  fontSize: 18,
-                ),
-              ),
-              Text(
-                order['desc'] ?? '',
-                softWrap: true,
-                style: const TextStyle(
-                  color: ColorPalette.greyInputText,
-                  fontSize: 14,
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ),
-              Spaces.vertical10,
-              Row(
-                children: [
-                  Text(
-                    order['value'] ?? '',
-                    style: const TextStyle(
-                      color: ColorPalette.lightBlack,
-                      fontWeight: FontWeight.w500,
-                      fontSize: 14,
-                    ),
+            onTap: () {
+              onTap.call();
+            },
+            title: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  order['name'] ?? '',
+                  softWrap: true,
+                  style: const TextStyle(
+                    color: ColorPalette.lightBlack,
+                    fontWeight: FontWeight.w500,
+                    overflow: TextOverflow.ellipsis,
+                    fontSize: 18,
                   ),
-                  const Spacer(),
-                  Text(
-                    order['time'] ?? '',
-                    style: const TextStyle(
-                      color: ColorPalette.lightBlack,
-                      fontWeight: FontWeight.w500,
-                      fontSize: 14,
-                    ),
+                ),
+                Text(
+                  order['desc'] ?? '',
+                  softWrap: true,
+                  style: const TextStyle(
+                    color: ColorPalette.greyInputText,
+                    fontSize: 14,
+                    overflow: TextOverflow.ellipsis,
                   ),
-                ],
-              )
-            ],
-          ),
-          leading: CircleAvatar(
-            backgroundImage: NetworkImage(order['image'] ?? ''),
-            radius: 30,
-          ),
-          trailing: const StarMark()
-        )
+                ),
+                Spaces.vertical10,
+                Row(
+                  children: [
+                    Text(
+                      order['value'] ?? '',
+                      style: const TextStyle(
+                        color: ColorPalette.lightBlack,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 14,
+                      ),
+                    ),
+                    const Spacer(),
+                    Text(
+                      order['time'] ?? '',
+                      style: const TextStyle(
+                        color: ColorPalette.lightBlack,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 14,
+                      ),
+                    ),
+                  ],
+                )
+              ],
+            ),
+            leading: CircleAvatar(
+              backgroundImage: NetworkImage(order['image'] ?? ''),
+              radius: 30,
+            ),
+            trailing: const StarMark(stars: 1.222))
       ],
     );
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class ColorPalette {
   ColorPalette._();
@@ -9,10 +10,13 @@ class ColorPalette {
   static const editColor = Color(0xFF40B9FF);
   static const greyInputText = Color(0xFF999CAD);
   static const stroke = Color(0xFFE2E8F0);
-  static const glassEffect = Color(0xFFFAFAFA);
+  static const glassEffect = Color(0xFFF6F5FA);
 }
 
 MaterialColor colorCustom = const MaterialColor(0xFFC25875, kcolor);
+
+const String kClientId = 'App';
+const String kClientSecrets = 'App';
 
 const Map<int, Color> kcolor = {
   50: Color.fromRGBO(194, 88, 117, .1),
@@ -30,7 +34,6 @@ const Map<int, Color> kcolor = {
 class Spaces {
   Spaces._();
   static const horizontal6 = SizedBox(width: 6);
-
   static const vertical10 = SizedBox(height: 10);
   static const vertical20 = SizedBox(height: 20);
   static const vertical50 = SizedBox(height: 50);
@@ -49,4 +52,43 @@ class Radiuses {
   Radiuses._();
   static const r10 = BorderRadius.all(Radius.circular(10));
   static const r20 = BorderRadius.all(Radius.circular(20));
+}
+
+class Snacks {
+  Snacks._();
+  static GetSnackBar error(String message) {
+    return GetSnackBar(
+      message: 'error'.tr,
+      title: message.isEmpty ? 'nomessage'.tr : message,
+      padding: Paddings.p24,
+      margin: Paddings.p12,
+      duration: const Duration(milliseconds: 2500),
+      snackPosition: SnackPosition.TOP,
+      backgroundColor: Colors.red.shade700,
+      borderRadius: 10,
+      icon: const Icon(
+        Icons.close_rounded,
+        color: Colors.white,
+        size: 30,
+      ),
+    );
+  }
+
+  static GetSnackBar success(String message) {
+    return GetSnackBar(
+      message: 'success'.tr,
+      title: message.isEmpty ? 'nomessage'.tr : message,
+      padding: Paddings.p24,
+      margin: Paddings.p12,
+      duration: const Duration(milliseconds: 2500),
+      snackPosition: SnackPosition.TOP,
+      backgroundColor: Colors.green.shade600,
+      borderRadius: 10,
+      icon: const Icon(
+        Icons.check_circle,
+        color: Colors.white,
+        size: 30,
+      ),
+    );
+  }
 }

@@ -1,11 +1,30 @@
-class Result<E>{
-  bool success;
-  String message;
-  E? data;
+sealed class Result<T> {
+  const Result._();
+}
 
-  Result(this.success, this.message, this.data);
-  Result.withoutData(this.success, this.message);
+final class Success<T> extends Result<T> {
+  final T? data;
+  final String message;
 
-  Result.succes(this.data, {this.message= "Successful", this.success = true});
-  Result.error({this.message= "Failed", this.success = false});
+  const Success(this.data, {this.message = 'Successful'}) : super._();
+}
+
+final class Failure<T> extends Result<T> {
+  final String message;
+
+  const Failure(this.message) : super._();
+}
+
+extension ResultX<T> on Result<T> {
+  bool get success => this is Success<T>;
+
+  String get message => switch (this) {
+        Success(:final message) => message,
+        Failure(:final message) => message,
+      };
+
+  T? get data => switch (this) {
+        Success(:final data) => data,
+        Failure() => null,
+      };
 }

@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:nonqueue_app/utils/constants.dart';
 
-class TopPanel extends StatelessWidget {
-  final String title;
+class TitlePanel extends StatelessWidget {
+  final String? title;
   final String subtitle;
-  const TopPanel({Key? key, required this.title, required this.subtitle})
+  final bool? viewAllButton;
+  const TitlePanel(
+      {Key? key, this.title, required this.subtitle, this.viewAllButton})
       : super(key: key);
 
   @override
@@ -17,34 +20,39 @@ class TopPanel extends StatelessWidget {
         children: [
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.end,
+            //mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              Text(
-                title,
-                style: const TextStyle(color: ColorPalette.qlessApp),
-              ),
+              title != null
+                  ? Text(title!,
+                      style: const TextStyle(color: ColorPalette.qlessApp, fontSize: 12))
+                  : Container(),
               Text(
                 subtitle,
                 style: const TextStyle(
                   color: ColorPalette.lightBlack,
-                  fontSize: 22,
+                  fontSize: 18,
                   fontWeight: FontWeight.w500,
                 ),
               ),
             ],
           ),
-          TextButton(
-            onPressed: () {},
-            style: TextButton.styleFrom(
-              primary: ColorPalette.editColor,
-              backgroundColor: Colors.transparent,
-              fixedSize: const Size.fromHeight(20),
-            ),
-            child: const Text(
-              'View all',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
-            ),
-          )
+          viewAllButton == null
+              ? TextButton(
+                  onPressed: () {},
+                  style: TextButton.styleFrom(
+                    foregroundColor: ColorPalette.editColor,
+                    backgroundColor: Colors.transparent,
+                    fixedSize: const Size.fromHeight(20),
+                  ),
+                  child: Text(
+                    'viewall'.tr,
+                    style: const TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
+                )
+              : Container(),
         ],
       ),
     );
