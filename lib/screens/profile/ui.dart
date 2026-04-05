@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:nonqueue_app/screens/auth/welcome/ui.dart';
-import 'package:nonqueue_app/screens/profile/contoller.dart';
+import 'package:nonqueue_app/bindings/drawer_flow_bindings.dart';
+import 'package:nonqueue_app/routes/app_routes.dart';
+import 'package:nonqueue_app/screens/profile/controller.dart';
 import 'package:nonqueue_app/utils/constants.dart';
 import 'package:nonqueue_app/utils/validators.dart';
 
@@ -13,8 +14,6 @@ class ProfileScreen extends GetView<ProfileController> {
 
   @override
   Widget build(BuildContext context) {
-    Get.put(ProfileController());
-
     return Scaffold(
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
@@ -147,7 +146,7 @@ class ProfileScreen extends GetView<ProfileController> {
               Spaces.vertical20,
               TextButton(
                 style: TextButton.styleFrom(
-                  primary: ColorPalette.editColor,
+                  foregroundColor: ColorPalette.editColor,
                   backgroundColor: Colors.transparent,
                   fixedSize: const Size.fromHeight(20),
                 ),
@@ -158,18 +157,16 @@ class ProfileScreen extends GetView<ProfileController> {
                     fontWeight: FontWeight.w400,
                   ),
                 ),
-                onPressed: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const AccountScreen(),
-                    fullscreenDialog: true,
-                  ),
-                ),
+                onPressed: () => Get.to(
+                      () => const AccountScreen(),
+                      binding: AccountBinding(),
+                      fullscreenDialog: true,
+                    ),
               ),
               Spaces.vertical10,
               TextButton(
                 style: TextButton.styleFrom(
-                  primary: ColorPalette.editColor,
+                  foregroundColor: ColorPalette.editColor,
                   backgroundColor: Colors.transparent,
                   fixedSize: const Size.fromHeight(20),
                 ),
@@ -194,9 +191,9 @@ class ProfileScreen extends GetView<ProfileController> {
                               borderRadius: Radiuses.r10,
                             ),
                           ),
-                          onPressed: () {
-                            SharedHelper.removeJson('token');
-                            Get.offAll(() => const WelcomeScreen());
+                          onPressed: () async {
+                            await SharedHelper.removeJson('token');
+                            Get.offAllNamed(AppRoutes.welcome);
                           },
                           child: Text('yes'.tr),
                         ),

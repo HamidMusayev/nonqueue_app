@@ -9,8 +9,6 @@ class ForgotPasswordScreen extends GetView<ForgotPasswordController> {
 
   @override
   Widget build(BuildContext context) {
-    Get.put(ForgotPasswordController());
-
     return Scaffold(
       appBar: AppBar(),
       body: SingleChildScrollView(

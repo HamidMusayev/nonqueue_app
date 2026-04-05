@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:nonqueue_app/api/abstract/user_repository.dart';
 import 'package:nonqueue_app/models/user/token_request.dart';
-import 'package:nonqueue_app/screens/inapp/ui.dart';
+import 'package:nonqueue_app/routes/app_routes.dart';
 
-import '../../../api/concrete/dio_service.dart';
-import '../../../api/concrete/user_service.dart';
 import '../../../api/result/result.dart';
 import '../../../models/user/token_response.dart';
 import '../../../models/user/user.dart';
@@ -19,13 +18,13 @@ class LoginController extends GetxController {
   final TextEditingController emailTxt = TextEditingController();
   final TextEditingController passTxt = TextEditingController();
 
-  final UserService _service = UserService(DioService());
+  final UserRepository _service = Get.find<UserRepository>();
 
   void changeObsecure() => isObsecure.value = !isObsecure.value;
 
   void login() async {
-    if (formKey.currentState?.validate() ?? false) {
-      isLoading.value = true;
+    //if (formKey.currentState?.validate() ?? false) {
+      /*isLoading.value = true;
       Result<TokenResponse> res = await _service.getResourceOwnerPasswordToken(TokenRequest(
         clientId: 'App',
         clientSecrets: 'App',
@@ -34,14 +33,20 @@ class LoginController extends GetxController {
       ));
 
       if (res.success) {
-        await SharedHelper.saveJson('token', res.data?.toJson());
+        final token = res.data;
+        if (token != null) {
+          await SharedHelper.saveJson('token', token.toJson());
+        }
 
         Result<User> res2 = await _service.getById('id=${res.data?.userId}');
         if (res2.success) {
-          await SharedHelper.saveJson('user', res2.data?.toJson());
+          final user = res2.data;
+          if (user != null) {
+            await SharedHelper.saveJson('user', user.toJson());
+          }
 
           isLoading.value = false;
-          Get.offAll(() => const InAppScreen());
+          Get.offAllNamed(AppRoutes.inApp);
         } else {
           isLoading.value = false;
           Get.showSnackbar(Snacks.error(res2.message));
@@ -49,7 +54,8 @@ class LoginController extends GetxController {
       } else {
         isLoading.value = false;
         Get.showSnackbar(Snacks.error(res.message));
-      }
-    }
+      }*/
+    //}
+    Get.offAllNamed(AppRoutes.inApp);
   }
 }

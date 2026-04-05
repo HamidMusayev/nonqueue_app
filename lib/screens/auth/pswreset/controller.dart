@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:nonqueue_app/screens/auth/login/ui.dart';
-import '../../../api/concrete/dio_service.dart';
-import '../../../api/concrete/user_service.dart';
+import 'package:nonqueue_app/api/abstract/user_repository.dart';
+import 'package:nonqueue_app/routes/app_routes.dart';
 import '../../../api/result/result.dart';
 import '../../../utils/constants.dart';
 
@@ -14,7 +13,7 @@ class ResetPasswordController extends GetxController {
   final TextEditingController firstPassTxt = TextEditingController();
   final TextEditingController secondPassTxt = TextEditingController();
 
-  final UserService _service = UserService(DioService());
+  final UserRepository _service = Get.find<UserRepository>();
 
   void changeObsecure() => isObsecure.value = !isObsecure.value;
 
@@ -22,7 +21,7 @@ class ResetPasswordController extends GetxController {
     if (formKey.currentState?.validate() ?? false) {
       if (firstPassTxt.text == secondPassTxt.text) {
         isLoading.value = true;
-        Result res = await _service.resetPassword({
+        final Result<void> res = await _service.resetPassword({
           'email': email,
           'otp': otp,
           'password': firstPassTxt.text,
@@ -34,7 +33,7 @@ class ResetPasswordController extends GetxController {
           isLoading.value = false;
           Get.showSnackbar(Snacks.success('changedpassword'.tr));
 
-          Get.offAll(const LoginScreen());
+          Get.offAllNamed(AppRoutes.login);
         } else {
           isLoading.value = false;
           Get.showSnackbar(Snacks.error(res.message));

@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../api/concrete/dio_service.dart';
-import '../../../api/concrete/user_service.dart';
+import 'package:nonqueue_app/api/abstract/user_repository.dart';
+import 'package:nonqueue_app/routes/app_routes.dart';
 import '../../../api/result/result.dart';
 import '../../../utils/constants.dart';
-import '../otp/ui.dart';
 
 class ForgotPasswordController extends GetxController {
   RxBool isLoading = false.obs;
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final TextEditingController emailTxt = TextEditingController();
-  final UserService _service = UserService(DioService());
+  final UserRepository _service = Get.find<UserRepository>();
 
   Future<void> sendOtp() async {
     if (formKey.currentState?.validate() ?? false) {
@@ -26,7 +25,13 @@ class ForgotPasswordController extends GetxController {
         isLoading.value = false;
         Get.showSnackbar(Snacks.success('sendedotp'.tr));
 
-        Get.off(OTPScreen(emailTxt.text, 'checkOtp'));
+        Get.offNamed(
+          AppRoutes.otp,
+          arguments: {
+            'email': emailTxt.text,
+            'type': 'checkOtp',
+          },
+        );
       } else {
         isLoading.value = false;
         Get.showSnackbar(Snacks.error(res.message));

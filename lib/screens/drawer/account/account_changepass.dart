@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:nonqueue_app/bindings/auth_bindings.dart';
 import 'package:nonqueue_app/screens/auth/pswforgot/ui.dart';
 import 'package:nonqueue_app/utils/constants.dart';
 import 'package:nonqueue_app/utils/validators.dart';
@@ -73,7 +75,7 @@ class AccountInfoChangePassScreen extends StatelessWidget {
                 Spaces.vertical50,
                 TextButton(
                   style: TextButton.styleFrom(
-                    primary: ColorPalette.editColor,
+                    foregroundColor: ColorPalette.editColor,
                     backgroundColor: Colors.transparent,
                     fixedSize: const Size.fromHeight(20),
                   ),
@@ -81,12 +83,10 @@ class AccountInfoChangePassScreen extends StatelessWidget {
                     'Forgot Password?',
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
                   ),
-                  onPressed: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const ForgotPasswordScreen()
-                    ),
-                  ),
+                  onPressed: () => Get.to(
+                        () => const ForgotPasswordScreen(),
+                        binding: ForgotPasswordBinding(),
+                      ),
                 )
               ],
             ),

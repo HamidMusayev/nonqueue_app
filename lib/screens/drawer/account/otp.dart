@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:nonqueue_app/screens/drawer/account/contoller.dart';
+import 'package:nonqueue_app/screens/drawer/account/controller.dart';
 import 'package:nonqueue_app/utils/constants.dart';
 
 class EmailChangeScreen extends StatefulWidget {
@@ -107,14 +107,17 @@ class _EmailChangeScreenState extends State<EmailChangeScreen> {
                 //Disabled Biometric Authentiction
                 TextButton(
                   style: TextButton.styleFrom(
-                      backgroundColor: Colors.white, primary: Colors.white),
+                    backgroundColor: Colors.white,
+                    foregroundColor: Colors.white,
+                  ),
                   onPressed: null,
                   child: Container(),
                 ),
                 TextButton(
                   style: TextButton.styleFrom(
-                      backgroundColor: Colors.white,
-                      primary: ColorPalette.qlessApp),
+                    backgroundColor: Colors.white,
+                    foregroundColor: ColorPalette.qlessApp,
+                  ),
                   child: const Text(
                     '0',
                     style: TextStyle(
@@ -126,16 +129,18 @@ class _EmailChangeScreenState extends State<EmailChangeScreen> {
                 ),
                 TextButton(
                   style: TextButton.styleFrom(
-                      backgroundColor: Colors.white,
-                      primary: ColorPalette.qlessApp),
+                    backgroundColor: Colors.white,
+                    foregroundColor: ColorPalette.qlessApp,
+                  ),
                   child: const Icon(Icons.backspace_rounded, size: 35),
                   onPressed: () => removeNumber(),
                 ),
                 ..._inputs.map(
                   (i) => TextButton(
                     style: TextButton.styleFrom(
-                        backgroundColor: Colors.white,
-                        primary: ColorPalette.qlessApp),
+                      backgroundColor: Colors.white,
+                      foregroundColor: ColorPalette.qlessApp,
+                    ),
                     child: Text(i,
                         style: const TextStyle(
                             color: ColorPalette.lightBlack, fontSize: 28)),

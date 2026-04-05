@@ -35,7 +35,7 @@ class _OTPScreenState extends State<OTPScreen> {
 
   final List<String> _inputs = ['7', '8', '9', '4', '5', '6', '1', '2', '3'];
 
-  final _controller = Get.put(OtpController());
+  OtpController get _otp => Get.find<OtpController>();
 
   @override
   Widget build(BuildContext context) {
@@ -109,14 +109,17 @@ class _OTPScreenState extends State<OTPScreen> {
                 //Disabled Biometric Authentiction
                 TextButton(
                   style: TextButton.styleFrom(
-                      backgroundColor: Colors.white, primary: Colors.white),
+                    backgroundColor: Colors.white,
+                    foregroundColor: Colors.white,
+                  ),
                   onPressed: null,
                   child: Container(),
                 ),
                 TextButton(
                   style: TextButton.styleFrom(
-                      backgroundColor: Colors.white,
-                      primary: ColorPalette.qlessApp),
+                    backgroundColor: Colors.white,
+                    foregroundColor: ColorPalette.qlessApp,
+                  ),
                   child: const Text(
                     '0',
                     style: TextStyle(
@@ -128,16 +131,18 @@ class _OTPScreenState extends State<OTPScreen> {
                 ),
                 TextButton(
                   style: TextButton.styleFrom(
-                      backgroundColor: Colors.white,
-                      primary: ColorPalette.qlessApp),
+                    backgroundColor: Colors.white,
+                    foregroundColor: ColorPalette.qlessApp,
+                  ),
                   child: const Icon(Icons.backspace_rounded, size: 35),
                   onPressed: () => removeNumber(),
                 ),
                 ..._inputs.map(
                   (i) => TextButton(
                     style: TextButton.styleFrom(
-                        backgroundColor: Colors.white,
-                        primary: ColorPalette.qlessApp),
+                      backgroundColor: Colors.white,
+                      foregroundColor: ColorPalette.qlessApp,
+                    ),
                     child: Text(i,
                         style: const TextStyle(
                             color: ColorPalette.lightBlack, fontSize: 28)),
@@ -175,7 +180,7 @@ class _OTPScreenState extends State<OTPScreen> {
     }
 
     if (completed) {
-      _controller.confirmOtp(
+      _otp.confirmOtp(
         int.parse(
             '${_controllers[0].text}${_controllers[1].text}${_controllers[2].text}${_controllers[3].text}'),
         widget.email,

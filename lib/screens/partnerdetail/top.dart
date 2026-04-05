@@ -18,7 +18,7 @@ class TopPanel extends StatelessWidget {
           child: FittedBox(
             fit: BoxFit.fill,
             child: Image.network(
-              'https://www.greenqueen.com.hk/wp-content/uploads/2021/09/Shanghai-Opens-First-Starbucks-Greener-Store-Outside-North-America-1.jpg',
+              'https://images.stockcake.com/public/8/6/d/86d4659b-fb86-4bf5-abd2-ec6b7ed145f2_large/cozy-coffee-shop-stockcake.jpg',
             ),
           ),
         ),

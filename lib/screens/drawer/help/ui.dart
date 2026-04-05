@@ -9,7 +9,6 @@ class HelpScreen extends GetView<HelpController> {
 
   @override
   Widget build(BuildContext context) {
-    Get.put(HelpController());
     return Scaffold(
       appBar: AppBar(
         title: Text(

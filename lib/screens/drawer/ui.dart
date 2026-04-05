@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:nonqueue_app/bindings/drawer_flow_bindings.dart';
 import 'package:nonqueue_app/utils/constants.dart';
 import '../drawer/about/ui.dart';
 import '../drawer/controller.dart';
-import '../drawer/fag/ui.dart';
+import '../drawer/faq/ui.dart';
 import '../drawer/help/ui.dart';
 import '../drawer/payment/ui.dart';
-import '../drawer//privacy/ui.dart';
+import '../drawer/privacy/ui.dart';
 import 'account/ui.dart';
 import 'balance/ui.dart';
 import 'history/ui.dart';
@@ -17,7 +18,6 @@ class CustomDrawer extends GetView<CustomDrawerController> {
 
   @override
   Widget build(BuildContext context) {
-    Get.put(CustomDrawerController());
     return Drawer(
       child: SafeArea(
         child: Padding(
@@ -77,13 +77,14 @@ class CustomDrawer extends GetView<CustomDrawerController> {
                     ),
                     ListTile(
                       title: Text('accountinfo'.tr),
-                      onTap: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const AccountScreen(),
+                      onTap: () {
+                        Navigator.pop(context);
+                        Get.to(
+                          () => const AccountScreen(),
+                          binding: AccountBinding(),
                           fullscreenDialog: true,
-                        ),
-                      ),
+                        );
+                      },
                     ),
                     ListTile(
                       title: Text('about'.tr),
@@ -97,23 +98,25 @@ class CustomDrawer extends GetView<CustomDrawerController> {
                     ),
                     ListTile(
                       title: Text('helpcenter'.tr),
-                      onTap: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const HelpScreen(),
+                      onTap: () {
+                        Navigator.pop(context);
+                        Get.to(
+                          () => const HelpScreen(),
+                          binding: HelpBinding(),
                           fullscreenDialog: true,
-                        ),
-                      ),
+                        );
+                      },
                     ),
                     ListTile(
                       title: const Text('FAQ'),
-                      onTap: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const FagScreen(),
+                      onTap: () {
+                        Navigator.pop(context);
+                        Get.to(
+                          () => const FaqScreen(),
+                          binding: FaqBinding(),
                           fullscreenDialog: true,
-                        ),
-                      ),
+                        );
+                      },
                     ),
                     ListTile(
                       title: Text('privacypolicy'.tr),
@@ -129,7 +132,6 @@ class CustomDrawer extends GetView<CustomDrawerController> {
                 ),
               ),
               GetBuilder<CustomDrawerController>(
-                init: CustomDrawerController(),
                 builder: (_) => ButtonTheme(
                   alignedDropdown: true,
                   child: DropdownButton<Map<String, String>>(

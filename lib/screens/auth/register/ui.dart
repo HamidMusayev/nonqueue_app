@@ -11,8 +11,6 @@ class RegisterScreen extends GetView<RegisterController> {
 
   @override
   Widget build(BuildContext context) {
-    Get.put(RegisterController());
-
     return Scaffold(
       appBar: AppBar(),
       body: Center(

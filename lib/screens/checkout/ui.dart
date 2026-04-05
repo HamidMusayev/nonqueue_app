@@ -242,7 +242,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                         style: OutlinedButton.styleFrom(
                           shape: const RoundedRectangleBorder(
                               borderRadius: Radiuses.r10),
-                          primary: ColorPalette.lightBlack,
+                          foregroundColor: ColorPalette.lightBlack,
                           side: const BorderSide(
                               color: ColorPalette.greyInputText),
                           fixedSize: const Size.fromHeight(45),

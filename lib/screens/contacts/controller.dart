@@ -2,8 +2,8 @@ import 'package:flutter_contacts/flutter_contacts.dart';
 import 'package:get/get.dart';
 import 'package:nonqueue_app/models/user/phone_number.dart';
 
-import '../../api/concrete/dio_service.dart';
-import '../../api/concrete/user_service.dart';
+import 'package:nonqueue_app/api/abstract/user_repository.dart';
+
 import '../../api/result/result.dart';
 import '../../utils/constants.dart';
 
@@ -14,7 +14,7 @@ class ContactsController extends GetxController {
   final List<Contact> contacts = [];
   final List<Contact> nonQueueContacts = [];
 
-  final UserService _service = UserService(DioService());
+  final UserRepository _service = Get.find<UserRepository>();
 
   @override
   void onInit() {

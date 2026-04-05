@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:nonqueue_app/screens/drawer/fag/controller.dart';
+import 'package:nonqueue_app/screens/drawer/faq/controller.dart';
 import 'package:nonqueue_app/utils/constants.dart';
 
-class FagScreen extends GetView<FaqController> {
-  const FagScreen({Key? key}) : super(key: key);
+class FaqScreen extends GetView<FaqController> {
+  const FaqScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    Get.put(FaqController());
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'FAG',
+          'FAQ',
           style: TextStyle(color: ColorPalette.lightBlack),
         ),
       ),

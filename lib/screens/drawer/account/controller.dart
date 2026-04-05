@@ -4,12 +4,12 @@ import 'package:intl/intl.dart';
 import 'package:nonqueue_app/screens/drawer/account/otp.dart';
 import 'package:nonqueue_app/utils/shared.dart';
 
-import '../../../../api/concrete/dio_service.dart';
-import '../../../../api/concrete/user_service.dart';
+import 'package:nonqueue_app/api/abstract/user_repository.dart';
+
 import '../../../../api/result/result.dart';
 import '../../../../models/user/user.dart';
 import '../../../../utils/constants.dart';
-import '../../../../widgets/phone_input/phone_number.dart';
+import '../../../../widgets/phone_input/phone_number.dart' as phone_widget;
 
 class AccountController extends GetxController {
   RxBool isEmailChanged = false.obs;
@@ -20,7 +20,7 @@ class AccountController extends GetxController {
   RxBool isLoading = false.obs;
 
   late User _user;
-  final UserService _service = UserService(DioService());
+  final UserRepository _service = Get.find<UserRepository>();
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final TextEditingController emailTxt = TextEditingController();
@@ -52,13 +52,18 @@ class AccountController extends GetxController {
     if (isBirthdayChanged.isFalse) isBirthdayChanged.value = true;
   }
 
-  void onChangedNumber(PhoneNumber number) {
+  void onChangedNumber(phone_widget.PhoneNumber number) {
     prefixTxt.text = number.countryCode;
     isNumberChanged.value = true;
   }
 
   void getUserData() async {
-    _user = User.fromJson(await SharedHelper.readJson('user'));
+    final map = await SharedHelper.readJsonMap('user');
+    if (map == null) {
+      Get.showSnackbar(Snacks.error('eauthor'.tr));
+      return;
+    }
+    _user = User.fromJson(map);
     emailTxt.text = _user.email!;
     numberTxt.text = _user.phoneNumber ?? '';
     if (_user.userClaims
@@ -112,7 +117,10 @@ class AccountController extends GetxController {
 
       Result<User> res2 = await _service.getById('id=${_user.id}');
       if (res2.success) {
-        SharedHelper.saveJson('user', res2.data?.toJson());
+        final u = res2.data;
+        if (u != null) {
+          await SharedHelper.saveJson('user', u.toJson());
+        }
       } else {
         Get.showSnackbar(Snacks.error(res2.message));
       }
@@ -123,7 +131,7 @@ class AccountController extends GetxController {
   }
 
   Future<bool> editUser(String propName, String value, {int? otp}) async {
-    Result res = await _service.userEdit({
+    final Result<void> res = await _service.userEdit({
       'propName': propName,
       'value': value,
       'appUserId': _user.id.toString(),
@@ -140,7 +148,7 @@ class AccountController extends GetxController {
   }
 
   Future<void> sendOtpForChangeEmail() async {
-    Result res = await _service.sendOtpForChangeEmail({
+    final Result<void> res = await _service.sendOtpForChangeEmail({
       'email': emailTxt.text,
       'id': _user.id.toString(),
       'clientId': kClientId,

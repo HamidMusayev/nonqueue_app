@@ -17,7 +17,7 @@ class DateRangeDialog extends StatelessWidget {
             return Theme(
               data: Theme.of(context).copyWith(
                 textTheme: Theme.of(context).textTheme.copyWith(
-                      headline5: const TextStyle(fontSize: 16),
+                      titleLarge: const TextStyle(fontSize: 16),
                     ),
                 textButtonTheme: TextButtonThemeData(
                   style: TextButton.styleFrom(

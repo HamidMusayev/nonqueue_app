@@ -9,8 +9,6 @@ class ContactsScreen extends GetView<ContactsController> {
 
   @override
   Widget build(BuildContext context) {
-    Get.put(ContactsController());
-
     return Scaffold(
       body: Container(
         padding: Paddings.p16.copyWith(bottom: 0),

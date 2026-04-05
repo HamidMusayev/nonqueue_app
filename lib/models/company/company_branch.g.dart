@@ -8,9 +8,9 @@ part of 'company_branch.dart';
 
 CompanyBranch _$CompanyBranchFromJson(Map<String, dynamic> json) =>
     CompanyBranch(
-      id: json['id'] as int,
+      id: (json['id'] as num).toInt(),
       name: json['name'] as String,
-      companyId: json['companyId'] as int,
+      companyId: (json['companyId'] as num).toInt(),
       description: json['description'] as String?,
       locationX: (json['locationX'] as num?)?.toDouble(),
       locationY: (json['locationY'] as num?)?.toDouble(),

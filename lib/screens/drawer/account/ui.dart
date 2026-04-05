@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:nonqueue_app/screens/drawer/account/contoller.dart';
+import 'package:nonqueue_app/screens/drawer/account/controller.dart';
 import 'package:nonqueue_app/utils/constants.dart';
 import 'package:nonqueue_app/utils/validators.dart';
 
@@ -11,8 +11,6 @@ class AccountScreen extends GetView<AccountController> {
 
   @override
   Widget build(BuildContext context) {
-    Get.put(AccountController());
-
     return Scaffold(
       appBar: AppBar(
         title: Text(

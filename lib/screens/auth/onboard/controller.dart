@@ -2,19 +2,19 @@ import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:nonqueue_app/models/user/token_response.dart';
 
-import '../../../api/concrete/dio_service.dart';
-import '../../../api/concrete/user_service.dart';
+import 'package:nonqueue_app/api/abstract/user_repository.dart';
+import 'package:nonqueue_app/routes/app_routes.dart';
+
 import '../../../api/result/result.dart';
 import '../../../models/user/user.dart';
 import '../../../utils/constants.dart';
 import '../../../utils/shared.dart';
-import '../../inapp/ui.dart';
 
 class OnBoardController extends GetxController {
   RxBool isLoading = false.obs;
 
   final _googleService = GoogleSignIn();
-  final UserService _service = UserService(DioService());
+  final UserRepository _service = Get.find<UserRepository>();
 
   Future<void> googleLogin(GoogleSignInAccount googleAccount) async {
     isLoading.value = true;
@@ -29,13 +29,19 @@ class OnBoardController extends GetxController {
     });
 
     if (res.success) {
-      await SharedHelper.saveJson('token', res.data);
+      final token = res.data;
+      if (token != null) {
+        await SharedHelper.saveJson('token', token.toJson());
+      }
 
       Result<User> res2 = await _service.getById('id=${res.data?.userId}');
       if (res2.success) {
-        SharedHelper.saveJson('user', res2.data?.toJson());
+        final user = res2.data;
+        if (user != null) {
+          await SharedHelper.saveJson('user', user.toJson());
+        }
 
-        Get.offAll(() => const InAppScreen());
+        Get.offAllNamed(AppRoutes.inApp);
       } else {
         Get.showSnackbar(Snacks.error(res2.message));
       }

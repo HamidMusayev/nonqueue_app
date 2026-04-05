@@ -2,8 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:nonqueue_app/screens/auth/login/ui.dart';
-import 'package:nonqueue_app/screens/auth/register/ui.dart';
+import 'package:nonqueue_app/routes/app_routes.dart';
 import 'package:nonqueue_app/utils/constants.dart';
 import 'package:nonqueue_app/widgets/shadow.dart';
 import 'controller.dart';
@@ -13,8 +12,6 @@ class OnBoardScreen extends GetView<OnBoardController> {
 
   @override
   Widget build(BuildContext context) {
-    Get.put(OnBoardController());
-
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
@@ -45,12 +42,14 @@ class OnBoardScreen extends GetView<OnBoardController> {
                   children: [
                     TextButton(
                       child: Text('signup'.tr),
-                      onPressed: () => Get.to(const RegisterScreen()),
+                      onPressed: () => Get.toNamed(AppRoutes.register),
                     ),
                     Spaces.vertical10,
                     TextButton.icon(
                       style: TextButton.styleFrom(
-                          backgroundColor: Colors.white, primary: Colors.black),
+                        backgroundColor: Colors.white,
+                        foregroundColor: Colors.black,
+                      ),
                       label: Text('continuegoogle'.tr),
                       icon: SvgPicture.asset(
                         'assets/splash/google.svg',
@@ -61,8 +60,9 @@ class OnBoardScreen extends GetView<OnBoardController> {
                     Platform.isIOS
                         ? TextButton.icon(
                             style: TextButton.styleFrom(
-                                backgroundColor: Colors.white,
-                                primary: Colors.black),
+                              backgroundColor: Colors.white,
+                              foregroundColor: Colors.black,
+                            ),
                             label: Text('continueapple'.tr),
                             icon: SvgPicture.asset(
                               'assets/splash/apple.svg',
@@ -97,7 +97,7 @@ class OnBoardScreen extends GetView<OnBoardController> {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          onTap: () => Get.to(const LoginScreen()),
+                          onTap: () => Get.toNamed(AppRoutes.login),
                         ),
                       ],
                     )

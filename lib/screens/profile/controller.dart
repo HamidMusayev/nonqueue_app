@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:nonqueue_app/utils/shared.dart';
 
-import '../../api/concrete/dio_service.dart';
-import '../../api/concrete/user_service.dart';
+import 'package:nonqueue_app/api/abstract/user_repository.dart';
+
 import '../../api/result/result.dart';
 import '../../models/user/user.dart';
 import '../../utils/constants.dart';
@@ -16,7 +16,7 @@ class ProfileController extends GetxController {
   RxBool isLoading = false.obs;
 
   late User _user;
-  final UserService _service = UserService(DioService());
+  final UserRepository _service = Get.find<UserRepository>();
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final TextEditingController fullnameTxt = TextEditingController();
@@ -42,7 +42,12 @@ class ProfileController extends GetxController {
   }
 
   void getUserData() async {
-    _user = User.fromJson(await SharedHelper.readJson('user'));
+    final map = await SharedHelper.readJsonMap('user');
+    if (map == null) {
+      Get.showSnackbar(Snacks.error('eauthor'.tr));
+      return;
+    }
+    _user = User.fromJson(map);
     fullnameTxt.text = _user.name!;
     usernameTxt.text = _user.userName ?? '';
     if (_user.userClaims?.where((e) => e.type == 'Bio').toList().isNotEmpty ??
@@ -70,7 +75,10 @@ class ProfileController extends GetxController {
 
       Result<User> res2 = await _service.getById('id=${_user.id}');
       if (res2.success) {
-        SharedHelper.saveJson('user', res2.data?.toJson());
+        final u = res2.data;
+        if (u != null) {
+          await SharedHelper.saveJson('user', u.toJson());
+        }
       } else {
         Get.showSnackbar(Snacks.error(res2.message));
       }
@@ -80,7 +88,7 @@ class ProfileController extends GetxController {
   }
 
   Future<void> editUser(String propName, String value) async {
-    Result res = await _service.userEdit({
+    final Result<void> res = await _service.userEdit({
       'propName': propName,
       'value': value,
       'appUserId': _user.id.toString(),

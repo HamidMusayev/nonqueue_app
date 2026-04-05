@@ -1,8 +1,17 @@
 import 'package:nonqueue_app/api/result/result.dart';
 
 abstract class ApiRepository {
-  Future<Result> post(dynamic body, String url, {String? token});
-  Future<Result> get(String url, {String? token});
-  Future<Result> put(dynamic body, String url, {String? token});
-  //Future<Result> delete(Map<String, dynamic> body, String url);
+  Future<Result<Map<String, dynamic>>> post(
+    dynamic body,
+    String url, {
+    String? token,
+  });
+
+  Future<Result<Map<String, dynamic>>> get(String url, {String? token});
+
+  Future<Result<Map<String, dynamic>>> put(
+    dynamic body,
+    String url, {
+    String? token,
+  });
 }

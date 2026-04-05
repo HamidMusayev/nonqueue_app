@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:nonqueue_app/screens/auth/onboard/ui.dart';
+import 'package:nonqueue_app/routes/app_routes.dart';
 import 'package:nonqueue_app/utils/constants.dart';
 import 'content.dart';
 
@@ -52,7 +52,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             child: _pageIndex == 2
                 ? TextButton(
                     child: Text('getstarted'.tr),
-                    onPressed: () => Get.off(const OnBoardScreen()))
+                    onPressed: () => Get.offNamed(AppRoutes.onboard))
                 : TextButton(
                     child: Text('next'.tr),
                     onPressed: () {

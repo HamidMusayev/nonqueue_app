@@ -40,7 +40,7 @@ class TitlePanel extends StatelessWidget {
               ? TextButton(
                   onPressed: () {},
                   style: TextButton.styleFrom(
-                    primary: ColorPalette.editColor,
+                    foregroundColor: ColorPalette.editColor,
                     backgroundColor: Colors.transparent,
                     fixedSize: const Size.fromHeight(20),
                   ),

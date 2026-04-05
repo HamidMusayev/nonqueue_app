@@ -11,8 +11,6 @@ class ResetPasswordScreen extends GetView<ResetPasswordController> {
 
   @override
   Widget build(BuildContext context) {
-    Get.put(ResetPasswordController());
-
     return Scaffold(
       appBar: AppBar(),
       body: Container(

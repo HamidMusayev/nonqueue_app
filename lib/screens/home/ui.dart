@@ -10,13 +10,46 @@ import 'package:nonqueue_app/widgets/partner_card.dart';
 
 import '../partnerdetail/ui.dart';
 
+class _HomePartnerStrip extends GetView<HomeController> {
+  const _HomePartnerStrip();
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      constraints: const BoxConstraints(maxHeight: 205),
+      child: Obx(
+        () => Visibility(
+          visible: controller.isLoading.value,
+          replacement: ListView.builder(
+            primary: false,
+            physics: const BouncingScrollPhysics(),
+            padding: const EdgeInsets.only(left: 16),
+            shrinkWrap: false,
+            scrollDirection: Axis.horizontal,
+            itemCount: controller.branches.length,
+            itemBuilder: (context, index) => PartnerCard(
+              branch: controller.branches[index],
+              onTap: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const PartnerDetailScreen(),
+                  fullscreenDialog: true,
+                ),
+              ),
+            ),
+          ),
+          child: const Center(child: CircularProgressIndicator()),
+        ),
+      ),
+    );
+  }
+}
+
 class HomeScreen extends GetView<HomeController> {
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    Get.put(HomeController());
-
     return SingleChildScrollView(
       physics: const BouncingScrollPhysics(),
       child: Column(
@@ -45,8 +78,6 @@ class HomeScreen extends GetView<HomeController> {
             ),
             options: CarouselOptions(
               height: 200,
-              //aspectRatio: 15 / 8,
-              //viewportFraction: 0.8,
               initialPage: 0,
               enableInfiniteScroll: true,
               reverse: false,
@@ -63,64 +94,12 @@ class HomeScreen extends GetView<HomeController> {
             title: 'quickorder'.tr,
             subtitle: 'allpartners'.tr,
           ),
-          Container(
-            constraints: const BoxConstraints(maxHeight: 205),
-            child: Obx(
-              () => Visibility(
-                visible: controller.isLoading.value,
-                replacement: ListView.builder(
-                  primary: false,
-                  physics: const BouncingScrollPhysics(),
-                  padding: const EdgeInsets.only(left: 16),
-                  shrinkWrap: false,
-                  scrollDirection: Axis.horizontal,
-                  itemCount: controller.branches.length,
-                  itemBuilder: (context, index) => PartnerCard(
-                    branch: controller.branches[index],
-                    onTap: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const PartnerDetailScreen(),
-                        fullscreenDialog: true,
-                      ),
-                    ),
-                  ),
-                ),
-                child: const Center(child: CircularProgressIndicator()),
-              ),
-            ),
-          ),
+          const _HomePartnerStrip(),
           TitlePanel(
             title: 'peoplelike'.tr,
             subtitle: 'mostpopular'.tr,
           ),
-          Container(
-            constraints: const BoxConstraints(maxHeight: 205),
-            child: Obx(
-              () => Visibility(
-                visible: controller.isLoading.value,
-                replacement: ListView.builder(
-                  primary: false,
-                  physics: const BouncingScrollPhysics(),
-                  padding: const EdgeInsets.only(left: 16),
-                  shrinkWrap: false,
-                  scrollDirection: Axis.horizontal,
-                  itemCount: controller.branches.length,
-                  itemBuilder: (context, index) => PartnerCard(
-                    branch: controller.branches[index],
-                    onTap: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const PartnerDetailScreen(),
-                        fullscreenDialog: true,
-                      ),
-                    ),
-                  ),
-                ),
-                child: const Center(child: CircularProgressIndicator()),
-              ),
-            ),
-          ),
+          const _HomePartnerStrip(),
         ],
       ),
     );

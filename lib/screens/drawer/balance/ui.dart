@@ -135,7 +135,7 @@ class BalanceScreen extends StatelessWidget {
               Spaces.vertical10,
               TextButton(
                 style: TextButton.styleFrom(
-                  primary: ColorPalette.editColor,
+                  foregroundColor: ColorPalette.editColor,
                   backgroundColor: Colors.transparent,
                   fixedSize: const Size.fromHeight(20),
                 ),

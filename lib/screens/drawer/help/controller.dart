@@ -1,8 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:nonqueue_app/api/concrete/company_service.dart';
+import 'package:nonqueue_app/api/abstract/company_repository.dart';
 
-import '../../../api/concrete/dio_service.dart';
 import '../../../api/result/result.dart';
 import '../../../utils/constants.dart';
 
@@ -12,7 +11,7 @@ class HelpController extends GetxController {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final TextEditingController msgTxt = TextEditingController();
 
-  final CompanyService _service = CompanyService(DioService());
+  final CompanyRepository _service = Get.find<CompanyRepository>();
 
   Future<void> sendForHelp() async {
     if (formKey.currentState?.validate() ?? false) {

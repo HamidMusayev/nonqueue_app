@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:nonqueue_app/bindings/auth_bindings.dart';
+import 'package:nonqueue_app/routes/app_routes.dart';
 import 'package:nonqueue_app/screens/auth/login/controller.dart';
 import 'package:nonqueue_app/screens/auth/pswforgot/ui.dart';
-import 'package:nonqueue_app/screens/auth/register/ui.dart';
 import 'package:nonqueue_app/utils/constants.dart';
 import 'package:nonqueue_app/utils/validators.dart';
 
@@ -11,8 +12,6 @@ class LoginScreen extends GetView<LoginController> {
 
   @override
   Widget build(BuildContext context) {
-    Get.put(LoginController());
-
     return Scaffold(
       appBar: AppBar(),
       body: Center(
@@ -72,7 +71,10 @@ class LoginScreen extends GetView<LoginController> {
                   ),
                   Spaces.vertical10,
                   GestureDetector(
-                    onTap: () => Get.to(const ForgotPasswordScreen()),
+                    onTap: () => Get.to(
+                          () => const ForgotPasswordScreen(),
+                          binding: ForgotPasswordBinding(),
+                        ),
                     child: Align(
                       alignment: Alignment.centerRight,
                       child: Text(
@@ -105,7 +107,7 @@ class LoginScreen extends GetView<LoginController> {
                         style: const TextStyle(color: Colors.blueGrey),
                       ),
                       GestureDetector(
-                        onTap: () => Get.off(const RegisterScreen()),
+                        onTap: () => Get.offNamed(AppRoutes.register),
                         child: Text(
                           'signup'.tr,
                           style: const TextStyle(

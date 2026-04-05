@@ -1,15 +1,14 @@
 import 'package:get/get.dart';
-import 'package:nonqueue_app/api/concrete/company_service.dart';
+import 'package:nonqueue_app/api/abstract/company_repository.dart';
 import 'package:nonqueue_app/models/company/company_branch.dart';
 
-import '../../api/concrete/dio_service.dart';
 import '../../api/result/result.dart';
 import '../../utils/constants.dart';
 
 class HomeController extends GetxController {
   RxBool isLoading = false.obs;
 
-  final CompanyService _service = CompanyService(DioService());
+  final CompanyRepository _service = Get.find<CompanyRepository>();
 
   List<CompanyBranch> branches = [];
 

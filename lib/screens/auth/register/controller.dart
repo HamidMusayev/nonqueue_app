@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:nonqueue_app/screens/auth/otp/ui.dart';
+import 'package:nonqueue_app/api/abstract/user_repository.dart';
+import 'package:nonqueue_app/routes/app_routes.dart';
 import 'package:nonqueue_app/utils/constants.dart';
 import 'package:nonqueue_app/widgets/phone_input/phone_number.dart';
-import '../../../api/concrete/dio_service.dart';
-import '../../../api/concrete/user_service.dart';
 import '../../../api/result/result.dart';
 import '../../../utils/shared.dart';
 
@@ -19,7 +18,7 @@ class RegisterController extends GetxController {
   final TextEditingController numberTxt = TextEditingController();
   final TextEditingController passTxt = TextEditingController();
 
-  final UserService _service = UserService(DioService());
+  final UserRepository _service = Get.find<UserRepository>();
 
   void changeObsecure() => isObsecure.value = !isObsecure.value;
 
@@ -39,9 +38,9 @@ class RegisterController extends GetxController {
       });
 
       if (result.success) {
-        SharedHelper.setString('userId', result.data!);
+        await SharedHelper.setString('userId', result.data!);
 
-        Result result2 = await _service.sendOTPEmail({
+        final result2 = await _service.sendOTPEmail({
           'email': emailTxt.text,
           'clientId': kClientId,
           'clientSecrets': kClientSecrets,
@@ -50,7 +49,13 @@ class RegisterController extends GetxController {
         if (result2.success) {
           Get.showSnackbar(Snacks.success(result2.message));
 
-          Get.to(OTPScreen(emailTxt.text, 'confirmEmail'));
+          Get.toNamed(
+            AppRoutes.otp,
+            arguments: {
+              'email': emailTxt.text,
+              'type': 'confirmEmail',
+            },
+          );
         } else {
           Get.showSnackbar(Snacks.error(result2.message));
         }

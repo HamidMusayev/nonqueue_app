@@ -48,7 +48,7 @@ class CouponScreen extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      QrImage(
+                      QrImageView(
                         data: 'QRDATA',
                         version: QrVersions.auto,
                         size: 200,

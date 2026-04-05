@@ -1,19 +1,17 @@
 import 'package:get/get.dart';
-import 'package:nonqueue_app/screens/auth/login/ui.dart';
-import 'package:nonqueue_app/screens/auth/pswreset/ui.dart';
-import '../../../api/concrete/dio_service.dart';
-import '../../../api/concrete/user_service.dart';
+import 'package:nonqueue_app/api/abstract/user_repository.dart';
+import 'package:nonqueue_app/routes/app_routes.dart';
 import '../../../api/result/result.dart';
 import '../../../utils/constants.dart';
 
 class OtpController extends GetxController {
   RxBool isLoading = false.obs;
 
-  final UserService _service = UserService(DioService());
+  final UserRepository _service = Get.find<UserRepository>();
 
   void confirmOtp(int otp, String email, String type) async {
     isLoading.value = true;
-    Result res = type == 'confirmEmail'
+    final Result<void> res = type == 'confirmEmail'
         ? await _service.confirmEmail({
             'email': email,
             'otp': otp,
@@ -32,8 +30,11 @@ class OtpController extends GetxController {
       Get.showSnackbar(Snacks.success('optverified'.tr));
 
       type == 'confirmEmail'
-          ? Get.off(const LoginScreen())
-          : Get.off(ResetPasswordScreen(email, otp));
+          ? Get.offNamed(AppRoutes.login)
+          : Get.offNamed(
+              AppRoutes.resetPassword,
+              arguments: {'email': email, 'otp': otp},
+            );
     } else {
       isLoading.value = false;
       Get.showSnackbar(Snacks.error(res.message));

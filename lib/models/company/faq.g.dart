@@ -7,7 +7,7 @@ part of 'faq.dart';
 // **************************************************************************
 
 Faq _$FaqFromJson(Map<String, dynamic> json) => Faq(
-      id: json['id'] as int,
+      id: (json['id'] as num).toInt(),
       question: json['question'] as String,
       answer: json['answer'] as String,
     );
